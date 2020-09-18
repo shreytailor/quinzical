@@ -22,8 +22,8 @@ public class Clue {
      * part of the string as well, because there is a method to compare the answer.
      */
     public Clue(String question, String answer) {
-        _question = question;
-        _answer = answer;
+        _question = question.trim();
+        _answer = answer.trim();
     }
 
     /**
@@ -51,13 +51,20 @@ public class Clue {
      * @return boolean true if the answer was correct, otherwise false.
      */
     public boolean checkAnswer(String answer) {
-        /*
-        ----------------------------------------------------------------------------------------
-                          THE PROCESS OF CHECKING THE ANSWER WOULD GO HERE.
-        ----------------------------------------------------------------------------------------
-         */
+        // Strings with no parenthesis, and with no prefix overall.
+        String correctWithoutParenthesis = _answer.replaceAll("[()]", "");
+        String correctNoPrefix = _answer.replaceAll("\\s*\\([^\\)]*\\)\\s*", "");
 
-        return true;
+        // Removing any repeated space characters from the user's input.
+        answer = answer.replaceAll("\\s+", " ");
+
+        // Comparing the sanitized user's input against the three strings above.
+        if (answer.equalsIgnoreCase(correctWithoutParenthesis) || answer.equalsIgnoreCase(correctNoPrefix) || answer.equalsIgnoreCase(_answer)) {
+            return true;
+        }
+
+        // If no matches, then just return false.
+        return false;
     }
 
     /**
