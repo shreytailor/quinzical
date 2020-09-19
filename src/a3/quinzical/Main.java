@@ -26,7 +26,7 @@ public class Main extends Application {
             System.out.println("Window has been closed.");
         });
 
-        ScreenController screenController = ScreenController.getInstance(stage);
+        ScreenController screenController = ScreenController.initialize(stage);
         screenController.addScreen("MAIN_MENU", FXMLLoader.load(getClass().getResource("./frontend/fxml/MainMenu.fxml")));
         screenController.setScreen("MAIN_MENU");
 

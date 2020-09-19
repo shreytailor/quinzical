@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
+import javafx.stage.WindowEvent;
 
 public class ScreenController {
 
@@ -17,11 +18,15 @@ public class ScreenController {
         _mainStage = stage;
     }
 
-    public static ScreenController getInstance(Stage stage) {
+    public static ScreenController initialize(Stage stage) {
         if (_screenController == null) {
             _screenController = new ScreenController(stage);
         }
 
+        return _screenController;
+    }
+
+    public static ScreenController getInstance() {
         return _screenController;
     }
 
@@ -35,6 +40,10 @@ public class ScreenController {
 
     public void setScreen(String screenName) {
         _mainStage.setScene(new Scene(_screenMap.get(screenName), 1350, 750));
+    }
+
+    public void exit() {
+        _mainStage.fireEvent(new WindowEvent(_mainStage, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
 }
