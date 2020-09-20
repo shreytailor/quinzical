@@ -1,5 +1,6 @@
 package a3.quinzical.backend;
 
+import java.util.ArrayList;
 // Java API dependencies.
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class PracticeDatabase {
 
     // Fields belonging to the non-static context.
     final private String _fileName = "FILENAME";
-    private List<Category> _categories;
+    private List<Category> _categories = new ArrayList<Category>();
     private int _numberOfCategories;
 
     /**
@@ -73,5 +74,33 @@ public class PracticeDatabase {
     private void updateRemaining() {
         _numberOfCategories = _categories.size();
     }
-
+    
+    /**
+     * This is a method that can add a category to the list to the Database.
+     * @param a Category object to be added to the database.
+     */
+    public void addCategory(Category c) {
+		_categories.add(c);
+		updateRemaining();
+	}
+    
+    /**
+     * This is a method that can remove a category from the list.
+     * @param index of the category to be removed.
+     * @throws IndexOutOfBoundsException this exception is returned if the position requested by
+     * the user is out of the valid range of the list.
+     */
+    public void removeCategory(int i) throws IndexOutOfBoundsException{
+		_categories.remove(i);
+		updateRemaining();
+	}
+    
+    /**
+     * This is a method that will return the number of categories in PracticeDatabase.
+     * @return the number of categories.
+     */
+    public int getCateSize() {
+    	updateRemaining();
+    	return _categories.size();
+    }
 }
