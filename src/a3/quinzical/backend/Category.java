@@ -56,6 +56,16 @@ public class Category {
     public Clue getClue(int position) throws IndexOutOfBoundsException {
         return _clues.get(position);
     }
+    
+    /**
+     * This method is used to remove a specific clue from the existing list of clues within the category.
+     * @param i the position of the clue that we want to remove.
+     * @throws IndexOutOfBoundsException this exception is returned if the position specified is
+     * out of valid range of the list.
+     */
+    public void removeClue(int i) throws IndexOutOfBoundsException{
+		_clues.remove(i);
+	}
 
     /**
      * This method is used to get a random clue from the current category. Note that no destructive
@@ -87,6 +97,15 @@ public class Category {
      */
     private void updateRemaining() {
         _numberOfClues = _clues.size();
+    }
+    
+    /**
+     * The method is used to get the number of clues in this category.
+     * @return the number of clues in this category.
+     */
+    public int getClueSize() {
+    	updateRemaining();
+    	return _numberOfClues;
     }
 
 }
