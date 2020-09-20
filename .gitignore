@@ -1,3 +1,8 @@
+# custom exceptions for IntelliJ setup
+out/
+*.iml
+.idea/
+
 # Compiled class file
 *.class
 
