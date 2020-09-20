@@ -1,4 +1,4 @@
-package application;
+package a3.quinzical.backend;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,7 +18,7 @@ public class IO {
 	private final static int _startPrice = 100;
 	private final static int _priceIncrement = 100;	
 	private final static int _cateNum = 5;
-	private final static int _questNum = 5;
+	private final static int _clueNum = 5;
 	
 	public static GameData readGame() {
 		GameData game = new GameData();
@@ -27,7 +27,7 @@ public class IO {
 				BufferedReader br = new BufferedReader(new FileReader(_gameFile));
 				String line;
 				Category newCate = null;
-				Question newQuest = null;
+				Clue newClue = null;
 				int price = _startPrice;
 				while(( line = br.readLine()) != null) {
 					line = line.trim();
@@ -38,8 +38,9 @@ public class IO {
 						newCate = new Category(line);
 						game.addCategory(newCate);
 					}else if(!line.isBlank()){
-						newQuest = new Question(line.split("[(]")[0].trim(), line.split("[)]")[1].replace(".", "").trim(), price);
-						newCate.addQuestion(newQuest);
+						newClue = new Clue(line.split("[(]")[0].trim().replace(",", ""), line.split("[)]")[1].trim());
+						newClue.setPrize(price);
+						newCate.addClue(newClue);
 						price += _priceIncrement;
 					}
 					_game.add(line);
@@ -47,20 +48,23 @@ public class IO {
 				br.close();		
 			}
 			else {
-				OverallData quiz = readQuiz();
+				PracticeDatabase quiz = readQuiz();
 				Random rand = new Random();
 				game.setWinning(0);
 				Category newCate, selectedCate = null;
+				Clue newClue = null;
 				
 				for(int i = 0; i < _cateNum; i++) {
 					int cateIndex = rand.nextInt(quiz.getCateSize());
 					selectedCate = quiz.getCategory(cateIndex);
-					newCate = new Category(selectedCate.getCateName());
+					newCate = new Category(selectedCate.getName());
 					int price = _startPrice;
-					for(int j = 0; j < _questNum; j++) {
-						int questIndex = rand.nextInt(selectedCate.getQuestSize());
-						newCate.addQuestion(new Question(selectedCate.getQuestion(questIndex).getQuestion(), selectedCate.getQuestion(questIndex).getAnswer(), price));
-						selectedCate.removeQuestion(questIndex);
+					for(int j = 0; j < _clueNum; j++) {
+						int questIndex = rand.nextInt(selectedCate.getClueSize());
+						newClue = new Clue(selectedCate.getClue(questIndex).getQuestion(), selectedCate.getClue(questIndex).getAnswer());
+						newClue.setPrize(price);
+						newCate.addClue(newClue);
+						selectedCate.removeClue(questIndex);
 						price += _priceIncrement;
 					}
 					game.addCategory(newCate);
@@ -74,20 +78,20 @@ public class IO {
 		return game;
 	}
 	
-	public static OverallData readQuiz() {
-		OverallData quiz = new OverallData();
+	public static PracticeDatabase readQuiz() {
+		PracticeDatabase quiz = PracticeDatabase.getInstance();
 		String line;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(_quizFile));
 			Category newCate = null;
-			Question newQuest = null;
+			Clue newClue = null;
 			while(( line = br.readLine()) != null) {
 				if(!line.contains("(") && !line.contains(")") && !line.isBlank()){
 					newCate = new Category(line);
 					quiz.addCategory(newCate);
 				}else if(!line.isBlank()){
-					newQuest = new Question(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim());
-					newCate.addQuestion(newQuest);
+					newClue = new Clue(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim());
+					newCate.addClue(newClue);
 				}
 			}
 			br.close();		
@@ -102,15 +106,15 @@ public class IO {
 	public static boolean writeGameData(GameData game) {
 		try {
 			Category writeCate = null;
-			Question writeQuest = null;
+			Clue writeClue = null;
 			BufferedWriter bw = new BufferedWriter(new FileWriter(_gameFile));
 			bw.write(game.getWinning() + "\n\n");
 			for(int i = 0; i < _cateNum; i++) {
 				writeCate = game.getCategory(i);
-				bw.write(writeCate.getCateName() + "\n");
-				for(int j = 0; j < _questNum; j++) {
-					writeQuest = writeCate.getQuestion(j);
-					bw.write(writeQuest.getQuestion() + ", (What is) " + writeQuest.getAnswer() + "\n");
+				bw.write(writeCate.getName() + "\n");
+				for(int j = 0; j < _clueNum; j++) {
+					writeClue = writeCate.getClue(j);
+					bw.write(writeClue.getQuestion() + ", (What is) " + writeClue.getAnswer() + "\n");
 				}
 				bw.write("\n");
 			}
@@ -122,7 +126,8 @@ public class IO {
 		return true;	
 	}
 	
-	//public static void main(String[] args) {
-	//	GameData g = readGame();
-	//}
+	public static void main(String[] args) {
+		GameData g = readGame();
+		System.out.print(g.getCategory(4).getClue(4).getQuestion());
+	}
 }
