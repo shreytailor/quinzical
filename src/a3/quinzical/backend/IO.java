@@ -38,8 +38,11 @@ public class IO {
 						newCate = new Category(line);
 						game.addCategory(newCate);
 					}else if(!line.isBlank()){
-						newClue = new Clue(line.split("[(]")[0].trim().replace(",", ""), line.split("[)]")[1].trim());
+						newClue = new Clue(line.split("[(]")[0].trim().replace(",", "").replace("@", ""), line.split("[)]")[1].trim());
 						newClue.setPrize(price);
+						if(line.startsWith("@")) {
+							newClue.setCurrentQuestionTrue();
+						}
 						newCate.addClue(newClue);
 						price += _priceIncrement;
 					}
@@ -63,6 +66,9 @@ public class IO {
 						int questIndex = rand.nextInt(selectedCate.getClueSize());
 						newClue = new Clue(selectedCate.getClue(questIndex).getQuestion(), selectedCate.getClue(questIndex).getAnswer());
 						newClue.setPrize(price);
+						if(j == 0) {
+							newClue.setCurrentQuestionTrue();
+						}
 						newCate.addClue(newClue);
 						selectedCate.removeClue(questIndex);
 						price += _priceIncrement;
@@ -114,6 +120,9 @@ public class IO {
 				bw.write(writeCate.getName() + "\n");
 				for(int j = 0; j < _clueNum; j++) {
 					writeClue = writeCate.getClue(j);
+					if(writeClue.isCurrentQuestion()) {
+						bw.write("@");
+					}
 					bw.write(writeClue.getQuestion() + ", (What is) " + writeClue.getAnswer() + "\n");
 				}
 				bw.write("\n");
@@ -128,6 +137,6 @@ public class IO {
 	
 	public static void main(String[] args) {
 		GameData g = readGame();
-		System.out.print(g.getCategory(4).getClue(4).getQuestion());
+		System.out.print(g.getCategory(0).getClue(1).getQuestion());
 	}
 }
