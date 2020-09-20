@@ -14,6 +14,7 @@ public class Clue {
     private String _question;
     private String _answer;
     private int _prize;
+    private boolean _currentQuestion = false;
 
     /**
      * This is the only constructor for creating an object for Clue.
@@ -83,5 +84,26 @@ public class Clue {
     public int getPrize() {
         return _prize;
     }
-
+    
+    /**
+     * This method sets the field _currentQuestion true
+     */
+    public void setCurrentQuestionTrue() {
+    	_currentQuestion = true;
+    }
+    
+    /**
+     * This method sets the field _currentQuestion false
+     */
+    public void setCurrentQuestionFalse() {
+    	_currentQuestion = false;
+    }
+    
+    /**
+     * This method returns the value field _currentQuestion.
+     * @return field _currentQuestion.
+     */
+    public boolean isCurrentQuestion() {
+    	return _currentQuestion;
+    }
 }
