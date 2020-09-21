@@ -74,6 +74,8 @@ public class MainMenuController {
                 exitButton.fireEvent(new ActionEvent());
             case S:
                 settingsButton.fireEvent(new ActionEvent());
+            default:
+                // Do nothing.
         }
     }
 
@@ -87,7 +89,7 @@ public class MainMenuController {
     }
 
     @FXML
-    private void handleSettingsButton() {
+    public void handleSettingsButton() {
         // Determining the width, and height constants for the settings screen.
         int WIDTH = 450;
         int HEIGHT = 250;

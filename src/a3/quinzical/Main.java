@@ -1,5 +1,6 @@
 package a3.quinzical;
 
+import a3.quinzical.backend.Speaker;
 import a3.quinzical.frontend.controllers.ScreenController;
 
 // JavaFX dependencies.
@@ -44,6 +45,9 @@ public class Main extends Application {
         ScreenController screenController = ScreenController.initialize(stage);
         screenController.addScreen("MAIN_MENU", FXMLLoader.load(getClass().getResource("./frontend/fxml/MainMenu.fxml")));
         screenController.setScreen("MAIN_MENU");
+
+        // Setting up the speaker with the default speed.
+        Speaker.init();
 
         // Showing the stage to the user.
         stage.show();
