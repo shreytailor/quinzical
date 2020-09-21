@@ -84,6 +84,7 @@ public class MainMenuController implements Initializable {
         // Creating and configuring the new stage.
         Stage settingsStage = new Stage();
         settingsStage.setResizable(false);
+        settingsStage.setTitle("Settings");
         try {
             settingsStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("./../fxml/Settings.fxml")), WIDTH, HEIGHT));
         } catch (IOException error) {

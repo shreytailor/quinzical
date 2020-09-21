@@ -88,6 +88,10 @@ public class ScreenController {
         _mainStage.setScene(new Scene(_screenMap.get(screenName), 1350, 750));
     }
 
+    public void setTitle(String title) {
+        _mainStage.setTitle(title);
+    }
+
     /**
      * This method is used to exit the game, by firing an exit event to the stage of the game. Note
      * that after this is executed, the listener in the Main class is executed, where all the logic

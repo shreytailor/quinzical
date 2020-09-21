@@ -58,6 +58,8 @@ public class Speaker {
     }
 
     public void speak() {
+        kill();
+
         List<String> arguments = new ArrayList<String>();
         arguments.add("espeak");
         arguments.add(_speechString);
