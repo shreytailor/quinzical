@@ -1,81 +1,66 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.Speaker;
+
+// Java dependencies.
+import java.net.URL;
+import java.io.IOException;
+import java.util.ResourceBundle;
+
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.stage.Modality;
+import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 
-import java.io.IOException;
 
 /**
  * This class is the controller class for the MainMenu screen.
+ * @author Shrey Tailor, Jason Wang
  */
-public class MainMenuController {
 
-    /**
-     * The title on the top of the menu.
-     */
+public class MainMenuController implements Initializable {
+
     @FXML
     Label title;
-
-    /**
-     * The button to go to the practice module.
-     */
     @FXML
     Button practiceModuleButton;
-
-    /**
-     * The button to go to the game module.
-     */
     @FXML
     Button gameModuleButton;
-
-    /**
-     * The button to go exit the game.
-     */
     @FXML
     Button exitButton;
-
-    /**
-     * The button for opening the settings window.
-     */
     @FXML
     Button settingsButton;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Speaker.init();
+    }
+
     /**
      * This method is the handler which is used when any key is pressed on the Main Menu screen.
-     * We are using shortcuts to navigate through the game as well, therefore this is important.
+     * We are using shortcuts to navigate through the game.
      * @param event
      */
     @FXML
     private void handleKeyPressed(KeyEvent event) {
         switch(event.getCode()) {
             case P:
-                /*
-                ----------------------------------------------------
-                EVENT CODE TO BE ADDED HERE LATER ON.
-                ----------------------------------------------------
-                 */
+                practiceModuleButton.fireEvent(new ActionEvent());
             case G:
-                /*
-                ----------------------------------------------------
-                EVENT CODE TO BE ADDED HERE LATER ON.
-                ----------------------------------------------------
-                 */
+                gameModuleButton.fireEvent(new ActionEvent());
             case X:
                 exitButton.fireEvent(new ActionEvent());
             case S:
                 settingsButton.fireEvent(new ActionEvent());
-            default:
-                // Do nothing.
         }
     }
 
@@ -84,22 +69,25 @@ public class MainMenuController {
      */
     @FXML
     private void handleExitButton() {
-        ScreenController screenController = ScreenController.getInstance();
-        screenController.exit();
+        ScreenController.getInstance().exit();
     }
 
+    /**
+     * This is the handler for when the settings button is clicked. It opens the new stage, and also
+     * makes sure to disable the parent window so nothing can be clicked.
+     */
     @FXML
     public void handleSettingsButton() {
-        // Determining the width, and height constants for the settings screen.
         int WIDTH = 450;
         int HEIGHT = 250;
 
+        // Creating and configuring the new stage.
         Stage settingsStage = new Stage();
         settingsStage.setResizable(false);
         try {
             settingsStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("./../fxml/Settings.fxml")), WIDTH, HEIGHT));
         } catch (IOException error) {
-            // We can be assured that this error will never get thrown in our game.
+            System.out.println(error.getMessage());
         }
 
         // Trying to center the settings pane on the screen, when opened.
@@ -111,6 +99,9 @@ public class MainMenuController {
         settingsStage.initModality(Modality.APPLICATION_MODAL);
         settingsStage.initOwner(ScreenController.getInstance().getStage().getScene().getWindow());
 
+        settingsStage.setOnCloseRequest(event -> {
+            Speaker.init().kill();
+        });
         settingsStage.show();
     }
 

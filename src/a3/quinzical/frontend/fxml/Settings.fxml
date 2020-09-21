@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.SettingsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.SettingsController">
    <top>
       <HBox alignment="CENTER_LEFT">
          <children>
@@ -54,7 +54,12 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Button fx:id="synthesisPreviewButton" mnemonicParsing="false" onAction="#handlePreviewButton" prefHeight="28.0" prefWidth="410.0" text="Preview" />
+                  <Button fx:id="synthesisPreviewButton" mnemonicParsing="false" onAction="#handlePreviewButton" prefHeight="28.0" prefWidth="410.0" text="Test Speech">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="synthesisResetButton" mnemonicParsing="false" onAction="#handleResetButton" prefHeight="28.0" prefWidth="410.0" text="Reset to Default" />
                </children>
             </VBox>
          </children>

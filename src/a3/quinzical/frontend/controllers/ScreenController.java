@@ -11,7 +11,9 @@ import javafx.stage.WindowEvent;
 /**
  * This class is for the custom controller created to take care of the routing done within our
  * JavaFX application. It uses a slightly tweaked version of the Singleton pattern.
+ * @author Shrey Tailor, Jason Wang
  */
+
 public class ScreenController {
 
     // Static context fields.

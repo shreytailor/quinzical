@@ -3,7 +3,6 @@ package a3.quinzical.backend;
 // Java dependencies.
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Speaker {
@@ -36,6 +35,10 @@ public class Speaker {
         // Set the new speed, and we aren't using the default speed anymore.
         SPEED = speed;
         _isChanged = true;
+    }
+
+    public void resetSpeed() {
+        _isChanged = false;
     }
 
     public int getSpeed() {
@@ -72,6 +75,8 @@ public class Speaker {
     }
 
     public void kill() {
-        _process.destroy();
+        if (_process != null) {
+            _process.destroy();
+        }
     }
 }
