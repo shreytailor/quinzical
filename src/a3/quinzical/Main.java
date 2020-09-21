@@ -3,9 +3,11 @@ package a3.quinzical;
 import a3.quinzical.frontend.controllers.ScreenController;
 
 // JavaFX dependencies.
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.application.Application;
 
 
 public class Main extends Application {
@@ -20,8 +22,9 @@ public class Main extends Application {
         Initial configuration added for stage such as setting the title, making it not resizeable,
         and also setting a listener to save the progress when the stage is closed.
          */
-        stage.setTitle("Quinzical");
         stage.setResizable(false);
+        stage.setTitle("Quinzical");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("./frontend/resources/logo.png")));
         stage.setOnCloseRequest(event -> {
             /*
             --------------------------------------------------------
@@ -29,6 +32,12 @@ public class Main extends Application {
             --------------------------------------------------------
              */
             System.out.println("Window has been closed.");
+
+            /*
+             This code is present so that if the settings stage was open when the main application
+             is closed, then all the windows are automatically closed.
+             */
+            Platform.exit();
         });
 
         // Using the custom created SceneController class to manage all and setup all the screens.

@@ -52,6 +52,15 @@ public class ScreenController {
     }
 
     /**
+     * This method is used to get the main stage of the application. This is particularly needed
+     * when making the main window inactive as the Settings pane could be opened by the user.
+     * @return Stage the main stage for our application.
+     */
+    public Stage getStage() {
+        return _mainStage;
+    }
+
+    /**
      * This method is used to add a screen (pane) to the available screens, which are stored as a
      * map in one of the non-static fields.
      * @param screenName the name of the screen.

@@ -14,6 +14,14 @@
    <top>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </ImageView>
             <Label fx:id="title" alignment="TOP_LEFT" contentDisplay="TOP" text="Quinzical">
                <font>
                   <Font name="Arimo Bold" size="50.0" />
@@ -64,7 +72,7 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT">
          <children>
-            <Button mnemonicParsing="false" text="Settings">
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#handleSettingsButton" text="Settings">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
