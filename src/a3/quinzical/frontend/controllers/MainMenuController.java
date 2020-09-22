@@ -1,6 +1,8 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
+import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
@@ -10,8 +12,8 @@ import java.util.ResourceBundle;
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.stage.Modality;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,9 +71,9 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void handlePracticeModuleButton() {
-        ScreenController screenController = ScreenController.getInstance();
-        screenController.setScreen("PRACTICE_MODULE");
-        screenController.setTitle("Practice");
+        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
+        screenSwitcher.setScreen(ScreenType.PRACTICE_MODULE);
+        screenSwitcher.setTitle("Practice");
     }
 
     /**
@@ -79,7 +81,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     private void handleExitButton() {
-        ScreenController.getInstance().exit();
+        ScreenSwitcher.getInstance().exit();
     }
 
     /**
@@ -108,7 +110,7 @@ public class MainMenuController implements Initializable {
 
         // These extra settings are necessary to block the main stage when this settings is opened.
         settingsStage.initModality(Modality.APPLICATION_MODAL);
-        settingsStage.initOwner(ScreenController.getInstance().getStage().getScene().getWindow());
+        settingsStage.initOwner(ScreenSwitcher.getInstance().getStage().getScene().getWindow());
 
         settingsStage.setOnCloseRequest(event -> {
             Speaker.init().kill();

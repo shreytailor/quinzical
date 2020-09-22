@@ -1,12 +1,13 @@
 package a3.quinzical.frontend.controllers;
 
-// JavaFX dependencies.
-import a3.quinzical.backend.GameDatabase;
 import a3.quinzical.backend.PracticeDatabase;
+import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.switcher.ScreenSwitcher;
+
+// JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -16,6 +17,7 @@ import javafx.scene.control.ScrollPane;
 // Java dependencies.
 import java.net.URL;
 import java.util.ResourceBundle;
+
 
 public class PracticeModuleController implements Initializable {
 
@@ -44,9 +46,9 @@ public class PracticeModuleController implements Initializable {
 
     @FXML
     private void handleBackButton() {
-        ScreenController screenController = ScreenController.getInstance();
-        screenController.setTitle("Main Menu");
-        screenController.setScreen("MAIN_MENU");
+        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
+        screenSwitcher.setTitle("Main Menu");
+        screenSwitcher.setScreen(ScreenType.MAIN_MENU);
     }
 
     private void setupGrid() {

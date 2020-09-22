@@ -1,12 +1,13 @@
-package a3.quinzical.frontend.controllers;
+package a3.quinzical.frontend.switcher;
 
-// JavaFX dependencies.
+// Java dependencies.
 import java.io.IOException;
 import java.util.HashMap;
 
-import javafx.fxml.FXMLLoader;
+// JavaFX dependencies.
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.WindowEvent;
 
@@ -17,25 +18,25 @@ import javafx.stage.WindowEvent;
  * @author Shrey Tailor, Jason Wang
  */
 
-public class ScreenController {
+public class ScreenSwitcher {
 
     // Static context fields.
-    private static ScreenController _screenController;
+    private static ScreenSwitcher _screenSwitcher;
 
     // Non-static (object) context fields.
     private Stage _mainStage;
     private Scene _mainScene;
-    private HashMap<String, Pane> _screenMap = new HashMap<>();
+    private HashMap<ScreenType, Pane> _screenMap = new HashMap<>();
 
     /**
      * This is the private constructor of our Singleton object.
      * @param stage the main stage of the game.
      */
-    private ScreenController(Stage stage) {
+    private ScreenSwitcher(Stage stage) {
         _mainStage = stage;
         try {
-            addScreen("MAIN_MENU", FXMLLoader.load(getClass().getResource("./../fxml/MainMenu.fxml")));
-            _mainScene = new Scene(_screenMap.get("MAIN_MENU"), 1350, 750);
+            addScreen(ScreenType.MAIN_MENU, FXMLLoader.load(getClass().getResource("./../fxml/MainMenu.fxml")));
+            _mainScene = new Scene(_screenMap.get(ScreenType.MAIN_MENU), 1350, 750);
             _mainStage.setScene(_mainScene);
             setTitle("Main Menu");
         } catch (IOException exception) {  };
@@ -47,20 +48,20 @@ public class ScreenController {
      * @param stage the main stage of the game.
      * @return ScreenController the Singleton object which was created.
      */
-    public static ScreenController initialize (Stage stage) {
-        if (_screenController == null) {
-            _screenController = new ScreenController(stage);
+    public static ScreenSwitcher initialize (Stage stage) {
+        if (_screenSwitcher == null) {
+            _screenSwitcher = new ScreenSwitcher(stage);
         }
 
-        return _screenController;
+        return _screenSwitcher;
     }
 
     /**
      * This method is used to get the instance of our Singleton object from anywhere in the game.
      * @return ScreenController the Singleton object.
      */
-    public static ScreenController getInstance() {
-        return _screenController;
+    public static ScreenSwitcher getInstance() {
+        return _screenSwitcher;
     }
 
     /**
@@ -75,27 +76,19 @@ public class ScreenController {
     /**
      * This method is used to add a screen (pane) to the available screens, which are stored as a
      * map in one of the non-static fields.
-     * @param screenName the name of the screen.
+     * @param screenTypeName the name of the screen.
      * @param pane the FXML pane which is stored within one of the packages.
      */
-    public void addScreen(String screenName, Pane pane) {
-        _screenMap.put(screenName, pane);
-    }
-
-    /**
-     * This method is used to delete some screen (pane) from the available ones.
-     * @param screenName the name of the screen by which you saved it before.
-     */
-    public void deleteScreen(String screenName) {
-        _screenMap.remove(screenName);
+    public void addScreen(ScreenType screenTypeName, Pane pane) {
+        _screenMap.put(screenTypeName, pane);
     }
 
     /**
      * This method is used to set one of the previously added screens to the game's stage.
-     * @param screenName the name of the screen by which you saved it before.
+     * @param screenTypeName the name of the screen by which you saved it before.
      */
-    public void setScreen(String screenName) {
-        _mainScene.setRoot(_screenMap.get(screenName));
+    public void setScreen(ScreenType screenTypeName) {
+        _mainScene.setRoot(_screenMap.get(screenTypeName));
     }
 
     public void setTitle(String title) {
