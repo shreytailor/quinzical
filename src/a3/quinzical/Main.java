@@ -1,6 +1,7 @@
 package a3.quinzical;
 
-import a3.quinzical.frontend.controllers.ScreenController;
+import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // JavaFX dependencies.
 import javafx.application.Platform;
@@ -26,12 +27,11 @@ public class Main extends Application {
             THIS IS WHERE THE PROGRESS SAVING CODE WILL BE PLACED.
             --------------------------------------------------------
              */
-            System.out.println("Window has been closed.");
             Platform.exit();
         });
 
-        ScreenController screenController = ScreenController.initialize(stage);
-        screenController.addScreen("PRACTICE_MODULE", FXMLLoader.load(getClass().getResource("./frontend/fxml/PracticeModule.fxml")));
+        ScreenSwitcher screenSwitcher = ScreenSwitcher.initialize(stage);
+        screenSwitcher.addScreen(ScreenType.PRACTICE_MODULE, FXMLLoader.load(getClass().getResource("./frontend/fxml/PracticeModule.fxml")));
 
         stage.show();
     }

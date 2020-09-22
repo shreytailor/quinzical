@@ -1,11 +1,13 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.PracticeDatabase;
+import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.switcher.ScreenSwitcher;
+
 // JavaFX dependencies.
-import a3.quinzical.backend.GameDatabase;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -16,6 +18,11 @@ import javafx.scene.control.ScrollPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
+/**
+ * This class is the controller class for the Practice Module screen.
+ * @author Shrey Tailor, Jason Wang
+ */
 public class PracticeModuleController implements Initializable {
 
     private GridPane _gridPane;
@@ -32,6 +39,10 @@ public class PracticeModuleController implements Initializable {
         setupGrid();
     }
 
+    /**
+     * This method is the listener for when a key is pressed. It is used to add shortcuts.
+     * @param event the key event from which we can extract the key pressed.
+     */
     @FXML
     private void onKeyPressed(KeyEvent event) {
         switch (event.getCode()) {
@@ -41,40 +52,56 @@ public class PracticeModuleController implements Initializable {
         }
     }
 
+    /**
+     * This method is the listener for the Back to Menu button.
+     */
     @FXML
     private void handleBackButton() {
-        ScreenController screenController = ScreenController.getInstance();
-        screenController.setTitle("Main Menu");
-        screenController.setScreen("MAIN_MENU");
+        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
+        screenSwitcher.setTitle("Main Menu");
+        screenSwitcher.setScreen(ScreenType.MAIN_MENU);
     }
 
+    /**
+     * This is a private method which is used by the initialize() method in this class, in order to
+     * setup the GridPane programmatically. Here, we are reading the categories from the Databases
+     * backend, and trying to populate the GUI with their respective buttons.
+     */
     private void setupGrid() {
         _gridPane = new GridPane();
 
-        GameDatabase database = GameDatabase.getInstance();
+        // Find the number of categories in the database.
+        PracticeDatabase database = PracticeDatabase.getInstance();
         int categories = database.getCateSize();
 
+        // Determine the rows and columns of the GridPane.
         int ROWS = 6;
         int COLS = (categories / ROWS) + 1;
 
         int tracker = 0;
-        for (int counter = 0; counter < ROWS; counter++) {
-            for (int anotherCounter = 0; anotherCounter < COLS; anotherCounter++) {
+
+        // Loop through the columns and rows of the GridPane and add the buttons.
+        for (int col = 0; col < COLS; col++) {
+            for (int row = 0; row < ROWS; row++) {
+                // If we finish all the categories, then finish both the loops.
                 if (tracker >= categories) {
                     break;
                 }
 
+                // Getting the information of the current category and creating its button.
                 String category = database.getCategory(tracker).getName();
                 Button button = new Button(category);
                 button.setPrefWidth(195);
                 button.setPrefHeight(90);
                 GridPane.setMargin(button, new Insets(20, 10, 20, 10));
-                _gridPane.add(button, counter, anotherCounter);
 
+                // Adding the button to the grid.
+                _gridPane.add(button, row, col);
                 tracker++;
             }
         }
 
+        // After the GridPane is built, we are adding it to the parent ScrollPane.
         scrollPane.setContent(_gridPane);
     }
 
