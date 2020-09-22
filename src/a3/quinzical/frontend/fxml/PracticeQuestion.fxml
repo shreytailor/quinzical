@@ -55,7 +55,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets right="5.0" />
+                                    <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
                               <Label text="Placeholder">
@@ -63,7 +63,7 @@
                                     <Font size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="5.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </Label>
                            </children>
@@ -77,6 +77,9 @@
                            <font>
                               <Font size="20.0" />
                            </font>
+                           <BorderPane.margin>
+                              <Insets bottom="30.0" />
+                           </BorderPane.margin>
                         </Label>
                      </bottom>
                      <center>
