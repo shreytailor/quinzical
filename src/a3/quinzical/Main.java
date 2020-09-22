@@ -27,7 +27,6 @@ public class Main extends Application {
             THIS IS WHERE THE PROGRESS SAVING CODE WILL BE PLACED.
             --------------------------------------------------------
              */
-            System.out.println("Window has been closed.");
             Platform.exit();
         });
 

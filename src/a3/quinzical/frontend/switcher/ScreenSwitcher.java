@@ -17,7 +17,6 @@ import javafx.stage.WindowEvent;
  * JavaFX application. It uses a slightly tweaked version of the Singleton pattern.
  * @author Shrey Tailor, Jason Wang
  */
-
 public class ScreenSwitcher {
 
     // Static context fields.
@@ -34,12 +33,14 @@ public class ScreenSwitcher {
      */
     private ScreenSwitcher(Stage stage) {
         _mainStage = stage;
+
+        // Adding the Main Menu as one of the panes, and then setting that as the splash.
         try {
             addScreen(ScreenType.MAIN_MENU, FXMLLoader.load(getClass().getResource("./../fxml/MainMenu.fxml")));
             _mainScene = new Scene(_screenMap.get(ScreenType.MAIN_MENU), 1350, 750);
             _mainStage.setScene(_mainScene);
             setTitle("Main Menu");
-        } catch (IOException exception) {  };
+        } catch (IOException error) {  };
     }
 
     /**
@@ -91,6 +92,10 @@ public class ScreenSwitcher {
         _mainScene.setRoot(_screenMap.get(screenTypeName));
     }
 
+    /**
+     * This method is used to set the header of the stage, once the parent of the scene is changed.
+     * @param title the title that you want to give to the stage.
+     */
     public void setTitle(String title) {
         _mainStage.setTitle("Quinzical | " + title);
     }

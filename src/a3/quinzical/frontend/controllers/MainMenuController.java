@@ -27,7 +27,6 @@ import javafx.scene.input.KeyEvent;
  * This class is the controller class for the MainMenu screen.
  * @author Shrey Tailor, Jason Wang
  */
-
 public class MainMenuController implements Initializable {
 
     @FXML
@@ -69,6 +68,9 @@ public class MainMenuController implements Initializable {
         }
     }
 
+    /**
+     * This method is the handler for the Practice Module button.
+     */
     @FXML
     private void handlePracticeModuleButton() {
         ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
