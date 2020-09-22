@@ -32,13 +32,10 @@
             </Label>
          </children>
          <BorderPane.margin>
-            <Insets top="25.0" />
+            <Insets left="20.0" right="20.0" top="25.0" />
          </BorderPane.margin>
       </HBox>
    </top>
-   <padding>
-      <Insets left="20.0" right="20.0" />
-   </padding>
    <center>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
