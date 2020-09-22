@@ -1,7 +1,12 @@
 package a3.quinzical.backend;
 
+//Java API dependencies.
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-// Java API dependencies.
 import java.util.List;
 
 
@@ -24,7 +29,7 @@ public class PracticeDatabase {
     private static PracticeDatabase _practiceDatabase;
 
     // Fields belonging to the non-static context.
-    final private String _fileName = "FILENAME";
+    private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
     private List<Category> _categories = new ArrayList<Category>();
     private int _numberOfCategories;
 
@@ -59,12 +64,32 @@ public class PracticeDatabase {
         return _categories.get(position);
     }
 
-    public void initialize() {
-        /*
-        ----------------------------------------------------------------------------------------
-                                THE FILE READING PROCESS WOULD GO HERE.
-        ----------------------------------------------------------------------------------------
-         */
+    /**
+     * This method is used to initialize the instance of PracticeDatabase object.
+     * The method reads in all categories and clues from a specified file and store them in their
+     * respective category objects and clue objects. 
+     */
+    private void initialize() {
+		String line;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(_quizFile));
+			Category newCate = null;
+			Clue newClue = null;
+			while(( line = br.readLine()) != null) {
+				if(!line.contains("(") && !line.contains(")") && !line.isBlank()){
+					newCate = new Category(line);
+					_categories.add(newCate);
+				}else if(!line.isBlank()){
+					newClue = new Clue(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim());
+					newCate.addClue(newClue);
+				}
+			}
+			br.close();		
+		}catch(FileNotFoundException e) {
+			System.out.println("Quinzical.txt not found in root directory");
+		}catch(IOException e) {
+			System.out.println("Error occured during reading Quiz file");
+		}
     }
 
     /**
@@ -74,15 +99,6 @@ public class PracticeDatabase {
     private void updateRemaining() {
         _numberOfCategories = _categories.size();
     }
-    
-    /**
-     * This is a method that can add a category to the list to the Database.
-     * @param a Category object to be added to the database.
-     */
-    public void addCategory(Category c) {
-		_categories.add(c);
-		updateRemaining();
-	}
     
     /**
      * This is a method that can remove a category from the list.
@@ -101,6 +117,14 @@ public class PracticeDatabase {
      */
     public int getCateSize() {
     	updateRemaining();
-    	return _categories.size();
+    	return _numberOfCategories;
+    }
+    
+    /**
+     * This is a method that will dereference the _practiceDatabase field, so that when the 
+     * getInstance is called next time the PracticeDatabase would be reloaded.
+     */
+    public static void kill() {
+    	_practiceDatabase = null;
     }
 }
