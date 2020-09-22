@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.stage.Screen;
 import javafx.stage.Modality;
 import javafx.fxml.FXMLLoader;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.geometry.Rectangle2D;
@@ -54,14 +53,25 @@ public class MainMenuController implements Initializable {
     private void handleKeyPressed(KeyEvent event) {
         switch(event.getCode()) {
             case P:
-                practiceModuleButton.fireEvent(new ActionEvent());
+                practiceModuleButton.fire();
+                break;
             case G:
-                gameModuleButton.fireEvent(new ActionEvent());
+                gameModuleButton.fire();
+                break;
             case X:
-                exitButton.fireEvent(new ActionEvent());
+                exitButton.fire();
+                break;
             case S:
-                settingsButton.fireEvent(new ActionEvent());
+                settingsButton.fire();
+                break;
         }
+    }
+
+    @FXML
+    private void handlePracticeModuleButton() {
+        ScreenController screenController = ScreenController.getInstance();
+        screenController.setScreen("PRACTICE_MODULE");
+        screenController.setTitle("Practice");
     }
 
     /**
@@ -77,7 +87,7 @@ public class MainMenuController implements Initializable {
      * makes sure to disable the parent window so nothing can be clicked.
      */
     @FXML
-    public void handleSettingsButton() {
+    private void handleSettingsButton() {
         int WIDTH = 450;
         int HEIGHT = 250;
 

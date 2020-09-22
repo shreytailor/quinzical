@@ -74,7 +74,7 @@ public class PracticeDatabase {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(_quizFile));
 			Category newCate = null;
-			Clue newClue = null;
+			Clue newClue;
 			while(( line = br.readLine()) != null) {
 				if(!line.contains("(") && !line.contains(")") && !line.isBlank()){
 					newCate = new Category(line);
@@ -106,8 +106,8 @@ public class PracticeDatabase {
      * @throws IndexOutOfBoundsException this exception is returned if the position requested by
      * the user is out of the valid range of the list.
      */
-    public void removeCategory(int i) throws IndexOutOfBoundsException{
-		_categories.remove(i);
+    public void removeCategory(int index) throws IndexOutOfBoundsException{
+		_categories.remove(index);
 		updateRemaining();
 	}
     
