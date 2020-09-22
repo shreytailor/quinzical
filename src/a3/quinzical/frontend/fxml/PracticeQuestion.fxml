@@ -14,14 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <HBox BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="20.0" right="20.0" top="25.0" />
-         </BorderPane.margin>
-      </HBox>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeQuestionController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -39,7 +32,7 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                      <center>
-                        <Label text="Question Placeholder" BorderPane.alignment="CENTER">
+                        <Label fx:id="clueLabel" text="Clue Placeholder" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -58,7 +51,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="Placeholder">
+                              <Label fx:id="categoryLabel" text="Placeholder">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -73,7 +66,7 @@
                         </HBox>
                      </top>
                      <bottom>
-                        <Label text="You have X attempts remaining." BorderPane.alignment="CENTER">
+                        <Label fx:id="attemptsLabel" text="You have X attempts remaining." BorderPane.alignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -85,7 +78,7 @@
                      <center>
                         <VBox alignment="CENTER">
                            <children>
-                              <TextField promptText="Type your answer here...">
+                              <TextField fx:id="answerTextField" promptText="Type your answer here...">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -93,7 +86,7 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="534.0" text="Submit">
+                              <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="534.0" text="Submit">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -116,7 +109,7 @@
             <Insets bottom="25.0" left="20.0" right="20.0" />
          </BorderPane.margin>
          <children>
-            <Button mnemonicParsing="false" text="Back To Categories">
+            <Button fx:id="backButton" mnemonicParsing="false" text="Back To Categories">
                <font>
                   <Font size="14.0" />
                </font>
@@ -124,7 +117,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Respeak Question">
+            <Button fx:id="respeakButton" mnemonicParsing="false" text="Respeak Question">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
