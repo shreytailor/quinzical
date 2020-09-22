@@ -4,6 +4,10 @@ import a3.quinzical.backend.PracticeDatabase;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
+// Java dependencies.
+import java.net.URL;
+import java.util.ResourceBundle;
+
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -13,10 +17,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ScrollPane;
-
-// Java dependencies.
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 /**
