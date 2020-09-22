@@ -2,6 +2,7 @@ package a3.quinzical.frontend.controllers;
 
 // JavaFX dependencies.
 import a3.quinzical.backend.GameDatabase;
+import a3.quinzical.backend.PracticeDatabase;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
@@ -51,15 +52,17 @@ public class PracticeModuleController implements Initializable {
     private void setupGrid() {
         _gridPane = new GridPane();
 
-        GameDatabase database = GameDatabase.getInstance();
+        PracticeDatabase database = PracticeDatabase.getInstance();
         int categories = database.getCateSize();
+
+        System.out.println(categories);
 
         int ROWS = 6;
         int COLS = (categories / ROWS) + 1;
 
         int tracker = 0;
-        for (int counter = 0; counter < ROWS; counter++) {
-            for (int anotherCounter = 0; anotherCounter < COLS; anotherCounter++) {
+        for (int col = 0; col < COLS; col++) {
+            for (int row = 0; row < ROWS; row++) {
                 if (tracker >= categories) {
                     break;
                 }
@@ -69,7 +72,7 @@ public class PracticeModuleController implements Initializable {
                 button.setPrefWidth(195);
                 button.setPrefHeight(90);
                 GridPane.setMargin(button, new Insets(20, 10, 20, 10));
-                _gridPane.add(button, counter, anotherCounter);
+                _gridPane.add(button, row, col);
 
                 tracker++;
             }
