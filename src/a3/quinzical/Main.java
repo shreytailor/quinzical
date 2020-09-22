@@ -18,7 +18,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Adding the required one-time initial configuration for the main stage.
         stage.setResizable(false);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("./frontend/resources/logo.png")));
         stage.setOnCloseRequest(event -> {
@@ -31,13 +30,9 @@ public class Main extends Application {
             Platform.exit();
         });
 
-        // Using the custom created SceneController class to manage all and setup all the screens.
         ScreenController screenController = ScreenController.initialize(stage);
-        screenController.addScreen("MAIN_MENU", FXMLLoader.load(getClass().getResource("./frontend/fxml/MainMenu.fxml")));
-        screenController.setTitle("Quinzical | Main Menu");
-        screenController.setScreen("MAIN_MENU");
+        screenController.addScreen("PRACTICE_MODULE", FXMLLoader.load(getClass().getResource("./frontend/fxml/PracticeModule.fxml")));
 
-        // Showing the stage to the user.
         stage.show();
     }
 

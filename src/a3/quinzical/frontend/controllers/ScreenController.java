@@ -1,7 +1,10 @@
 package a3.quinzical.frontend.controllers;
 
 // JavaFX dependencies.
+import java.io.IOException;
 import java.util.HashMap;
+
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
@@ -21,6 +24,7 @@ public class ScreenController {
 
     // Non-static (object) context fields.
     private Stage _mainStage;
+    private Scene _mainScene;
     private HashMap<String, Pane> _screenMap = new HashMap<>();
 
     /**
@@ -29,6 +33,12 @@ public class ScreenController {
      */
     private ScreenController(Stage stage) {
         _mainStage = stage;
+        try {
+            addScreen("MAIN_MENU", FXMLLoader.load(getClass().getResource("./../fxml/MainMenu.fxml")));
+            _mainScene = new Scene(_screenMap.get("MAIN_MENU"), 1350, 750);
+            _mainStage.setScene(_mainScene);
+            setTitle("Main Menu");
+        } catch (IOException exception) {  };
     }
 
     /**
@@ -37,7 +47,7 @@ public class ScreenController {
      * @param stage the main stage of the game.
      * @return ScreenController the Singleton object which was created.
      */
-    public static ScreenController initialize(Stage stage) {
+    public static ScreenController initialize (Stage stage) {
         if (_screenController == null) {
             _screenController = new ScreenController(stage);
         }
@@ -85,11 +95,11 @@ public class ScreenController {
      * @param screenName the name of the screen by which you saved it before.
      */
     public void setScreen(String screenName) {
-        _mainStage.setScene(new Scene(_screenMap.get(screenName), 1350, 750));
+        _mainScene.setRoot(_screenMap.get(screenName));
     }
 
     public void setTitle(String title) {
-        _mainStage.setTitle(title);
+        _mainStage.setTitle("Quinzical | " + title);
     }
 
     /**

@@ -42,7 +42,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="practiceModuleButton" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" text="Practice Module">
+            <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="75.0" prefWidth="250.0" text="Practice Module">
                <font>
                   <Font name="Arimo" size="22.0" />
                </font>

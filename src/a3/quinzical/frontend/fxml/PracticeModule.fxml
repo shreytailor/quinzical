@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
+   <top>
+      <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" text="&lt; Back to Menu">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="Pick A Category">
+               <font>
+                  <Font name="Arimo" size="30.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets top="25.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <padding>
+      <Insets left="20.0" right="20.0" />
+   </padding>
+</BorderPane>
