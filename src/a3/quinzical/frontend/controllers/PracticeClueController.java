@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 
 /**
@@ -56,6 +57,21 @@ public class PracticeClueController implements Initializable {
     };
 
     @FXML
+    private void onKeyPressed(KeyEvent event) {
+        switch(event.getCode()) {
+            case B:
+                backButton.fire();
+                break;
+            case R:
+                respeakButton.fire();
+                break;
+            case ENTER:
+                submitButton.fire();
+                break;
+        }
+    }
+
+    @FXML
     private void handleDontKnowButton() {
         stopInput();
         incorrectAnswer();
@@ -75,6 +91,7 @@ public class PracticeClueController implements Initializable {
             stopInput();
             incorrectAnswer();
         } else {
+            answerTextField.clear();
             updateAttempts();
         }
     }

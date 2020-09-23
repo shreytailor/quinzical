@@ -8,21 +8,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
    <top>
-      <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" text="&lt; Back to Menu">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Region HBox.hgrow="ALWAYS" />
-            <Label text="Pick A Category To Practice">
+            <Label alignment="CENTER" text="Pick A Category To Practice">
                <font>
                   <Font name="Arimo" size="30.0" />
                </font>
@@ -58,4 +51,14 @@
          </content>
       </ScrollPane>
    </center>
+   <bottom>
+      <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButton" text="Back To Menu" BorderPane.alignment="TOP_LEFT">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="25.0" left="20.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>

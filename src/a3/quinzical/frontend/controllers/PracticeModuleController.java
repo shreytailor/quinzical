@@ -109,6 +109,8 @@ public class PracticeModuleController implements Initializable {
                 Button button = new Button(category);
                 button.setPrefWidth(198);
                 button.setPrefHeight(90);
+                button.setStyle("-fx-font-size: 16");
+
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
                     handleCategoryButton(finalTracker);
