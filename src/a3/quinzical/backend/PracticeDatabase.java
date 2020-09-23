@@ -27,11 +27,12 @@ public class PracticeDatabase {
 
     // Fields belonging to the static context.
     private static PracticeDatabase _practiceDatabase;
+    private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
 
     // Fields belonging to the non-static context.
-    private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
-    private List<Category> _categories = new ArrayList<Category>();
+    private Clue _selected;
     private int _numberOfCategories;
+    private List<Category> _categories = new ArrayList<Category>();
 
     /**
      * The only constructor for PracticeDatabase object which is private, because it can only be
@@ -119,7 +120,15 @@ public class PracticeDatabase {
     	updateRemaining();
     	return _numberOfCategories;
     }
-    
+
+    public void select(Clue clue) {
+        _selected = clue;
+    }
+
+    public Clue getSelected() {
+        return _selected;
+    }
+
     /**
      * This is a method that will dereference the _practiceDatabase field, so that when the 
      * getInstance is called next time the PracticeDatabase would be reloaded.

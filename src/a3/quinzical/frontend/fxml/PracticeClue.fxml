@@ -32,7 +32,7 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
                      <center>
-                        <Label fx:id="clueLabel" text="Clue Placeholder" BorderPane.alignment="CENTER">
+                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="633.0" prefWidth="570.0" text="Placeholder Clue" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -86,7 +86,7 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button fx:id="submitButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="534.0" text="Submit">
+                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="30.0" prefWidth="534.0" text="Submit">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -109,7 +109,7 @@
             <Insets bottom="25.0" left="20.0" right="20.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" text="Back To Categories">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" text="Back To Categories">
                <font>
                   <Font size="14.0" />
                </font>
@@ -117,7 +117,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="respeakButton" mnemonicParsing="false" text="Respeak Question">
+            <Button fx:id="respeakButton" mnemonicParsing="false" onAction="#handleRespeakButton" text="Respeak Clue">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>

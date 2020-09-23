@@ -1,15 +1,18 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.Clue;
 import a3.quinzical.backend.PracticeDatabase;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ScrollPane;
+import javafx.stage.Screen;
 
 
 /**
@@ -62,6 +66,17 @@ public class PracticeModuleController implements Initializable {
         screenSwitcher.setScreen(ScreenType.MAIN_MENU);
     }
 
+    private void handleCategoryButton(int categoryNumber) {
+        PracticeDatabase db = PracticeDatabase.getInstance();
+        Clue random = db.getCategory(categoryNumber).getRandom();
+        PracticeDatabase.getInstance().select(random);
+
+        try {
+            ScreenSwitcher.getInstance().addScreen(ScreenType.PRACTICE_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/PracticeClue.fxml")));
+        } catch(IOException error) { }
+        ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
+    }
+
     /**
      * This is a private method which is used by the initialize() method in this class, in order to
      * setup the GridPane programmatically. Here, we are reading the categories from the Databases
@@ -93,6 +108,10 @@ public class PracticeModuleController implements Initializable {
                 Button button = new Button(category);
                 button.setPrefWidth(195);
                 button.setPrefHeight(90);
+                int finalTracker = tracker;
+                button.setOnAction(action -> {
+                    handleCategoryButton(finalTracker);
+                });
                 GridPane.setMargin(button, new Insets(20, 10, 20, 10));
 
                 // Adding the button to the grid.
