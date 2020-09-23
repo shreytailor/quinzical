@@ -26,6 +26,7 @@ public class ScreenSwitcher {
     private Stage _mainStage;
     private Scene _mainScene;
     private HashMap<ScreenType, Pane> _screenMap = new HashMap<>();
+    private HashMap<ScreenType, FXMLLoader> _loaderMap = new HashMap<>();
 
     /**
      * This is the private constructor of our Singleton object.
@@ -81,6 +82,7 @@ public class ScreenSwitcher {
      * @param pane the FXML pane which is stored within one of the packages.
      */
     public void addScreen(ScreenType screenTypeName, Pane pane) {
+        _screenMap.remove(screenTypeName);
         _screenMap.put(screenTypeName, pane);
     }
 

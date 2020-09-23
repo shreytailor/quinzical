@@ -1,5 +1,7 @@
 package a3.quinzical;
 
+import a3.quinzical.backend.PracticeDatabase;
+import a3.quinzical.backend.Speaker;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
@@ -27,6 +29,7 @@ public class Main extends Application {
             THIS IS WHERE THE PROGRESS SAVING CODE WILL BE PLACED.
             --------------------------------------------------------
              */
+            Speaker.init().kill();
             Platform.exit();
         });
 
