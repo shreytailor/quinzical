@@ -15,16 +15,19 @@ public class Clue {
     private String _answer;
     private int _prize;
     private boolean _currentQuestion = false;
+    private Category _category;
 
     /**
      * This is the only constructor for creating an object for Clue.
      * @param question the question of the clue.
      * @param answer the answer of the clue. Note that this string can also include (What is) etc
+     * @param category the category the clue belongs to.
      * part of the string as well, because there is a method to compare the answer.
      */
-    public Clue(String question, String answer) {
+    public Clue(String question, String answer, Category category) {
         _question = question.trim();
         _answer = answer.trim();
+        _category = category;
     }
 
     /**
@@ -105,5 +108,13 @@ public class Clue {
      */
     public boolean isCurrentQuestion() {
     	return _currentQuestion;
+    }
+    
+    /**
+     * This method return the category the clue belongs to.
+     * @return the category of this clue
+     */
+    public Category getCategory() {
+    	return _category;
     }
 }

@@ -80,7 +80,7 @@ public class PracticeDatabase {
 					newCate = new Category(line);
 					_categories.add(newCate);
 				}else if(!line.isBlank()){
-					newClue = new Clue(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim());
+					newClue = new Clue(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim(), newCate);
 					newCate.addClue(newClue);
 				}
 			}

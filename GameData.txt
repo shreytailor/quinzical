@@ -1,37 +1,37 @@
 0
 
-Fauna
-@This large flightless nocturnal parrot is one of New Zealand's most endangered birds, (What is) a Kākāpō
-This is the only land mammal native to New Zealand, (What is) the bat
-This is the common name for the New Zealand owl, (What is) Morepork/Ruru
-This is the now extinct giant flightless bird that inhabited all of New Zealand, (What is) the Moa
-This large brown flightless bird is known for being curious and a bit of a thief, (What is) a Weka
-
-Famous People
-@This New Zealander led the 1975 land march from Te Hapua to Parliament, (What is) Dame Whina Cooper
-This New Zealander directed “Jojo Rabbit” and “Thor'' Ragnarok”, (What is) Taika Waititi
-This New Zealander was the first person to split the atom, (What is) Ernest Rutherford
-This is what  Dame Kiri Te Kanawa was famous for, (What is) Opera Singing
-The New Zealander directed “The Lord of the Rings” and “The Hobbit”, (What is) Peter Jackson
-
 NZ Life
-@This is the Māori word for sweet potato, (What is) Kumara
-This is the Māori word for stomach, (What is) Puku
+@This is the Māori word for stomach, (What is) Puku
+This is the Māori word for sweet potato, (What is) Kumara
+This is the name for a traditional fenced Māori village, (What is) a Pā
 The New Zealand term for swimwear, (What is) Togs
 This is the name of the underground method of cooking used in New Zealand, (What is) a hangi
-This is the name for a traditional fenced Māori village, (What is) a Pā
-
-Oddities
-@The first record wholly produced in New Zealand from composition to pressing, (What is) Blue Smoke
-This is the name of New Zealand Male Rugby Team, (What is) the All Blacks
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades, (What is) Poi E
-This is the nationality of the inventors of the bobby pin wide toothed shearing comb and jet boat, (What is) a New Zealander
-What is the year the Government pledged New Zealand would be predator free, (What is) 2050
 
 Geography
-@This is the name of the sea between New Zealand Australia, (What is) the Tasman
-This is the name of the sea between the North and the South Island, (What is) the Cook Strait
-This is the name of the ocean New Zealand sits in, (What is) the Pacific
-This volcano in Auckland last erupted 20000 years ago and was the site of a major pā, (What is) Mount Māngere
+@This is the name of the sea between the North and the South Island, (What is) the Cook Strait
+This volcano emerged unexpectedly in the Hauraki gulf about 600 years ago, (What is) Rangitoto
+This is the name of the long chain of mountains that make up the backbone of the South Island, (What is) the Southern Alps
 This is the largest active volcano in New Zealand, (What is) Ruaphehu
+This volcano in Auckland last erupted 20000 years ago and was the site of a major pā, (What is) Mount Māngere
+
+Symbols
+@This is what the stars on the New Zealand flag represent, (What is) the Southern Cross
+These are the birds that New Zealanders are named after, (What is) Kiwis
+This plant is the national symbol of New Zealand, (What is) the Silver fern
+This is the ship on the 50 cent coin, (What is) the Endeavour
+This is the number of stars on the New Zealand flag, (What is) four
+
+﻿Places
+@This city is nicknamed the Edinburgh of the South, (What is) Dunedin
+This is the name of New Zealand’s national museum, (What is) Te Papa
+This is the name of the Parliament Building  in Wellington, (What is) the Beehive
+This is the capital of New Zealand, (What is) Wellington
+This is the name os the port that serves Christchurch, (What is) Lyttleton
+
+Famous People
+@This New Zealand  had a worldwide hit with the song ‘Royal”, (What is) Lorde
+This New Zealand was the first person to climb mount Everest, (What is) Edmund Hillary
+The New Zealander directed “The Lord of the Rings” and “The Hobbit”, (What is) Peter Jackson
+This New Zealander directed “Jojo Rabbit” and “Thor'' Ragnarok”, (What is) Taika Waititi
+This New Zealander led the 1975 land march from Te Hapua to Parliament, (What is) Dame Whina Cooper
 

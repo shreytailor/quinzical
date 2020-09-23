@@ -48,6 +48,6 @@ public class IO {
 	//Testing 
 	//public static void main(String[] args) {
 	//	GameDatabase.getInstance();
-	//	System.out.print(PracticeDatabase.getInstance().getCateSize());
+	//	System.out.print(GameDatabase.getInstance().getCategory(0).getClue(0).getCategory().getName());
 	//}
 }
