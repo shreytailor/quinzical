@@ -39,7 +39,7 @@
    <center>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="30.0" top="30.0" />
+            <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </BorderPane.margin>
          <content>
             <GridPane hgap="10.0" prefHeight="255.0" prefWidth="1308.0" vgap="20.0">

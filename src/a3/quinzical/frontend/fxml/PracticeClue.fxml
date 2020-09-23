@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeQuestionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeClueController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -48,7 +48,7 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets right="10.0" />
+                                    <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
                               <Label fx:id="categoryLabel" text="Placeholder">
@@ -86,6 +86,14 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </TextField>
+                              <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="30.0" prefWidth="534.0" text="Don't Know">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
                               <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="30.0" prefWidth="534.0" text="Submit">
                                  <font>
                                     <Font size="14.0" />

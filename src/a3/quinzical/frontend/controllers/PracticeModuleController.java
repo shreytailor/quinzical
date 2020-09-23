@@ -73,7 +73,8 @@ public class PracticeModuleController implements Initializable {
 
         try {
             ScreenSwitcher.getInstance().addScreen(ScreenType.PRACTICE_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/PracticeClue.fxml")));
-        } catch(IOException error) { }
+        } catch (IOException error) {  };
+
         ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
     }
 
@@ -106,7 +107,7 @@ public class PracticeModuleController implements Initializable {
                 // Getting the information of the current category and creating its button.
                 String category = database.getCategory(tracker).getName();
                 Button button = new Button(category);
-                button.setPrefWidth(195);
+                button.setPrefWidth(198);
                 button.setPrefHeight(90);
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
