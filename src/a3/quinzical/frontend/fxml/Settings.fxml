@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.SettingsController">
    <top>
       <HBox alignment="CENTER_LEFT">
@@ -35,7 +34,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Voice Synthesis Speed">
+                        <Label text="Rate Of Speech">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
@@ -43,7 +42,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="synthesisSpeedSlider" max="450.0" min="80.0" onMouseReleased="#handleSpeedChanged" prefHeight="16.0" prefWidth="250.0" value="175.0" HBox.hgrow="ALWAYS" />
+                        <Slider fx:id="synthesisSpeedSlider" max="2.5" min="0.5" onMouseReleased="#handleSpeedChanged" prefHeight="16.0" prefWidth="250.0" value="1.0" HBox.hgrow="ALWAYS" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />

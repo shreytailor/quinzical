@@ -2,20 +2,21 @@ package a3.quinzical.backend;
 
 // Java dependencies.
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.OutputStream;
+import java.io.BufferedWriter;
+import java.text.DecimalFormat;
 import java.util.stream.Stream;
+import java.io.OutputStreamWriter;
 
 public class Speaker {
     private static Speaker _speaker;
 
-    private int SPEED;
-    private int DEFAULT = 175;
+    private double SPEED;
+    private double DEFAULT = 1;
+
+    private Process _process;
     private String _speechString;
     private boolean _isChanged = false;
-
-    private long _pid;
-    private Process _process;
     private ProcessBuilder _processBuilder;
 
     private Speaker() {}
@@ -28,9 +29,9 @@ public class Speaker {
         return _speaker;
     }
 
-    public void setSpeed(int speed) throws IOException {
+    public void setSpeed(double speed) throws IOException {
         // Throw an exception if speed is out of excepted bounds.
-        if (speed < 80 || speed > 450) {
+        if (speed < 0.5 || speed > 2.5) {
             throw new IOException();
         }
 
@@ -39,36 +40,31 @@ public class Speaker {
         _isChanged = true;
     }
 
-    public void resetSpeed() {
-        _isChanged = false;
-    }
-
-    public int getSpeed() {
-        if (_isChanged) {
-            return SPEED;
-        }
-
-        return DEFAULT;
-    }
-
-    public void setSpeech(String string) {
-        _speechString = string;
-    }
-
-    public boolean isChanged() {
-        return _isChanged;
-    }
-
     public void speak() {
+        // If there is already a speaking process running, destroy it before speaking again.
         kill();
 
+        String speedCommand;
+        if (_isChanged) {
+            speedCommand = "(Parameter.set 'Duration_Stretch " + 1/SPEED + ")";
+        } else {
+            speedCommand = "(Parameter.set 'Duration_Stretch " + 1/DEFAULT + ")";
+        }
+        String speakingCommand = "(SayText " + "\"" + _speechString + "\"" + ")";
+
+        _processBuilder = new ProcessBuilder("festival");
         try {
-            _processBuilder = new ProcessBuilder("/bin/bash", "-c", "echo " + _speechString + " | festival --tts");
             _process = _processBuilder.start();
-            _pid = _process.pid();
-        } catch (IOException error) {
-            System.out.println(error);
-        };
+        } catch (IOException error) {  };
+
+        OutputStream stdin = _process.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stdin));
+
+        try {
+            writer.write(speedCommand);
+            writer.write(speakingCommand);
+            writer.close();
+        } catch (IOException error) {  };
     }
 
     public void kill() {
@@ -87,5 +83,27 @@ public class Speaker {
                 ph.destroy();
             });
         } catch (Exception error) {  };
+    }
+
+    public void resetSpeed() {
+        _isChanged = false;
+    }
+
+    public double getSpeed() {
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        if (_isChanged) {
+            return Double.valueOf(df.format(SPEED));
+        }
+
+        return DEFAULT;
+    }
+
+    public void setSpeech(String string) {
+        _speechString = string;
+    }
+
+    public boolean isChanged() {
+        return _isChanged;
     }
 }

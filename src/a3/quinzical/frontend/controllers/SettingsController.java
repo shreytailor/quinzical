@@ -45,7 +45,7 @@ public class SettingsController implements Initializable {
     public void handleSpeedChanged() {
         try {
             Double newSpeed = synthesisSpeedSlider.getValue();
-            _speaker.setSpeed(newSpeed.intValue());
+            _speaker.setSpeed(newSpeed);
         } catch (IOException error) {  }
         updateSpeedLabel();
     }
@@ -70,11 +70,11 @@ public class SettingsController implements Initializable {
     private void updateSpeedLabel() {
         synthesisSpeedSlider.setValue(_speaker.getSpeed());
 
-        int speed = _speaker.getSpeed();
+        double speed = _speaker.getSpeed();
         if (_speaker.isChanged()) {
-            synthesisSpeedLabel.setText("The speed has been changed to " + speed + " words per minute.");
+            synthesisSpeedLabel.setText("The speed has been changed to " + speed + ".");
         } else {
-            synthesisSpeedLabel.setText("The speed is set to default (" + speed + " words per minute).");
+            synthesisSpeedLabel.setText("The speed is set to default, that is " + speed + ".");
         }
     }
 
