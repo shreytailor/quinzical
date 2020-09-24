@@ -10,8 +10,8 @@ import java.util.ResourceBundle;
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 
 
@@ -33,11 +33,13 @@ public class SettingsController implements Initializable {
     @FXML
     Button synthesisResetButton;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         _speaker = Speaker.init();
         updateSpeedLabel();
     }
+
 
     /**
      * This is the handler for when the slider is changed by the user to change speed.
@@ -49,6 +51,7 @@ public class SettingsController implements Initializable {
         } catch (IOException error) {  }
         updateSpeedLabel();
     }
+
 
     /**
      * This is the handler for when the user wants to preview the voice synthesis.
@@ -62,6 +65,7 @@ public class SettingsController implements Initializable {
         _speaker.resetSpeed();
         updateSpeedLabel();
     }
+
 
     /**
      * This method is called whenever we want to update the label (essentially whenever the speed

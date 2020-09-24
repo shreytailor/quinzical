@@ -14,6 +14,7 @@ import java.io.OutputStreamWriter;
  * game. It is important to preserve some of the information within the class such as the current
  * speed, whether it has been changed by the user or not etc. This information is contained with the
  * fields of the class.
+ * @author Shrey Tailor, Jason Wang
  */
 public class Speaker {
     private static Speaker _speaker;

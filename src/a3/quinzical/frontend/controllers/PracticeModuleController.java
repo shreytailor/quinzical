@@ -6,8 +6,8 @@ import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
-import java.io.IOException;
 import java.net.URL;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
@@ -20,7 +20,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ScrollPane;
-import javafx.stage.Screen;
 
 
 /**
@@ -38,10 +37,12 @@ public class PracticeModuleController implements Initializable {
     @FXML
     ScrollPane scrollPane;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupGrid();
     }
+
 
     /**
      * This method is the listener for when a key is pressed. It is used to add shortcuts.
@@ -55,6 +56,7 @@ public class PracticeModuleController implements Initializable {
                 break;
         }
     }
+
 
     /**
      * This method is the listener for the Back to Menu button.
@@ -77,6 +79,7 @@ public class PracticeModuleController implements Initializable {
 
         ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
     }
+
 
     /**
      * This is a private method which is used by the initialize() method in this class, in order to

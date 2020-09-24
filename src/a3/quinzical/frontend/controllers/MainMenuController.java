@@ -40,10 +40,12 @@ public class MainMenuController implements Initializable {
     @FXML
     Button settingsButton;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Speaker.init();
     }
+
 
     /**
      * This method is the handler which is used when any key is pressed on the Main Menu screen.
@@ -68,6 +70,7 @@ public class MainMenuController implements Initializable {
         }
     }
 
+
     /**
      * This method is the handler for the Practice Module button.
      */
@@ -78,6 +81,7 @@ public class MainMenuController implements Initializable {
         screenSwitcher.setTitle("Practice");
     }
 
+
     /**
      * This method is the handler which is used when an action is performed on the exit button.
      */
@@ -85,6 +89,7 @@ public class MainMenuController implements Initializable {
     private void handleExitButton() {
         ScreenSwitcher.getInstance().exit();
     }
+
 
     /**
      * This is the handler for when the settings button is clicked. It opens the new stage, and also
