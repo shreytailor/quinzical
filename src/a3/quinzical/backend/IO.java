@@ -38,7 +38,7 @@ public class IO {
 				if(writeClue.isCurrentQuestion()) {
 					bw.write("@");
 				}
-				bw.write(writeClue.getQuestion() + ", (What is) " + writeClue.getAnswer() + "\n");
+				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getAnswer() + "\n");
 			}
 			bw.write("\n");
 		}
@@ -48,6 +48,7 @@ public class IO {
 	//Testing 
 	//public static void main(String[] args) {
 	//	GameDatabase.getInstance();
-	//	System.out.print(GameDatabase.getInstance().getCategory(0).getClue(0).getCategory().getName());
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(0).getAnswer());
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(0).checkAnswer("New Zealand Falcon"));
 	//}
 }

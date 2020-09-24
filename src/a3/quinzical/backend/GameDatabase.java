@@ -81,12 +81,12 @@ public class GameDatabase {
 					line = line.trim();
 					if (line.matches("\\d+")) {
 						_winning = Integer.parseInt(line);
-					}else if(!line.contains("(") && !line.contains(")") && !line.isBlank()){
+					}else if(!line.contains("|")&& !line.isBlank()){
 						price = _startPrice;
 						newCate = new Category(line);
 						_categories.add(newCate);
 					}else if(!line.isBlank()){
-						newClue = new Clue(line.split("[(]")[0].trim().replace(",", "").replace("@", ""), line.split("[)]")[1].trim(), newCate);
+						newClue = new Clue(line.split("[|]")[0].replace("@", "").trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
 						newClue.setPrize(price);
 						if(line.startsWith("@")) {
 							newClue.setCurrentQuestionTrue();
@@ -109,7 +109,7 @@ public class GameDatabase {
 					int price = _startPrice;
 					for(int j = 0; j < _clueNum; j++) {
 						int questIndex = rand.nextInt(selectedCate.getClueSize());
-						newClue = new Clue(selectedCate.getClue(questIndex).getQuestion(), selectedCate.getClue(questIndex).getAnswer(), newCate);
+						newClue = new Clue(selectedCate.getClue(questIndex).getQuestion(), selectedCate.getClue(questIndex).getPrefix(), selectedCate.getClue(questIndex).getAnswer(), newCate);
 						newClue.setPrize(price);
 						if(j == 0) {
 							newClue.setCurrentQuestionTrue();

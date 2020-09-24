@@ -12,6 +12,7 @@ public class Clue {
 
     // Fields required for the model of our Clue.
     private String _question;
+    private String _prefix;
     private String _answer;
     private int _prize;
     private boolean _currentQuestion = false;
@@ -24,9 +25,10 @@ public class Clue {
      * @param category the category the clue belongs to.
      * part of the string as well, because there is a method to compare the answer.
      */
-    public Clue(String question, String answer, Category category) {
-        _question = question.trim();
-        _answer = answer.trim();
+    public Clue(String question, String prefix, String answer, Category category) {
+        _question = question;
+        _prefix = prefix;
+        _answer = answer;
         _category = category;
     }
 
@@ -55,18 +57,17 @@ public class Clue {
      * @return boolean true if the answer was correct, otherwise false.
      */
     public boolean checkAnswer(String answer) {
-        // Strings with no parenthesis, and with no prefix overall.
-        String correctWithoutParenthesis = _answer.replaceAll("[()]", "");
-        String correctNoPrefix = _answer.replaceAll("\\s*\\([^\\)]*\\)\\s*", "");
-
-        // Removing any repeated space characters from the user's input.
+    	// Removing any repeated space characters from the user's input.
         answer = answer.replaceAll("\\s+", " ");
-
-        // Comparing the sanitized user's input against the three strings above.
-        if (answer.equalsIgnoreCase(correctWithoutParenthesis) || answer.equalsIgnoreCase(correctNoPrefix) || answer.equalsIgnoreCase(_answer)) {
-            return true;
-        }
-
+    	
+        // Loop through multiple answers if exist
+    	String[] answerList = _answer.split("/");
+    	for(int i = 0; i < answerList.length; i++) {
+    		if (answer.equalsIgnoreCase(answerList[i])){
+    			return true;
+    		}
+    	}
+        
         // If no matches, then just return false.
         return false;
     }
@@ -116,5 +117,13 @@ public class Clue {
      */
     public Category getCategory() {
     	return _category;
+    }
+    
+    /**
+     * This method return the category the prefix(What is/what are) of the clue.
+     * @return the prefix of this clue
+     */
+    public String getPrefix() {
+    	return _prefix;
     }
 }

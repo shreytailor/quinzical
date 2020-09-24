@@ -76,11 +76,11 @@ public class PracticeDatabase {
 			Category newCate = null;
 			Clue newClue = null;
 			while(( line = br.readLine()) != null) {
-				if(!line.contains("(") && !line.contains(")") && !line.isBlank()){
+				if(!line.contains("|") && !line.isBlank()){
 					newCate = new Category(line);
 					_categories.add(newCate);
 				}else if(!line.isBlank()){
-					newClue = new Clue(line.split("[(]")[0].trim().replace(".", "").replace(",", ""), line.split("[)]")[1].replace(".", "").trim(), newCate);
+					newClue = new Clue(line.split("[|]")[0].trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
 					newCate.addClue(newClue);
 				}
 			}
