@@ -33,6 +33,8 @@ public class PracticeClueController implements Initializable {
     @FXML
     Label categoryLabel;
     @FXML
+    Label prefixPlaceholder;
+    @FXML
     TextField answerTextField;
     @FXML
     Button dontKnowButton;
@@ -50,6 +52,7 @@ public class PracticeClueController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clueLabel.setText(_clue.getQuestion());
         categoryLabel.setText(_clue.getCategory().getName());
+        prefixPlaceholder.setText(_clue.getPrefix());
         updateAttempts();
 
         Speaker speaker = Speaker.init();
@@ -93,7 +96,7 @@ public class PracticeClueController implements Initializable {
      */
     @FXML
     private void handleSubmitButton() {
-        boolean isCorrect = _clue.checkAnswer(answerTextField.getText());
+        boolean isCorrect = _clue.checkAnswer(answerTextField.getText().trim());
         if (isCorrect) {
             stopInput();
             correctAnswer();

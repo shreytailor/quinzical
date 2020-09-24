@@ -78,6 +78,14 @@
                      <center>
                         <VBox alignment="CENTER">
                            <children>
+                              <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" text="Prefix Placeholder">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Italic" size="16.0" />
+                                 </font>
+                              </Label>
                               <TextField fx:id="answerTextField" promptText="Type your answer here...">
                                  <font>
                                     <Font size="16.0" />
