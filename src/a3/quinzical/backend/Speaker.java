@@ -155,7 +155,7 @@ public class Speaker {
      * @param string the speech to speak.
      */
     public void setSpeech(String string) {
-        _speechString = string;
+        _speechString = string.replace("\"", "").replace("'", "");
     }
 
 
