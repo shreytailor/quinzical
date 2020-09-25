@@ -1,5 +1,7 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.Clue;
+import a3.quinzical.backend.Category;
 import a3.quinzical.backend.GameDatabase;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
@@ -73,15 +75,20 @@ public class GameModuleController implements Initializable {
         // Populating the grid with the categories and questions.
         for (int category = 0; category < 5; category++) {
             // Creating a custom label for the name of the category, we are currently on.
-            String categoryName = db.getCategory(category).getName();
-            Label title = new Label(categoryName);
+            Category categoryObject = db.getCategory(category);
+            Label title = new Label(categoryObject.getName());
             title.setFont(new Font(18));
             title.setTextFill(Color.web("#808080"));
             clueGrid.add(title, category, 0);
 
             // Process of populating each category with the remaining clues.
-            for (int clue = 0; clue < 5; clue++) {
-                
+            for (int clue = 1; clue < 6; clue++) {
+                // Creating a custom button for the current question.
+                Clue clueObject = categoryObject.getClue(clue - 1);
+                Button clueButton = new Button(String.valueOf(clueObject.getPrize()));
+                clueButton.setMaxWidth(Double.MAX_VALUE);
+                clueButton.setMaxHeight(Double.MAX_VALUE);
+                clueGrid.add(clueButton, category, clue);
             }
         }
     }
