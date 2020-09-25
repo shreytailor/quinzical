@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.FontWeight;
 
 
 public class GameModuleController implements Initializable {
@@ -81,14 +82,30 @@ public class GameModuleController implements Initializable {
             title.setTextFill(Color.web("#808080"));
             clueGrid.add(title, category, 0);
 
+            int question = 0;
+            boolean active = true;
+
             // Process of populating each category with the remaining clues.
             for (int clue = 1; clue < 6; clue++) {
-                // Creating a custom button for the current question.
-                Clue clueObject = categoryObject.getClue(clue - 1);
-                Button clueButton = new Button(String.valueOf(clueObject.getPrize()));
-                clueButton.setMaxWidth(Double.MAX_VALUE);
-                clueButton.setMaxHeight(Double.MAX_VALUE);
-                clueGrid.add(clueButton, category, clue);
+                addedQuestion: for (int counter = question; counter < 5; counter++) {
+                    // Creating a custom button for the current question.
+                    Clue clueObject = categoryObject.getClue(counter);
+                    Button clueButton = new Button("$" + clueObject.getPrize());
+                    clueButton.setMaxWidth(Double.MAX_VALUE);
+                    clueButton.setMaxHeight(Double.MAX_VALUE);
+                    clueButton.setFont(new Font(22));
+
+                    if (clueObject.isCurrentQuestion() == false) {
+                        if (!active) {
+                            clueButton.setDisable(true);
+                        }
+
+                        active = false;
+                        question = counter + 1;
+                        clueGrid.add(clueButton, category, clue);
+                        break addedQuestion;
+                    }
+                }
             }
         }
     }
