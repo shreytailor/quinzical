@@ -50,7 +50,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="gameModuleButton" mnemonicParsing="false" prefHeight="75.0" prefWidth="250.0" text="Game Module">
+            <Button fx:id="gameModuleButton" mnemonicParsing="false" onAction="#handleGameModuleButton" prefHeight="75.0" prefWidth="250.0" text="Game Module">
                <font>
                   <Font name="Arimo" size="22.0" />
                </font>

@@ -30,7 +30,7 @@
       </HBox>
    </top>
    <center>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </BorderPane.margin>

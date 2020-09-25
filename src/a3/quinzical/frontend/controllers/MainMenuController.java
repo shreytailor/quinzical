@@ -78,7 +78,15 @@ public class MainMenuController implements Initializable {
     private void handlePracticeModuleButton() {
         ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
         screenSwitcher.setScreen(ScreenType.PRACTICE_MODULE);
-        screenSwitcher.setTitle("Practice");
+        screenSwitcher.setTitle("Practice Module");
+    }
+
+
+    @FXML
+    private void handleGameModuleButton() {
+        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
+        screenSwitcher.setScreen(ScreenType.GAME_MODULE);
+        screenSwitcher.setTitle("Game Module");
     }
 
 

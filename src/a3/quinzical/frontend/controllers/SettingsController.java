@@ -57,7 +57,7 @@ public class SettingsController implements Initializable {
      * This is the handler for when the user wants to preview the voice synthesis.
      */
     public void handlePreviewButton() {
-        _speaker.setSpeech("This is just a preview.");
+        _speaker.setSpeech("Hello person, how are you doing today?");
         _speaker.speak();
     }
 
