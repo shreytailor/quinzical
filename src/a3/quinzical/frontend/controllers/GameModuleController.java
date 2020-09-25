@@ -10,14 +10,19 @@ import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 
 
 public class GameModuleController implements Initializable {
 
+    @FXML
+    GridPane clueGrid;
     @FXML
     Label winningsLabel;
     @FXML
@@ -58,9 +63,27 @@ public class GameModuleController implements Initializable {
      * re-usage by making another method for it.
      */
     private void setupScreen() {
+        // Getting the game database.
+        GameDatabase db = GameDatabase.getInstance();
+
         // Updating the winnings label to show the latest winnings.
         int winnings = GameDatabase.getInstance().getWinning();
         winningsLabel.setText("$" + winnings);
+
+        // Populating the grid with the categories and questions.
+        for (int category = 0; category < 5; category++) {
+            // Creating a custom label for the name of the category, we are currently on.
+            String categoryName = db.getCategory(category).getName();
+            Label title = new Label(categoryName);
+            title.setFont(new Font(18));
+            title.setTextFill(Color.web("#808080"));
+            clueGrid.add(title, category, 0);
+
+            // Process of populating each category with the remaining clues.
+            for (int clue = 0; clue < 5; clue++) {
+                
+            }
+        }
     }
 
 }
