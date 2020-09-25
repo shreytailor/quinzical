@@ -1,8 +1,8 @@
 0
 
 Fauna
-@This native bird of prey can fly over 1000 kilometers an hour|what is|Kareaea/New Zealand Falcon
-@This is the now extinct giant flightless bird that inhabited all of New Zealand|what is|Moa
+This native bird of prey can fly over 1000 kilometers an hour|what is|Kareaea/New Zealand Falcon
+This is the now extinct giant flightless bird that inhabited all of New Zealand|what is|Moa
 This is New Zealand's mountain Parrot|what is|Kea
 This small common bird has a tail that opens up to look like a fan|what is|Fantail/pīwakawaka
 This is the number of Kiwi species|what is|5/five

@@ -19,7 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.FontWeight;
 
 
 public class GameModuleController implements Initializable {

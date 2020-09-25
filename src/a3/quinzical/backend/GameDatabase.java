@@ -29,11 +29,11 @@ public class GameDatabase {
 	
 	// Fields belonging to the non-static context.
     private List<Category> _categories = new ArrayList<Category>();
-	private final static int _startPrice = 100;
-	private final static int _priceIncrement = 100;	
+	private int _winning = 0;
 	private final static int _cateNum = 5;
 	private final static int _clueNum = 5;
-	private int _winning = 0;
+	private final static int _startPrice = 100;
+	private final static int _priceIncrement = 100;
 	
 	/**
      * The only constructor for GameDatabase object which is private, because it can only be
@@ -124,7 +124,7 @@ public class GameDatabase {
 				PracticeDatabase.kill();
 			}
 		}catch(IOException e) {
-			System.out.println("Error occured during reading GameData file");
+			System.out.println("Error occurred during reading GameData file");
 		}
     }
 
