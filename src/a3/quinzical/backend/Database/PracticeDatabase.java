@@ -1,4 +1,4 @@
-package a3.quinzical.backend;
+package a3.quinzical.backend.Database;
 
 //Java API dependencies.
 import java.io.BufferedReader;
@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import a3.quinzical.backend.Category;
+import a3.quinzical.backend.Clue;
 
 
 /**
