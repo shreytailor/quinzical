@@ -78,7 +78,7 @@ public class SettingsController implements Initializable {
         if (_speaker.isChanged()) {
             synthesisSpeedLabel.setText("The speed has been changed to " + speed + ".");
         } else {
-            synthesisSpeedLabel.setText("The speed is set to default, that is " + speed + ".");
+            synthesisSpeedLabel.setText("The speed is set to default, which is " + speed + ".");
         }
     }
 
