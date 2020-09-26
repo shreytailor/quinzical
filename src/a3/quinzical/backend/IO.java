@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import a3.quinzical.backend.Database.GameDatabase;
+
 /**
  * This class is used to read/write the database of the game
  * 
