@@ -1,4 +1,4 @@
-package a3.quinzical.backend;
+package a3.quinzical.backend.Database;
 
 //Java API dependencies.
 import java.io.BufferedReader;
@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import a3.quinzical.backend.Category;
+import a3.quinzical.backend.Clue;
+import a3.quinzical.backend.IO;
 
 /**
  * This class is used to create a module that represents the record of a player, 
@@ -100,7 +104,7 @@ public class GameDatabase {
 			else {
 				Random rand = new Random();
 				Category newCate, selectedCate = null;
-				Clue newClue = null;
+				Clue newClue, selectedClue = null;
 				
 				for(int i = 0; i < _cateNum; i++) {
 					int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
@@ -109,7 +113,8 @@ public class GameDatabase {
 					int price = _startPrice;
 					for(int j = 0; j < _clueNum; j++) {
 						int questIndex = rand.nextInt(selectedCate.getClueSize());
-						newClue = new Clue(selectedCate.getClue(questIndex).getQuestion(), selectedCate.getClue(questIndex).getPrefix(), selectedCate.getClue(questIndex).getAnswer(), newCate);
+						selectedClue = selectedCate.getClue(questIndex);
+						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getAnswer(), newCate);
 						newClue.setPrize(price);
 						if(j == 0) {
 							newClue.setCurrentQuestionTrue();

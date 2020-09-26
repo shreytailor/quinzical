@@ -1,5 +1,7 @@
 package a3.quinzical.backend;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is used as a model for all the clues of our Quinzical game. It contains various
@@ -46,6 +48,19 @@ public class Clue {
      */
     public String getAnswer() {
         return _answer;
+    }
+    
+    /**
+     * This method is used to get the answers for the current clue.
+     * @return a list of strings representing the possible answers of the clue.
+     */
+    public List<String> getAnswersList() {
+    	List<String> answerList = new ArrayList<String>();
+    	String[] answerArray = _answer.split("/");
+    	for(int i = 0; i < answerArray.length; i++) {
+    		answerList.add(answerArray[i]);
+    	}
+    	return answerList;
     }
 
     /**
