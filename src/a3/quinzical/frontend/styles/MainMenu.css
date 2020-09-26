@@ -2,7 +2,7 @@
 Importing the fonts which are required for the buttons.
  */
 @font-face {
-    font-family: "Poppins";
+    font-family: "Poppins-Bold";
     src: url("./../resources/fonts/Poppins-Bold.ttf");
 }
 
@@ -12,6 +12,7 @@ This is the styling for the overall background of the Main Menu.
  */
 .borderPane {
     -fx-background-color: white;
+
 }
 
 
@@ -22,8 +23,8 @@ This is the common settings for all the buttons.
     -fx-font-size: 28;
     -fx-border-radius: 10;
     -fx-font-weight: bold;
-    -fx-font-family: Poppins;
     -fx-background-radius: 10;
+    -fx-font-family: Poppins-Bold;
 }
 
 
@@ -32,11 +33,11 @@ This is the styling for the top buttons which are "Game" and "Practice" modules.
  */
 .topButton {
     -fx-text-fill: white;
-    -fx-background-color: #429CCD;
+    -fx-background-color: #68BBE9;
 }
 
 .topButton:hover {
-    -fx-background-color: #3390C1;
+    -fx-background-color: #4CB0E6;
 }
 
 
@@ -45,9 +46,9 @@ This is the styling for the bottom buttons which are "Exit" and "Settings".
  */
 .bottomButton {
     -fx-text-fill: #585858;
-    -fx-background-color: #E5E5E5;
+    -fx-background-color: #DADADA;
 }
 
 .bottomButton:hover {
-    -fx-background-color: #D6D6D6;
+    -fx-background-color: #CCCCCC;
 }

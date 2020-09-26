@@ -94,7 +94,7 @@ public class PracticeModuleController implements Initializable {
         int categories = database.getCateSize();
 
         // Determine the rows and columns of the GridPane.
-        int ROWS = 6;
+        int ROWS = 5;
         int COLS = (categories / ROWS) + 1;
 
         int tracker = 0;
@@ -110,15 +110,15 @@ public class PracticeModuleController implements Initializable {
                 // Getting the information of the current category and creating its button.
                 String category = database.getCategory(tracker).getName();
                 Button button = new Button(category);
-                button.setPrefWidth(198);
-                button.setPrefHeight(90);
-                button.setStyle("-fx-font-size: 16");
+                button.getStyleClass().add("categoryButton");
+                button.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/PracticeModule.css").toExternalForm());
 
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
                     handleCategoryButton(finalTracker);
                 });
-                GridPane.setMargin(button, new Insets(20, 10, 20, 10));
+
+                GridPane.setMargin(button, new Insets(12));
 
                 // Adding the button to the grid.
                 _gridPane.add(button, row, col);
@@ -126,8 +126,9 @@ public class PracticeModuleController implements Initializable {
             }
         }
 
-        // After the GridPane is built, we are adding it to the parent ScrollPane.
+        // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
         scrollPane.setContent(_gridPane);
+        _gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(_gridPane.widthProperty()).divide(2));
     }
 
 }

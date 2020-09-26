@@ -27,7 +27,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="85.0" prefWidth="300.0" stylesheets="@../styles/MainMenu.css" text="Practice">

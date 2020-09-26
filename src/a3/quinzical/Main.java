@@ -23,7 +23,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setResizable(false);
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("./frontend/resources/logo.png")));
         stage.setOnCloseRequest(event -> {
             /*
             --------------------------------------------------------
