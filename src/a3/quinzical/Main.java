@@ -1,15 +1,12 @@
 package a3.quinzical;
 
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.backend.Database.PracticeDatabase;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // JavaFX dependencies.
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
 import javafx.application.Platform;
 import javafx.application.Application;
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="750.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameModuleController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="750.0" prefWidth="1350.0" styleClass="gridPane" stylesheets="@../styles/GameModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameModuleController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="994.0" minWidth="10.0" prefWidth="974.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="665.6666870117188" minWidth="10.0" prefWidth="376.0" />
@@ -40,14 +40,14 @@
          <top>
             <VBox BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Your Winnings" textFill="#808080">
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="customFont" stylesheets="@../styles/GameModule.css" text="Your Winnings" textFill="#808080">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="winningsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="\$XXXX">
+                  <Label fx:id="winningsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="customFont" stylesheets="@../styles/GameModule.css" text="\$XXXX">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="48.0" />
                      </font>
                   </Label>
                </children>
@@ -59,7 +59,7 @@
          <bottom>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Reset Game">
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" styleClass="secondaryButtons" stylesheets="@../styles/GameModule.css" text="Reset Game">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -67,7 +67,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" prefWidth="200.0" text="Back To Menu">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="250.0" styleClass="secondaryButtons" stylesheets="@../styles/GameModule.css" text="Back To Menu">
                      <font>
                         <Font size="18.0" />
                      </font>

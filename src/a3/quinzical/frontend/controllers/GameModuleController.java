@@ -77,8 +77,8 @@ public class GameModuleController implements Initializable {
             // Creating a custom label for the name of the category, we are currently on.
             Category categoryObject = db.getCategory(category);
             Label title = new Label(categoryObject.getName());
-            title.setFont(new Font(18));
-            title.setTextFill(Color.web("#808080"));
+            title.getStyleClass().add("category");
+            title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
             clueGrid.add(title, category, 0);
 
             int question = 0;
@@ -90,9 +90,8 @@ public class GameModuleController implements Initializable {
                     // Creating a custom button for the current question.
                     Clue clueObject = categoryObject.getClue(counter);
                     Button clueButton = new Button("$" + clueObject.getPrize());
-                    clueButton.setMaxWidth(Double.MAX_VALUE);
-                    clueButton.setMaxHeight(Double.MAX_VALUE);
-                    clueButton.setFont(new Font(22));
+                    clueButton.getStyleClass().add("clue");
+                    clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
                     if (clueObject.isCurrentQuestion() == false) {
                         if (!active) {
