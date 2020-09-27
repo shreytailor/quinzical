@@ -38,6 +38,7 @@ public class GameDatabase {
 	private final static int _clueNum = 5;
 	private final static int _startPrice = 100;
 	private final static int _priceIncrement = 100;
+	private Clue _currentClue = null;
 	
 	/**
      * The only constructor for GameDatabase object which is private, because it can only be
@@ -175,4 +176,20 @@ public class GameDatabase {
 	public static void kill() {
 		_gameDatabase = null;
     }
+	
+	/**
+     * This is a method that sets a pointer for the clue that is being answered.
+     * @param clue the clue being answered.
+     */
+	public void setCurrentClue(Clue clue) {
+		_currentClue = clue;
+	}
+	
+	/**
+	 * This is a method that returns the clue that is currently being answered.
+	 * @return the clue that is currently being answered.
+	 */
+	public Clue getCurrentClue() {
+		return _currentClue;
+	}
 }
