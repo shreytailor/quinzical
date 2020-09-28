@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import a3.quinzical.backend.Category;
-import a3.quinzical.backend.Clue;
+import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.models.Clue;
 
 
 /**

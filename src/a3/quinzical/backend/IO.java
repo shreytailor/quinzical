@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.models.Clue;
 
 /**
  * This class is used to read/write the database of the game

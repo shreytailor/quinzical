@@ -1,9 +1,9 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.Clue;
-import a3.quinzical.backend.Database.GameDatabase;
-import a3.quinzical.backend.Category;
+import a3.quinzical.backend.models.Clue;
+import a3.quinzical.backend.models.Category;
 import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
@@ -12,8 +12,6 @@ import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.scene.text.Font;
-import javafx.scene.paint.Color;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -93,7 +91,11 @@ public class GameModuleController implements Initializable {
                     clueButton.getStyleClass().add("clue");
                     clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
-                    if (clueObject.isCurrentQuestion() == false) {
+                    clueButton.setOnAction(event -> {
+                        questionChosen(clueObject);
+                    });
+
+                    if (!clueObject.isCurrentQuestion()) {
                         if (!active) {
                             clueButton.setDisable(true);
                         }
@@ -106,6 +108,16 @@ public class GameModuleController implements Initializable {
                 }
             }
         }
+    }
+
+
+    /**
+     * This method is used to set the current question being asked within the GameDatabase object
+     * so that it can be accessed from the other screen when needed.
+     * @param clue the clue being set as current clue.
+     */
+    private void questionChosen (Clue clue) {
+        GameDatabase.getInstance().setCurrentClue(clue);
     }
 
 }

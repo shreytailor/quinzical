@@ -1,0 +1,71 @@
+/*
+This is the styling for the root (BorderPane) component.
+ */
+.borderPane {
+    -fx-background-color: white;
+}
+
+
+/*
+This is the styling to give all the labels the same font-family.
+ */
+.normalFont {
+    -fx-font-family: "Poppins-Regular";
+}
+
+.boldFont {
+    -fx-font-family: Poppins;
+}
+
+
+/*
+This is the styling for the background of the question.
+ */
+.questionBackground {
+    -fx-background-radius: 15px;
+    -fx-background-color: #CDE6B2;
+}
+
+
+/*
+This is the styling for displaying the label for the question/clue.
+ */
+.question {
+    -fx-text-fill: #5c9200;
+    -fx-font-family: Poppins;
+}
+
+
+/*
+This is the common styling for all the buttons on the page.
+ */
+.commonButton {
+    -fx-font-size: 18;
+    -fx-font-family: Poppins;
+    -fx-background-color: #DADADA;
+}
+
+.commonButton:hover {
+    -fx-background-color: #CCCCCC;
+}
+
+
+/*
+This is styling for the "Don't Know" button.
+ */
+.dontKnowButton {
+    -fx-text-fill: #b83e3e;
+    -fx-background-color: #ffc7c7;
+}
+
+.dontKnowButton:hover {
+    -fx-background-color: #FFADAD;
+}
+
+
+/*
+This is the styling for the input box for the user's answer.
+ */
+.input {
+    -fx-font-size: 18px;
+}

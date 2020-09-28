@@ -54,11 +54,11 @@ This is the styling for the buttons for each category.
     -fx-text-fill: white;
     -fx-font-family: Poppins;
     -fx-background-radius: 10;
-    -fx-background-color: #73B57E;
+    -fx-background-color: #93CA53;
 }
 
 .categoryButton:hover {
-    -fx-background-color: #5FAB6B;
+    -fx-background-color: #7FBB3A;
 }
 
 

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import a3.quinzical.backend.Category;
-import a3.quinzical.backend.Clue;
+import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.IO;
 
 /**
@@ -193,7 +193,7 @@ public class GameDatabase {
 		return _currentClue;
 	}
 	
-	public int getRamainingClue() {
+	public int getRemainingClues() {
 		int count = 0;
 		for(int i = 0; i < _cateNum; i++) {
 			boolean startCount = false;

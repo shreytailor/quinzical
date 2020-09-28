@@ -1,4 +1,4 @@
-package a3.quinzical.backend;
+package a3.quinzical.backend.models;
 
 // Java API dependencies.
 import java.util.List;

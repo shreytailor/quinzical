@@ -1,4 +1,4 @@
-package a3.quinzical.backend;
+package a3.quinzical.backend.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +127,7 @@ public class Clue {
     }
     
     /**
-     * This method return the category the clue belongs to.
+     * This method returns the category the clue belongs to.
      * @return the category of this clue
      */
     public Category getCategory() {

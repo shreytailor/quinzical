@@ -1,8 +1,8 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.Clue;
+import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.backend.Database.PracticeDatabase;
+import a3.quinzical.backend.database.PracticeDatabase;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
