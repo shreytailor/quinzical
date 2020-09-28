@@ -1,4 +1,4 @@
-package a3.quinzical.backend.Database;
+package a3.quinzical.backend.database;
 
 //Java API dependencies.
 import java.io.BufferedReader;

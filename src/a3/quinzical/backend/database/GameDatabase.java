@@ -1,4 +1,4 @@
-package a3.quinzical.backend.Database;
+package a3.quinzical.backend.database;
 
 //Java API dependencies.
 import java.io.BufferedReader;
@@ -191,5 +191,21 @@ public class GameDatabase {
 	 */
 	public Clue getCurrentClue() {
 		return _currentClue;
+	}
+	
+	public int getRamainingClue() {
+		int count = 0;
+		for(int i = 0; i < _cateNum; i++) {
+			boolean startCount = false;
+			for(int j = 0; j < _clueNum; j++) {
+				if(_categories.get(i).getClue(j).isCurrentQuestion()) {
+					startCount = true;
+				}
+				if (startCount) {
+					count++;
+				}
+			}
+		}
+		return count;
 	}
 }
