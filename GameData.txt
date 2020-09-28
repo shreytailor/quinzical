@@ -1,10 +1,10 @@
 0
 
 Places
-@This is the name of the port that serves Christchurch|What is|Lyttleton
+This is the name of the port that serves Christchurch|What is|Lyttleton
 This is the capital of New Zealand|What is|Wellington
 This is the most northern tip on the North Island|What is|Cape Reinga
-The number of river systems that flow through either the North or South Island|What is|70/seventy
+@The number of river systems that flow through either the North or South Island|What is|70/seventy
 This is the name of New Zealand's national museum|What is|Te Papa
 
 Symbols
