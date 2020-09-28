@@ -103,19 +103,13 @@ public class Clue {
     public int getPrize() {
         return _prize;
     }
-    
+
     /**
-     * This method sets the field _currentQuestion true
+     * This method is used to set the boolean value for whether this question is the current question.
+     * @param bool the boolean we want to assign.
      */
-    public void setCurrentQuestionTrue() {
-    	_currentQuestion = true;
-    }
-    
-    /**
-     * This method sets the field _currentQuestion false
-     */
-    public void setCurrentQuestionFalse() {
-    	_currentQuestion = false;
+    public void setCurrentQuestion(Boolean bool) {
+        _currentQuestion = bool;
     }
     
     /**
