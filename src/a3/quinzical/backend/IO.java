@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import a3.quinzical.backend.Database.GameDatabase;
+import a3.quinzical.backend.database.GameDatabase;
 
 /**
  * This class is used to read/write the database of the game
@@ -50,7 +50,7 @@ public class IO {
 	//Testing 
 	//public static void main(String[] args) {
 	//	GameDatabase.getInstance();
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(0).getAnswer());
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(0).checkAnswer("New Zealand Falcon"));
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(2).isCurrentQuestion());
+	//	System.out.println(GameDatabase.getInstance().getRamainingClue());
 	//}
 }
