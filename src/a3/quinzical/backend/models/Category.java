@@ -109,11 +109,52 @@ public class Category {
     	return _numberOfClues;
     }
     
+    /**
+     * The method is used to get the current attemptable clue in the category.
+     * @return the current Clue
+     */
     public Clue getCurrentClue() {
     	return _currentClue;
     }
+    
+    /**
+     * The method is used to change the current attemptable clue in the category.
+     * @param the clue to be set to current Clue
+     */
+    public void setCurrentClue(Clue c) {
+    	_currentClue = c;
+    }
 
-    public void setCurrentClue(Clue clue) {
-    	_currentClue = clue;
+    /**
+     * The method is used to move the current Clue to the next Clue in the list
+     */
+    public void advanceClue() {
+    	try {
+	    	for(int i = 0; i < _clues.size(); i++) {
+	    		if(_currentClue.equals(_clues.get(i))) {
+	    			_currentClue = _clues.get(i+1);
+	    		}
+	    	}
+    	}catch(IndexOutOfBoundsException e) {
+    		_currentClue = null;
+    	}
+    }
+    
+    /**
+     * The method is used to get the list of remaining attemptable Clues.
+     * @return a list of Clues that has not been attempted.
+     */
+    public List<Clue> remainingClue() {
+    	Boolean attempted = true;
+    	List<Clue> remainingClues = new ArrayList<Clue>();
+    	for(Clue c : _clues) {
+    		if(_currentClue.equals(c)) {
+    			attempted = false;
+    		}
+    		if(!attempted) {
+    			remainingClues.add(c);
+    		}
+    	}
+    	return remainingClues;
     }
 }
