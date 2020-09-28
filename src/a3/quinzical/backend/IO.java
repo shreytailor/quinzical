@@ -39,7 +39,7 @@ public class IO {
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);
-				if(writeClue.isCurrentQuestion()) {
+				if(writeClue.equals(writeCate.getCurrentClue())) {
 					bw.write("@");
 				}
 				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getAnswer() + "\n");
@@ -50,9 +50,9 @@ public class IO {
 	}
 	
 	//Testing 
-	//public static void main(String[] args) {
-	//	GameDatabase.getInstance();
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getClue(2).isCurrentQuestion());
-	//	System.out.println(GameDatabase.getInstance().getRamainingClue());
-	//}
+	public static void main(String[] args) {
+		GameDatabase.getInstance();
+		System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getQuestion());
+		System.out.println(GameDatabase.getInstance().getRemainingClues());
+	}
 }

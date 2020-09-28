@@ -19,6 +19,7 @@ public class Category {
     private String _categoryName;
     private List<Clue> _clues;
     private int _numberOfClues;
+    private Clue _currentClue;
 
     /**
      * This is the only constructor for creating an object for Category.
@@ -107,5 +108,12 @@ public class Category {
     	updateRemaining();
     	return _numberOfClues;
     }
+    
+    public Clue getCurrentClue() {
+    	return _currentClue;
+    }
 
+    public void setCurrentClue(Clue clue) {
+    	_currentClue = clue;
+    }
 }

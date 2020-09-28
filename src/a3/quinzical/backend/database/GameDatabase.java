@@ -93,10 +93,10 @@ public class GameDatabase {
 					}else if(!line.isBlank()){
 						newClue = new Clue(line.split("[|]")[0].replace("@", "").trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
 						newClue.setPrize(price);
-						if(line.startsWith("@")) {
-							newClue.setCurrentQuestionTrue();
-						}
 						newCate.addClue(newClue);
+						if(line.startsWith("@")) {
+							newCate.setCurrentClue(newClue);
+						}
 						price += _priceIncrement;
 					}
 				}
@@ -117,10 +117,10 @@ public class GameDatabase {
 						selectedClue = selectedCate.getClue(questIndex);
 						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getAnswer(), newCate);
 						newClue.setPrize(price);
-						if(j == 0) {
-							newClue.setCurrentQuestionTrue();
-						}
 						newCate.addClue(newClue);
+						if(j == 0) {
+							newCate.setCurrentClue(newClue);
+						}
 						selectedCate.removeClue(questIndex);
 						price += _priceIncrement;
 					}
@@ -198,7 +198,7 @@ public class GameDatabase {
 		for(int i = 0; i < _cateNum; i++) {
 			boolean startCount = false;
 			for(int j = 0; j < _clueNum; j++) {
-				if(_categories.get(i).getClue(j).isCurrentQuestion()) {
+				if(_categories.get(i).getClue(j).equals(_categories.get(i).getCurrentClue())) {
 					startCount = true;
 				}
 				if (startCount) {

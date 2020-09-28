@@ -17,7 +17,6 @@ public class Clue {
     private String _prefix;
     private String _answer;
     private int _prize;
-    private boolean _currentQuestion = false;
     private Category _category;
 
     /**
@@ -102,22 +101,6 @@ public class Clue {
      */
     public int getPrize() {
         return _prize;
-    }
-
-    /**
-     * This method is used to set the boolean value for whether this question is the current question.
-     * @param bool the boolean we want to assign.
-     */
-    public void setCurrentQuestion(Boolean bool) {
-        _currentQuestion = bool;
-    }
-    
-    /**
-     * This method returns the value field _currentQuestion.
-     * @return field _currentQuestion.
-     */
-    public boolean isCurrentQuestion() {
-    	return _currentQuestion;
     }
     
     /**
