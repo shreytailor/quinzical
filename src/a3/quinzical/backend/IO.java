@@ -50,9 +50,9 @@ public class IO {
 	}
 	
 	//Testing 
-	public static void main(String[] args) {
-		GameDatabase.getInstance();
-		System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getQuestion());
-		System.out.println(GameDatabase.getInstance().getRemainingClues());
-	}
+	//public static void main(String[] args) {
+	//	GameDatabase.getInstance();
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getQuestion());
+	//	System.out.println(GameDatabase.getInstance().getRemainingClues());
+	//}
 }
