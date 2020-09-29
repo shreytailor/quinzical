@@ -72,11 +72,12 @@ public class Clue {
      */
     public boolean checkAnswer(String answer) {
     	// Removing any repeated space characters from the user's input.
-        answer = answer.replaceAll("\\s+", " ");
+        answer = format(answer);
     	
         // Loop through multiple answers if exist
     	String[] answerList = _answer.split("/");
     	for(int i = 0; i < answerList.length; i++) {
+    		answerList[i] = format(answerList[i]);
     		if (answer.equalsIgnoreCase(answerList[i])){
     			return true;
     		}
@@ -84,6 +85,19 @@ public class Clue {
         
         // If no matches, then just return false.
         return false;
+    }
+    
+    /**
+     * This method is used to format the answer for comparison
+     * @param answer the string to be formatted
+     * @return the formatted string
+     */
+    private String format(String answer) {
+    	answer = answer.toLowerCase();
+    	answer = answer.replaceAll("\\s+", " ");
+    	answer = answer.replace("the ", "");
+    	answer = answer.replace("a ", "");
+    	return answer;
     }
 
     /**
