@@ -1,5 +1,6 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.Speaker;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.database.GameDatabase;
 
@@ -19,6 +20,9 @@ import javafx.scene.control.Label;
  */
 public class GameClueController implements Initializable {
 
+    private Speaker _speaker = Speaker.init();
+    private Clue _clue = GameDatabase.getInstance().getCurrentClue();
+
     @FXML
     Label categoryLabel;
     @FXML
@@ -26,15 +30,23 @@ public class GameClueController implements Initializable {
     @FXML
     Label prefixLabel;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Getting the currently selected question.
-        Clue clue = GameDatabase.getInstance().getCurrentClue();
-
         // Updating the information on the screen to reflect the chosen question above.
-        categoryLabel.setText(clue.getCategory().getName());
-        prizeLabel.setText("$" + clue.getPrize());
-        prefixLabel.setText(clue.getPrefix());
+        categoryLabel.setText(_clue.getCategory().getName());
+        prizeLabel.setText("$" + _clue.getPrize());
+        prefixLabel.setText(_clue.getPrefix());
+
+        // Starting the process of speaking the question to the user.
+        _speaker.setSpeech(_clue.getQuestion());
+        _speaker.speak();
+    }
+
+
+    @FXML
+    private void handleRespeakButton() {
+        _speaker.speak();
     }
 
 }

@@ -100,10 +100,9 @@ public class GameModuleController implements Initializable {
 
                     try {
                         ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
-                        ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
-                    } catch (Exception error) {
-                        System.out.println(error.getMessage());
-                    };
+                    } catch (IOException error) {  };
+
+                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
                 });
 
                 clueGrid.add(clueButton, category, clue);

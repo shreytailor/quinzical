@@ -19,7 +19,7 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button graphicTextGap="15.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="260.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Respeak Clue">
+            <Button graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Respeak Clue">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
