@@ -7,5 +7,5 @@ package a3.quinzical.frontend.switcher;
  * @author Shrey Tailor, Jason Wang
  */
 public enum ScreenType {
-    MAIN_MENU,  PRACTICE_MODULE, PRACTICE_CLUE, GAME_MODULE
+    MAIN_MENU,  PRACTICE_MODULE, PRACTICE_CLUE, GAME_MODULE, GAME_CLUE
 }

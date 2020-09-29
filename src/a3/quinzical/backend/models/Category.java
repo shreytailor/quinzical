@@ -64,7 +64,7 @@ public class Category {
      * @throws IndexOutOfBoundsException this exception is returned if the position specified is
      * out of valid range of the list.
      */
-    public void removeClue(int i) throws IndexOutOfBoundsException{
+    public void removeClue(int i) throws IndexOutOfBoundsException {
 		_clues.remove(i);
 	}
 
@@ -119,7 +119,7 @@ public class Category {
     
     /**
      * The method is used to change the current attemptable clue in the category.
-     * @param the clue to be set to current Clue
+     * @param c the clue to be set to current Clue
      */
     public void setCurrentClue(Clue c) {
     	_currentClue = c;

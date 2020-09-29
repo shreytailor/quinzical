@@ -79,7 +79,7 @@
                      <center>
                         <VBox alignment="CENTER">
                            <children>
-                              <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" styleClass="normalFont" stylesheets="@../styles/PracticeQuestion.css" text="Prefix Placeholder">
+                              <Label fx:id="prefixPlaceholder" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="normalFont" stylesheets="@../styles/PracticeQuestion.css" text="Prefix Placeholder">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
@@ -87,17 +87,17 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="answerTextField" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here..." styleClass="input" stylesheets="@../styles/PracticeQuestion.css">
+                              <TextField fx:id="answerTextField" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="60.0" prefWidth="534.0" stylesheets="@../styles/PracticeQuestion.css" text="Don't Know">
+                              <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" stylesheets="@../styles/PracticeQuestion.css" text="Don't Know">
                                  <VBox.margin>
-                                    <Insets bottom="15.0" />
+                                    <Insets bottom="5.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="14.0" />
@@ -107,7 +107,7 @@
                                     <String fx:value="dontKnowButton" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="60.0" prefWidth="534.0" styleClass="commonButton" stylesheets="@../styles/PracticeQuestion.css" text="Submit">
+                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" styleClass="commonButton" stylesheets="@../styles/PracticeQuestion.css" text="Submit">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

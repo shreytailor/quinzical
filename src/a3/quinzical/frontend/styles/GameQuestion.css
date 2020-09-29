@@ -1,0 +1,50 @@
+/*
+This is the styling for the root (BorderPane).
+ */
+.borderPane {
+    -fx-background-color: white;
+}
+
+
+/*
+This is the styling for the default font family of the titles.
+ */
+.font {
+    -fx-font-family: Poppins;
+}
+
+
+.headerBox {
+    -fx-background-radius: 15px;
+    -fx-background-color: #ffb627;
+}
+
+
+/*
+This is the styling for all the buttons on screen.
+ */
+.commonButton {
+    -fx-font-size: 18;
+    -fx-font-family: Poppins;
+    -fx-background-color: #DADADA;
+}
+
+.commonButton:hover {
+    -fx-background-color: #CCCCCC;
+}
+
+
+/*
+This is the styling for the "Don't Know" answer button.
+ */
+/*
+This is styling for the "Don't Know" button.
+ */
+.dontKnowButton {
+    -fx-text-fill: #b83e3e;
+    -fx-background-color: #ffc7c7;
+}
+
+.dontKnowButton:hover {
+    -fx-background-color: #FFADAD;
+}

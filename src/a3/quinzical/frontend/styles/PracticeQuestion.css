@@ -61,11 +61,3 @@ This is styling for the "Don't Know" button.
 .dontKnowButton:hover {
     -fx-background-color: #FFADAD;
 }
-
-
-/*
-This is the styling for the input box for the user's answer.
- */
-.input {
-    -fx-font-size: 18px;
-}

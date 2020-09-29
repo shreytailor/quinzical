@@ -8,15 +8,19 @@ import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
+import java.util.List;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
 
 
 public class GameModuleController implements Initializable {
@@ -79,45 +83,32 @@ public class GameModuleController implements Initializable {
             title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
             clueGrid.add(title, category, 0);
 
-            int question = 0;
-            boolean active = true;
+            List<Clue> clues = categoryObject.remainingClue();
 
             // Process of populating each category with the remaining clues.
-            for (int clue = 1; clue < 6; clue++) {
-                addedQuestion: for (int counter = question; counter < 5; counter++) {
-                    // Creating a custom button for the current question.
-                    Clue clueObject = categoryObject.getClue(counter);
-                    Button clueButton = new Button("$" + clueObject.getPrize());
-                    clueButton.getStyleClass().add("clue");
-                    clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
+            for (int clue = 1; clue < clues.size(); clue++) {
+                // Creating the button for the current question, and adding it to the grid.
+                Clue clueObject = categoryObject.getClue(clue);
+                Button clueButton = new Button("$" + clueObject.getPrize());
+                clueButton.getStyleClass().add("clue");
+                clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
-                    clueButton.setOnAction(event -> {
-                        questionChosen(clueObject);
-                    });
+                clueButton.setOnAction(event -> {
+                    categoryObject.setCurrentClue(clueObject);
+                    categoryObject.advanceClue();
+                    db.setCurrentClue(clueObject);
 
-                    if (!clueObject.isCurrentQuestion()) {
-                        if (!active) {
-                            clueButton.setDisable(true);
-                        }
+                    try {
+                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
+                        ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
+                    } catch (Exception error) {
+                        System.out.println(error.getMessage());
+                    };
+                });
 
-                        active = false;
-                        question = counter + 1;
-                        clueGrid.add(clueButton, category, clue);
-                        break addedQuestion;
-                    }
-                }
+                clueGrid.add(clueButton, category, clue);
             }
         }
-    }
-
-
-    /**
-     * This method is used to set the current question being asked within the GameDatabase object
-     * so that it can be accessed from the other screen when needed.
-     * @param clue the clue being set as current clue.
-     */
-    private void questionChosen (Clue clue) {
-        GameDatabase.getInstance().setCurrentClue(clue);
     }
 
 }
