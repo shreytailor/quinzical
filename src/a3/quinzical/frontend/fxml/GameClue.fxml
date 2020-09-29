@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -19,7 +20,7 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Respeak Clue">
+            <Button fx:id="respeakButton" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Respeak Clue">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,6 +28,15 @@
                      </image>
                   </ImageView>
                </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Region maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+            <Button fx:id="backButton" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="260.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Back To Game">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </Button>
          </children>
          <BorderPane.margin>
@@ -48,7 +58,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </Label>
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
+            <TextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
                <font>
                   <Font size="18.0" />
                </font>
@@ -56,7 +66,7 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </TextField>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="535.0" stylesheets="@../styles/GameQuestion.css" text="Don't Know">
+            <Button fx:id="dontKnowButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="535.0" stylesheets="@../styles/GameQuestion.css" text="Don't Know">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
@@ -65,7 +75,15 @@
                   <String fx:value="dontKnowButton" />
                </styleClass>
             </Button>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="535.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Submit" />
+            <Button fx:id="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="535.0" styleClass="commonButton" stylesheets="@../styles/GameQuestion.css" text="Submit" />
+            <Label fx:id="messageLabel" text="Message Placeholder">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </center>

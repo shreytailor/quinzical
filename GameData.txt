@@ -1,29 +1,29 @@
 0
 
 Places
-This is the name of the port that serves Christchurch|What is|Lyttleton
+@This is the name of the port that serves Christchurch|What is|Lyttleton
 This is the capital of New Zealand|What is|Wellington
 This is the most northern tip on the North Island|What is|Cape Reinga
 The number of river systems that flow through either the North or South Island|What is|70/seventy
-@This is the name of New Zealand's national museum|What is|Te Papa
+This is the name of New Zealand's national museum|What is|Te Papa
 
 Symbols
-These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White
+@These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White
 This plant is the national symbol of New Zealand|What is|silver fern
 This is the ship on the 50 cent coin|What is|Endeavour
-@This is what the stars on the New Zealand flag represent|What is|Southern Cross
+This is what the stars on the New Zealand flag represent|What is|Southern Cross
 This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|Kiwi
 
 Oddities
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E
+@What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E
 This is the name of New Zealand Male Rugby Team|What is|All Blacks
-@The first record wholly produced in New Zealand from composition to pressing|What is|Blue Smoke
+The first record wholly produced in New Zealand from composition to pressing|What is|Blue Smoke
 With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses
 In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard
 
 Fauna
-This is New Zealand's mountain Parrot|What is|Kea
-@This common forest bird is known for its beautiful song, and distinctive white tuft under their throat|What is|Tui
+@This is New Zealand's mountain Parrot|What is|Kea
+This common forest bird is known for its beautiful song, and distinctive white tuft under their throat|What is|Tui
 This small common bird has a tail that opens up to look like a fan|What is|Fantail/pīwakawaka
 This is the common name for the New Zealand owl|What is|Morepork/Ruru
 This is called a living dinosaur|What is|Tuatara

@@ -169,9 +169,10 @@ public class PracticeClueController implements Initializable {
      */
     private void stopInput() {
         Speaker.init().kill();
+        submitButton.setVisible(false);
+        respeakButton.setVisible(false);
         answerTextField.setDisable(true);
-        dontKnowButton.setDisable(true);
-        submitButton.setDisable(true);
+        dontKnowButton.setVisible(false);
     }
 
 }

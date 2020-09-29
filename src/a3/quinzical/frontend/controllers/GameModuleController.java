@@ -103,6 +103,7 @@ public class GameModuleController implements Initializable {
                     } catch (IOException error) {  };
 
                     ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
+
                 });
 
                 clueGrid.add(clueButton, category, clue);
