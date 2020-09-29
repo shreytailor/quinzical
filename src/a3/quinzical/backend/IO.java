@@ -52,7 +52,7 @@ public class IO {
 	//Testing 
 	//public static void main(String[] args) {
 	//	GameDatabase.getInstance();
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getQuestion());
-	//	System.out.println(GameDatabase.getInstance().getRemainingClues());
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getAnswer());
+	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().checkAnswer("The seventy"));
 	//}
 }
