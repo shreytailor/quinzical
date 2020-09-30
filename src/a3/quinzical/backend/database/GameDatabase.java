@@ -5,13 +5,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
-import a3.quinzical.backend.IO;
 
 /**
  * This class is used to create a module that represents the record of a player, 
@@ -55,12 +55,6 @@ public class GameDatabase {
     public static GameDatabase getInstance() {
         if (_gameDatabase == null) {
         	_gameDatabase = new GameDatabase();
-        	//try {
-			//	IO.writeGameData(_gameDatabase);
-			//} catch (IOException e) {
-			//	System.out.println("Error creating GameData.txt");
-			//	e.printStackTrace();
-			//}
         }
 
         return _gameDatabase;
@@ -166,6 +160,12 @@ public class GameDatabase {
      */
 	public static void kill() {
 		_gameDatabase = null;
+		try {
+			Files.deleteIfExists(_gameFile.toPath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
 	/**
