@@ -147,6 +147,9 @@ public class Category {
     public List<Clue> remainingClue() {
     	Boolean attempted = true;
     	List<Clue> remainingClues = new ArrayList<Clue>();
+    	if(_currentClue == null) {
+    		return remainingClues;
+    	}
     	for(Clue c : _clues) {
     		if(_currentClue.equals(c)) {
     			attempted = false;
