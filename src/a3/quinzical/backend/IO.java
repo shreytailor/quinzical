@@ -5,6 +5,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Category;
@@ -52,7 +54,8 @@ public class IO {
 	//Testing 
 	//public static void main(String[] args) {
 	//	GameDatabase.getInstance();
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().getAnswer());
-	//	System.out.println(GameDatabase.getInstance().getCategory(0).getCurrentClue().checkAnswer("The seventy"));
+	//	System.out.println(GameDatabase.getInstance().getCategory(2).remainingClue().get(0).getQuestion());
+	//	List<Clue> remainingClues = new ArrayList<Clue>();
+	//	System.out.println(remainingClues);
 	//}
 }
