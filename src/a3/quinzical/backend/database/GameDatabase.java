@@ -55,12 +55,12 @@ public class GameDatabase {
     public static GameDatabase getInstance() {
         if (_gameDatabase == null) {
         	_gameDatabase = new GameDatabase();
-        	try {
-				IO.writeGameData(_gameDatabase);
-			} catch (IOException e) {
-				System.out.println("Error creating GameData.txt");
-				e.printStackTrace();
-			}
+        	//try {
+			//	IO.writeGameData(_gameDatabase);
+			//} catch (IOException e) {
+			//	System.out.println("Error creating GameData.txt");
+			//	e.printStackTrace();
+			//}
         }
 
         return _gameDatabase;
