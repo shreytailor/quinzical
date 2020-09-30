@@ -97,22 +97,11 @@ public class Category {
     /**
      * The method is used to remove the first clue(lowest priced clue) from the list of clues.
      */
-    private void popFirstClue() {
+    public void nextQuestion() {
     	if(_clues.size() >= 1) {
     		_clues.remove(0);
     		updateRemaining();
     	}
-    }
-
-    /**
-     * The method is used when a user selected a clue in Game module
-     * it removes the first clue and return that clue
-     * @return the first clue in the _clues list
-     */
-    public Clue buttonClicked() {
-    	Clue clue = _clues.get(0);
-    	popFirstClue();
-    	return clue;
     }
     
     /**

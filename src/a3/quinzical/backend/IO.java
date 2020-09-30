@@ -46,23 +46,27 @@ public class IO {
 		bw.close();
 	}
 	
-	/**
+	/*
 	public static void main(String[] args) {
 		GameDatabase.getInstance();
-		//System.out.println(GameDatabase.getInstance().getCategory(2).buttonClicked().getQuestion());
-		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
-			System.out.println(c.getPrize());
-		}
-		//System.out.println(GameDatabase.getInstance().getCategory(2).buttonClicked().getQuestion());
-		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
-			System.out.println(c.getPrize());
-		}
 		try {
 			writeGameData(GameDatabase.getInstance());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//System.out.println(GameDatabase.getInstance().getCategory(2).buttonClicked().getQuestion());
+		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
+			System.out.println(c.getQuestion());
+		}
+		
+		GameDatabase.kill();
+		GameDatabase.getInstance();
+		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
+			System.out.println(c.getQuestion());
+		}
+
 	}
 	*/
+	
 }
