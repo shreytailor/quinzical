@@ -1,37 +1,37 @@
 0
 
-Places
-@This is the name of the port that serves Christchurch|What is|lyttleton
-This is the capital of New Zealand|What is|wellington
-This is the most northern tip on the North Island|What is|cape reinga
-The number of river systems that flow through either the North or South Island|What is|70/seventy
-This is the name of New Zealand's national museum|What is|te papa
-
-Symbols
-@These are the colours on the New Zealand Flag in alphabetical order|What are|blue, red, white
-This plant is the national symbol of New Zealand|What is|silver fern
-This is the ship on the 50 cent coin|What is|endeavour
-This is what the stars on the New Zealand flag represent|What is|southern cross
-This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|kiwi
-
-Oddities
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|poi e
-This is the name of New Zealand Male Rugby Team|What is|all blacks
-@The first record wholly produced in New Zealand from composition to pressing|What is|blue smoke
-With more that 400, New Zealand has more of these per capita than any other country in the world|What are|golf courses
-In 1990 New Zealand became the first country in the modern world to make this appointment|What is|official national wizard
+Famous People
+This New Zealander was the first person to split the atom|Who is|ernest rutherford|100
+This New Zealand was the first person to climb mount Everest|Who is|edmund hillary|200
+This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|dame whincooper|300
+This New Zealander  had a worldwide hit with the song "Royal"|Who is|lorde|400
+This New Zealander sung at the wedding of Prince Charles and Lady Diana|What is|kiri te kanawa|500
 
 Fauna
-@This is New Zealand's mountain Parrot|What is|kea
-This common forest bird is known for its beautiful song, and distinctive white tuft under their throat|What is|tui
-This small common bird has a tail that opens up to look like a fan|What is|fantail/pīwakawaka
-This is the common name for the New Zealand owl|What is|morepork/ruru
-This is called a living dinosaur|What is|tuatara
+This native bird lays the largest egg in relation to their body size of any species of bird in the world|What is|kiwi|100
+This native bird of prey can fly over 1000 kilometers an hour|What is|kareaea/new zealand falcon|200
+This large flightless nocturnal parrot is one of New Zealand's most endangered birds|What is|kākāpō|300
+This is New Zealand's mountain Parrot|What is|kea|400
+This animal is known as Kiore in Māori|What is|black rat|500
+
+History
+The eruption from this volcano happened in 1886 and destroyed several villages|What is|mount tarawera|100
+This is the name of the ship Captain Cook sailed on to New Zealand|What is|endeavour|200
+This is the first person to step foot on New Zealand|Who is|kupe|300
+This is the year women first got to vote in New Zealand|What is|1893|400
+This is the year the treaty of Waitangi was signed|What is|1840|500
+
+NZ Life
+These shoes are called flip flops or thongs in other countries|What are|jandals|100
+This is the name of the underground method of cooking used in New Zealand|What is|hangi|200
+This is the Māori word for stomach|What is|puku|300
+This is the Māori word for sweet potato|What is|kumara|400
+This is the name for a traditional fenced Māori village|What is|pā|500
 
 Flora
-@This well known fruit use to be called the Chinese Gooseberry|What is|kiwifruit
-This is the plant that the Māori weaved into baskets|What is|harakeke/flax
-This introduced alga is a threat to New Zealand rivers and is known as rock snot|What is|didymo
-New Zealand has 200 of this species, and one species is our national symbol|What is|fern
-This green vegetable is a traditional staple food of the Māori|What is|pūhā
+The honey from this plant is known for its medicinal benefits|What is|mānuka|100
+The nectar from bright yellow flowers of this tree are an important food source for native birds|What is|kowhai|200
+This is the plant that the Māori weaved into baskets|What is|harakeke/flax|300
+This is the largest native tree in New Zealand|What is|kauri|400
+This well known fruit use to be called the Chinese Gooseberry|What is|kiwifruit|500
 

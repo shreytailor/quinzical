@@ -81,23 +81,17 @@ public class GameDatabase {
 				String line;
 				Category newCate = null;
 				Clue newClue = null;
-				int price = _startPrice;
 				while(( line = br.readLine()) != null) {
 					line = line.trim();
 					if (line.matches("\\d+")) {
 						_winning = Integer.parseInt(line);
 					}else if(!line.contains("|")&& !line.isBlank()){
-						price = _startPrice;
 						newCate = new Category(line);
 						_categories.add(newCate);
 					}else if(!line.isBlank()){
 						newClue = new Clue(line.split("[|]")[0].replace("@", "").trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
-						newClue.setPrize(price);
+						newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
 						newCate.addClue(newClue);
-						if(line.startsWith("@")) {
-							newCate.setCurrentClue(newClue);
-						}
-						price += _priceIncrement;
 					}
 				}
 				br.close();		
@@ -118,9 +112,6 @@ public class GameDatabase {
 						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getAnswer(), newCate);
 						newClue.setPrize(price);
 						newCate.addClue(newClue);
-						if(j == 0) {
-							newCate.setCurrentClue(newClue);
-						}
 						selectedCate.removeClue(questIndex);
 						price += _priceIncrement;
 					}
@@ -195,16 +186,9 @@ public class GameDatabase {
 	
 	public int getRemainingClues() {
 		int count = 0;
-		for(int i = 0; i < _cateNum; i++) {
-			boolean startCount = false;
-			for(int j = 0; j < _clueNum; j++) {
-				if(_categories.get(i).getClue(j).equals(_categories.get(i).getCurrentClue())) {
-					startCount = true;
-				}
-				if (startCount) {
-					count++;
-				}
-			}
+		for(int i = 0; i < _categories.size(); i++) {
+			Category category = _categories.get(i);
+			count += category.getClueSize();
 		}
 		return count;
 	}

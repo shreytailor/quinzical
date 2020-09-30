@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Category;
@@ -41,21 +39,30 @@ public class IO {
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);
-				if(writeClue.equals(writeCate.getCurrentClue())) {
-					bw.write("@");
-				}
-				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getAnswer() + "\n");
+				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getAnswer() + "|" + writeClue.getPrize() +"\n");
 			}
 			bw.write("\n");
 		}
 		bw.close();
 	}
 	
-	//Testing 
-	//public static void main(String[] args) {
-	//	GameDatabase.getInstance();
-	//	System.out.println(GameDatabase.getInstance().getCategory(2).remainingClue().get(0).getQuestion());
-	//	List<Clue> remainingClues = new ArrayList<Clue>();
-	//	System.out.println(remainingClues);
-	//}
+	/**
+	public static void main(String[] args) {
+		GameDatabase.getInstance();
+		//System.out.println(GameDatabase.getInstance().getCategory(2).buttonClicked().getQuestion());
+		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
+			System.out.println(c.getPrize());
+		}
+		//System.out.println(GameDatabase.getInstance().getCategory(2).buttonClicked().getQuestion());
+		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
+			System.out.println(c.getPrize());
+		}
+		try {
+			writeGameData(GameDatabase.getInstance());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	*/
 }

@@ -94,7 +94,7 @@ public class Clue {
      */
     private String format(String answer) {
     	answer = answer.toLowerCase();
-    	answer = answer.replaceAll("\\s+", " ");
+    	answer = answer.replaceAll("\\s+", " ").trim();
     	answer = answer.replace("the ", "");
     	answer = answer.replace("a ", "");
     	return answer;

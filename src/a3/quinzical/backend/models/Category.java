@@ -2,7 +2,6 @@ package a3.quinzical.backend.models;
 
 // Java API dependencies.
 import java.util.List;
-import java.util.Random;
 import java.util.ArrayList;
 
 
@@ -19,8 +18,6 @@ public class Category {
     private String _categoryName;
     private List<Clue> _clues;
     private int _numberOfClues;
-    private Clue _currentClue;
-
     /**
      * This is the only constructor for creating an object for Category.
      * @param name the name of the category which we are creating.
@@ -69,30 +66,6 @@ public class Category {
 	}
 
     /**
-     * This method is used to get a random clue from the current category. Note that no destructive
-     * changes are made to the object unlike the {@link #getRandomPop()} method.
-     * @return Clue the random clue that we wanted.
-     */
-    public Clue getRandom() {
-        Random randomizer = new Random();
-        int random = randomizer.nextInt(_numberOfClues);
-        return _clues.get(random);
-    }
-
-    /**
-     * This method is used to get a random clue from the current category, but also delete the clue
-     * after being returned. Therefore, note that we are performing some destructive changes to the
-     * object being dealt with.
-     * @return Clue the random blue that we wanted.
-     */
-    public Clue getRandomPop() {
-        Clue randomClue = getRandom();
-        _clues.remove(randomClue);
-        updateRemaining();
-        return randomClue;
-    }
-
-    /**
      * This private is used to just update the field regarding how many questions are remaining in
      * the current category.
      */
@@ -110,34 +83,24 @@ public class Category {
     }
     
     /**
-     * The method is used to get the current attemptable clue in the category.
-     * @return the current Clue
+     * The method is used to remove the first clue(lowest priced clue) from the list of clues.
      */
-    public Clue getCurrentClue() {
-    	return _currentClue;
-    }
-    
-    /**
-     * The method is used to change the current attemptable clue in the category.
-     * @param c the clue to be set to current Clue
-     */
-    public void setCurrentClue(Clue c) {
-    	_currentClue = c;
+    private void popFirstClue() {
+    	if(_clues.size() >= 1) {
+    		_clues.remove(0);
+    		updateRemaining();
+    	}
     }
 
     /**
-     * The method is used to move the current Clue to the next Clue in the list
+     * The method is used when a user selected a clue in Game module
+     * it removes the first clue and return that clue
+     * @return the first clue in the _clues list
      */
-    public void advanceClue() {
-    	try {
-	    	for(int i = 0; i < _clues.size(); i++) {
-	    		if(_currentClue.equals(_clues.get(i))) {
-	    			_currentClue = _clues.get(i+1);
-	    		}
-	    	}
-    	}catch(IndexOutOfBoundsException e) {
-    		_currentClue = null;
-    	}
+    public Clue buttonClicked() {
+    	Clue clue = _clues.get(0);
+    	popFirstClue();
+    	return clue;
     }
     
     /**
@@ -145,19 +108,6 @@ public class Category {
      * @return a list of Clues that has not been attempted.
      */
     public List<Clue> remainingClue() {
-    	Boolean attempted = true;
-    	List<Clue> remainingClues = new ArrayList<Clue>();
-    	if(_currentClue == null) {
-    		return remainingClues;
-    	}
-    	for(Clue c : _clues) {
-    		if(_currentClue.equals(c)) {
-    			attempted = false;
-    		}
-    		if(!attempted) {
-    			remainingClues.add(c);
-    		}
-    	}
-    	return remainingClues;
+    	return _clues;
     }
 }
