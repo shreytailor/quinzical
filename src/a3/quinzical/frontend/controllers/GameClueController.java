@@ -7,11 +7,13 @@ import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -44,6 +46,7 @@ public class GameClueController implements Initializable {
     Button backButton;
 
     private Speaker _speaker = Speaker.init();
+    private GameDatabase _db = GameDatabase.getInstance();
     private Clue _clue = GameDatabase.getInstance().getCurrentClue();
 
 
@@ -86,6 +89,11 @@ public class GameClueController implements Initializable {
     @FXML
     private void handleBackButton() {
         _speaker.kill();
+
+        try {
+            ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
+        } catch (IOException error) {  };
+
         ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
     }
 
@@ -109,6 +117,7 @@ public class GameClueController implements Initializable {
         // Speaking and displaying the message to the user.
         String message;
         if (isCorrect) {
+            _db.updateWinning(100);
             message = "Yay, your answer was correct!";
         } else {
             message = "Oh no! The correct answer was " + _clue.getAnswer();

@@ -15,9 +15,9 @@ This is what the stars on the New Zealand flag represent|What is|southern cross
 This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|kiwi
 
 Oddities
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|poi e
+@What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|poi e
 This is the name of New Zealand Male Rugby Team|What is|all blacks
-@The first record wholly produced in New Zealand from composition to pressing|What is|blue smoke
+The first record wholly produced in New Zealand from composition to pressing|What is|blue smoke
 With more that 400, New Zealand has more of these per capita than any other country in the world|What are|golf courses
 In 1990 New Zealand became the first country in the modern world to make this appointment|What is|official national wizard
 

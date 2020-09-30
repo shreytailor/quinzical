@@ -33,7 +33,6 @@ public class Main extends Application {
         ScreenSwitcher screenSwitcher = ScreenSwitcher.initialize(stage);
         screenSwitcher.addScreen(ScreenType.PRACTICE_MODULE, FXMLLoader.load(getClass().getResource("./frontend/fxml/PracticeModule.fxml")));
         screenSwitcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./frontend/fxml/GameModule.fxml")));
-
         stage.show();
     }
 
