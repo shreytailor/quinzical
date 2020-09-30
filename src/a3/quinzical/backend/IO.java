@@ -29,7 +29,7 @@ public class IO {
 	 * @throws IOException this exception is returned if the method failed to write
 	 * the GameDatabase object into file.
 	 */
-	public static void writeGameData(GameDatabase game) throws IOException{
+	public static void writeGameData(GameDatabase game) throws IOException {
 		Category writeCate = null;
 		Clue writeClue = null;
 		BufferedWriter bw = new BufferedWriter(new FileWriter(_gameFile));
