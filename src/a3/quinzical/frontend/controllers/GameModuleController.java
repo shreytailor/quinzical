@@ -86,24 +86,36 @@ public class GameModuleController implements Initializable {
             List<Clue> clues = categoryObject.remainingClue();
 
             // Process of populating each category with the remaining clues.
-            for (int clue = 1; clue < clues.size(); clue++) {
+            for (int clue = 1; clue < clues.size() + 1; clue++) {
                 // Creating the button for the current question, and adding it to the grid.
-                Clue clueObject = categoryObject.getClue(clue);
+                Clue clueObject = categoryObject.getClue(clue - 1);
                 Button clueButton = new Button("$" + clueObject.getPrize());
                 clueButton.getStyleClass().add("clue");
                 clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
                 clueButton.setOnAction(event -> {
-                    categoryObject.setCurrentClue(clueObject);
-                    categoryObject.advanceClue();
+
+
+//                    for (int counter = 0; counter < categoryObject.remainingClue().size(); counter++) {
+//                        System.out.println(categoryObject.remainingClue().get(counter));
+//                    }
+
                     db.setCurrentClue(clueObject);
 
-                    try {
-                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
-                    } catch (IOException error) {  };
+                    categoryObject.advanceClue();
 
-                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
+                    for (int counter = 0; counter < categoryObject.remainingClue().size(); counter++) {
+                        System.out.println(categoryObject.remainingClue().get(counter));
+                    }
 
+//                    try {
+//                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
+//
+//                    } catch (Exception error) {
+//                        System.out.println(error.getMessage());
+//                    };
+
+//                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
                 });
 
                 clueGrid.add(clueButton, category, clue);

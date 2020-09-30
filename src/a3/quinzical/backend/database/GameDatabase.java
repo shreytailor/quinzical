@@ -127,10 +127,10 @@ public class GameDatabase {
 
     /**
      * This method is used to change the current winning of the player.
-     * @param prize the winning to change to.
+     * @param prize the winning to add onto the current winning.
      */
-	public void setWinning(int prize) {
-		_winning = prize;
+	public void updateWinning(int prize) {
+		_winning = _winning + prize;
 	}
 	
 	/**
