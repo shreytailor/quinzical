@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="750.0" prefWidth="1350.0" styleClass="gridPane" stylesheets="@../styles/GameModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameModuleController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="gridPane" stylesheets="@../styles/GameModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameModuleController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="994.0" minWidth="10.0" prefWidth="974.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="665.6666870117188" minWidth="10.0" prefWidth="376.0" />
@@ -59,7 +59,7 @@
          <bottom>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" styleClass="secondaryButtons" stylesheets="@../styles/GameModule.css" text="Reset Game">
+                  <Button mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="250.0" styleClass="secondaryButtons" stylesheets="@../styles/GameModule.css" text="Reset Game">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>

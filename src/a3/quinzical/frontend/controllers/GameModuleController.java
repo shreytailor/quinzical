@@ -16,10 +16,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.ButtonType;
 
 
 public class GameModuleController implements Initializable {
@@ -41,19 +42,28 @@ public class GameModuleController implements Initializable {
 
 
     @FXML
-    private void handleKeyPressed (KeyEvent event) {
-        switch (event.getCode()) {
-            case B:
-                backButton.fire();
-        }
-    }
-
-
-    @FXML
     private void handleBackButton () {
         ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
         screenSwitcher.setScreen(ScreenType.MAIN_MENU);
         screenSwitcher.setTitle("Main Menu");
+    }
+
+
+    @FXML
+    private void handleResetButton() {
+        String message = "Are you sure you want to reset the game?";
+        Alert resetAlert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
+        resetAlert.setHeaderText(null);
+        resetAlert.showAndWait();
+
+        if (resetAlert.getResult() == ButtonType.YES) {
+            GameDatabase.kill();
+
+            try {
+                ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
+            } catch (Exception error) {  };
+            ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
+        }
     }
 
 

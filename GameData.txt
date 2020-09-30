@@ -1,37 +1,37 @@
 0
 
-Geography
-This is the largest lake in New Zealand|What is|taupo|100
-This is the Longest river in New Zealand|What is|waikato|200
-This is the name of the long chain of mountains that make up the backbone of the South Island|What is|southern alps|300
-This is the third largest island of New Zealand|What is|stewart island/rakiura|400
-This volcano in Auckland last erupted 20,000 years ago, and was the site of a major pā|What is|māngere mountain|500
+Flora
+This is known as the New Zealand Christmas tree|What is|pōhtukawa|100
+This is the plant that the Māori weaved into baskets|What is|harakeke/flax|200
+This is the largest native tree in New Zealand|What is|kauri|300
+New Zealand has 200 of this species, and one species is our national symbol|What is|fern|400
+The honey from this plant is known for its medicinal benefits|What is|mānuka|500
 
-Places
-This is the most southern port in the South Island|What is|bluff|100
-This is the city that is the first to see the sunrise each day|What is|gisborne|200
-This city is nicknamed the Edinburgh of the South|What is|dunedin|300
-This is the name of the port that serves Christchurch|What is|lyttleton|400
-This is the Māori name for New Zealand|What is|aotearoa|500
+Symbols
+This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|kiwi|100
+This plant is the national symbol of New Zealand|What is|silver fern|200
+This is the number of stars on the New Zealand flag|What is|4/four|300
+These are the birds that New Zealanders are named after|who are|kiwis|400
+This is what the stars on the New Zealand flag represent|What is|southern cross|500
 
 Fauna
-This native bird lays the largest egg in relation to their body size of any species of bird in the world|What is|kiwi|100
-This is the only land mammal native to New Zealand|What is|bat|200
-This native bird of prey can fly over 1000 kilometers an hour|What is|kareaea/new zealand falcon|300
-This animal is known as Kiore in Māori|What is|black rat|400
-This grub chews up wood, and is edible|What is|huhu grub|500
-
-NZ Life
-This is the name for a traditional fenced Māori village|What is|pā|100
-This is the name of the underground method of cooking used in New Zealand|What is|hangi|200
-This is the Māori word for sweet potato|What is|kumara|300
-These shoes are called flip flops or thongs in other countries|What are|jandals|400
-The New Zealand term for swimwear|What is|togs|500
+This animal is known as Kiore in Māori|What is|black rat|100
+This is the number of Kiwi species|What is|5/five|200
+This is New Zealand's mountain Parrot|What is|kea|300
+This is the now extinct giant flightless bird that inhabited all of New Zealand|What is|moa|400
+This is called a living dinosaur|What is|tuatara|500
 
 Famous People
 This New Zealander sung at the wedding of Prince Charles and Lady Diana|What is|kiri te kanawa|100
-This is what  Dame Kiri Te Kanawa was famous for|What is|opersinging|200
+This New Zealander  had a worldwide hit with the song "Royal"|Who is|lorde|200
 This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|dame whincooper|300
-This New Zealander was the first person to split the atom|Who is|ernest rutherford|400
-This New Zealander directed "Jojo Rabbit" and "Thor Ragnarok"|Who is|taikwaititi|500
+This is what  Dame Kiri Te Kanawa was famous for|What is|opersinging|400
+This New Zealand was the first person to climb mount Everest|Who is|edmund hillary|500
+
+History
+This is the first person to step foot on New Zealand|Who is|kupe|100
+This is the year the treaty of Waitangi was signed|What is|1840|200
+This is the name of the ship Captain Cook sailed on to New Zealand|What is|endeavour|300
+The eruption from this volcano happened in 1886 and destroyed several villages|What is|mount tarawera|400
+This city was the capital of New Zealand before it moved in Wellington|What is|auckland|500
 

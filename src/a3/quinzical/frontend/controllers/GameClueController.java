@@ -7,8 +7,8 @@ import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
 
 // Java dependencies.
-import java.io.IOException;
 import java.net.URL;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.

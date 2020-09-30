@@ -1,10 +1,10 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.backend.database.PracticeDatabase;
+import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.switcher.ScreenType;
 import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.backend.database.PracticeDatabase;
 
 // Java dependencies.
 import java.net.URL;
@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -59,26 +58,6 @@ public class PracticeClueController implements Initializable {
         speaker.setSpeech(_clue.getQuestion());
         speaker.speak();
     };
-
-
-    /**
-     * This method is the listener for when the user tries to use shortcuts.
-     * @param event the key event.
-     */
-    @FXML
-    private void onKeyPressed(KeyEvent event) {
-        switch(event.getCode()) {
-            case B:
-                backButton.fire();
-                break;
-            case R:
-                respeakButton.fire();
-                break;
-            case ENTER:
-                submitButton.fire();
-                break;
-        }
-    }
 
 
     /**
