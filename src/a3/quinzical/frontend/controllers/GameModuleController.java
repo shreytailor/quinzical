@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Screen;
 
 
 public class GameModuleController implements Initializable {
@@ -31,6 +30,8 @@ public class GameModuleController implements Initializable {
     Label winningsLabel;
     @FXML
     Button backButton;
+
+    private GameDatabase  _db = GameDatabase.getInstance();
 
 
     @Override
@@ -67,9 +68,6 @@ public class GameModuleController implements Initializable {
      * re-usage by making another method for it.
      */
     private void setupScreen() {
-        // Getting the game database.
-        GameDatabase db = GameDatabase.getInstance();
-
         // Updating the winnings label to show the latest winnings.
         int winnings = GameDatabase.getInstance().getWinning();
         winningsLabel.setText("$" + winnings);
@@ -77,15 +75,14 @@ public class GameModuleController implements Initializable {
         // Populating the grid with the categories and questions.
         for (int category = 0; category < 5; category++) {
             // Creating a custom label for the name of the category, we are currently on.
-            Category categoryObject = db.getCategory(category);
+            Category categoryObject = _db.getCategory(category);
             Label title = new Label(categoryObject.getName());
             title.getStyleClass().add("category");
             title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
             clueGrid.add(title, category, 0);
 
-            List<Clue> clues = categoryObject.remainingClue();
-
             // Process of populating each category with the remaining clues.
+            List<Clue> clues = categoryObject.remainingClue();
             for (int clue = 1; clue < clues.size() + 1; clue++) {
                 // Creating the button for the current question, and adding it to the grid.
                 Clue clueObject = categoryObject.getClue(clue - 1);
@@ -94,28 +91,14 @@ public class GameModuleController implements Initializable {
                 clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
                 clueButton.setOnAction(event -> {
+                    _db.setCurrentClue(clueObject);
+                    categoryObject.nextQuestion();
 
+                    try {
+                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
+                    } catch (IOException error) {  };
 
-//                    for (int counter = 0; counter < categoryObject.remainingClue().size(); counter++) {
-//                        System.out.println(categoryObject.remainingClue().get(counter));
-//                    }
-
-                    db.setCurrentClue(clueObject);
-
-                    categoryObject.advanceClue();
-
-                    for (int counter = 0; counter < categoryObject.remainingClue().size(); counter++) {
-                        System.out.println(categoryObject.remainingClue().get(counter));
-                    }
-
-//                    try {
-//                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
-//
-//                    } catch (Exception error) {
-//                        System.out.println(error.getMessage());
-//                    };
-
-//                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
+                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
                 });
 
                 clueGrid.add(clueButton, category, clue);

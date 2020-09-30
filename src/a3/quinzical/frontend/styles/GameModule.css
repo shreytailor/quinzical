@@ -19,8 +19,10 @@ This is the styling for the title for each of the categories.
  */
 .category {
     -fx-font-size: 25;
+    -fx-wrap-text: true;
     -fx-text-fill: black;
     -fx-font-family: Poppins;
+    -fx-text-alignment: center;
 }
 
 
