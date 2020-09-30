@@ -2,6 +2,7 @@ package a3.quinzical.backend.models;
 
 // Java API dependencies.
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 
@@ -33,6 +34,17 @@ public class Category {
      */
     public String getName() {
         return _categoryName;
+    }
+    
+    /**
+     * This method is used to get a random clue from the current category. Note that no destructive
+     * changes are made to the object unlike the {@link #getRandomPop()} method.
+     * @return Clue the random clue that we wanted.
+     */
+    public Clue getRandom() {
+        Random randomizer = new Random();
+        int random = randomizer.nextInt(_numberOfClues);
+        return _clues.get(random);
     }
 
     /**
@@ -85,22 +97,11 @@ public class Category {
     /**
      * The method is used to remove the first clue(lowest priced clue) from the list of clues.
      */
-    private void popFirstClue() {
+    public void nextQuestion() {
     	if(_clues.size() >= 1) {
     		_clues.remove(0);
     		updateRemaining();
     	}
-    }
-
-    /**
-     * The method is used when a user selected a clue in Game module
-     * it removes the first clue and return that clue
-     * @return the first clue in the _clues list
-     */
-    public Clue buttonClicked() {
-    	Clue clue = _clues.get(0);
-    	popFirstClue();
-    	return clue;
     }
     
     /**
