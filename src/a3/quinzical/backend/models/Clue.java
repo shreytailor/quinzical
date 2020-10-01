@@ -3,6 +3,8 @@ package a3.quinzical.backend.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import a3.quinzical.backend.Formatting;
+
 /**
  * This class is used as a model for all the clues of our Quinzical game. It contains various
  * fields and methods which would make it easier for the developers to interact with these
@@ -46,7 +48,15 @@ public class Clue {
      * @return String the answer for the current clue.
      */
     public String getAnswer() {
-        return _answer;
+        return Formatting.removeTheA(_answer);
+    }
+    
+    /**
+     * This method is used to get the non-sanitized answer for the current clue.
+     * @return String the answer for the current clue.
+     */
+    public String getFullAnswer() {
+    	return _answer;
     }
     
     /**
@@ -57,7 +67,7 @@ public class Clue {
     	List<String> answerList = new ArrayList<String>();
     	String[] answerArray = _answer.split("/");
     	for(int i = 0; i < answerArray.length; i++) {
-    		answerList.add(answerArray[i]);
+    		answerList.add(Formatting.removeTheA(answerArray[i]));
     	}
     	return answerList;
     }
@@ -72,12 +82,12 @@ public class Clue {
      */
     public boolean checkAnswer(String answer) {
     	// Removing any repeated space characters from the user's input.
-        answer = format(answer);
+        answer = Formatting.sanitize(answer);
     	
         // Loop through multiple answers if exist
     	String[] answerList = _answer.split("/");
     	for(int i = 0; i < answerList.length; i++) {
-    		answerList[i] = format(answerList[i]);
+    		answerList[i] = Formatting.sanitize(answerList[i]);
     		if (answer.equalsIgnoreCase(answerList[i])){
     			return true;
     		}
@@ -85,19 +95,6 @@ public class Clue {
         
         // If no matches, then just return false.
         return false;
-    }
-    
-    /**
-     * This method is used to format the answer for comparison
-     * @param answer the string to be formatted
-     * @return the formatted string
-     */
-    private String format(String answer) {
-    	answer = answer.toLowerCase();
-    	answer = answer.replaceAll("\\s+", " ").trim();
-    	answer = answer.replace("the ", "");
-    	answer = answer.replace("a ", "");
-    	return answer;
     }
 
     /**

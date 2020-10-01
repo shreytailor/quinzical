@@ -103,7 +103,7 @@ public class GameDatabase {
 					for(int j = 0; j < _clueNum; j++) {
 						int questIndex = rand.nextInt(selectedCate.getClueSize());
 						selectedClue = selectedCate.getClue(questIndex);
-						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getAnswer(), newCate);
+						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
 						newClue.setPrize(price);
 						newCate.addClue(newClue);
 						selectedCate.removeClue(questIndex);
