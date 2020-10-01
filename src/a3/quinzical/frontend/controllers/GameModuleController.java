@@ -22,25 +22,25 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ButtonType;
 
-
+/**
+ * This is the controller class for the GameModule screen.
+ */
 public class GameModuleController implements Initializable {
 
-    @FXML
-    GridPane clueGrid;
-    @FXML
-    Label winningsLabel;
-    @FXML
-    Button backButton;
+    @FXML GridPane clueGrid;
+    @FXML Label winningsLabel;
+    @FXML Button backButton;
 
     private GameDatabase  _db = GameDatabase.getInstance();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupScreen();
     }
 
-
+    /**
+     * This is the handler class for when the "Back" button is pressed.
+     */
     @FXML
     private void handleBackButton () {
         ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
@@ -48,14 +48,19 @@ public class GameModuleController implements Initializable {
         screenSwitcher.setTitle("Main Menu");
     }
 
-
+    /**
+     * This is the handler class for when the user intends to "Reset" the game.
+     */
     @FXML
     private void handleResetButton() {
         String message = "Are you sure you want to reset the game?";
+
+        // Confirming with the user whether they really want to reset.
         Alert resetAlert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
         resetAlert.setHeaderText(null);
         resetAlert.showAndWait();
 
+        // If yes, then kill the current instance of the progress.
         if (resetAlert.getResult() == ButtonType.YES) {
             GameDatabase.kill();
 
@@ -66,37 +71,30 @@ public class GameModuleController implements Initializable {
         }
     }
 
-
     /**
-     * This is a private method used only within the class, and its used to initialize the screen
-     * on two different scenarios.
-     * (1) When the screen is first launched by the user from the Main Menu.
-     * (2) If the game is reset by the user, we must also reset the screen to display the latest
-     *      information about their session.
-     *
-     * Hence, since we had to do this action in more than one scenario, we are doing some code
-     * re-usage by making another method for it.
+     * This is a private method used within the class to initialize the root GridPane with the grid
+     * for the game. The process is such that we are iterating through each category, and then
+     * through each question to display them properly so that it's readable.
      */
     private void setupScreen() {
-        // Updating the winnings label to show the latest winnings.
+        // Displaying the winnings.
         int winnings = GameDatabase.getInstance().getWinning();
         winningsLabel.setText("$" + winnings);
 
-        // Populating the grid with the categories and questions.
+        // Iterating through each category from the Database.
         for (int category = 0; category < 5; category++) {
-            // Creating a custom label for the name of the category, we are currently on.
             Category categoryObject = _db.getCategory(category);
             Label title = new Label(categoryObject.getName());
             title.getStyleClass().add("category");
             title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
             clueGrid.add(title, category, 0);
 
+            // Making sure that the first clue is always clickable, hence using this flag.
             boolean active = true;
 
-            // Process of populating each category with the remaining clues.
+            // Iterating through each remaining clues within the category.
             List<Clue> clues = categoryObject.remainingClue();
             for (int clue = 1; clue < clues.size() + 1; clue++) {
-                // Creating the button for the current question, and adding it to the grid.
                 Clue clueObject = categoryObject.getClue(clue - 1);
                 Button clueButton = new Button("$" + clueObject.getPrize());
                 clueButton.getStyleClass().add("clue");
@@ -105,8 +103,9 @@ public class GameModuleController implements Initializable {
                 if (!active) {
                     clueButton.setDisable(true);
                 }
-
                 active = false;
+
+                // Setting the listener for the current button.
                 clueButton.setOnAction(event -> {
                     _db.setCurrentClue(clueObject);
                     categoryObject.nextQuestion();
@@ -118,6 +117,7 @@ public class GameModuleController implements Initializable {
                     ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
                 });
 
+                // Finally, we add the clue to the grid.
                 clueGrid.add(clueButton, category, clue);
             }
         }

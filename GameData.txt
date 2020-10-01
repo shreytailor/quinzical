@@ -1,7 +1,6 @@
 0
 
 Fauna
-This large flightless nocturnal parrot is one of New Zealand's most endangered birds|What is|Kākāpō|100
 This is the number of Kiwi species|What is|5/five|200
 This is the animal that is the greatest threat to Kiwi|What is|stoat|300
 This is the common name for the New Zealand owl|What is|Morepork/Ruru|400

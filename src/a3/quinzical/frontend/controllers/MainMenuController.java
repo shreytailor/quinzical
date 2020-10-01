@@ -81,9 +81,7 @@ public class MainMenuController {
                 switcher.addScreen(ScreenType.GAME_FINISHED, FXMLLoader.load(getClass().getResource("./../fxml/GameFinished.fxml")));
                 switcher.setScreen(ScreenType.GAME_FINISHED);
             }
-        } catch (IOException error) {
-            // No exceptions will be thrown here for sure.
-        };
+        } catch (IOException error) {  };
     }
 
 

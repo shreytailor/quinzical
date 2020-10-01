@@ -19,79 +19,77 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-
 /**
  * This class is the controller class for the Game Question screen.
  * @author Shrey Tailor, Jason Wang
  */
 public class GameClueController implements Initializable {
 
-    @FXML
-    Label categoryLabel;
-    @FXML
-    Label prizeLabel;
-    @FXML
-    Label prefixLabel;
-    @FXML
-    TextField inputField;
-    @FXML
-    Button dontKnowButton;
-    @FXML
-    Button submitButton;
-    @FXML
-    Label messageLabel;
-    @FXML
-    Button respeakButton;
-    @FXML
-    Button backButton;
+    @FXML Label categoryLabel;
+    @FXML Label prizeLabel;
+    @FXML Label prefixLabel;
+    @FXML TextField inputField;
+    @FXML Button dontKnowButton;
+    @FXML Button submitButton;
+    @FXML Label messageLabel;
+    @FXML Button respeakButton;
+    @FXML Button backButton;
 
     private Speaker _speaker = Speaker.init();
     private GameDatabase _db = GameDatabase.getInstance();
     private Clue _clue = GameDatabase.getInstance().getCurrentClue();
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Updating the information on the screen to reflect the chosen question above.
+        // Showing information about the question.
         categoryLabel.setText(_clue.getCategory().getName());
         prizeLabel.setText("$" + _clue.getPrize());
         prefixLabel.setText(_clue.getPrefix() + "...");
 
-        // Starting the process of speaking the question to the user.
+        // Speak the question to the user.
         _speaker.setSpeech(_clue.getQuestion());
         _speaker.speak();
 
-        // Hiding the back button so its not visible as the user enters an answer.
+        // Hiding certain elements of the screen on Initialization.
         backButton.setVisible(false);
         messageLabel.setVisible(false);
     }
 
-
+    /**
+     * This is the handler for when the "Don't Know" button is pressed.
+     */
     @FXML
     private void handleDontKnowButton() {
         isAnswered(false);
-
     }
 
-
+    /**
+     * This is the handler for when the "Submit" button is pressed.
+     */
     @FXML
     private void handleSubmitButton() {
         isAnswered(true);
     }
 
-
+    /**
+     * This is the handler for when the "Respeak" button is pressed.
+     */
     @FXML
     private void handleRespeakButton() {
         _speaker.speak();
     }
 
-
+    /**
+     * This is the handler for when the "Back" button is pressed.
+     */
     @FXML
     private void handleBackButton() {
+        // Stop the speaking process.
         _speaker.kill();
         ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
         try {
+            // If there are no remaining questions, then go to the completed game screen.
             if (GameDatabase.getInstance().getRemainingClues() > 0) {
                 _switcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
                 _switcher.setScreen(ScreenType.GAME_MODULE);
@@ -101,13 +99,14 @@ public class GameClueController implements Initializable {
                 _switcher.setScreen(ScreenType.GAME_FINISHED);
             }
         } catch (IOException error) {  };
-
-        ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
     }
 
-
+    /**
+     * This private method is used for doing certain things, after the user has finished answering.
+     * @param isChecking
+     */
     private void isAnswered(Boolean isChecking) {
-        // Firstly, we set all the buttons to not visible to clear the GUI.
+        // Setting certain elements to hidden to clear the screen.
         _speaker.kill();
         inputField.setDisable(true);
         backButton.setVisible(true);
