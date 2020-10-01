@@ -46,7 +46,7 @@ public class Clue {
      * @return String the answer for the current clue.
      */
     public String getAnswer() {
-        return format(_answer);
+        return _answer;
     }
     
     /**
