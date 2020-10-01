@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="borderPane" stylesheets="@../styles/PracticeModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
    <center>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" styleClass="scrollPane" stylesheets="@../styles/PracticeModule.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -16,20 +18,32 @@
       </ScrollPane>
    </center>
    <bottom>
-      <Button fx:id="backButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" styleClass="backToMenu" stylesheets="@../styles/PracticeModule.css" text="Back To Menu" BorderPane.alignment="TOP_LEFT">
+      <Button fx:id="backButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" text="Back To Menu" BorderPane.alignment="TOP_LEFT">
          <font>
             <Font size="14.0" />
          </font>
          <BorderPane.margin>
             <Insets bottom="20.0" left="20.0" right="30.0" />
          </BorderPane.margin>
+         <styleClass>
+            <String fx:value="secondary" />
+            <String fx:value="medium-font" />
+            <String fx:value="medium" />
+         </styleClass>
+         <stylesheets>
+            <URL value="@../styles/Buttons.css" />
+            <URL value="@../styles/Fonts.css" />
+         </stylesheets>
       </Button>
    </bottom>
    <top>
-      <Label styleClass="header" stylesheets="@../styles/PracticeModule.css" text="Choose a category to practice" BorderPane.alignment="CENTER">
+      <Label styleClass="pacifico" stylesheets="@../styles/Fonts.css" text="Choose a category to practice" textFill="#2e2e2e" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>
+         <font>
+            <Font size="40.0" />
+         </font>
       </Label>
    </top>
 </BorderPane>

@@ -1,37 +1,37 @@
 0
 
-Places
-This is the most southern port in the South Island|What is|Bluff|100
-This is the name of the Parliament Building in Wellington|What is|Beehive|200
-This is the largest city in New Zealand|What is|Auckland|300
-This is the island in New Zealand that has the largest population|What is|North Island|400
-This is the name of New Zealand's national museum|What is|Te Papa|500
-
-Fauna
-This animal is known as Kiore in Māori|What is|black rat|100
-This is the only land mammal native to New Zealand|What is|bat|200
-This large brown flightless bird is known for being curious and a bit of a thief|What is|Weka|300
-This is the only poisonous Native spider in New Zealand|What is|Katipō|400
-This is New Zealand's mountain Parrot|What is|Kea|500
-
-Geography
-This is the Longest river in New Zealand|What is|Waikato|100
-This is the largest active volcano in New Zealand|What is|Ruapehu|200
-This is the name of the long chain of mountains that make up the backbone of the South Island|What is|Southern Alps|300
-This is the largest lake in New Zealand|What is|Taupo|400
-This is the third largest island of New Zealand|What is|Stewart Island/Rakiura|500
-
 History
-This is the name of the ship Captain Cook sailed on to New Zealand|What is|Endeavour|100
-The eruption from this volcano happened in 1886 and destroyed several villages|What is|Mount Tarawera|200
-This is the year the treaty of Waitangi was signed|What is|1840|300
-This is the first person to step foot on New Zealand|Who is|Kupe|400
-On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|500
+This is the year women first got to vote in New Zealand|What is|1893|100
+On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|200
+This is the first country in the world to give women the vote|What is|New Zealand|300
+The eruption from this volcano happened in 1886 and destroyed several villages|What is|Mount Tarawera|400
+This is the name of the ship Captain Cook sailed on to New Zealand|What is|Endeavour|500
+
+Flora
+This is known as the New Zealand Christmas tree|What is|Pōhtukawa|100
+This introduced alga is a threat to New Zealand rivers and is known as rock snot|What is|Didymo|200
+New Zealand has 200 of this species, and one species is our national symbol|What is|fern|300
+This is the largest native tree in New Zealand|What is|Kauri|400
+The nectar from bright yellow flowers of this tree are an important food source for native birds|What is|Kowhai|500
+
+Places
+This is the name of New Zealand's national museum|What is|Te Papa|100
+This is the Māori name for New Zealand|What is|Aotearoa|200
+This is the most northern tip on the North Island|What is|Cape Reinga|300
+This city is nicknamed the Edinburgh of the South|What is|Dunedin|400
+This is the most southern port in the South Island|What is|Bluff|500
+
+Symbols
+This is the ship on the 50 cent coin|What is|Endeavour|100
+This is the number of stars on the New Zealand flag|What is|4/four|200
+This is what the stars on the New Zealand flag represent|What is|Southern Cross|300
+This plant is the national symbol of New Zealand|What is|silver fern|400
+These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White|500
 
 Famous People
 This New Zealander was the first person to split the atom|Who is|Ernest Rutherford|100
 This New Zealander directed "Jojo Rabbit" and "Thor Ragnarok"|Who is|Taika Waititi|200
 This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|Dame Whina Cooper|300
 This is what  Dame Kiri Te Kanawa was famous for|What is|Opera Singing|400
-This New Zealander  had a worldwide hit with the song "Royal"|Who is|Lorde|500
+This New Zealander sung at the wedding of Prince Charles and Lady Diana|What is|Kiri Te Kanawa|500
 

@@ -1,0 +1,38 @@
+.large-font {
+    -fx-font-size: 28px;
+}
+
+.medium-font {
+    -fx-font-size: 20px;
+}
+
+.small-font {
+    -fx-font-size: 18px;
+}
+
+.primary {
+    -fx-text-fill: white;
+    -fx-background-color: #68BBE9;
+}
+
+.primary:hover {
+    -fx-background-color: #4CB0E6;
+}
+
+.secondary {
+    -fx-text-fill: #585858;
+    -fx-background-color: #DADADA;
+}
+
+.secondary:hover {
+    -fx-background-color: #CCCCCC;
+}
+
+.red {
+    -fx-text-fill: #b83e3e;
+    -fx-background-color: #ffc7c7;
+}
+
+.red:hover {
+    -fx-background-color: #FFADAD;
+}

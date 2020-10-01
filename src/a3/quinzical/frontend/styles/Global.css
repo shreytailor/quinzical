@@ -1,0 +1,17 @@
+.white {
+    -fx-background-color: white;
+}
+
+/*
+This is the styling for any ScrollPanes.
+
+In all versions of JavaFX after 8, there was a fix needed to set the background color of a
+ScrollPane to white. Hence, note that is is set to transparent first, before setting to white.
+ */
+.scrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scrollPane {
+    -fx-background-color: white;
+}

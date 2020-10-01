@@ -1,76 +1,17 @@
-/*
-Importing the fonts which are required for the buttons.
- */
 @font-face {
-    font-family: "Pacifico";
-    src: url("./../resources/fonts/Pacifico-Regular.ttf");
-}
-@font-face {
-    font-family: "Poppins-Bold";
-    src: url("./../resources/fonts/Poppins-Bold.ttf");
+    src: url('./../resources/fonts/Poppins-Medium.ttf');
 }
 
-
-/*
-This is the styling for the root node of the scene - BorderPane.
- */
-.borderPane {
-    -fx-background-color: white;
-}
-
-
-/*
-This is the styling for the header.
- */
-.header {
-    -fx-font-size: 40;
-    -fx-text-fill: #2E2E2E;
-    -fx-font-family: Pacifico;
-}
-
-
-/*
-This is the styling for the ScrollPane which contains the cards.
-
-In all versions of JavaFX after 8, there was a fix needed to set the background color of a
-ScrollPane to white. Hence, note that is is set to transparent first, before setting to white.
- */
-.scrollPane > .viewport {
-    -fx-background-color: transparent;
-}
-
-.scrollPane {
-    -fx-background-color: white;
-}
-
-
-/*
-This is the styling for the buttons for each category.
- */
 .categoryButton {
     -fx-font-size: 20;
     -fx-pref-width: 220;
     -fx-pref-height: 95;
     -fx-text-fill: white;
-    -fx-font-family: Poppins;
     -fx-background-radius: 10;
     -fx-background-color: #93CA53;
+    -fx-font-family: "Poppins Medium";
 }
 
 .categoryButton:hover {
     -fx-background-color: #7FBB3A;
-}
-
-
-/*
-This is the styling for the "Back To Home" button.
- */
-.backToMenu {
-    -fx-font-size: 18;
-    -fx-font-family: Poppins;
-    -fx-background-color: #DADADA;
-}
-
-.backToMenu:hover {
-    -fx-background-color: #CCCCCC;
 }

@@ -1,59 +1,24 @@
-/*
-This is the styling for the background (or the root container)
- */
-.gridPane {
-    -fx-background-color: white;
+@font-face {
+    src: url('./../resources/fonts/Poppins-Medium.ttf');
 }
 
-
-/*
-This is a special class to give all text a custom font.
- */
-.customFont {
-    -fx-font-family: Poppins;
-}
-
-
-/*
-This is the styling for the title for each of the categories.
- */
 .category {
     -fx-font-size: 25;
     -fx-wrap-text: true;
     -fx-text-fill: black;
-    -fx-font-family: Poppins;
+    -fx-font-family: "Poppins Medium";
     -fx-text-alignment: center;
 }
 
-
-/*
-This is the styling for the buttons for each clue.
- */
 .clue {
     -fx-font-size: 28;
-    -fx-text-fill: white;
     -fx-max-width: 180px;
+    -fx-text-fill: white;
     -fx-max-height: 110px;
-    -fx-font-family: Poppins;
     -fx-background-color: #ffb627;
+    -fx-font-family: "Poppins Medium";
 }
 
 .clue:hover {
     -fx-background-color: #FFAD0A;
-}
-
-
-/*
-This is the styling for the "Reset Game" and "Back To Menu" buttons.
- */
-.secondaryButtons {
-    -fx-font-size: 18;
-    -fx-text-fill: #585858;
-    -fx-font-family: Poppins;
-    -fx-background-radius: 10;
-    -fx-background-color: #DADADA;
-}
-
-.secondaryButtons:hover {
-    -fx-background-color: #CCCCCC;
 }

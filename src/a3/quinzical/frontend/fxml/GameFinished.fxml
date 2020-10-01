@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,21 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="borderPane" stylesheets="@../styles/GameFinished.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameFinishedController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" style="-fx-border-width: 15px; -fx-border-color: #FFB012;" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameFinishedController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label stylesheets="@../styles/GameFinished.css" text="Congratulations, you've finished the game!">
+            <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Congratulations, you've finished the game!" textFill="#ffad0a">
                <font>
                   <Font size="34.0" />
                </font>
-               <styleClass>
-                  <String fx:value="title" />
-                  <String fx:value="font" />
-               </styleClass>
             </Label>
-            <Label fx:id="winningsPlaceholder" styleClass="font" stylesheets="@../styles/GameFinished.css" text="Winnings Placeholder">
+            <Label fx:id="winningsPlaceholder" styleClass="medium" stylesheets="@../styles/Fonts.css" text="Winnings Placeholder">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -32,28 +28,38 @@
             </Label>
             <VBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" stylesheets="@../styles/GameFinished.css" text="Reset Game">
+                  <Button mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" text="Reset Game">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@../styles/Buttons.css" />
+                        <URL value="@../styles/Fonts.css" />
+                     </stylesheets>
                      <styleClass>
-                        <String fx:value="buttonCommon" />
-                        <String fx:value="font" />
+                        <String fx:value="secondary" />
+                        <String fx:value="medium" />
+                        <String fx:value="medium-font" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="280.0" stylesheets="@../styles/GameFinished.css" text="Back To Home">
+                  <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="280.0" text="Back To Home">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <stylesheets>
+                        <URL value="@../styles/Buttons.css" />
+                        <URL value="@../styles/Fonts.css" />
+                     </stylesheets>
                      <styleClass>
-                        <String fx:value="buttonCommon" />
-                        <String fx:value="font" />
+                        <String fx:value="secondary" />
+                        <String fx:value="medium" />
+                        <String fx:value="medium-font" />
                      </styleClass>
                   </Button>
                </children>

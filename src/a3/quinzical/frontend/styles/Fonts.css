@@ -1,0 +1,31 @@
+@font-face {
+    src: url('./../resources/fonts/Poppins-Bold.ttf');
+}
+
+@font-face {
+    src: url('./../resources/fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+    src: url('./../resources/fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+    src: url('./../resources/fonts/Pacifico-Regular.ttf');
+}
+
+.bold {
+    -fx-font-family: "Poppins Bold";
+}
+
+.medium {
+    -fx-font-family: "Poppins Medium";
+}
+
+.regular {
+    -fx-font-family: "Poppins Regular";
+}
+
+.pacifico {
+    -fx-font-family: "Pacifico Regular";
+}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="borderPane" stylesheets="@../styles/PracticeQuestion.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeClueController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeClueController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -31,9 +32,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="questionBackground" stylesheets="@../styles/PracticeQuestion.css">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CDE6B2; -fx-background-radius: 15px;">
                      <center>
-                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="question" stylesheets="@../styles/PracticeQuestion.css" text="Placeholder Clue" textAlignment="CENTER" textFill="#362d13" wrapText="true">
+                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="Placeholder Clue" textAlignment="CENTER" textFill="#362d13" wrapText="true">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -47,7 +48,7 @@
                      <top>
                         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                            <children>
-                              <Label styleClass="boldFont" stylesheets="@../styles/PracticeQuestion.css" text="Category: ">
+                              <Label stylesheets="@../styles/Fonts.css" text="Category: ">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -55,7 +56,7 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="categoryLabel" styleClass="normalFont" stylesheets="@../styles/PracticeQuestion.css" text="Placeholder">
+                              <Label fx:id="categoryLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -72,22 +73,18 @@
                      <bottom>
                         <VBox>
                            <children>
-                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hint" stylesheets="@../styles/PracticeQuestion.css" text="Hint Placeholder" wrapText="true">
+                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Hint Placeholder" textFill="#b83e3e" wrapText="true">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="18.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label fx:id="attemptsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" stylesheets="@../styles/PracticeQuestion.css" text="You have X attempts remaining.">
+                              <Label fx:id="attemptsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="You have X attempts remaining.">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
-                                 <styleClass>
-                                    <String fx:value="boldFont" />
-                                    <String fx:value="attempts" />
-                                 </styleClass>
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -98,7 +95,7 @@
                      <center>
                         <VBox alignment="CENTER">
                            <children>
-                              <Label fx:id="prefixPlaceholder" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="normalFont" stylesheets="@../styles/PracticeQuestion.css" text="Prefix Placeholder">
+                              <Label fx:id="prefixPlaceholder" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -106,7 +103,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="answerTextField" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
+                              <TextField fx:id="answerTextField" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here..." styleClass="regular" stylesheets="@../styles/Fonts.css">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -116,25 +113,39 @@
                               </TextField>
                               <HBox>
                                  <children>
-                                    <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" stylesheets="@../styles/PracticeQuestion.css" text="Don't Know">
+                                    <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" text="Don't Know">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
-                                       <styleClass>
-                                          <String fx:value="commonButton" />
-                                          <String fx:value="dontKnowButton" />
-                                       </styleClass>
                                        <HBox.margin>
                                           <Insets right="5.0" />
                                        </HBox.margin>
+                                       <stylesheets>
+                                          <URL value="@../styles/Buttons.css" />
+                                          <URL value="@../styles/Fonts.css" />
+                                       </stylesheets>
+                                       <styleClass>
+                                          <String fx:value="red" />
+                                          <String fx:value="medium" />
+                                          <String fx:value="small-font" />
+                                       </styleClass>
                                     </Button>
-                                    <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" styleClass="commonButton" stylesheets="@../styles/PracticeQuestion.css" text="Submit">
+                                    <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" text="Submit">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
+                                       <stylesheets>
+                                          <URL value="@../styles/Buttons.css" />
+                                          <URL value="@../styles/Fonts.css" />
+                                       </stylesheets>
+                                       <styleClass>
+                                          <String fx:value="small-font" />
+                                          <String fx:value="secondary" />
+                                          <String fx:value="medium" />
+                                       </styleClass>
                                     </Button>
                                  </children>
                               </HBox>
@@ -156,7 +167,7 @@
             <Insets bottom="25.0" left="20.0" right="20.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="backButton" minHeight="60.0" mnemonicParsing="false" onAction="#handleBackButton" prefWidth="320.0" stylesheets="@../styles/PracticeQuestion.css" text="Back To Categories">
+            <Button fx:id="backButton" minHeight="60.0" mnemonicParsing="false" onAction="#handleBackButton" prefWidth="320.0" text="Back To Categories">
                <font>
                   <Font size="14.0" />
                </font>
@@ -164,11 +175,16 @@
                   <Insets right="5.0" />
                </HBox.margin>
                <styleClass>
-                  <String fx:value="commonButton" />
-                  <String fx:value="secondaryButtons" />
+                  <String fx:value="secondary" />
+                  <String fx:value="medium-font" />
+                  <String fx:value="medium" />
                </styleClass>
+               <stylesheets>
+                  <URL value="@../styles/Buttons.css" />
+                  <URL value="@../styles/Fonts.css" />
+               </stylesheets>
             </Button>
-            <Button fx:id="respeakButton" graphicTextGap="15.0" minHeight="60.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="320.0" stylesheets="@../styles/PracticeQuestion.css" text="Respeak Clue">
+            <Button fx:id="respeakButton" graphicTextGap="15.0" minHeight="60.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="320.0" text="Respeak Clue">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
@@ -182,9 +198,14 @@
                      </image>
                   </ImageView>
                </graphic>
+               <stylesheets>
+                  <URL value="@../styles/Buttons.css" />
+                  <URL value="@../styles/Fonts.css" />
+               </stylesheets>
                <styleClass>
-                  <String fx:value="commonButton" />
-                  <String fx:value="secondaryButtons" />
+                  <String fx:value="secondary" />
+                  <String fx:value="medium" />
+                  <String fx:value="medium-font" />
                </styleClass>
             </Button>
          </children>
