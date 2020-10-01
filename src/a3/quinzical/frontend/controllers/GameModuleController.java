@@ -2,9 +2,9 @@ package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.models.Category;
-import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
@@ -91,6 +91,8 @@ public class GameModuleController implements Initializable {
             title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
             clueGrid.add(title, category, 0);
 
+            boolean active = true;
+
             // Process of populating each category with the remaining clues.
             List<Clue> clues = categoryObject.remainingClue();
             for (int clue = 1; clue < clues.size() + 1; clue++) {
@@ -100,6 +102,11 @@ public class GameModuleController implements Initializable {
                 clueButton.getStyleClass().add("clue");
                 clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
 
+                if (!active) {
+                    clueButton.setDisable(true);
+                }
+
+                active = false;
                 clueButton.setOnAction(event -> {
                     _db.setCurrentClue(clueObject);
                     categoryObject.nextQuestion();

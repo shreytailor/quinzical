@@ -1,8 +1,8 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.models.Clue;
-import a3.quinzical.frontend.switcher.ScreenType;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.backend.database.PracticeDatabase;
 
 // Java dependencies.

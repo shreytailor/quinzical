@@ -2,9 +2,9 @@ package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
 import a3.quinzical.backend.models.Clue;
-import a3.quinzical.frontend.switcher.ScreenType;
+import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
@@ -89,9 +89,17 @@ public class GameClueController implements Initializable {
     @FXML
     private void handleBackButton() {
         _speaker.kill();
+        ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
         try {
-            ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
+            if (GameDatabase.getInstance().getRemainingClues() > 0) {
+                _switcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
+                _switcher.setScreen(ScreenType.GAME_MODULE);
+                _switcher.setTitle("Game Module");
+            } else {
+                _switcher.addScreen(ScreenType.GAME_FINISHED, FXMLLoader.load(getClass().getResource("./../fxml/GameFinished.fxml")));
+                _switcher.setScreen(ScreenType.GAME_FINISHED);
+            }
         } catch (IOException error) {  };
 
         ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
@@ -117,7 +125,7 @@ public class GameClueController implements Initializable {
         // Speaking and displaying the message to the user.
         String message;
         if (isCorrect) {
-            _db.updateWinning(100);
+            _db.updateWinning(_clue.getPrize());
             message = "Yay, your answer was correct!";
         } else {
             message = "Oh no! The correct answer was " + _clue.getAnswer();

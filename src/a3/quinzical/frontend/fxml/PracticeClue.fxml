@@ -33,10 +33,13 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="questionBackground" stylesheets="@../styles/PracticeQuestion.css">
                      <center>
-                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="633.0" prefWidth="570.0" styleClass="question" stylesheets="@../styles/PracticeQuestion.css" text="Placeholder Clue" textAlignment="CENTER" textFill="#362d13" wrapText="true" BorderPane.alignment="CENTER">
+                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="question" stylesheets="@../styles/PracticeQuestion.css" text="Placeholder Clue" textAlignment="CENTER" textFill="#362d13" wrapText="true">
                            <font>
                               <Font size="25.0" />
                            </font>
+                           <BorderPane.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </BorderPane.margin>
                         </Label>
                      </center>
                   </BorderPane>
@@ -67,21 +70,37 @@
                         </HBox>
                      </top>
                      <bottom>
-                        <Label fx:id="attemptsLabel" text="You have X attempts remaining." BorderPane.alignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <BorderPane.margin>
-                              <Insets />
-                           </BorderPane.margin>
-                        </Label>
+                        <VBox>
+                           <children>
+                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="hint" stylesheets="@../styles/PracticeQuestion.css" text="Hint Placeholder" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="attemptsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" stylesheets="@../styles/PracticeQuestion.css" text="You have X attempts remaining.">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="boldFont" />
+                                    <String fx:value="attempts" />
+                                 </styleClass>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
                      </bottom>
                      <center>
                         <VBox alignment="CENTER">
                            <children>
                               <Label fx:id="prefixPlaceholder" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="normalFont" stylesheets="@../styles/PracticeQuestion.css" text="Prefix Placeholder">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" />
+                                    <Insets bottom="15.0" />
                                  </VBox.margin>
                                  <font>
                                     <Font size="20.0" />
@@ -95,23 +114,30 @@
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" stylesheets="@../styles/PracticeQuestion.css" text="Don't Know">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="commonButton" />
-                                    <String fx:value="dontKnowButton" />
-                                 </styleClass>
-                              </Button>
-                              <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" styleClass="commonButton" stylesheets="@../styles/PracticeQuestion.css" text="Submit">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Button>
+                              <HBox>
+                                 <children>
+                                    <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" stylesheets="@../styles/PracticeQuestion.css" text="Don't Know">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="commonButton" />
+                                          <String fx:value="dontKnowButton" />
+                                       </styleClass>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" styleClass="commonButton" stylesheets="@../styles/PracticeQuestion.css" text="Submit">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
                            </children>
                            <BorderPane.margin>
                               <Insets left="60.0" right="60.0" />

@@ -1,56 +1,40 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.frontend.switcher.ScreenType;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
-import java.net.URL;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.Screen;
 import javafx.stage.Modality;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
-
 
 /**
  * This class is the controller class for the MainMenu screen.
  * @author Shrey Tailor, Jason Wang
  */
-public class MainMenuController implements Initializable {
+public class MainMenuController {
 
-    @FXML
-    Label title;
-    @FXML
-    Button practiceModuleButton;
-    @FXML
-    Button gameModuleButton;
-    @FXML
-    Button exitButton;
-    @FXML
-    Button settingsButton;
+    @FXML Button practiceModuleButton;
+    @FXML Button gameModuleButton;
+    @FXML Button exitButton;
+    @FXML Button settingsButton;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Speaker.init();
-    }
-
+    private Speaker _speaker = Speaker.init();
 
     /**
-     * This method is the handler which is used when any key is pressed on the Main Menu screen.
-     * We are using shortcuts to navigate through the game.
-     * @param event
+     * This handler is used to respond to the shortcuts of the screen.
+     * @param event the key event.
      */
     @FXML
     private void handleKeyPressed(KeyEvent event) {
@@ -70,28 +54,41 @@ public class MainMenuController implements Initializable {
         }
     }
 
-
     /**
-     * This method is the handler for the Practice Module button.
+     * This is the handler for clicking on the "Practice" button.
      */
     @FXML
     private void handlePracticeModuleButton() {
-        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
-        screenSwitcher.setScreen(ScreenType.PRACTICE_MODULE);
-        screenSwitcher.setTitle("Practice Module");
+        ScreenSwitcher switcher = ScreenSwitcher.getInstance();
+        switcher.setScreen(ScreenType.PRACTICE_MODULE);
+        switcher.setTitle("Practice Module");
     }
 
-
+    /**
+     * This is the handler for clicking on the "Game" button.
+     */
     @FXML
     private void handleGameModuleButton() {
-        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
-        screenSwitcher.setScreen(ScreenType.GAME_MODULE);
-        screenSwitcher.setTitle("Game Module");
+        ScreenSwitcher switcher = ScreenSwitcher.getInstance();
+
+        try {
+            // If there are questions remaining, go to the Game Module, else go to the other screen.
+            if (GameDatabase.getInstance().getRemainingClues() > 0) {
+                switcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
+                switcher.setScreen(ScreenType.GAME_MODULE);
+                switcher.setTitle("Game Module");
+            } else {
+                switcher.addScreen(ScreenType.GAME_FINISHED, FXMLLoader.load(getClass().getResource("./../fxml/GameFinished.fxml")));
+                switcher.setScreen(ScreenType.GAME_FINISHED);
+            }
+        } catch (IOException error) {
+            // No exceptions will be thrown here for sure.
+        };
     }
 
 
     /**
-     * This method is the handler which is used when an action is performed on the exit button.
+     * This is the handler for when the "Exit" button is clicked.
      */
     @FXML
     private void handleExitButton() {
@@ -100,8 +97,7 @@ public class MainMenuController implements Initializable {
 
 
     /**
-     * This is the handler for when the settings button is clicked. It opens the new stage, and also
-     * makes sure to disable the parent window so nothing can be clicked.
+     * This is the handler for when the "Settings" button is clicked. We show a new window.
      */
     @FXML
     private void handleSettingsButton() {
@@ -128,7 +124,7 @@ public class MainMenuController implements Initializable {
         settingsStage.initOwner(ScreenSwitcher.getInstance().getStage().getScene().getWindow());
 
         settingsStage.setOnCloseRequest(event -> {
-            Speaker.init().kill();
+            _speaker.kill();
         });
         settingsStage.show();
     }

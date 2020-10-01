@@ -61,3 +61,13 @@ This is styling for the "Don't Know" button.
 .dontKnowButton:hover {
     -fx-background-color: #FFADAD;
 }
+
+.hint {
+    -fx-font-size: 20px;
+    -fx-text-fill: #b83e3e;
+    -fx-font-family: Poppins;
+}
+
+.attempts {
+    -fx-text-fill: black;
+}

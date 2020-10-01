@@ -1,4 +1,4 @@
-package a3.quinzical.frontend.switcher;
+package a3.quinzical.frontend.helper;
 
 // Java dependencies.
 import java.io.IOException;

@@ -3,8 +3,8 @@ package a3.quinzical;
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.Speaker;
 import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.frontend.switcher.ScreenType;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // JavaFX dependencies.
 import javafx.stage.Stage;
@@ -15,7 +15,6 @@ import javafx.application.Application;
 
 
 public class Main extends Application {
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,5 +35,4 @@ public class Main extends Application {
         screenSwitcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./frontend/fxml/GameModule.fxml")));
         stage.show();
     }
-
 }

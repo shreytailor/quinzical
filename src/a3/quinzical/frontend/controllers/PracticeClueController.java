@@ -2,8 +2,8 @@ package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
 import a3.quinzical.backend.models.Clue;
-import a3.quinzical.frontend.switcher.ScreenType;
-import a3.quinzical.frontend.switcher.ScreenSwitcher;
+import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.backend.database.PracticeDatabase;
 
 // Java dependencies.
@@ -40,6 +40,8 @@ public class PracticeClueController implements Initializable {
     @FXML
     Button submitButton;
     @FXML
+    Label hintPlaceholder;
+    @FXML
     Label attemptsLabel;
     @FXML
     Button backButton;
@@ -51,7 +53,9 @@ public class PracticeClueController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clueLabel.setText(_clue.getQuestion());
         categoryLabel.setText(_clue.getCategory().getName());
-        prefixPlaceholder.setText(_clue.getPrefix());
+        prefixPlaceholder.setText(_clue.getPrefix() + "...");
+        hintPlaceholder.setText("Hint: the first character of the answer is '" + _clue.getAnswersList().get(0).charAt(0) + "'.");
+        hintPlaceholder.setVisible(false);
         updateAttempts();
 
         Speaker speaker = Speaker.init();
@@ -117,9 +121,10 @@ public class PracticeClueController implements Initializable {
      * This is the method which is used when the user gets the answer correct.
      */
     private void correctAnswer() {
-        Speaker.init().setSpeech("Ka pai, you got it correct!");
+        String string = "Ka pai, you got it correct!";
+        Speaker.init().setSpeech(string);
         Speaker.init().speak();
-        attemptsLabel.setText("Ka pai, you got it correct!");
+        attemptsLabel.setText(string);
     }
 
 
@@ -127,9 +132,10 @@ public class PracticeClueController implements Initializable {
      * This is the method used to display the answer to the user when all attempts are used up.
      */
     private void incorrectAnswer() {
-        Speaker.init().setSpeech("The correct answer was " + _clue.getAnswer());
+        String string = "The correct answer was " + _clue.getAnswersList().get(0);
+        Speaker.init().setSpeech(string);
         Speaker.init().speak();
-        attemptsLabel.setText("The correct answer was '" + _clue.getAnswer() + "'");
+        attemptsLabel.setText(string);
     }
 
 
@@ -138,7 +144,11 @@ public class PracticeClueController implements Initializable {
      * it incorrect.
      */
     private void updateAttempts() {
-        String text = "You have " + String.valueOf(_attemptsRemaining) + " attempts remaining.";
+        if (_attemptsRemaining == 1) {
+            hintPlaceholder.setVisible(true);
+        }
+
+        String text = "Attempts remaining: " + _attemptsRemaining;
         attemptsLabel.setText(text);
     }
 
@@ -152,6 +162,7 @@ public class PracticeClueController implements Initializable {
         respeakButton.setVisible(false);
         answerTextField.setDisable(true);
         dontKnowButton.setVisible(false);
+        hintPlaceholder.setVisible(false);
     }
 
 }

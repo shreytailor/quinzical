@@ -1,4 +1,4 @@
-package a3.quinzical.frontend.switcher;
+package a3.quinzical.frontend.helper;
 
 /**
  * This enum class was created so that we can use some type-safety throughout the application
@@ -7,5 +7,5 @@ package a3.quinzical.frontend.switcher;
  * @author Shrey Tailor, Jason Wang
  */
 public enum ScreenType {
-    MAIN_MENU,  PRACTICE_MODULE, PRACTICE_CLUE, GAME_MODULE, GAME_CLUE
+    MAIN_MENU,  PRACTICE_MODULE, PRACTICE_CLUE, GAME_MODULE, GAME_CLUE, GAME_FINISHED
 }

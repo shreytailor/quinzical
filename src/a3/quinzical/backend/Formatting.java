@@ -10,10 +10,10 @@ public class Formatting {
      * @param answer the string to be formatted
      * @return the formatted string
      */
-	public static String trimAndLower(String str) {
-		str = str.toLowerCase();
-		str = str.replaceAll("\\s+", " ").trim();
-		return str;
+	public static String trimAndLower(String answer) {
+		answer = answer.toLowerCase();
+		answer = answer.replaceAll("\\s+", " ").trim();
+		return answer;
 	}
 	
 	/**
@@ -21,10 +21,10 @@ public class Formatting {
      * @param answer the string to be formatted
      * @return the formatted string
      */
-	public static String removeTheA(String str) {
-		str = str.replace("the ", "");
-		str = str.replace("a ", "");
-		return str;
+	public static String removeTheA(String answer) {
+		answer = answer.replace("the ", "");
+		answer = answer.replace("a ", "");
+		return answer;
 	}
 	
 	/**
@@ -32,10 +32,10 @@ public class Formatting {
      * @param answer the string to be formatted
      * @return the formatted string
      */
-	public static String sanitize(String str) {
-		str = trimAndLower(str);
-		str = removeTheA(str);
-		return str;
+	public static String sanitize(String answer) {
+		answer = trimAndLower(answer);
+		answer = removeTheA(answer);
+		return answer;
 	}
 	
 	/**
