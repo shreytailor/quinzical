@@ -2,8 +2,8 @@ package a3.quinzical;
 
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // JavaFX dependencies.

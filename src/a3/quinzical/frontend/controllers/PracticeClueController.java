@@ -1,6 +1,7 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
+import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
@@ -17,40 +18,31 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-
 /**
  * This class is the controller class for the Practice Question screen.
  * @author Shrey Tailor, Jason Wang
  */
 public class PracticeClueController implements Initializable {
 
+    @FXML Label clueLabel;
+    @FXML Label categoryLabel;
+    @FXML Label prefixPlaceholder;
+    @FXML TextField answerTextField;
+    @FXML Button dontKnowButton;
+    @FXML Button submitButton;
+    @FXML Label hintPlaceholder;
+    @FXML Label attemptsLabel;
+    @FXML Button backButton;
+    @FXML Button respeakButton;
+
     private int _attemptsRemaining = 3;
+    private Speaker _speaker = Speaker.init();
+    private ScreenSwitcher _db = ScreenSwitcher.getInstance();
     private Clue _clue = PracticeDatabase.getInstance().getSelected();
-
-    @FXML
-    Label clueLabel;
-    @FXML
-    Label categoryLabel;
-    @FXML
-    Label prefixPlaceholder;
-    @FXML
-    TextField answerTextField;
-    @FXML
-    Button dontKnowButton;
-    @FXML
-    Button submitButton;
-    @FXML
-    Label hintPlaceholder;
-    @FXML
-    Label attemptsLabel;
-    @FXML
-    Button backButton;
-    @FXML
-    Button respeakButton;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Displaying the information about the current question.
         clueLabel.setText(_clue.getQuestion());
         categoryLabel.setText(_clue.getCategory().getName());
         prefixPlaceholder.setText(_clue.getPrefix() + "...");
@@ -58,11 +50,10 @@ public class PracticeClueController implements Initializable {
         hintPlaceholder.setVisible(false);
         updateAttempts();
 
-        Speaker speaker = Speaker.init();
-        speaker.setSpeech(_clue.getQuestion());
-        speaker.speak();
+        // Speaking the question to the user.
+        _speaker.setSpeech(_clue.getQuestion());
+        _speaker.speak();
     };
-
 
     /**
      * This method is the listener for when the user presses "Don't Know" button.
@@ -73,19 +64,19 @@ public class PracticeClueController implements Initializable {
         incorrectAnswer();
     }
 
-
     /**
      * This is the listener for when the user presses the "Submit" button.
      */
     @FXML
     private void handleSubmitButton() {
-        boolean isCorrect = _clue.checkAnswer(answerTextField.getText().trim());
+        boolean isCorrect = _clue.checkAnswer(answerTextField.getText());
         if (isCorrect) {
             stopInput();
             correctAnswer();
             return;
         }
 
+        // If incorrect, then reduce remaining attempts.
         _attemptsRemaining--;
         if (_attemptsRemaining < 1) {
             stopInput();
@@ -96,54 +87,49 @@ public class PracticeClueController implements Initializable {
         }
     }
 
-
     /**
      * This is the listener for when the user presses the "Back To Categories" button.
      */
     @FXML
     private void handleBackButton () {
-        Speaker.init().kill();
-        ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_MODULE);
+        _speaker.kill();
+        _db.setScreen(ScreenType.PRACTICE_MODULE);
     }
-
 
     /**
      * This is the listener for when the user presses the "Respeak Clue" button.
      */
     @FXML
     private void handleRespeakButton() {
-        Speaker.init().setSpeech(_clue.getQuestion());
-        Speaker.init().speak();
+        _speaker.setSpeech(_clue.getQuestion());
+        _speaker.speak();
     }
 
-
     /**
-     * This is the method which is used when the user gets the answer correct.
+     * This is a private method used to tell the user that they were correct.
      */
     private void correctAnswer() {
         String string = "Ka pai, you got it correct!";
-        Speaker.init().setSpeech(string);
-        Speaker.init().speak();
+        _speaker.setSpeech(string);
+        _speaker.speak();
         attemptsLabel.setText(string);
     }
 
-
     /**
-     * This is the method used to display the answer to the user when all attempts are used up.
+     * This is a private method used to display the correct answer to the user.
      */
     private void incorrectAnswer() {
         String string = "The correct answer was " + _clue.getAnswersList().get(0);
-        Speaker.init().setSpeech(string);
-        Speaker.init().speak();
+        _speaker.setSpeech(string);
+        _speaker.speak();
         attemptsLabel.setText(string);
     }
 
-
     /**
-     * This is a method used to update the number of attempts the user has remaining when they get
-     * it incorrect.
+     * This is a private method used to update the number of attempts remaining on incorrect attempt.
      */
     private void updateAttempts() {
+        // If there is one remaining attempt, then display the hint.
         if (_attemptsRemaining == 1) {
             hintPlaceholder.setVisible(true);
         }
@@ -152,12 +138,11 @@ public class PracticeClueController implements Initializable {
         attemptsLabel.setText(text);
     }
 
-
     /**
-     * This is a method to stop inputs to all the text fields, and make some of the buttons disabled.
+     * This is a private method to stop inputs from the user, and clearing the screen.
      */
     private void stopInput() {
-        Speaker.init().kill();
+        _speaker.kill();
         submitButton.setVisible(false);
         respeakButton.setVisible(false);
         answerTextField.setDisable(true);

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="750.0" prefWidth="1350.0" styleClass="borderPane" stylesheets="@../styles/PracticeModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="borderPane" stylesheets="@../styles/PracticeModule.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
    <center>
       <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" styleClass="scrollPane" stylesheets="@../styles/PracticeModule.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>

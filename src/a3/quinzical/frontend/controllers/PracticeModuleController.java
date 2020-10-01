@@ -1,5 +1,6 @@
 package a3.quinzical.frontend.controllers;
 
+import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
@@ -20,7 +21,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ScrollPane;
-
+import javafx.stage.Screen;
 
 /**
  * This class is the controller class for the Practice Module screen.
@@ -28,58 +29,27 @@ import javafx.scene.control.ScrollPane;
  */
 public class PracticeModuleController implements Initializable {
 
+    @FXML BorderPane root;
+    @FXML Button backButton;
+    @FXML ScrollPane scrollPane;
+
     private GridPane _gridPane;
-
-    @FXML
-    BorderPane root;
-    @FXML
-    Button backButton;
-    @FXML
-    ScrollPane scrollPane;
-
+    private PracticeDatabase _db = PracticeDatabase.getInstance();
+    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupGrid();
     }
 
-
     /**
-     * This method is the listener for when a key is pressed. It is used to add shortcuts.
-     * @param event the key event from which we can extract the key pressed.
-     */
-    @FXML
-    private void onKeyPressed(KeyEvent event) {
-        switch (event.getCode()) {
-            case B:
-                backButton.fire();
-                break;
-        }
-    }
-
-
-    /**
-     * This method is the listener for the Back to Menu button.
+     * This handler is for the "Back to Menu" button.
      */
     @FXML
     private void handleBackButton() {
-        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
-        screenSwitcher.setTitle("Main Menu");
-        screenSwitcher.setScreen(ScreenType.MAIN_MENU);
+        _switcher.setTitle("Main Menu");
+        _switcher.setScreen(ScreenType.MAIN_MENU);
     }
-
-    private void handleCategoryButton(int categoryNumber) {
-        PracticeDatabase db = PracticeDatabase.getInstance();
-        Clue random = db.getCategory(categoryNumber).getRandom();
-        PracticeDatabase.getInstance().select(random);
-
-        try {
-            ScreenSwitcher.getInstance().addScreen(ScreenType.PRACTICE_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/PracticeClue.fxml")));
-        } catch (IOException error) {  };
-
-        ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
-    }
-
 
     /**
      * This is a private method which is used by the initialize() method in this class, in order to
@@ -88,10 +58,7 @@ public class PracticeModuleController implements Initializable {
      */
     private void setupGrid() {
         _gridPane = new GridPane();
-
-        // Find the number of categories in the database.
-        PracticeDatabase database = PracticeDatabase.getInstance();
-        int categories = database.getCateSize();
+        int categories = _db.getCateSize();
 
         // Determine the rows and columns of the GridPane.
         int ROWS = 5;
@@ -108,7 +75,7 @@ public class PracticeModuleController implements Initializable {
                 }
 
                 // Getting the information of the current category and creating its button.
-                String category = database.getCategory(tracker).getName();
+                String category = _db.getCategory(tracker).getName();
                 Button button = new Button(category);
                 button.getStyleClass().add("categoryButton");
                 button.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/PracticeModule.css").toExternalForm());
@@ -129,6 +96,22 @@ public class PracticeModuleController implements Initializable {
         // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
         scrollPane.setContent(_gridPane);
         _gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(_gridPane.widthProperty()).divide(2));
+    }
+
+    /**
+     * This is a private method, and a handler for when the one of the categories is selected.
+     * @param categoryNumber
+     */
+    private void handleCategoryButton(int categoryNumber) {
+        PracticeDatabase db = PracticeDatabase.getInstance();
+        Clue random = db.getCategory(categoryNumber).getRandom();
+        PracticeDatabase.getInstance().select(random);
+
+        try {
+            ScreenSwitcher.getInstance().addScreen(ScreenType.PRACTICE_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/PracticeClue.fxml")));
+        } catch (IOException error) {  };
+
+        ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
     }
 
 }
