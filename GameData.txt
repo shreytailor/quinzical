@@ -1,37 +1,37 @@
 0
 
-Flora
-This is known as the New Zealand Christmas tree|What is|pōhtukawa|100
-This is the plant that the Māori weaved into baskets|What is|harakeke/flax|200
-This is the largest native tree in New Zealand|What is|kauri|300
-New Zealand has 200 of this species, and one species is our national symbol|What is|fern|400
-The honey from this plant is known for its medicinal benefits|What is|mānuka|500
+Fauna
+This large flightless nocturnal parrot is one of New Zealand's most endangered birds|What is|Kākāpō|100
+This is the number of Kiwi species|What is|5/five|200
+This is the animal that is the greatest threat to Kiwi|What is|stoat|300
+This is the common name for the New Zealand owl|What is|Morepork/Ruru|400
+This is New Zealand's mountain Parrot|What is|Kea|500
 
 Symbols
-This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|kiwi|100
-This plant is the national symbol of New Zealand|What is|silver fern|200
-This is the number of stars on the New Zealand flag|What is|4/four|300
-These are the birds that New Zealanders are named after|who are|kiwis|400
-This is what the stars on the New Zealand flag represent|What is|southern cross|500
+This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|Kiwi|100
+This is the ship on the 50 cent coin|What is|Endeavour|200
+This plant is the national symbol of New Zealand|What is|silver fern|300
+These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White|400
+These are the birds that New Zealanders are named after|who are|Kiwis|500
 
-Fauna
-This animal is known as Kiore in Māori|What is|black rat|100
-This is the number of Kiwi species|What is|5/five|200
-This is New Zealand's mountain Parrot|What is|kea|300
-This is the now extinct giant flightless bird that inhabited all of New Zealand|What is|moa|400
-This is called a living dinosaur|What is|tuatara|500
+Geography
+This is the name of the ocean New Zealand sits in|What is|Pacific|100
+This volcano emerged unexpectedly in the Hauraki gulf about 600 years ago|What is|Rangitoto|200
+This volcano in Auckland last erupted 20,000 years ago, and was the site of a major pā|What is|Māngere Mountain|300
+This is the largest active volcano in New Zealand|What is|Ruapehu|400
+This is the name of the sea between New Zealand Australia|What is|Tasman|500
 
-Famous People
-This New Zealander sung at the wedding of Prince Charles and Lady Diana|What is|kiri te kanawa|100
-This New Zealander  had a worldwide hit with the song "Royal"|Who is|lorde|200
-This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|dame whincooper|300
-This is what  Dame Kiri Te Kanawa was famous for|What is|opersinging|400
-This New Zealand was the first person to climb mount Everest|Who is|edmund hillary|500
+Oddities
+What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|100
+In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|200
+The first record wholly produced in New Zealand from composition to pressing|What is|Blue Smoke|300
+With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses|400
+This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|500
 
-History
-This is the first person to step foot on New Zealand|Who is|kupe|100
-This is the year the treaty of Waitangi was signed|What is|1840|200
-This is the name of the ship Captain Cook sailed on to New Zealand|What is|endeavour|300
-The eruption from this volcano happened in 1886 and destroyed several villages|What is|mount tarawera|400
-This city was the capital of New Zealand before it moved in Wellington|What is|auckland|500
+Places
+This is the capital of New Zealand|What is|Wellington|100
+This is the most northern tip on the North Island|What is|Cape Reinga|200
+This is the city that is the first to see the sunrise each day|What is|Gisborne|300
+This is the name of New Zealand's national museum|What is|Te Papa|400
+This is the name of the Parliament Building in Wellington|What is|Beehive|500
 

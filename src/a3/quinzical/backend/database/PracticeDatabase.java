@@ -1,14 +1,12 @@
 package a3.quinzical.backend.database;
 
 //Java API dependencies.
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import a3.quinzical.backend.Formatting;
+import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
 
@@ -70,30 +68,22 @@ public class PracticeDatabase {
 
     /**
      * This method is used to initialize the instance of PracticeDatabase object.
-     * The method reads in all categories and clues from a specified file and store them in their
-     * respective category objects and clue objects. 
+     * The method reads in all lines of categories and clues from a readFile in IO class
+     * and store them in their respective category objects and clue objects. 
      */
     private void initialize() {
-		String line;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(_quizFile));
-			Category newCate = null;
-			Clue newClue;
-			while(( line = br.readLine()) != null) {
-				if(!line.contains("|") && !line.isBlank()){
-					newCate = new Category(line);
-					_categories.add(newCate);
-				}else if(!line.isBlank()){
-					newClue = new Clue(line.split("[|]")[0].trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
-					newCate.addClue(newClue);
-				}
+    	List<String> quizContent = IO.readFile(_quizFile);
+    	Category newCate = null;
+		Clue newClue;
+    	for(String line : quizContent) {
+    		if(!line.contains("|") && !line.isBlank()){
+				newCate = new Category(line);
+				_categories.add(newCate);
+			}else if(!line.isBlank()){
+				newClue = Formatting.formatClue(line, newCate);
+				newCate.addClue(newClue);
 			}
-			br.close();		
-		}catch(FileNotFoundException e) {
-			System.out.println("Quinzical.txt not found in root directory");
-		}catch(IOException e) {
-			System.out.println("Error occured during reading Quiz file");
-		}
+    	}
     }
 
     /**
@@ -124,10 +114,17 @@ public class PracticeDatabase {
     	return _numberOfCategories;
     }
 
+    /** This is a method that is used to select a clue for easier access.
+     * @param clue the clue to be selected
+     */
     public void select(Clue clue) {
         _selected = clue;
     }
 
+    /**
+     * This is a method for getting the selected clue
+     * @return the selected clue
+     */
     public Clue getSelected() {
         return _selected;
     }

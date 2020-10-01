@@ -1,15 +1,15 @@
 package a3.quinzical.backend.database;
 
 //Java API dependencies.
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import a3.quinzical.backend.Formatting;
+import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
 
@@ -62,60 +62,55 @@ public class GameDatabase {
     
     /**
      * This method is used to initialize the instance of GameDatabase object.
-     * The method reads in a file that represents the player's data and all categories and 
-     * clues from a specified file and store them in their     * respective category objects
+     * The method uses a list returned by readFile in IO class that represents the player's data
+     * and all categories and clues and store them in their respective category objects
      * and clue objects. 
      * If the file does not exist then this method will randomly select 5 categories with 5 
      * questions from PracticeDatabase and create a file to store the player's record.
      */
     private void initialize() {
-		try {
-			if (_gameFile.exists() && _gameFile.isFile()) {
-				BufferedReader br = new BufferedReader(new FileReader(_gameFile));
-				String line;
-				Category newCate = null;
-				Clue newClue = null;
-				while(( line = br.readLine()) != null) {
-					line = line.trim();
-					if (line.matches("\\d+")) {
-						_winning = Integer.parseInt(line);
-					}else if(!line.contains("|")&& !line.isBlank()){
-						newCate = new Category(line);
-						_categories.add(newCate);
-					}else if(!line.isBlank()){
-						newClue = new Clue(line.split("[|]")[0].replace("@", "").trim(), line.split("[|]")[1].trim(), line.split("[|]")[2].trim(), newCate);
-						newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
-						newCate.addClue(newClue);
-					}
-				}
-				br.close();		
-			}
-			else {
-				Random rand = new Random();
-				Category newCate, selectedCate = null;
-				Clue newClue, selectedClue = null;
-				
-				for(int i = 0; i < _cateNum; i++) {
-					int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
-					selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
-					newCate = new Category(selectedCate.getName());
-					int price = _startPrice;
-					for(int j = 0; j < _clueNum; j++) {
-						int questIndex = rand.nextInt(selectedCate.getClueSize());
-						selectedClue = selectedCate.getClue(questIndex);
-						newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
-						newClue.setPrize(price);
-						newCate.addClue(newClue);
-						selectedCate.removeClue(questIndex);
-						price += _priceIncrement;
-					}
+    	//If the game data file already exists
+    	if (_gameFile.exists() && _gameFile.isFile()) {
+    		List<String> gameContent = IO.readFile(_gameFile);
+    		Category newCate = null;
+			Clue newClue = null;
+    		for(String line : gameContent) {
+				if (line.matches("\\d+")) {
+					_winning = Integer.parseInt(line);
+				}else if(!line.contains("|")&& !line.isBlank()){
+					newCate = new Category(line);
 					_categories.add(newCate);
-					PracticeDatabase.getInstance().removeCategory(cateIndex);
+				}else if(!line.isBlank()){
+					newClue = Formatting.formatClue(line, newCate);
+					newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
+					newCate.addClue(newClue);
 				}
-				PracticeDatabase.kill();
+    		}
+    	}
+    	//If the game data file does not exists
+    	else {
+			Random rand = new Random();
+			Category newCate, selectedCate = null;
+			Clue newClue, selectedClue = null;
+			
+			for(int i = 0; i < _cateNum; i++) {
+				int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
+				selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
+				newCate = new Category(selectedCate.getName());
+				int price = _startPrice;
+				for(int j = 0; j < _clueNum; j++) {
+					int questIndex = rand.nextInt(selectedCate.getClueSize());
+					selectedClue = selectedCate.getClue(questIndex);
+					newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
+					newClue.setPrize(price);
+					newCate.addClue(newClue);
+					selectedCate.removeClue(questIndex);
+					price += _priceIncrement;
+				}
+				_categories.add(newCate);
+				PracticeDatabase.getInstance().removeCategory(cateIndex);
 			}
-		}catch(IOException e) {
-			System.out.println("Error occurred during reading GameData file");
+			PracticeDatabase.kill();
 		}
     }
 
@@ -184,6 +179,11 @@ public class GameDatabase {
 		return _currentClue;
 	}
 	
+	/**
+	 * This is a method that will count how many questions remains in the
+	 * GameDatabase and return it.
+	 * @return number of questions left
+	 */
 	public int getRemainingClues() {
 		int count = 0;
 		for(int i = 0; i < _categories.size(); i++) {
@@ -191,5 +191,13 @@ public class GameDatabase {
 			count += category.getClueSize();
 		}
 		return count;
+	}
+	
+	/**
+	 * This is a method that will return where the GameData.txt is supposed to be saved.
+	 * @return
+	 */
+	public File getFile() {
+		return _gameFile;
 	}
 }

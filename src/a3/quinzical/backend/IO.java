@@ -1,10 +1,14 @@
 package a3.quinzical.backend;
 
+import java.io.BufferedReader;
 //Java API dependencies.
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Category;
@@ -16,10 +20,29 @@ import a3.quinzical.backend.models.Clue;
  * @author Shrey Tailor, Jason Wang *
  */
 public class IO {
-	
-	// Fields belonging to the static context.
-	private final static File _gameFile = new File(System.getProperty("user.dir")+"/GameData.txt");
 		
+	/**
+	 * This method is used to read a given file into a list of Strings
+	 * the list of strings can then be processed to different databases.
+	 * @param file the file to be read
+	 * @return a list of strings that contains the data of the file
+	 */
+	public static List<String> readFile(File file){
+		List<String> fileContent = new ArrayList<String>();
+		String line;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			while(( line = br.readLine()) != null) {
+				fileContent.add(line.trim());
+			}
+			br.close();
+		} catch (IOException e) {
+			System.out.println("Error reading file at: " + file.getPath());
+			e.printStackTrace();
+		}
+		return fileContent;
+	}
+	
 	/**
 	 * This method is used to write a given GameDatabase into file to store the
 	 * record of the game, including the winnings of the player, the categories
@@ -32,7 +55,8 @@ public class IO {
 	public static void writeGameData(GameDatabase game) throws IOException {
 		Category writeCate = null;
 		Clue writeClue = null;
-		BufferedWriter bw = new BufferedWriter(new FileWriter(_gameFile));
+		File gameFile = game.getFile();
+		BufferedWriter bw = new BufferedWriter(new FileWriter(gameFile));
 		bw.write(game.getWinning() + "\n\n");
 		for(int i = 0; i < game.getCateSize(); i++) {
 			writeCate = game.getCategory(i);
@@ -64,7 +88,6 @@ public class IO {
 		for(Clue c : GameDatabase.getInstance().getCategory(2).remainingClue()) {
 			System.out.println(c.getQuestion());
 		}
-
 	}
 	*/
 	
