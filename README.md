@@ -49,3 +49,24 @@ This repository contains all the documentation, design decisions, meeting notes 
 - A few refactoring decisions were made, which was moving some of the code from the `IO` class to their respective database classes.
 
 *(13 days to go)*
+
+**Friday, 25th September**
+- This was a progress review meeting (specially for the GUI) in order to discuss everything that is currently being implemented.
+- It was kept relatively short to discuss how we want to insert the functionlities for the Game Module (displaying the grid etc).
+- The plan until the next meeting was to get the basics of the Game Module done, includes the client-side and back-end.
+
+*(10 days to go)*
+
+**Monday, 28th September**
+- There was some confusion regarding how to traverse through the current list of Game questions to create the grid, hence we had this meeting.
+- Some of the design decisions were changed from the earlier meetings, and change the way we were storing the clues within the internal database.
+- The plan until the next meeting was to get the Game Module done using the new architecture - this meeting was important to resolve the misunderstandings.
+
+ *(7 days to go)*
+
+**Wednesday, 30th September**
+- At this point, all of the core functionlities for Quinzical were all implemented.
+- The important discussion in this meeting was based mainly on how we want to check for the answers from the users. One of the key decisions made was to ignore the "a", "the" within the answers and while providing clues to the user. This is because "a" and "the" are technically not part of the answer.
+- The plan until next meeting was to refactor the existing code into smaller coherent classes, and to fix the back-end answer checking system.
+
+*(5 days to go)*
