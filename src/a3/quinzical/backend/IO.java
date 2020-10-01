@@ -39,7 +39,7 @@ public class IO {
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);
-				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getAnswer() + "|" + writeClue.getPrize() +"\n");
+				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getFullAnswer() + "|" + writeClue.getPrize() +"\n");
 			}
 			bw.write("\n");
 		}
