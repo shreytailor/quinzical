@@ -55,9 +55,7 @@ public class IO {
 	 * the GameDatabase object into file.
 	 */
 	public static void writeGameData(GameDatabase game) throws IOException {
-		if(!_configDirectory.exists()) {
-			_configDirectory.mkdir();
-		}
+		checkDirectory();
 		Category writeCate = null;
 		Clue writeClue = null;
 		File gameFile = game.getFile();
@@ -73,6 +71,16 @@ public class IO {
 			bw.write("\n");
 		}
 		bw.close();
+	}
+	
+	/**
+	 * This method will check if the configuration folder exists, if not then 
+	 * the folder will be created.
+	 */
+	public static void checkDirectory() {
+		if(!_configDirectory.exists()) {
+			_configDirectory.mkdir();
+		}
 	}
 	
 	/*
