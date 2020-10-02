@@ -67,7 +67,7 @@ public class IO {
 			}
 			bw.write("\n");
 		}
-		bw.close()
+		bw.close();
 	}
 	
 	/*
