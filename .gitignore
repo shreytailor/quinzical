@@ -28,6 +28,9 @@ out/
 hs_err_pid*
 /bin/
 
-# eclipse files
+# Eclipse files
 *.classpath
 *.project
+
+# Local configurations
+.config/

@@ -20,6 +20,8 @@ import a3.quinzical.backend.models.Clue;
  * @author Shrey Tailor, Jason Wang *
  */
 public class IO {
+	// Fields belonging to the static context.
+	private final static File _configDirectory = new File(System.getProperty("user.dir")+"/.config/");
 		
 	/**
 	 * This method is used to read a given file into a list of Strings
@@ -53,6 +55,9 @@ public class IO {
 	 * the GameDatabase object into file.
 	 */
 	public static void writeGameData(GameDatabase game) throws IOException {
+		if(!_configDirectory.exists()) {
+			_configDirectory.mkdir();
+		}
 		Category writeCate = null;
 		Clue writeClue = null;
 		File gameFile = game.getFile();
