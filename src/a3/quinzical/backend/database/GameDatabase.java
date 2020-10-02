@@ -29,7 +29,7 @@ public class GameDatabase {
 	
 	// Fields belonging to the static context.
 	private static GameDatabase _gameDatabase;	
-	private final static File _gameFile = new File(System.getProperty("user.dir")+"/GameData.txt");
+	private final static File _gameFile = new File(System.getProperty("user.dir")+"/.config/GameData");
 	
 	// Fields belonging to the non-static context.
     private List<Category> _categories = new ArrayList<Category>();
