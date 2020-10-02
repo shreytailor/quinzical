@@ -64,12 +64,12 @@
       </HBox>
    </bottom>
    <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="25.0" left="20.0" right="20.0" top="25.0" />
          </BorderPane.margin>
          <children>
-            <Label fx:id="prefixLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
+            <Label fx:id="prefixLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
                <font>
                   <Font size="20.0" />
                </font>
@@ -129,7 +129,7 @@
       </VBox>
    </center>
    <top>
-      <VBox alignment="CENTER" style="-fx-background-radius: 15px; -fx-background-color: #ffb627;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" style="-fx-background-radius: 15px; -fx-background-color: &quot;6a994e&quot;;" BorderPane.alignment="CENTER">
          <children>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity">
               <columnConstraints>
@@ -142,12 +142,12 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Category: ">
+                        <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Category: " textFill="WHITE">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="categoryLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder">
+                        <Label fx:id="categoryLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder" textFill="WHITE">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -156,12 +156,12 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Prize: ">
+                        <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Prize: " textFill="WHITE">
                            <font>
                               <Font size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="prizeLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder">
+                        <Label fx:id="prizeLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder" textFill="WHITE">
                            <font>
                               <Font size="26.0" />
                            </font>

@@ -32,17 +32,71 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CDE6B2; -fx-background-radius: 15px;">
+                  <BorderPane>
                      <center>
-                        <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="Placeholder Clue" textAlignment="CENTER" textFill="#362d13" wrapText="true">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                           <BorderPane.margin>
-                              <Insets left="30.0" right="30.0" />
-                           </BorderPane.margin>
-                        </Label>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: &quot;6a994e&quot;; -fx-background-radius: 15px;">
+                           <center>
+                              <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="Placeholder Clue" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                                 <BorderPane.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </BorderPane.margin>
+                              </Label>
+                           </center>
+                        </BorderPane>
                      </center>
+                     <bottom>
+                        <HBox BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets top="20.0" />
+                           </BorderPane.margin>
+                           <children>
+                              <Button fx:id="backButton" minHeight="60.0" mnemonicParsing="false" onAction="#handleBackButton" prefWidth="320.0" text="Back To Categories">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <styleClass>
+                                    <String fx:value="secondary" />
+                                    <String fx:value="medium-font" />
+                                    <String fx:value="medium" />
+                                 </styleClass>
+                                 <stylesheets>
+                                    <URL value="@../styles/Buttons.css" />
+                                    <URL value="@../styles/Fonts.css" />
+                                 </stylesheets>
+                              </Button>
+                              <Button fx:id="respeakButton" graphicTextGap="15.0" minHeight="60.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="320.0" text="Respeak Clue">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resources/icons/speaker.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <stylesheets>
+                                    <URL value="@../styles/Buttons.css" />
+                                    <URL value="@../styles/Fonts.css" />
+                                 </stylesheets>
+                                 <styleClass>
+                                    <String fx:value="secondary" />
+                                    <String fx:value="medium" />
+                                    <String fx:value="medium-font" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </bottom>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <top>
@@ -90,12 +144,15 @@
                                  </VBox.margin>
                               </Label>
                            </children>
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" />
+                           </BorderPane.margin>
                         </VBox>
                      </bottom>
                      <center>
                         <VBox alignment="CENTER">
                            <children>
-                              <Label fx:id="prefixPlaceholder" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
+                              <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -161,54 +218,4 @@
          </children>
       </HBox>
    </center>
-   <bottom>
-      <HBox BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="25.0" left="20.0" right="20.0" />
-         </BorderPane.margin>
-         <children>
-            <Button fx:id="backButton" minHeight="60.0" mnemonicParsing="false" onAction="#handleBackButton" prefWidth="320.0" text="Back To Categories">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-               <styleClass>
-                  <String fx:value="secondary" />
-                  <String fx:value="medium-font" />
-                  <String fx:value="medium" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../styles/Buttons.css" />
-                  <URL value="@../styles/Fonts.css" />
-               </stylesheets>
-            </Button>
-            <Button fx:id="respeakButton" graphicTextGap="15.0" minHeight="60.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="320.0" text="Respeak Clue">
-               <HBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/icons/speaker.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <stylesheets>
-                  <URL value="@../styles/Buttons.css" />
-                  <URL value="@../styles/Fonts.css" />
-               </stylesheets>
-               <styleClass>
-                  <String fx:value="secondary" />
-                  <String fx:value="medium" />
-                  <String fx:value="medium-font" />
-               </styleClass>
-            </Button>
-         </children>
-      </HBox>
-   </bottom>
 </BorderPane>

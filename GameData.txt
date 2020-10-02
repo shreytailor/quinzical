@@ -1,35 +1,35 @@
 0
 
-Symbols
-This is the number of stars on the New Zealand flag|What is|4/four|100
-This is what the stars on the New Zealand flag represent|What is|Southern Cross|200
-These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White|300
-This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|Kiwi|400
-This plant is the national symbol of New Zealand|What is|silver fern|500
+Fauna
+This is New Zealand's mountain Parrot|What is|Kea|200
+This is the animal that is the greatest threat to Kiwi|What is|stoat|300
+This grub chews up wood, and is edible|What is|Huhu Grub|400
+This is the number of Kiwi species|What is|5/five|500
 
-Flora
-This is the plant that the Māori weaved into baskets|What is|Harakeke/flax|100
-The nectar from bright yellow flowers of this tree are an important food source for native birds|What is|Kowhai|200
-This well known fruit use to be called the Chinese Gooseberry|What is|Kiwifruit|300
-This is known as the New Zealand Christmas tree|What is|Pōhtukawa|400
-This is the largest native tree in New Zealand|What is|Kauri|500
-
-Places
-This is the name of the Parliament Building in Wellington|What is|Beehive|300
-This is the Māori name for New Zealand|What is|Aotearoa|400
-This is the largest city in New Zealand|What is|Auckland|500
+NZ Life
+The New Zealand term for swimwear|What is|togs|100
+These shoes are called flip flops or thongs in other countries|What are|jandals|200
+This is the name of the underground method of cooking used in New Zealand|What is|hangi|300
+This is the name for a traditional fenced Māori village|What is|Pā|400
+This is the Māori word for stomach|What is|Puku|500
 
 Oddities
-The first record wholly produced in New Zealand from composition to pressing|What is|Blue Smoke|100
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|200
-In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|300
-With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses|400
-This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|500
+This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|100
+In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|200
+What is the year the Government pledged New Zealand would be predator free|What is|2050|300
+This is the name of New Zealand Male Rugby Team|What is|All Blacks|400
+What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|500
+
+History
+The eruption from this volcano happened in 1886 and destroyed several villages|What is|Mount Tarawera|200
+On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|300
+This is the year women first got to vote in New Zealand|What is|1893|400
+This city was the capital of New Zealand before it moved in Wellington|What is|Auckland|500
 
 Geography
-This volcano emerged unexpectedly in the Hauraki gulf about 600 years ago|What is|Rangitoto|100
-This is the highest mountain in New Zealand|What is|Mt Aorangi/Mt Aoraki/Mt Cook|200
-This is the name of the sea between the North and the South Island|What is|Cook Strait|300
-This is the name of the ocean New Zealand sits in|What is|Pacific|400
-This is the name of the long chain of mountains that make up the backbone of the South Island|What is|Southern Alps|500
+This is the third largest island of New Zealand|What is|Stewart Island/Rakiura|100
+This is the name of the ocean New Zealand sits in|What is|Pacific|200
+This is the highest mountain in New Zealand|What is|Mt Aorangi/Mt Aoraki/Mt Cook|300
+This volcano in Auckland last erupted 20,000 years ago, and was the site of a major pā|What is|Māngere Mountain|400
+This is the Longest river in New Zealand|What is|Waikato|500
 

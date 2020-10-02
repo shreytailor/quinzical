@@ -12,27 +12,27 @@
 
 .primary {
     -fx-text-fill: white;
-    -fx-background-color: #68BBE9;
+    -fx-background-color: #197DB3;
 }
 
 .primary:hover {
-    -fx-background-color: #4CB0E6;
+    -fx-background-color: #1770A1;
 }
 
 .secondary {
-    -fx-text-fill: #585858;
-    -fx-background-color: #DADADA;
+    -fx-text-fill: #333333;
+    -fx-background-color: #C2C2C2;
 }
 
 .secondary:hover {
-    -fx-background-color: #CCCCCC;
+    -fx-background-color: #B8B8B8;
 }
 
 .red {
-    -fx-text-fill: #b83e3e;
-    -fx-background-color: #ffc7c7;
+    -fx-text-fill: white;
+    -fx-background-color: #A02C2C;
 }
 
 .red:hover {
-    -fx-background-color: #FFADAD;
+    -fx-background-color: #902727;
 }

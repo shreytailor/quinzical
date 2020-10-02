@@ -15,10 +15,10 @@
     -fx-max-width: 180px;
     -fx-text-fill: white;
     -fx-max-height: 110px;
-    -fx-background-color: #ffb627;
+    -fx-background-color: #51824A;
     -fx-font-family: "Poppins Medium";
 }
 
 .clue:hover {
-    -fx-background-color: #FFAD0A;
+    -fx-background-color: #497543;
 }
