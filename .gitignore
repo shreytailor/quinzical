@@ -1,3 +1,6 @@
+# exceptions for .jar export
+*/META-INF/
+
 # custom exceptions for IntelliJ setup
 out/
 *.iml
@@ -16,7 +19,6 @@ out/
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
