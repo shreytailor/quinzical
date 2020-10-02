@@ -93,7 +93,7 @@ public class PracticeClueController implements Initializable {
     @FXML
     private void handleBackButton () {
         _speaker.kill();
-        _switcher.switchTo(ScreenType.PRACTICE_MODULE, "PracticeModule.fxml");
+        _switcher.switchTo(ScreenType.PRACTICE_MODULE);
     }
 
     /**

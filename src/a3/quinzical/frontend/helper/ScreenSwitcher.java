@@ -2,7 +2,6 @@ package a3.quinzical.frontend.helper;
 
 // Java dependencies.
 import java.io.IOException;
-import java.util.HashMap;
 
 // JavaFX dependencies.
 import javafx.scene.Scene;
@@ -25,7 +24,6 @@ public class ScreenSwitcher {
     // Non-static (object) context fields.
     private Stage _mainStage;
     private Scene _mainScene;
-    private HashMap<ScreenType, Pane> _screenMap = new HashMap<>();
 
     /**
      * This is the private constructor of our Singleton object.
@@ -35,14 +33,12 @@ public class ScreenSwitcher {
         _mainStage = stage;
         ScreenType mainMenu = ScreenType.MAIN_MENU;
 
-        // Adding the Main Menu as one of the panes, and then setting that as the splash.
         try {
-            addScreen(mainMenu, FXMLLoader.load(mainMenu.getUrl()));
+            Pane pane = FXMLLoader.load(mainMenu.getUrl());
+            _mainScene = new Scene(pane, 1350, 750);
+            _mainStage.setScene(_mainScene);
             setTitle("Main Menu");
         } catch (IOException error) {  };
-
-        _mainScene = new Scene(_screenMap.get(ScreenType.MAIN_MENU), 1350, 750);
-        _mainStage.setScene(_mainScene);
     }
 
     /**
@@ -77,34 +73,24 @@ public class ScreenSwitcher {
     }
 
     /**
-     * This method is used to add a screen (pane) to the available screens, which are stored as a
-     * map in one of the non-static fields.
-     * @param screenTypeName the name of the screen.
-     * @param pane the FXML pane which is stored within one of the packages.
-     */
-    private void addScreen(ScreenType screenTypeName, Pane pane) {
-        _screenMap.remove(screenTypeName);
-        _screenMap.put(screenTypeName, pane);
-    }
-
-    /**
      * This method is used to set one of the previously added screens to the game's stage.
      * @param screenTypeName the name of the screen by which you saved it before.
      */
     private void setScreen(ScreenType screenTypeName) {
-        _mainScene.setRoot(_screenMap.get(screenTypeName));
+        try {
+            Pane pane = FXMLLoader.load(screenTypeName.getUrl());
+            _mainScene.setRoot(pane);
+        } catch (IOException error) {
+            System.out.println("There was a problem in the FXML file.");
+        }
     }
 
     /**
      * This is the client method for the front-end which enables the user to easily switch
      * to a new screen.
      * @param screenType the type of screen.
-     * @param fxmlName the path to the .fxml file.
      */
-    public void switchTo(ScreenType screenType, String fxmlName) {
-        try {
-            addScreen(screenType, FXMLLoader.load(screenType.getUrl()));
-        } catch (IOException error) {  };
+    public void switchTo(ScreenType screenType) {
         setScreen(screenType);
     }
 

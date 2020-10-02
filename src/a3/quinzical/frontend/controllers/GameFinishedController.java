@@ -36,7 +36,7 @@ public class GameFinishedController implements Initializable {
      */
     @FXML
     public void handleBackButton() {
-        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
+        _switcher.switchTo(ScreenType.MAIN_MENU);
         _switcher.setTitle("Main Menu");
     }
 
@@ -55,7 +55,7 @@ public class GameFinishedController implements Initializable {
         // If the user confirmed, then kill the current instance of the GameDatabase.
         if (resetAlert.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+            _switcher.switchTo(ScreenType.GAME_MODULE);
         }
     }
 

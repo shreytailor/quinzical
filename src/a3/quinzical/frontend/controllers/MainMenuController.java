@@ -60,7 +60,7 @@ public class MainMenuController {
     @FXML
     private void handlePracticeModuleButton() {
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
-        switcher.switchTo(ScreenType.PRACTICE_MODULE, "PracticeModule.fxml");
+        switcher.switchTo(ScreenType.PRACTICE_MODULE);
         switcher.setTitle("Practice Module");
     }
 
@@ -73,9 +73,9 @@ public class MainMenuController {
 
         // If there are questions remaining, go to the Game Module, else go to the other screen.
         if (GameDatabase.getInstance().getRemainingClues() > 0) {
-            switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+            switcher.switchTo(ScreenType.GAME_MODULE);
         } else {
-            switcher.switchTo(ScreenType.GAME_FINISHED, "GameFinished.fxml");
+            switcher.switchTo(ScreenType.GAME_FINISHED);
         }
         switcher.setTitle("Game Module");
     }

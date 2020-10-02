@@ -103,7 +103,7 @@ public class PracticeModuleController implements Initializable {
      */
     @FXML
     private void handleBackButton() {
-        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
+        _switcher.switchTo(ScreenType.MAIN_MENU);
         _switcher.setTitle("Main Menu");
     }
 
@@ -115,7 +115,7 @@ public class PracticeModuleController implements Initializable {
         PracticeDatabase db = PracticeDatabase.getInstance();
         Clue random = db.getCategory(categoryNumber).getRandom();
         PracticeDatabase.getInstance().select(random);
-        _switcher.switchTo(ScreenType.PRACTICE_CLUE, "PracticeClue.fxml");
+        _switcher.switchTo(ScreenType.PRACTICE_CLUE);
     }
 
 }

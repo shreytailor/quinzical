@@ -60,7 +60,7 @@ public class GameModuleController implements Initializable {
      */
     @FXML
     private void handleBackButton () {
-        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
+        _switcher.switchTo(ScreenType.MAIN_MENU);
         _switcher.setTitle("Main Menu");
     }
 
@@ -79,7 +79,7 @@ public class GameModuleController implements Initializable {
         // If yes, then kill the current instance of the progress.
         if (resetAlert.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+            _switcher.switchTo(ScreenType.GAME_MODULE);
         }
     }
 
@@ -121,7 +121,7 @@ public class GameModuleController implements Initializable {
                 clueButton.setOnAction(event -> {
                     _db.setCurrentClue(clueObject);
                     categoryObject.nextQuestion();
-                    _switcher.switchTo(ScreenType.GAME_CLUE, "GameClue.fxml");
+                    _switcher.switchTo(ScreenType.GAME_CLUE);
                 });
 
                 // Finally, we add the clue to the grid.

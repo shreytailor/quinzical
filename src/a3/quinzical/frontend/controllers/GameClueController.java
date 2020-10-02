@@ -89,10 +89,10 @@ public class GameClueController implements Initializable {
 
         // If there are no remaining questions, then go to the completed game screen.
         if (GameDatabase.getInstance().getRemainingClues() > 0) {
-            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+            _switcher.switchTo(ScreenType.GAME_MODULE);
             _switcher.setTitle("Game Module");
         } else {
-            _switcher.switchTo(ScreenType.GAME_FINISHED, "GameFinished.fxml");
+            _switcher.switchTo(ScreenType.GAME_FINISHED);
         }
     }
 
