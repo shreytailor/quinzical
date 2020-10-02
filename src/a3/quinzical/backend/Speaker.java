@@ -8,42 +8,30 @@ import java.text.DecimalFormat;
 import java.util.stream.Stream;
 import java.io.OutputStreamWriter;
 
-
 /**
- * This class is created to encapsulate and configure the Speaker which would be used throughout the
- * game. It is important to preserve some of the information within the class such as the current
- * speed, whether it has been changed by the user or not etc. This information is contained with the
- * fields of the class.
+ * This class is used to speak the text with Festival TTS. It also stores some of the configuration
+ * such as speed of speaking etc.
  * @author Shrey Tailor, Jason Wang
  */
 public class Speaker {
     private static Speaker _speaker;
 
     private double SPEED;
-    private double DEFAULT = 1;
-
     private Process _process;
+    private double DEFAULT = 1;
     private String _speechString;
     private boolean _isChanged = false;
     private ProcessBuilder _processBuilder;
 
-
-    // The blank constructor for the singleton object.
-    private Speaker() {}
-
-
-    /*
-    This method is used from outside the class to either initialize the singleton for the first time
-    ever, or just get the instance of the singleton already created.
+    /**
+     * Getting the Speaker instance, by using singleton pattern.
      */
     public static Speaker init() {
         if (_speaker == null) {
             _speaker = new Speaker();
         }
-
         return _speaker;
     }
-
 
     /**
      * This method is used to set the speed of the speaker from the "Settings" of the game.
@@ -60,7 +48,6 @@ public class Speaker {
         _isChanged = true;
     }
 
-
     /**
      * This method is used to speak the sentence which is currently in the configuration. It can be
      * set by using the {@link #setSpeech(String)} method. However, note that it stops the current
@@ -70,7 +57,7 @@ public class Speaker {
         kill();
 
         // Using the custom NZ male accent.
-        String accentCommand = "(voice_akl_nz_jdt_diphone)";
+        String accentCommand = "(voice_akl_nz_cw_cg_cg)";
 
         // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
         String speedCommand;
@@ -96,37 +83,20 @@ public class Speaker {
             writer.write(speedCommand);
             writer.write(speakingCommand);
             writer.close();
-        } catch (IOException error) {
-            // On our clients computer, we can assume that Festival will always be installed.
-        };
+        } catch (IOException error) {  };
     }
-
 
     /**
      * This method is used to stop the Speaker process from speaking.
      */
     public void kill() {
-        /*
-         * This commented code could be used for killing all the descendents of the main process,
-         * however it is a little haphazard to do this, because it could be unsafe for the game.
-         * Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
-         *
-         * Hence a better approach was opted for by only destroying the descendents of the known
-         * process that is current speaking.
-         */
         try {
             Stream<ProcessHandle> descendents = _process.descendants();
             descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
                 ph.destroy();
             });
-        } catch (Exception error) {
-            /*
-            We don't have to deal with the exception because its thrown when the process doesn't exist.
-            In this scenario, nothing will go wrong with the usability of the game.
-             */
-        };
+        } catch (Exception error) {  };
     }
-
 
     /**
      * This method is used to reset the speed of the Speaker.
@@ -149,7 +119,6 @@ public class Speaker {
         return DEFAULT;
     }
 
-
     /**
      * This method is used to set the speech of the Speaker.
      * @param string the speech to speak.
@@ -158,10 +127,9 @@ public class Speaker {
         _speechString = string.replace("\"", "").replace("'", "");
     }
 
-
     /**
      * This method is a getter to check whether the speed has been changed.
-     * @return
+     * @return boolean to check whether the speed has been changed previously.
      */
     public boolean isChanged() {
         return _isChanged;

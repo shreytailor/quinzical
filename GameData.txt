@@ -1,37 +1,36 @@
 0
 
+Symbols
+This is the number of stars on the New Zealand flag|What is|4/four|100
+This is what the stars on the New Zealand flag represent|What is|Southern Cross|200
+These are the colours on the New Zealand Flag in alphabetical order|What are|Blue, Red, White|300
+This is the flightless bird that features in the Royal New Zealand Airforce logo|What is|Kiwi|400
+This plant is the national symbol of New Zealand|What is|silver fern|500
+
 Flora
-This is the largest native tree in New Zealand|What is|Kauri|100
-This introduced alga is a threat to New Zealand rivers and is known as rock snot|What is|Didymo|200
+This is the plant that the Māori weaved into baskets|What is|Harakeke/flax|100
+The nectar from bright yellow flowers of this tree are an important food source for native birds|What is|Kowhai|200
 This well known fruit use to be called the Chinese Gooseberry|What is|Kiwifruit|300
 This is known as the New Zealand Christmas tree|What is|Pōhtukawa|400
-The honey from this plant is known for its medicinal benefits|What is|Mānuka|500
+This is the largest native tree in New Zealand|What is|Kauri|500
 
 Places
-This is the name of the Parliament Building in Wellington|What is|Beehive|100
-This is the Māori name for New Zealand|What is|Aotearoa|200
-This is the most southern port in the South Island|What is|Bluff|300
-This is the largest city in New Zealand|What is|Auckland|400
-This is the city that is the first to see the sunrise each day|What is|Gisborne|500
-
-Famous People
-This New Zealander was the first person to split the atom|Who is|Ernest Rutherford|100
-This is what  Dame Kiri Te Kanawa was famous for|What is|Opera Singing|200
-The New Zealander directed "The Lord of the Rings" and "The Hobbit"|Who is|Peter Jackson|300
-This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|Dame Whina Cooper|400
-This New Zealander  had a worldwide hit with the song "Royal"|Who is|Lorde|500
-
-History
-This is the year the treaty of Waitangi was signed|What is|1840|100
-On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|200
-This is the first person to step foot on New Zealand|Who is|Kupe|300
-This is the first country in the world to give women the vote|What is|New Zealand|400
-This is the name of the ship Captain Cook sailed on to New Zealand|What is|Endeavour|500
+This is the most northern tip on the North Island|What is|Cape Reinga|200
+This is the name of the Parliament Building in Wellington|What is|Beehive|300
+This is the Māori name for New Zealand|What is|Aotearoa|400
+This is the largest city in New Zealand|What is|Auckland|500
 
 Oddities
-With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses|100
-In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|200
-What is the year the Government pledged New Zealand would be predator free|What is|2050|300
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|400
+The first record wholly produced in New Zealand from composition to pressing|What is|Blue Smoke|100
+What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|200
+In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|300
+With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses|400
 This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|500
+
+Geography
+This volcano emerged unexpectedly in the Hauraki gulf about 600 years ago|What is|Rangitoto|100
+This is the highest mountain in New Zealand|What is|Mt Aorangi/Mt Aoraki/Mt Cook|200
+This is the name of the sea between the North and the South Island|What is|Cook Strait|300
+This is the name of the ocean New Zealand sits in|What is|Pacific|400
+This is the name of the long chain of mountains that make up the backbone of the South Island|What is|Southern Alps|500
 
