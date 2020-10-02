@@ -134,7 +134,7 @@ public class PracticeClueController implements Initializable {
      * This is a private method used to display the correct answer to the user.
      */
     private void incorrectAnswer() {
-        String string = "The correct answer was " + _clue.getAnswersList().get(0);
+        String string = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
         _speaker.setSpeech(string);
         _speaker.speak();
         attemptsLabel.setText(string);

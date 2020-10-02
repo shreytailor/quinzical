@@ -141,7 +141,7 @@ public class GameClueController implements Initializable {
             _db.updateWinning(_clue.getPrize());
             message = "Ka pai, your answer was correct!";
         } else {
-            message = "Oh no! The correct answer was " + _clue.getAnswer();
+            message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
         }
 
         _speaker.setSpeech(message);
