@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ButtonType;
 
@@ -29,6 +30,7 @@ public class GameModuleController implements Initializable {
 
     @FXML GridPane clueGrid;
     @FXML Label winningsLabel;
+    @FXML Button resetButton;
     @FXML Button backButton;
 
     private GameDatabase  _db = GameDatabase.getInstance();
@@ -36,6 +38,22 @@ public class GameModuleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupScreen();
+    }
+
+    /**
+     * This is for setting the shortcuts of the current screen.
+     * @param event the key press event.
+     */
+    @FXML
+    private void onKeyPressed (KeyEvent event) {
+        switch (event.getCode()) {
+            case B:
+                backButton.fire();
+                break;
+            case R:
+                resetButton.fire();
+                break;
+        }
     }
 
     /**

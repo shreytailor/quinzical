@@ -57,7 +57,7 @@ public class Speaker {
         kill();
 
         // Using the custom NZ male accent.
-        String accentCommand = "(voice_akl_nz_cw_cg_cg)";
+        String accentCommand = "(voice_akl_nz_jdt_diphone)";
 
         // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
         String speedCommand;

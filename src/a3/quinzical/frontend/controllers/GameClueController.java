@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * This class is the controller class for the Game Question screen.
@@ -102,6 +103,19 @@ public class GameClueController implements Initializable {
     }
 
     /**
+     * This is the handler for when the "Enter" button is clicked on text box.
+     * @param event the key press event.
+     */
+    @FXML
+    private void submitOnEnter(KeyEvent event) {
+        switch (event.getCode()) {
+            case ENTER:
+                submitButton.fire();
+                break;
+        }
+    }
+
+    /**
      * This private method is used for doing certain things, after the user has finished answering.
      * @param isChecking
      */
@@ -125,7 +139,7 @@ public class GameClueController implements Initializable {
         String message;
         if (isCorrect) {
             _db.updateWinning(_clue.getPrize());
-            message = "Yay, your answer was correct!";
+            message = "Ka pai, your answer was correct!";
         } else {
             message = "Oh no! The correct answer was " + _clue.getAnswer();
         }

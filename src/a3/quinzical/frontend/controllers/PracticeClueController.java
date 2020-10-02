@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 /**
  * This class is the controller class for the Practice Question screen.
@@ -103,6 +104,20 @@ public class PracticeClueController implements Initializable {
     private void handleRespeakButton() {
         _speaker.setSpeech(_clue.getQuestion());
         _speaker.speak();
+    }
+
+
+    /**
+     * This is the handler for when the "Enter" button is clicked on text box.
+     * @param event the key press event.
+     */
+    @FXML
+    private void submitOnEnter(KeyEvent event) {
+        switch (event.getCode()) {
+            case ENTER:
+                submitButton.fire();
+                break;
+        }
     }
 
     /**

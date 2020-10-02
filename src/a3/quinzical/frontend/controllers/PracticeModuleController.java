@@ -21,7 +21,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.ScrollPane;
-import javafx.stage.Screen;
 
 /**
  * This class is the controller class for the Practice Module screen.
@@ -43,12 +42,16 @@ public class PracticeModuleController implements Initializable {
     }
 
     /**
-     * This handler is for the "Back to Menu" button.
+     * This is for setting the shortcuts of the current screen.
+     * @param event the key press event.
      */
     @FXML
-    private void handleBackButton() {
-        _switcher.setTitle("Main Menu");
-        _switcher.setScreen(ScreenType.MAIN_MENU);
+    private void onKeyPressed(KeyEvent event) {
+        switch (event.getCode()) {
+            case B:
+                backButton.fire();
+                break;
+        }
     }
 
     /**
@@ -96,6 +99,15 @@ public class PracticeModuleController implements Initializable {
         // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
         scrollPane.setContent(_gridPane);
         _gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(_gridPane.widthProperty()).divide(2));
+    }
+
+    /**
+     * This handler is for the "Back to Menu" button.
+     */
+    @FXML
+    private void handleBackButton() {
+        _switcher.setTitle("Main Menu");
+        _switcher.setScreen(ScreenType.MAIN_MENU);
     }
 
     /**
