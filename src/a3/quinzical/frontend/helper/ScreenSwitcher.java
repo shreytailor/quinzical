@@ -25,7 +25,6 @@ public class ScreenSwitcher {
     // Non-static (object) context fields.
     private Stage _mainStage;
     private Scene _mainScene;
-    private String _prefix = "a3/quinzical/frontend/fxml/";
     private HashMap<ScreenType, Pane> _screenMap = new HashMap<>();
 
     /**
@@ -34,10 +33,11 @@ public class ScreenSwitcher {
      */
     private ScreenSwitcher(Stage stage) {
         _mainStage = stage;
+        ScreenType mainMenu = ScreenType.MAIN_MENU;
 
         // Adding the Main Menu as one of the panes, and then setting that as the splash.
         try {
-            addScreen(ScreenType.MAIN_MENU, FXMLLoader.load(getClass().getClassLoader().getResource(_prefix + "MainMenu.fxml")));
+            addScreen(mainMenu, FXMLLoader.load(mainMenu.getUrl()));
             setTitle("Main Menu");
         } catch (IOException error) {  };
 
@@ -102,10 +102,8 @@ public class ScreenSwitcher {
      * @param fxmlName the path to the .fxml file.
      */
     public void switchTo(ScreenType screenType, String fxmlName) {
-        String path = _prefix + fxmlName;
-
         try {
-            addScreen(screenType, FXMLLoader.load(getClass().getClassLoader().getResource(path)));
+            addScreen(screenType, FXMLLoader.load(screenType.getUrl()));
         } catch (IOException error) {  };
         setScreen(screenType);
     }
