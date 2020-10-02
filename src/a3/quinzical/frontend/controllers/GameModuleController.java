@@ -9,12 +9,10 @@ import a3.quinzical.frontend.helper.ScreenSwitcher;
 // Java dependencies.
 import java.net.URL;
 import java.util.List;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -34,6 +32,7 @@ public class GameModuleController implements Initializable {
     @FXML Button backButton;
 
     private GameDatabase  _db = GameDatabase.getInstance();
+    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,9 +60,8 @@ public class GameModuleController implements Initializable {
      */
     @FXML
     private void handleBackButton () {
-        ScreenSwitcher screenSwitcher = ScreenSwitcher.getInstance();
-        screenSwitcher.setScreen(ScreenType.MAIN_MENU);
-        screenSwitcher.setTitle("Main Menu");
+        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
+        _switcher.setTitle("Main Menu");
     }
 
     /**
@@ -81,11 +79,7 @@ public class GameModuleController implements Initializable {
         // If yes, then kill the current instance of the progress.
         if (resetAlert.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-
-            try {
-                ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
-            } catch (Exception error) {  };
-            ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
+            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
         }
     }
 
@@ -127,12 +121,7 @@ public class GameModuleController implements Initializable {
                 clueButton.setOnAction(event -> {
                     _db.setCurrentClue(clueObject);
                     categoryObject.nextQuestion();
-
-                    try {
-                        ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/GameClue.fxml")));
-                    } catch (IOException error) {  };
-
-                    ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_CLUE);
+                    _switcher.switchTo(ScreenType.GAME_CLUE, "GameClue.fxml");
                 });
 
                 // Finally, we add the clue to the grid.

@@ -127,7 +127,7 @@
                      <bottom>
                         <VBox>
                            <children>
-                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Hint Placeholder" textFill="#b83e3e" wrapText="true">
+                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Hint Placeholder" textFill="#a02c2c" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

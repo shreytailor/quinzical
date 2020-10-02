@@ -6,7 +6,6 @@ import a3.quinzical.frontend.helper.ScreenType;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -14,7 +13,6 @@ import javafx.scene.control.ButtonType;
 
 // Java dependencies.
 import java.net.URL;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 /**
@@ -26,6 +24,7 @@ public class GameFinishedController implements Initializable {
     @FXML Label winningsPlaceholder;
 
     private GameDatabase _db = GameDatabase.getInstance();
+    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -37,8 +36,8 @@ public class GameFinishedController implements Initializable {
      */
     @FXML
     public void handleBackButton() {
-        ScreenSwitcher.getInstance().setScreen(ScreenType.MAIN_MENU);
-        ScreenSwitcher.getInstance().setTitle("Main Menu");
+        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
+        _switcher.setTitle("Main Menu");
     }
 
     /**
@@ -56,12 +55,7 @@ public class GameFinishedController implements Initializable {
         // If the user confirmed, then kill the current instance of the GameDatabase.
         if (resetAlert.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-
-            // Show the GameModule grid after being reset.
-            try {
-                ScreenSwitcher.getInstance().addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
-            } catch (IOException error) {  };
-            ScreenSwitcher.getInstance().setScreen(ScreenType.GAME_MODULE);
+            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
         }
     }
 

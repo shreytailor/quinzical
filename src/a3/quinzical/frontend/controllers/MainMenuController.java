@@ -60,7 +60,7 @@ public class MainMenuController {
     @FXML
     private void handlePracticeModuleButton() {
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
-        switcher.setScreen(ScreenType.PRACTICE_MODULE);
+        switcher.switchTo(ScreenType.PRACTICE_MODULE, "PracticeModule.fxml");
         switcher.setTitle("Practice Module");
     }
 
@@ -71,17 +71,13 @@ public class MainMenuController {
     private void handleGameModuleButton() {
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
 
-        try {
-            // If there are questions remaining, go to the Game Module, else go to the other screen.
-            if (GameDatabase.getInstance().getRemainingClues() > 0) {
-                switcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
-                switcher.setScreen(ScreenType.GAME_MODULE);
-                switcher.setTitle("Game Module");
-            } else {
-                switcher.addScreen(ScreenType.GAME_FINISHED, FXMLLoader.load(getClass().getResource("./../fxml/GameFinished.fxml")));
-                switcher.setScreen(ScreenType.GAME_FINISHED);
-            }
-        } catch (IOException error) {  };
+        // If there are questions remaining, go to the Game Module, else go to the other screen.
+        if (GameDatabase.getInstance().getRemainingClues() > 0) {
+            switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+        } else {
+            switcher.switchTo(ScreenType.GAME_FINISHED, "GameFinished.fxml");
+        }
+        switcher.setTitle("Game Module");
     }
 
 

@@ -1,6 +1,5 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
@@ -8,12 +7,10 @@ import a3.quinzical.backend.database.PracticeDatabase;
 
 // Java dependencies.
 import java.net.URL;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -106,8 +103,8 @@ public class PracticeModuleController implements Initializable {
      */
     @FXML
     private void handleBackButton() {
+        _switcher.switchTo(ScreenType.MAIN_MENU, "MainMenu.fxml");
         _switcher.setTitle("Main Menu");
-        _switcher.setScreen(ScreenType.MAIN_MENU);
     }
 
     /**
@@ -118,12 +115,7 @@ public class PracticeModuleController implements Initializable {
         PracticeDatabase db = PracticeDatabase.getInstance();
         Clue random = db.getCategory(categoryNumber).getRandom();
         PracticeDatabase.getInstance().select(random);
-
-        try {
-            ScreenSwitcher.getInstance().addScreen(ScreenType.PRACTICE_CLUE, FXMLLoader.load(getClass().getResource("./../fxml/PracticeClue.fxml")));
-        } catch (IOException error) {  };
-
-        ScreenSwitcher.getInstance().setScreen(ScreenType.PRACTICE_CLUE);
+        _switcher.switchTo(ScreenType.PRACTICE_CLUE, "PracticeClue.fxml");
     }
 
 }

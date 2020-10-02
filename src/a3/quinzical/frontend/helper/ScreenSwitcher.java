@@ -80,7 +80,7 @@ public class ScreenSwitcher {
      * @param screenTypeName the name of the screen.
      * @param pane the FXML pane which is stored within one of the packages.
      */
-    public void addScreen(ScreenType screenTypeName, Pane pane) {
+    private void addScreen(ScreenType screenTypeName, Pane pane) {
         _screenMap.remove(screenTypeName);
         _screenMap.put(screenTypeName, pane);
     }
@@ -89,8 +89,21 @@ public class ScreenSwitcher {
      * This method is used to set one of the previously added screens to the game's stage.
      * @param screenTypeName the name of the screen by which you saved it before.
      */
-    public void setScreen(ScreenType screenTypeName) {
+    private void setScreen(ScreenType screenTypeName) {
         _mainScene.setRoot(_screenMap.get(screenTypeName));
+    }
+
+    /**
+     * This is the client method for the front-end which enables the user to easily switch
+     * to a new screen.
+     * @param screenType
+     */
+    public void switchTo(ScreenType screenType, String fxmlName) {
+        String fxmlPath = "./../fxml/" + fxmlName;
+        try {
+            addScreen(screenType, FXMLLoader.load(getClass().getResource(fxmlPath)));
+        } catch (IOException error) {  };
+        setScreen(screenType);
     }
 
     /**

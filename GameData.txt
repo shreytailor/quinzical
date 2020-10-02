@@ -1,35 +1,37 @@
 0
 
-Fauna
-This is New Zealand's mountain Parrot|What is|Kea|200
-This is the animal that is the greatest threat to Kiwi|What is|stoat|300
-This grub chews up wood, and is edible|What is|Huhu Grub|400
-This is the number of Kiwi species|What is|5/five|500
-
-NZ Life
-The New Zealand term for swimwear|What is|togs|100
-These shoes are called flip flops or thongs in other countries|What are|jandals|200
-This is the name of the underground method of cooking used in New Zealand|What is|hangi|300
-This is the name for a traditional fenced Māori village|What is|Pā|400
-This is the Māori word for stomach|What is|Puku|500
-
-Oddities
-This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|100
-In 1990 New Zealand became the first country in the modern world to make this appointment|What is|Official National Wizard|200
-What is the year the Government pledged New Zealand would be predator free|What is|2050|300
-This is the name of New Zealand Male Rugby Team|What is|All Blacks|400
-What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|500
+Places
+The number of river systems that flow through either the North or South Island|What is|70/seventy|100
+This is the name of New Zealand's national museum|What is|Te Papa|200
+This is the name of the Parliament Building in Wellington|What is|Beehive|300
+This is the most southern port in the South Island|What is|Bluff|400
+This is the Māori name for New Zealand|What is|Aotearoa|500
 
 History
-The eruption from this volcano happened in 1886 and destroyed several villages|What is|Mount Tarawera|200
-On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|300
-This is the year women first got to vote in New Zealand|What is|1893|400
-This city was the capital of New Zealand before it moved in Wellington|What is|Auckland|500
+This is the first country in the world to give women the vote|What is|New Zealand|100
+This is the year the treaty of Waitangi was signed|What is|1840|200
+This is the name of the ship Captain Cook sailed on to New Zealand|What is|Endeavour|300
+On the 22 February 2011 and magnitude 6.3 earthquake hit this city|What is|Christchurch|400
+The eruption from this volcano happened in 1886 and destroyed several villages|What is|Mount Tarawera|500
 
-Geography
-This is the third largest island of New Zealand|What is|Stewart Island/Rakiura|100
-This is the name of the ocean New Zealand sits in|What is|Pacific|200
-This is the highest mountain in New Zealand|What is|Mt Aorangi/Mt Aoraki/Mt Cook|300
-This volcano in Auckland last erupted 20,000 years ago, and was the site of a major pā|What is|Māngere Mountain|400
-This is the Longest river in New Zealand|What is|Waikato|500
+Famous People
+This New Zealander led the 1975 land march from Te Hapua to Parliament|Who is|Dame Whina Cooper|100
+This New Zealand was the first person to climb mount Everest|Who is|Edmund Hillary|200
+This New Zealander was the first person to split the atom|Who is|Ernest Rutherford|300
+The New Zealander directed "The Lord of the Rings" and "The Hobbit"|Who is|Peter Jackson|400
+This New Zealander sung at the wedding of Prince Charles and Lady Diana|What is|Kiri Te Kanawa|500
+
+Oddities
+This is the name of New Zealand Male Rugby Team|What is|All Blacks|100
+What New Zealand song has made it into the New Zealand Top 40 in three separate decades|What is|Poi E|200
+What is the year the Government pledged New Zealand would be predator free|What is|2050|300
+With more that 400, New Zealand has more of these per capita than any other country in the world|What are|Golf Courses|400
+This is the nationality of the inventors of the bobby pin, wide toothed shearing comb, and jet boat|What is|New Zealander|500
+
+Flora
+The nectar from bright yellow flowers of this tree are an important food source for native birds|What is|Kowhai|100
+This is the largest native tree in New Zealand|What is|Kauri|200
+This well known fruit use to be called the Chinese Gooseberry|What is|Kiwifruit|300
+The honey from this plant is known for its medicinal benefits|What is|Mānuka|400
+This introduced alga is a threat to New Zealand rivers and is known as rock snot|What is|Didymo|500
 

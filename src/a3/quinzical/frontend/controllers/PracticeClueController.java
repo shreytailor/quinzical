@@ -1,7 +1,6 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.Speaker;
-import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
@@ -38,7 +37,7 @@ public class PracticeClueController implements Initializable {
 
     private int _attemptsRemaining = 3;
     private Speaker _speaker = Speaker.init();
-    private ScreenSwitcher _db = ScreenSwitcher.getInstance();
+    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
     private Clue _clue = PracticeDatabase.getInstance().getSelected();
 
     @Override
@@ -94,7 +93,7 @@ public class PracticeClueController implements Initializable {
     @FXML
     private void handleBackButton () {
         _speaker.kill();
-        _db.setScreen(ScreenType.PRACTICE_MODULE);
+        _switcher.switchTo(ScreenType.PRACTICE_MODULE, "PracticeModule.fxml");
     }
 
     /**

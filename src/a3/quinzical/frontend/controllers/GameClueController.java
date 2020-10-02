@@ -8,12 +8,10 @@ import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -89,17 +87,13 @@ public class GameClueController implements Initializable {
         _speaker.kill();
         ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
-        try {
-            // If there are no remaining questions, then go to the completed game screen.
-            if (GameDatabase.getInstance().getRemainingClues() > 0) {
-                _switcher.addScreen(ScreenType.GAME_MODULE, FXMLLoader.load(getClass().getResource("./../fxml/GameModule.fxml")));
-                _switcher.setScreen(ScreenType.GAME_MODULE);
-                _switcher.setTitle("Game Module");
-            } else {
-                _switcher.addScreen(ScreenType.GAME_FINISHED, FXMLLoader.load(getClass().getResource("./../fxml/GameFinished.fxml")));
-                _switcher.setScreen(ScreenType.GAME_FINISHED);
-            }
-        } catch (IOException error) {  };
+        // If there are no remaining questions, then go to the completed game screen.
+        if (GameDatabase.getInstance().getRemainingClues() > 0) {
+            _switcher.switchTo(ScreenType.GAME_MODULE, "GameModule.fxml");
+            _switcher.setTitle("Game Module");
+        } else {
+            _switcher.switchTo(ScreenType.GAME_FINISHED, "GameFinished.fxml");
+        }
     }
 
     /**
