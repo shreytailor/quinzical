@@ -19,6 +19,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // Checking if the configuration folder exists.
+        IO.checkDirectory();
+
         stage.setResizable(false);
         stage.setOnCloseRequest(event -> {
             try {
@@ -28,7 +31,7 @@ public class Main extends Application {
             Platform.exit();
         });
 
-        ScreenSwitcher screenSwitcher = ScreenSwitcher.initialize(stage);
+        ScreenSwitcher.initialize(stage);
         stage.show();
     }
 }

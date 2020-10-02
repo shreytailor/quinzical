@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" style="-fx-border-width: 15px; -fx-border-color: #FFB012;" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameFinishedController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" style="-fx-border-width: 20px; -fx-border-color: &quot;51824A&quot;;" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameFinishedController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="medium" stylesheets="@../styles/Fonts.css" text="Congratulations, you've finished the game!" textFill="#ffad0a">
+            <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Congratulations, you've finished the game!" textFill="#456b41">
                <font>
                   <Font size="34.0" />
                </font>

@@ -160,7 +160,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="answerTextField" onKeyPressed="#submitOnEnter" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here..." styleClass="regular" stylesheets="@../styles/Fonts.css">
+                              <TextField fx:id="answerTextField" onKeyPressed="#submitOnEnter" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

@@ -96,7 +96,8 @@ public class ScreenSwitcher {
     /**
      * This is the client method for the front-end which enables the user to easily switch
      * to a new screen.
-     * @param screenType
+     * @param screenType the type of screen.
+     * @param fxmlName the path to the .fxml file.
      */
     public void switchTo(ScreenType screenType, String fxmlName) {
         String fxmlPath = "./../fxml/" + fxmlName;

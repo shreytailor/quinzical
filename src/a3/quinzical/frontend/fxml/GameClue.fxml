@@ -77,13 +77,13 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#submitOnEnter" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here..." styleClass="regular" stylesheets="@../styles/Fonts.css">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <TextField fx:id="inputField" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#submitOnEnter" prefHeight="50.0" prefWidth="535.0" promptText="Type your answer here...">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </TextField>
             <HBox maxWidth="-Infinity" prefWidth="535.0">
                <children>
