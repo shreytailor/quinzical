@@ -87,40 +87,40 @@ public class GameDatabase {
     			}else if(!line.isBlank()){
     				//Using a helper method in Formatting to construct a clue object
     				newClue = Formatting.formatClue(line, newCate);
-					newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
-					newCate.addClue(newClue);
-				}
+    				newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
+    				newCate.addClue(newClue);
+    			}
     		}
     	}
     	//If the game data file does not exists
     	else {
-			Random rand = new Random();
-			Category newCate, selectedCate = null;
-			Clue newClue, selectedClue = null;
-			//Create _cateNum number of categories
-			for(int i = 0; i < _cateNum; i++) {
-				//Select random category from PracticeDatabase and add it to GameDatabase
-				int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
-				selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
-				newCate = new Category(selectedCate.getName());
-				int price = _startPrice;
-				//Create _clueNum number of clues
-				for(int j = 0; j < _clueNum; j++) {
-					//Select random clue from a random category
-					int questIndex = rand.nextInt(selectedCate.getClueSize());
-					selectedClue = selectedCate.getClue(questIndex);
-					newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
-					newClue.setPrize(price);
-					newCate.addClue(newClue);
-					selectedCate.removeClue(questIndex);
-					price += _priceIncrement;
-				}
-				_categories.add(newCate);
-				PracticeDatabase.getInstance().removeCategory(cateIndex);
-			}
-			//Reload the PracticeDatabase
-			PracticeDatabase.kill();
-		}
+    		Random rand = new Random();
+    		Category newCate, selectedCate = null;
+    		Clue newClue, selectedClue = null;
+    		//Create _cateNum number of categories
+    		for(int i = 0; i < _cateNum; i++) {
+    			//Select random category from PracticeDatabase and add it to GameDatabase
+    			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
+    			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
+    			newCate = new Category(selectedCate.getName());
+    			int price = _startPrice;
+    			//Create _clueNum number of clues
+    			for(int j = 0; j < _clueNum; j++) {
+    				//Select random clue from a random category
+    				int questIndex = rand.nextInt(selectedCate.getClueSize());
+    				selectedClue = selectedCate.getClue(questIndex);
+    				newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
+    				newClue.setPrize(price);
+    				newCate.addClue(newClue);
+    				selectedCate.removeClue(questIndex);
+    				price += _priceIncrement;
+    			}
+    			_categories.add(newCate);
+    			PracticeDatabase.getInstance().removeCategory(cateIndex);
+    		}
+    		//Reload the PracticeDatabase
+    		PracticeDatabase.kill();
+    	}
     }
 
     /**
