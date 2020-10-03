@@ -1,4 +1,4 @@
-package a3.quinzical.backend;
+package a3.quinzical.backend.tasks;
 
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;

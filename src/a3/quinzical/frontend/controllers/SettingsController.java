@@ -1,6 +1,6 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.Speaker;
+import a3.quinzical.backend.tasks.Speaker;
 
 // Java dependencies.
 import java.net.URL;
