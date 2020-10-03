@@ -6,6 +6,7 @@ import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
+import java.net.URL;
 import java.io.IOException;
 
 // JavaFX dependencies.
@@ -103,7 +104,8 @@ public class MainMenuController {
         settingsStage.setResizable(false);
         settingsStage.setTitle("Settings");
         try {
-            settingsStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("./../fxml/Settings.fxml")), WIDTH, HEIGHT));
+            URL url = getClass().getClassLoader().getResource("a3/quinzical/frontend/fxml/Settings.fxml");
+            settingsStage.setScene(new Scene(FXMLLoader.load(url), WIDTH, HEIGHT));
         } catch (IOException error) {
             System.out.println(error.getMessage());
         }
