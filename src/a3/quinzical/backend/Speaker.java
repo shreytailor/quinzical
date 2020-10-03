@@ -94,7 +94,8 @@ public class Speaker {
     }
 
     /**
-     * This method is used to set the speech of the Speaker.
+     * This method is used to set the speech of the Speaker. We are doing some extra processing to
+     * remove the quotation marks in the string, which could potentially cause some issues later.
      * @param string the speech to speak.
      */
     public void setSpeech(String string) {
