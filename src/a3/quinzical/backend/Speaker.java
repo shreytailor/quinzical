@@ -1,12 +1,12 @@
 package a3.quinzical.backend;
 
 // Java dependencies.
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.BufferedWriter;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
-import java.io.OutputStreamWriter;
 
 /**
  * This class is used to speak the text with Festival TTS. It also stores some of the configuration
@@ -17,14 +17,15 @@ public class Speaker {
     private static Speaker _speaker;
 
     private double SPEED;
-    private Process _process;
     private double DEFAULT = 1;
-    private String _speechString;
     private boolean _isChanged = false;
+
+    private Process _process;
+    private String _speechString;
     private ProcessBuilder _processBuilder;
 
     /**
-     * Getting the Speaker instance, by using singleton pattern.
+     * Getting the Speaker instance, by using Singleton pattern.
      */
     public static Speaker init() {
         if (_speaker == null) {
@@ -34,16 +35,12 @@ public class Speaker {
     }
 
     /**
-     * This method is used to set the speed of the speaker from the "Settings" of the game.
+     * This method is used to set the speed of the speaker from the "Settings" screen of the game.
      * @param speed the new desired speed
      * @throws IOException this exception is thrown if the desired speed is outside the desired
      * range of 0.5 to 2.5 (inclusive).
      */
-    public void setSpeed(double speed) throws IOException {
-        if (speed < 0.5 || speed > 2.5) {
-            throw new IOException();
-        }
-
+    public void setSpeed(double speed) {
         SPEED = speed;
         _isChanged = true;
     }
@@ -55,34 +52,11 @@ public class Speaker {
      */
     public void speak () {
         kill();
-
-        // Using the custom NZ male accent.
-        String accentCommand = "(voice_akl_nz_jdt_diphone)";
-
-        // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
-        String speedCommand;
-        if (_isChanged) {
-            speedCommand = "(Parameter.set 'Duration_Stretch " + 1/SPEED + ")";
-        } else {
-            speedCommand = "(Parameter.set 'Duration_Stretch " + 1/DEFAULT + ")";
-        }
-
-        // Creating the command to say the text.
-        String speakingCommand = "(SayText " + "\"" + _speechString + "\"" + ")";
-
+        createSchematic();
 
         try {
-            _processBuilder = new ProcessBuilder("festival");
+            _processBuilder = new ProcessBuilder("festival", "-b", "./.config/.festival.scm");
             _process = _processBuilder.start();
-
-            OutputStream stdin = _process.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stdin));
-
-            // Using all the created commands, and inputting that to the process.
-            writer.write(accentCommand);
-            writer.write(speedCommand);
-            writer.write(speakingCommand);
-            writer.close();
         } catch (IOException error) {  };
     }
 
@@ -133,5 +107,31 @@ public class Speaker {
      */
     public boolean isChanged() {
         return _isChanged;
+    }
+
+    /**
+     * This method is used to produce a schematic file (.scm) for the phrase which is going to be
+     * spoken by the Festival TTS system. Within the contents of the file, we include some essential
+     * parameters such as the speed selected by the user.
+     */
+    private void createSchematic() {
+        try {
+            // Create the file (and override if already exists).
+            File schematicFile = new File("./.config/.festival.scm");
+            FileWriter fw = new FileWriter(schematicFile.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("(voice_akl_nz_jdt_diphone)\n");
+
+            // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
+            if (_isChanged) {
+                bw.write("(Parameter.set 'Duration_Stretch " + 1/SPEED + ")\n");
+            } else {
+                bw.write("(Parameter.set 'Duration_Stretch " + 1/DEFAULT + ")\n");
+            }
+
+            // Creating the command to say the text.
+            bw.write("(SayText " + "\"" + _speechString + "\"" + ")");
+            bw.close();
+        } catch (IOException error) {  };
     }
 }

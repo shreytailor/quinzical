@@ -37,10 +37,8 @@ public class SettingsController implements Initializable {
      * This is the handler for when the speed is changed using the slider..
      */
     public void handleSpeedChanged() {
-        try {
-            Double newSpeed = synthesisSpeedSlider.getValue();
-            _speaker.setSpeed(newSpeed);
-        } catch (IOException error) {  };
+        Double newSpeed = synthesisSpeedSlider.getValue();
+        _speaker.setSpeed(newSpeed);
 
         // Show the new update on the label after being changed..
         updateSpeedLabel();

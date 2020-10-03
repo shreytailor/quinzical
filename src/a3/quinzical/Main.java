@@ -6,7 +6,6 @@ import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // JavaFX dependencies.
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.awt.*;
