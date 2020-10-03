@@ -22,8 +22,12 @@ public class Formatting {
      * @return the formatted string
      */
 	public static String removeTheA(String answer) {
-		answer = answer.replace("the ", "");
-		answer = answer.replace("a ", "");
+		if(answer.toUpperCase().startsWith("THE ")) {
+			answer = answer.substring(4);
+		}
+		if(answer.toUpperCase().startsWith("A ")) {
+			answer = answer.substring(2);
+		}
 		return answer;
 	}
 	
