@@ -204,7 +204,7 @@ public class GameDatabase {
 	
 	/**
 	 * This is a method that will return where the GameData.txt is supposed to be saved.
-	 * @return
+	 * @return the file of GameData
 	 */
 	public File getFile() {
 		return _gameFile;
