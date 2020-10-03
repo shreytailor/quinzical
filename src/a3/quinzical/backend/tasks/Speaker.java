@@ -55,7 +55,7 @@ public class Speaker {
         createSchematic();
 
         try {
-            _processBuilder = new ProcessBuilder("festival", "-b", "./.config/.festival.scm");
+            _processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
             _process = _processBuilder.start();
         } catch (IOException error) {  };
     }
@@ -118,7 +118,7 @@ public class Speaker {
     private void createSchematic() {
         try {
             // Create the file (and override if already exists).
-            File schematicFile = new File("./.config/.festival.scm");
+            File schematicFile = new File("./.config/festival.scm");
             FileWriter fw = new FileWriter(schematicFile.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write("(voice_akl_nz_jdt_diphone)\n");

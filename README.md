@@ -4,7 +4,12 @@
 
 <hr>
 
-### Attributions
+## Usage
+
+
+
+## Attributions
+
 <img width="20px" src="./src/a3/quinzical/frontend/resources/icons/speaker.png">\
 Icon of the "Speaker" provided by Pixel Perfect.\
 Under Free Licence (With Attribution).\

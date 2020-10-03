@@ -37,8 +37,7 @@ public class Category {
     }
     
     /**
-     * This method is used to get a random clue from the current category. Note that no destructive
-     * changes are made to the object unlike the {@link #getRandomPop()} method.
+     * This method is used to get a random clue from the current category.
      * @return Clue the random clue that we wanted.
      */
     public Clue getRandom() {
