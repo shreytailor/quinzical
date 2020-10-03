@@ -62,65 +62,80 @@ public class GameDatabase {
     
     /**
      * This method is used to initialize the instance of GameDatabase object.
-     * The method uses a list returned by readFile in IO class that represents the player's data
-     * and all categories and clues and store them in their respective category objects
-     * and clue objects. 
-     * If the file does not exist then this method will randomly select 5 categories with 5 
-     * questions from PracticeDatabase and create a file to store the player's record.
+     * The method will select different actions depending on if a GameData file already exists
      */
     private void initialize() {
     	//If the game data file already exists
     	if (_gameFile.exists() && _gameFile.isFile()) {
-    		//Get the file read from IO method
-    		List<String> gameContent = IO.readFile(_gameFile);
-    		Category newCate = null;
-    		Clue newClue = null;
-    		for(String line : gameContent) {
-    			//If the line only contains number, which is the stored player prize
-    			if (line.matches("\\d+")) {
-    				_winning = Integer.parseInt(line);
-    			//If the line does not have a separator character | and isn't blank, then the line represents a category
-    			}else if(!line.contains("|")&& !line.isBlank()){
-    				newCate = new Category(line);
-    				_categories.add(newCate);
-    			//If the line is not blank, then it represents a clue
-    			}else if(!line.isBlank()){
-    				//Using a helper method in Formatting to construct a clue object
-    				newClue = Formatting.formatClue(line, newCate);
-    				newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
-    				newCate.addClue(newClue);
-    			}
-    		}
+    		readGameData();
     	}
     	//If the game data file does not exists
     	else {
-    		Random rand = new Random();
-    		Category newCate, selectedCate = null;
-    		Clue newClue, selectedClue = null;
-    		//Create _cateNum number of categories
-    		for(int i = 0; i < _cateNum; i++) {
-    			//Select random category from PracticeDatabase and add it to GameDatabase
-    			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
-    			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
-    			newCate = new Category(selectedCate.getName());
-    			int price = _startPrice;
-    			//Create _clueNum number of clues
-    			for(int j = 0; j < _clueNum; j++) {
-    				//Select random clue from a random category
-    				int questIndex = rand.nextInt(selectedCate.getClueSize());
-    				selectedClue = selectedCate.getClue(questIndex);
-    				newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
-    				newClue.setPrize(price);
-    				newCate.addClue(newClue);
-    				selectedCate.removeClue(questIndex);
-    				price += _priceIncrement;
-    			}
-    			_categories.add(newCate);
-    			PracticeDatabase.getInstance().removeCategory(cateIndex);
-    		}
-    		//Reload the PracticeDatabase
-    		PracticeDatabase.kill();
+    		generateGameData();
     	}
+    }
+    
+    /**
+     * This method is used if the GameData file exists
+     * The method uses a list returned by readFile in IO class that represents the player's data
+     * and all categories and clues and store them in their respective category objects
+     * and clue objects. 
+     */
+    private void readGameData() {
+    	//Get the file read from IO method
+		List<String> gameContent = IO.readFile(_gameFile);
+		Category newCate = null;
+		Clue newClue = null;
+		for(String line : gameContent) {
+			//If the line only contains number, which is the stored player prize
+			if (line.matches("\\d+")) {
+				_winning = Integer.parseInt(line);
+			//If the line does not have a separator character | and isn't blank, then the line represents a category
+			}else if(!line.contains("|")&& !line.isBlank()){
+				newCate = new Category(line);
+				_categories.add(newCate);
+			//If the line is not blank, then it represents a clue
+			}else if(!line.isBlank()){
+				//Using a helper method in Formatting to construct a clue object
+				newClue = Formatting.formatClue(line, newCate);
+				newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
+				newCate.addClue(newClue);
+			}
+		}
+    }
+    
+    /**
+     * This method is used if the GameData file does not exist
+     * If the file does not exist then this method will randomly select 5 categories with 5 
+     * questions from PracticeDatabase and create a file to store the player's record.
+     */
+    private void generateGameData() {
+    	Random rand = new Random();
+		Category newCate, selectedCate = null;
+		Clue newClue, selectedClue = null;
+		//Create _cateNum number of categories
+		for(int i = 0; i < _cateNum; i++) {
+			//Select random category from PracticeDatabase and add it to GameDatabase
+			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
+			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
+			newCate = new Category(selectedCate.getName());
+			int price = _startPrice;
+			//Create _clueNum number of clues
+			for(int j = 0; j < _clueNum; j++) {
+				//Select random clue from a random category
+				int questIndex = rand.nextInt(selectedCate.getClueSize());
+				selectedClue = selectedCate.getClue(questIndex);
+				newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
+				newClue.setPrize(price);
+				newCate.addClue(newClue);
+				selectedCate.removeClue(questIndex);
+				price += _priceIncrement;
+			}
+			_categories.add(newCate);
+			PracticeDatabase.getInstance().removeCategory(cateIndex);
+		}
+		//Reload the PracticeDatabase
+		PracticeDatabase.kill();
     }
 
     /**
