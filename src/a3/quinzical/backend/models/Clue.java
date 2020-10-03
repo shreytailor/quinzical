@@ -3,7 +3,7 @@ package a3.quinzical.backend.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import a3.quinzical.backend.Formatting;
+import a3.quinzical.backend.tasks.Formatting;
 
 /**
  * This class is used as a model for all the clues of our Quinzical game. It contains various

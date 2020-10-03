@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import a3.quinzical.backend.Formatting;
+import a3.quinzical.backend.tasks.Formatting;
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
@@ -73,15 +73,15 @@ public class GameDatabase {
     	if (_gameFile.exists() && _gameFile.isFile()) {
     		List<String> gameContent = IO.readFile(_gameFile);
     		Category newCate = null;
-			Clue newClue = null;
+    		Clue newClue = null;
     		for(String line : gameContent) {
-				if (line.matches("\\d+")) {
-					_winning = Integer.parseInt(line);
-				}else if(!line.contains("|")&& !line.isBlank()){
-					newCate = new Category(line);
-					_categories.add(newCate);
-				}else if(!line.isBlank()){
-					newClue = Formatting.formatClue(line, newCate);
+    			if (line.matches("\\d+")) {
+    				_winning = Integer.parseInt(line);
+    			}else if(!line.contains("|")&& !line.isBlank()){
+    				newCate = new Category(line);
+    				_categories.add(newCate);
+    			}else if(!line.isBlank()){
+    				newClue = Formatting.formatClue(line, newCate);
 					newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
 					newCate.addClue(newClue);
 				}

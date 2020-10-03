@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import a3.quinzical.backend.Formatting;
+import a3.quinzical.backend.tasks.Formatting;
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
