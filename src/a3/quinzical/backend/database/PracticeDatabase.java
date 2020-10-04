@@ -72,14 +72,14 @@ public class PracticeDatabase {
      * and store them in their respective category objects and clue objects. 
      */
     private void initialize() {
-    	List<String> quizContent = IO.readFile(_quizFile);
-    	Category newCate = null;
-		Clue newClue;
-    	for(String line : quizContent) {
-    		if(!line.contains("|") && !line.isBlank()){
+        List<String> quizContent = IO.readFile(_quizFile);
+        Category newCate = null;
+    	Clue newClue;
+    	for (String line : quizContent) {
+    		if (!line.contains("|") && !line.isBlank()) {
 				newCate = new Category(line);
 				_categories.add(newCate);
-			}else if(!line.isBlank()){
+			} else if(!line.isBlank()) {
 				newClue = Formatting.formatClue(line, newCate);
 				newCate.addClue(newClue);
 			}

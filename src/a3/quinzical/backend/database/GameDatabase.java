@@ -1,6 +1,6 @@
 package a3.quinzical.backend.database;
 
-//Java API dependencies.
+// Java API dependencies.
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -65,12 +65,11 @@ public class GameDatabase {
      * The method will select different actions depending on if a GameData file already exists
      */
     private void initialize() {
-    	//If the game data file already exists
+    	// If the game data file already exists
     	if (_gameFile.exists() && _gameFile.isFile()) {
     		readGameData();
-    	}
-    	//If the game data file does not exists
-    	else {
+    	} else {
+			// If the game data file does not exists
     		generateGameData();
     	}
     }
@@ -82,21 +81,23 @@ public class GameDatabase {
      * and clue objects. 
      */
     private void readGameData() {
-    	//Get the file read from IO method
-		List<String> gameContent = IO.readFile(_gameFile);
+		Clue newClue;
 		Category newCate = null;
-		Clue newClue = null;
+
+    	// Read the current Game Database file using the IO method.
+		List<String> gameContent = IO.readFile(_gameFile);
+
+		// Go through each line of the returned list of all lines.
 		for(String line : gameContent) {
-			//If the line only contains number, which is the stored player prize
+			// If the line only contains number, which is the stored player prize.
 			if (line.matches("\\d+")) {
 				_winning = Integer.parseInt(line);
-			//If the line does not have a separator character | and isn't blank, then the line represents a category
-			}else if(!line.contains("|")&& !line.isBlank()){
+			} else if(!line.contains("|")&& !line.isBlank()) {
+				// If the line does not have a separator character | and isn't blank, then the line represents a category
 				newCate = new Category(line);
 				_categories.add(newCate);
-			//If the line is not blank, then it represents a clue
-			}else if(!line.isBlank()){
-				//Using a helper method in Formatting to construct a clue object
+			} else if (!line.isBlank()) {
+				// Using a helper method in Formatting to construct a clue object
 				newClue = Formatting.formatClue(line, newCate);
 				newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
 				newCate.addClue(newClue);
@@ -111,30 +112,35 @@ public class GameDatabase {
      */
     private void generateGameData() {
     	Random rand = new Random();
-		Category newCate, selectedCate = null;
-		Clue newClue, selectedClue = null;
-		//Create _cateNum number of categories
-		for(int i = 0; i < _cateNum; i++) {
-			//Select random category from PracticeDatabase and add it to GameDatabase
+		Category newCate, selectedCate;
+		Clue newClue, selectedClue;
+
+		// Traverse through all the categories.
+		for (int i = 0; i < _cateNum; i++) {
+			// Select random category from PracticeDatabase and add it to GameDatabase.
 			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
 			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
 			newCate = new Category(selectedCate.getName());
 			int price = _startPrice;
-			//Create _clueNum number of clues
+
+			// Traverse through all the clues in that category.
 			for(int j = 0; j < _clueNum; j++) {
-				//Select random clue from a random category
+				// Select random clue from a random category.
 				int questIndex = rand.nextInt(selectedCate.getClueSize());
 				selectedClue = selectedCate.getClue(questIndex);
 				newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
 				newClue.setPrize(price);
 				newCate.addClue(newClue);
 				selectedCate.removeClue(questIndex);
+
+				// Set the prize of the question.
 				price += _priceIncrement;
 			}
 			_categories.add(newCate);
 			PracticeDatabase.getInstance().removeCategory(cateIndex);
 		}
-		//Reload the PracticeDatabase
+
+		// Reload the PracticeDatabase after creating the Game Database.
 		PracticeDatabase.kill();
     }
 

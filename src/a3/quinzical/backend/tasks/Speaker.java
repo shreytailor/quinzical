@@ -36,9 +36,7 @@ public class Speaker {
 
     /**
      * This method is used to set the speed of the speaker from the "Settings" screen of the game.
-     * @param speed the new desired speed
-     * @throws IOException this exception is thrown if the desired speed is outside the desired
-     * range of 0.5 to 2.5 (inclusive).
+     * @param speed the new desired speed.
      */
     public void setSpeed(double speed) {
         SPEED = speed;
