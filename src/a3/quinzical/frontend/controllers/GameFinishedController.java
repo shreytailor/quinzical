@@ -1,6 +1,7 @@
 package a3.quinzical.frontend.controllers;
 
 import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.frontend.helper.AlertHelper;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.frontend.helper.ScreenType;
 
@@ -46,14 +47,10 @@ public class GameFinishedController implements Initializable {
     @FXML
     public void handleResetButton() {
         String message = "Are you sure you want to reset the game?";
+        AlertHelper _helper = AlertHelper.getInstance();
+        _helper.showAlert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
 
-        // Creating an alert message asking the user to confirm.
-        Alert resetAlert = new Alert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
-        resetAlert.setHeaderText(null);
-        resetAlert.showAndWait();
-
-        // If the user confirmed, then kill the current instance of the GameDatabase.
-        if (resetAlert.getResult() == ButtonType.YES) {
+        if (_helper.getResult() == ButtonType.YES) {
             GameDatabase.kill();
             _switcher.switchTo(ScreenType.GAME_MODULE);
         }

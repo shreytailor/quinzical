@@ -141,7 +141,6 @@ public class GameClueController implements Initializable {
         _speaker.setSpeech(message);
         messageLabel.setText(message);
         _speaker.speak();
-
     }
 
 }
