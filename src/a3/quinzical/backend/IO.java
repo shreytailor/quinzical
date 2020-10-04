@@ -81,13 +81,5 @@ public class IO {
 		if(!_configDirectory.exists()) {
 			_configDirectory.mkdir();
 		}
-	}
-	
-	/*
-	public static void main(String[] args) {
-		GameDatabase.getInstance();
-		System.out.println(GameDatabase.getInstance().getCategory(0).getClue(0).getAnswer());
-	}
-	*/
-	
+	}	
 }
