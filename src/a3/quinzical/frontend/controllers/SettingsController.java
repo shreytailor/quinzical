@@ -4,7 +4,6 @@ import a3.quinzical.backend.tasks.Speaker;
 
 // Java dependencies.
 import java.net.URL;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
@@ -18,7 +17,6 @@ import javafx.scene.control.Slider;
  * This class is the controller class for the Settings screen.
  * @author Shrey Tailor, Jason Wang
  */
-
 public class SettingsController implements Initializable {
 
     @FXML Slider synthesisSpeedSlider;
