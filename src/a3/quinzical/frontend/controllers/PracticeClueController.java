@@ -25,20 +25,20 @@ import javafx.scene.input.KeyEvent;
 public class PracticeClueController implements Initializable {
 
     @FXML Label clueLabel;
+    @FXML Button backButton;
+    @FXML Button submitButton;
     @FXML Label categoryLabel;
+    @FXML Label attemptsLabel;
+    @FXML Button respeakButton;
+    @FXML Label hintPlaceholder;
+    @FXML Button dontKnowButton;
     @FXML Label prefixPlaceholder;
     @FXML TextField answerTextField;
-    @FXML Button dontKnowButton;
-    @FXML Button submitButton;
-    @FXML Label hintPlaceholder;
-    @FXML Label attemptsLabel;
-    @FXML Button backButton;
-    @FXML Button respeakButton;
 
     private int _attemptsRemaining = 3;
-    private Speaker _speaker = Speaker.init();
-    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
-    private Clue _clue = PracticeDatabase.getInstance().getSelected();
+    private final Speaker _speaker = Speaker.init();
+    private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private final Clue _clue = PracticeDatabase.getInstance().getSelected();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

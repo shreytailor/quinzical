@@ -24,8 +24,8 @@ public class GameFinishedController implements Initializable {
 
     @FXML Label winningsPlaceholder;
 
-    private GameDatabase _db = GameDatabase.getInstance();
-    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private final GameDatabase _db = GameDatabase.getInstance();
+    private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

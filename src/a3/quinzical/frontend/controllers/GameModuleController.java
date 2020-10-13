@@ -41,22 +41,6 @@ public class GameModuleController implements Initializable {
     }
 
     /**
-     * This is for setting the shortcuts of the current screen.
-     * @param event the key press event.
-     */
-    @FXML
-    private void onKeyPressed (KeyEvent event) {
-        switch (event.getCode()) {
-            case B:
-                backButton.fire();
-                break;
-            case R:
-                resetButton.fire();
-                break;
-        }
-    }
-
-    /**
      * This is the handler class for when the "Back" button is pressed.
      */
     @FXML

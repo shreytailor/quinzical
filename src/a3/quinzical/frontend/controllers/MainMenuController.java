@@ -31,7 +31,7 @@ public class MainMenuController {
     @FXML Button exitButton;
     @FXML Button settingsButton;
 
-    private Speaker _speaker = Speaker.init();
+    private final Speaker _speaker = Speaker.init();
 
     /**
      * This handler is used to respond to the shortcuts of the screen.

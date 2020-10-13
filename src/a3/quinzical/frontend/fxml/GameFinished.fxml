@@ -28,7 +28,7 @@
             </Label>
             <VBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" text="Reset Game">
+                  <Button onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" text="_Reset Game">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -45,7 +45,7 @@
                         <String fx:value="medium-font" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="280.0" text="Back To Home">
+                  <Button onAction="#handleBackButton" prefHeight="60.0" prefWidth="280.0" text="_Back To Home">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>

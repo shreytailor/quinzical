@@ -61,7 +61,7 @@
          <bottom>
             <VBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="250.0" text="Reset Game">
+                  <Button fx:id="resetButton" onAction="#handleResetButton" prefHeight="60.0" prefWidth="250.0" text="_Reset Game">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -78,7 +78,7 @@
                         <URL value="@../styles/Fonts.css" />
                      </stylesheets>
                   </Button>
-                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="250.0" text="Back To Menu">
+                  <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="60.0" prefWidth="250.0" text="_Back To Menu">
                      <font>
                         <Font size="18.0" />
                      </font>

@@ -39,7 +39,7 @@ public class GameClueController implements Initializable {
     @FXML Button dontKnowButton;
 
     private Timer _timer;
-    private int TIME_LIMIT = 5;
+    private int TIME_LIMIT = 60;
     private final Speaker _speaker = Speaker.init();
     private final GameDatabase _db = GameDatabase.getInstance();
     private final Clue _clue = GameDatabase.getInstance().getCurrentClue();
@@ -154,21 +154,27 @@ public class GameClueController implements Initializable {
         _speaker.speak();
     }
 
+    /**
+     * This private method is used to start the timer when the user starts to answer a question.
+     */
     private void createTimer() {
         _timer = new Timer();
+
+        // Doing something after a given period.
         _timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 if (TIME_LIMIT <= 0) {
                     _timer.cancel();
                     Platform.runLater(() -> {
-                        timerLabel.setVisible(false);
                         submitButton.fire();
                     });
                 } else {
                     Platform.runLater(() -> {
                         timerLabel.setText(TIME_LIMIT + "s");
                     });
+
+                    // Decreasing the time remaining.
                     TIME_LIMIT--;
                 }
             }

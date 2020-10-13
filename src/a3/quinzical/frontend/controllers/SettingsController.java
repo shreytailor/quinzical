@@ -24,7 +24,7 @@ public class SettingsController implements Initializable {
     @FXML Button synthesisPreviewButton;
     @FXML Button synthesisResetButton;
 
-    private Speaker _speaker = Speaker.init();
+    private final Speaker _speaker = Speaker.init();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

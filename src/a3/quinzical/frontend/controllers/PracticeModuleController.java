@@ -29,26 +29,12 @@ public class PracticeModuleController implements Initializable {
     @FXML Button backButton;
     @FXML ScrollPane scrollPane;
 
-    private GridPane _gridPane;
-    private PracticeDatabase _db = PracticeDatabase.getInstance();
-    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private final PracticeDatabase _db = PracticeDatabase.getInstance();
+    private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupGrid();
-    }
-
-    /**
-     * This is for setting the shortcuts of the current screen.
-     * @param event the key press event.
-     */
-    @FXML
-    private void onKeyPressed(KeyEvent event) {
-        switch (event.getCode()) {
-            case B:
-                backButton.fire();
-                break;
-        }
     }
 
     /**
@@ -57,7 +43,7 @@ public class PracticeModuleController implements Initializable {
      * backend, and trying to populate the GUI with their respective buttons.
      */
     private void setupGrid() {
-        _gridPane = new GridPane();
+        GridPane _gridPane = new GridPane();
         int categories = _db.getCateSize();
 
         // Determine the rows and columns of the GridPane.
@@ -109,7 +95,7 @@ public class PracticeModuleController implements Initializable {
 
     /**
      * This is a private method, and a handler for when the one of the categories is selected.
-     * @param categoryNumber
+     * @param categoryNumber the category number which is selected by the user.
      */
     private void handleCategoryButton(int categoryNumber) {
         PracticeDatabase db = PracticeDatabase.getInstance();

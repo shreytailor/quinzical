@@ -18,7 +18,7 @@
       </ScrollPane>
    </center>
    <bottom>
-      <Button fx:id="backButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" text="Back To Menu" BorderPane.alignment="TOP_LEFT">
+      <Button fx:id="backButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#handleBackButton" prefHeight="50.0" text="_Back To Menu" textFill="#333333" BorderPane.alignment="TOP_LEFT">
          <font>
             <Font size="14.0" />
          </font>
