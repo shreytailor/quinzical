@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -42,8 +41,12 @@
                   <String fx:value="medium" />
                </styleClass>
             </Button>
-            <Region maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
-            <Button fx:id="backButton" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="260.0" text="Back To Game">
+            <Label fx:id="timerLabel" alignment="CENTER" prefHeight="60.0" prefWidth="790.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="60s">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" alignment="CENTER" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="260.0" text="Back To Game">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

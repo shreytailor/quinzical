@@ -1,4 +1,4 @@
-package a3.quinzical.backend.tasks;
+package a3.quinzical.frontend.helper;
 
 // Java dependencies.
 import java.io.File;
@@ -64,9 +64,7 @@ public class Speaker {
     public void kill() {
         try {
             Stream<ProcessHandle> descendents = _process.descendants();
-            descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
-                ph.destroy();
-            });
+            descendents.filter(ProcessHandle::isAlive).forEach(ProcessHandle::destroy);
         } catch (Exception error) {  };
     }
 
@@ -85,7 +83,7 @@ public class Speaker {
     public double getSpeed() {
         if (_isChanged) {
             DecimalFormat df = new DecimalFormat("#.00");
-            return Double.valueOf(df.format(SPEED));
+            return Double.parseDouble(df.format(SPEED));
         }
 
         return DEFAULT;

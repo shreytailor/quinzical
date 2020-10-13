@@ -1,22 +1,25 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.tasks.Speaker;
 import a3.quinzical.backend.models.Clue;
+import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
 import java.net.URL;
+import java.util.Timer;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.TextField;
 
 /**
  * This class is the controller class for the Game Question screen.
@@ -24,22 +27,28 @@ import javafx.scene.input.KeyEvent;
  */
 public class GameClueController implements Initializable {
 
-    @FXML Label categoryLabel;
     @FXML Label prizeLabel;
+    @FXML Label timerLabel;
     @FXML Label prefixLabel;
-    @FXML TextField inputField;
-    @FXML Button dontKnowButton;
-    @FXML Button submitButton;
-    @FXML Label messageLabel;
-    @FXML Button respeakButton;
     @FXML Button backButton;
+    @FXML Label messageLabel;
+    @FXML Button submitButton;
+    @FXML Label categoryLabel;
+    @FXML TextField inputField;
+    @FXML Button respeakButton;
+    @FXML Button dontKnowButton;
 
-    private Speaker _speaker = Speaker.init();
-    private GameDatabase _db = GameDatabase.getInstance();
-    private Clue _clue = GameDatabase.getInstance().getCurrentClue();
+    private Timer _timer;
+    private int TIME_LIMIT = 5;
+    private final Speaker _speaker = Speaker.init();
+    private final GameDatabase _db = GameDatabase.getInstance();
+    private final Clue _clue = GameDatabase.getInstance().getCurrentClue();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Create the timer.
+        createTimer();
+
         // Showing information about the question.
         categoryLabel.setText(_clue.getCategory().getName());
         prizeLabel.setText("$" + _clue.getPrize());
@@ -111,17 +120,19 @@ public class GameClueController implements Initializable {
 
     /**
      * This private method is used for doing certain things, after the user has finished answering.
-     * @param isChecking
+     * @param isChecking if we are checking whether the answer is correct or not.
      */
     private void isAnswered(Boolean isChecking) {
         // Setting certain elements to hidden to clear the screen.
         _speaker.kill();
+        _timer.purge();
         inputField.setDisable(true);
         backButton.setVisible(true);
         messageLabel.setVisible(true);
         submitButton.setVisible(false);
         dontKnowButton.setVisible(false);
         respeakButton.setVisible(false);
+        timerLabel.setVisible(false);
 
         // Process of checking the answer to check if it was correct.
         boolean isCorrect = false;
@@ -141,6 +152,27 @@ public class GameClueController implements Initializable {
         _speaker.setSpeech(message);
         messageLabel.setText(message);
         _speaker.speak();
+    }
+
+    private void createTimer() {
+        _timer = new Timer();
+        _timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if (TIME_LIMIT <= 0) {
+                    _timer.cancel();
+                    Platform.runLater(() -> {
+                        timerLabel.setVisible(false);
+                        submitButton.fire();
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        timerLabel.setText(TIME_LIMIT + "s");
+                    });
+                    TIME_LIMIT--;
+                }
+            }
+        }, 0,1000);
     }
 
 }

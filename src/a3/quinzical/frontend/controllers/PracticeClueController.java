@@ -1,6 +1,6 @@
 package a3.quinzical.frontend.controllers;
 
-import a3.quinzical.backend.tasks.Speaker;
+import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
