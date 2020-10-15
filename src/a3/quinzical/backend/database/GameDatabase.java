@@ -41,11 +41,39 @@ public class GameDatabase {
 	private Clue _currentClue = null;
 	
 	/**
-     * The only constructor for GameDatabase object which is private, because it can only be
-     * accessed by the getInstance method (according to the principles of Singleton pattern).
+     * The constructor for GameDatabase object which is private, because it can only be
+     * accessed by the getInstance methods (according to the principles of Singleton pattern).
+     * This is used to create a random game.
      */
     private GameDatabase() {
-        initialize();
+    	List<Category> categoryList = new ArrayList<Category>();
+    	Random rand = new Random();
+    	Category selectedCate;
+    	for (int i = 0; i < _cateNum; i++) {
+			// Select random category from PracticeDatabase and add it to GameDatabase.
+			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
+			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
+			categoryList.add(selectedCate);
+			PracticeDatabase.getInstance().removeCategory(cateIndex);
+    	}
+        initialize(categoryList);
+    }
+    
+    /**
+     * The constructor for GameDatabase object which is private, because it can only be
+     * accessed by the getInstance method (according to the principles of Singleton pattern).
+     * This is used to create a user defined game.
+     */
+    private GameDatabase(List<Category> categoryList) {
+        initialize(categoryList);
+    }
+    
+    /**
+     * This method is used to check if the GameData file exist
+     * @return if the GameData file exist
+     */
+    public boolean exist() {
+    	return (_gameFile.exists() && _gameFile.isFile());
     }
     
     /**
@@ -61,16 +89,28 @@ public class GameDatabase {
     }
     
     /**
+     * This method is used to return the singleton object of the GameDatabase object.
+     * @return GameDatabase the instance of our game database.
+     */
+    public static GameDatabase getInstance(List<Category> categoryList) {
+    	if (_gameDatabase == null) {
+    		_gameDatabase = new GameDatabase(categoryList);
+        }
+
+        return _gameDatabase;
+    }
+    
+    /**
      * This method is used to initialize the instance of GameDatabase object.
      * The method will select different actions depending on if a GameData file already exists
      */
-    private void initialize() {
+    private void initialize(List<Category> categoryList) {
     	// If the game data file already exists
     	if (_gameFile.exists() && _gameFile.isFile()) {
     		readGameData();
     	} else {
 			// If the game data file does not exists
-    		generateGameData();
+    		generateGameData(categoryList);
     	}
     }
     
@@ -110,22 +150,19 @@ public class GameDatabase {
      * If the file does not exist then this method will randomly select 5 categories with 5 
      * questions from PracticeDatabase and create a file to store the player's record.
      */
-    private void generateGameData() {
+    private void generateGameData(List<Category> categoryList) {
     	Random rand = new Random();
-		Category newCate, selectedCate;
+		Category newCate;
 		Clue newClue, selectedClue;
 
 		// Traverse through all the categories.
-		for (int i = 0; i < _cateNum; i++) {
-			// Select random category from PracticeDatabase and add it to GameDatabase.
-			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
-			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
+		for (Category selectedCate: categoryList) {
 			newCate = new Category(selectedCate.getName());
 			int price = _startPrice;
 
 			// Traverse through all the clues in that category.
 			for(int j = 0; j < _clueNum; j++) {
-				// Select random clue from a random category.
+				// Select random clue from the category.
 				int questIndex = rand.nextInt(selectedCate.getClueSize());
 				selectedClue = selectedCate.getClue(questIndex);
 				newClue = new Clue(selectedClue.getQuestion(), selectedClue.getPrefix(), selectedClue.getFullAnswer(), newCate);
@@ -137,7 +174,6 @@ public class GameDatabase {
 				price += _priceIncrement;
 			}
 			_categories.add(newCate);
-			PracticeDatabase.getInstance().removeCategory(cateIndex);
 		}
 
 		// Reload the PracticeDatabase after creating the Game Database.
