@@ -36,3 +36,12 @@
 .red:hover {
     -fx-background-color: #902727;
 }
+
+.green {
+    -fx-text-fill: white;
+    -fx-background-color: #51824A;
+}
+
+.green:hover {
+    -fx-background-color: #497543;
+}

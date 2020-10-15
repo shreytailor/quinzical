@@ -1,0 +1,16 @@
+@font-face {
+    src: url('fonts/Poppins-Medium.ttf');
+}
+
+.toggleButton {
+    -fx-pref-width: 220px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 18px;
+    -fx-background-color: #d0d0d0;
+    -fx-font-family: "Poppins Medium";
+}
+
+.toggleButton:selected {
+    -fx-text-fill: white;
+    -fx-background-color: #197DB3;
+}

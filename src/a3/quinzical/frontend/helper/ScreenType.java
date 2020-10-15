@@ -12,6 +12,7 @@ public enum ScreenType {
     MAIN_MENU("MainMenu.fxml"),
     PRACTICE_MODULE("PracticeModule.fxml"),
     PRACTICE_CLUE("PracticeClue.fxml"),
+    CHOOSE_CATEGORIES("ChooseCategories.fxml"),
     GAME_MODULE("GameModule.fxml"),
     GAME_CLUE("GameClue.fxml"),
     GAME_FINISHED("GameFinished.fxml");
