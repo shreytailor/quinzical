@@ -82,6 +82,7 @@ public class ScreenSwitcher {
             _mainScene.setRoot(pane);
         } catch (IOException error) {
             System.out.println("There was a problem in the FXML file.");
+            error.printStackTrace();
         }
     }
 

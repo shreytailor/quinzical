@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -18,7 +20,7 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="respeakButton" graphicTextGap="15.0" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0" text="_Respeak Clue">
+            <Button fx:id="backButton" alignment="CENTER" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="60.0" prefWidth="260.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -31,13 +33,20 @@
                   <String fx:value="medium-font" />
                   <String fx:value="medium" />
                </styleClass>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Label fx:id="timerLabel" alignment="CENTER" prefHeight="60.0" prefWidth="790.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="60s">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" alignment="CENTER" graphicTextGap="15.0" onAction="#handleBackButton" prefHeight="60.0" prefWidth="260.0" text="_Back To Game">
+            <Button fx:id="respeakButton" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -50,6 +59,13 @@
                   <String fx:value="medium-font" />
                   <String fx:value="medium" />
                </styleClass>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons/speaker.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
          <BorderPane.margin>
