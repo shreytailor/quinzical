@@ -78,6 +78,8 @@ public class GameDatabase {
     
     /**
      * This method is used to return the singleton object of the GameDatabase object.
+     * If the GameDatabase is not initialized this method will create a GameDatabase 
+     * object with random categories and random clues.
      * @return GameDatabase the instance of our game database.
      */
     public static GameDatabase getInstance() {
@@ -90,6 +92,8 @@ public class GameDatabase {
     
     /**
      * This method is used to return the singleton object of the GameDatabase object.
+     * If the GameDatabase is not initialized this method will create a GameDatabase 
+     * object using the specified list of categories passed in.
      * @return GameDatabase the instance of our game database.
      */
     public static GameDatabase getInstance(List<Category> categoryList) {
