@@ -39,30 +39,10 @@ public class GameDatabase {
 	private final static int _startPrice = 100;
 	private final static int _priceIncrement = 100;
 	private Clue _currentClue = null;
-	
-	/**
-     * The constructor for GameDatabase object which is private, because it can only be
-     * accessed by the getInstance methods (according to the principles of Singleton pattern).
-     * This is used to create a random game.
-     */
-    private GameDatabase() {
-    	List<Category> categoryList = new ArrayList<Category>();
-    	Random rand = new Random();
-    	Category selectedCate;
-    	for (int i = 0; i < _cateNum; i++) {
-			// Select random category from PracticeDatabase and add it to GameDatabase.
-			int cateIndex = rand.nextInt(PracticeDatabase.getInstance().getCateSize());
-			selectedCate = PracticeDatabase.getInstance().getCategory(cateIndex);
-			categoryList.add(selectedCate);
-			PracticeDatabase.getInstance().removeCategory(cateIndex);
-    	}
-        initialize(categoryList);
-    }
     
     /**
      * The constructor for GameDatabase object which is private, because it can only be
      * accessed by the getInstance method (according to the principles of Singleton pattern).
-     * This is used to create a user defined game.
      */
     private GameDatabase(List<Category> categoryList) {
         initialize(categoryList);
@@ -72,8 +52,16 @@ public class GameDatabase {
      * This method is used to check if the GameData file exist
      * @return if the GameData file exist
      */
-    public boolean exist() {
+    public static boolean gameFileExist() {
     	return (_gameFile.exists() && _gameFile.isFile());
+    }
+    
+    /**
+     * This method is used to check if an instance of GameDatabase exist
+     * @return if the GameData file exist
+     */
+    public static boolean singletonExist() {
+    	return (_gameDatabase != null);
     }
     
     /**
@@ -83,8 +71,9 @@ public class GameDatabase {
      * @return GameDatabase the instance of our game database.
      */
     public static GameDatabase getInstance() {
-        if (_gameDatabase == null) {
-        	_gameDatabase = new GameDatabase();
+        if (!singletonExist()) {
+        	List<Category> categoryList = new ArrayList<Category>();
+        	_gameDatabase = new GameDatabase(categoryList);
         }
 
         return _gameDatabase;
@@ -97,9 +86,8 @@ public class GameDatabase {
      * @return GameDatabase the instance of our game database.
      */
     public static GameDatabase getInstance(List<Category> categoryList) {
-    	if (_gameDatabase == null) {
-    		_gameDatabase = new GameDatabase(categoryList);
-        }
+    	kill();
+    	_gameDatabase = new GameDatabase(categoryList);
 
         return _gameDatabase;
     }
@@ -110,7 +98,7 @@ public class GameDatabase {
      */
     private void initialize(List<Category> categoryList) {
     	// If the game data file already exists
-    	if (_gameFile.exists() && _gameFile.isFile()) {
+    	if (gameFileExist()) {
     		readGameData();
     	} else {
 			// If the game data file does not exists
@@ -228,8 +216,6 @@ public class GameDatabase {
 		try {
 			Files.deleteIfExists(_gameFile.toPath());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
     }
 	
