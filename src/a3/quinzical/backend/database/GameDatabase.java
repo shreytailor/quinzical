@@ -72,7 +72,7 @@ public class GameDatabase {
      * This method is used to check if the GameData file exist
      * @return if the GameData file exist
      */
-    public boolean exist() {
+    public static boolean exist() {
     	return (_gameFile.exists() && _gameFile.isFile());
     }
     
