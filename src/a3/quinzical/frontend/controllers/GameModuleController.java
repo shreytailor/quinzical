@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ButtonType;
 
@@ -60,7 +59,7 @@ public class GameModuleController implements Initializable {
 
         if (_helper.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-            _switcher.switchTo(ScreenType.GAME_MODULE);
+            _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
         }
     }
 

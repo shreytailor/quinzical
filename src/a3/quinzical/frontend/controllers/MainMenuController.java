@@ -18,7 +18,6 @@ import javafx.stage.Modality;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
 
 /**
  * This class is the controller class for the MainMenu screen.
@@ -32,28 +31,6 @@ public class MainMenuController {
     @FXML Button settingsButton;
 
     private final Speaker _speaker = Speaker.init();
-
-    /**
-     * This handler is used to respond to the shortcuts of the screen.
-     * @param event the key event.
-     */
-    @FXML
-    private void handleKeyPressed(KeyEvent event) {
-        switch(event.getCode()) {
-            case P:
-                practiceModuleButton.fire();
-                break;
-            case G:
-                gameModuleButton.fire();
-                break;
-            case X:
-                exitButton.fire();
-                break;
-            case S:
-                settingsButton.fire();
-                break;
-        }
-    }
 
     /**
      * This is the handler for clicking on the "Practice" button.
@@ -70,14 +47,21 @@ public class MainMenuController {
      */
     @FXML
     private void handleGameModuleButton() {
+        /*
+         * Dynamic routing of the button depending on the state of the game. It depends on whether
+         * the game already exists, and other factors.
+         */
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
-
-        // If there are questions remaining, go to the Game Module, else go to the other screen.
-        if (GameDatabase.getInstance().getRemainingClues() > 0) {
-            switcher.switchTo(ScreenType.GAME_MODULE);
+        if (GameDatabase.singletonExist()) {
+            if (GameDatabase.getInstance().getRemainingClues() > 0) {
+                switcher.switchTo(ScreenType.GAME_MODULE);
+            } else {
+                switcher.switchTo(ScreenType.GAME_FINISHED);
+            }
         } else {
-            switcher.switchTo(ScreenType.GAME_FINISHED);
+            switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
         }
+
         switcher.setTitle("Game Module");
     }
 

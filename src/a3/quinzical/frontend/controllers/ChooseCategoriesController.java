@@ -1,6 +1,8 @@
 package a3.quinzical.frontend.controllers;
 import a3.quinzical.backend.models.Category;
+import a3.quinzical.frontend.helper.AlertHelper;
 import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.backend.database.PracticeDatabase;
 
@@ -13,6 +15,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.ScrollPane;
 import javafx.collections.FXCollections;
@@ -51,6 +55,16 @@ public class ChooseCategoriesController implements Initializable {
     private void handleRandomButton() {
         deselectAll();
         randomize();
+    }
+
+    @FXML
+    private void handleStartButton() {
+        if (_selectedCategories.size() == 5) {
+            GameDatabase.getInstance(_selectedCategories);
+            _switcher.switchTo(ScreenType.GAME_MODULE);
+        } else {
+            AlertHelper.getInstance().showAlert(Alert.AlertType.ERROR, "Please select five questions to proceed.", ButtonType.OK);
+        }
     }
 
     /**
