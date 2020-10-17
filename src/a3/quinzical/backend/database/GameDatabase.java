@@ -1,17 +1,16 @@
 package a3.quinzical.backend.database;
+import a3.quinzical.backend.IO;
+import a3.quinzical.backend.models.Clue;
+import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.tasks.Formatting;
 
 // Java API dependencies.
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import a3.quinzical.backend.tasks.Formatting;
-import a3.quinzical.backend.IO;
-import a3.quinzical.backend.models.Category;
-import a3.quinzical.backend.models.Clue;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.nio.file.Files;
 
 /**
  * This class is used to create a module that represents the record of a player, 

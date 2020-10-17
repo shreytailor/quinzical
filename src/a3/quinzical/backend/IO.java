@@ -1,19 +1,17 @@
 package a3.quinzical.backend;
-
-import java.io.BufferedReader;
-//Java API dependencies.
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.backend.database.PracticeDatabase;
-import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.Clue;
+import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.database.GameDatabase;
+
+//Java API dependencies.
+import java.io.File;
+import java.util.List;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
 
 /**
  * This class is used to read/write the database of the game
