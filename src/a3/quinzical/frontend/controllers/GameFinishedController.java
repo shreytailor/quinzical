@@ -52,7 +52,7 @@ public class GameFinishedController implements Initializable {
 
         if (_helper.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-            _switcher.switchTo(ScreenType.GAME_MODULE);
+            _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
         }
     }
 

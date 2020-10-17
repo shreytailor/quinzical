@@ -33,12 +33,12 @@ public class GameDatabase {
 	// Fields belonging to the non-static context.
     private List<Category> _categories = new ArrayList<Category>();
 	private int _winning = 0;
+	private Clue _currentClue = null;
 	private final static int _cateNum = 5;
 	private final static int _clueNum = 5;
 	private final static int _startPrice = 100;
 	private final static int _priceIncrement = 100;
-	private Clue _currentClue = null;
-    
+
     /**
      * The constructor for GameDatabase object which is private, because it can only be
      * accessed by the getInstance method (according to the principles of Singleton pattern).

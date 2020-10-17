@@ -1,15 +1,14 @@
 package a3.quinzical.backend.database;
 
+import a3.quinzical.backend.IO;
+import a3.quinzical.backend.models.Clue;
+import a3.quinzical.backend.tasks.Formatting;
+import a3.quinzical.backend.models.Category;
+
 //Java API dependencies.
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import a3.quinzical.backend.tasks.Formatting;
-import a3.quinzical.backend.IO;
-import a3.quinzical.backend.models.Category;
-import a3.quinzical.backend.models.Clue;
-
 
 /**
  * This class is used to import all the categories and their corresponding clues from the file

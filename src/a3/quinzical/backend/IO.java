@@ -16,7 +16,7 @@ import java.io.BufferedReader;
 /**
  * This class is used to read/write the database of the game
  * 
- * @author Shrey Tailor, Jason Wang *
+ * @author Shrey Tailor, Jason Wang
  */
 public class IO {
 	// Fields belonging to the static context.
