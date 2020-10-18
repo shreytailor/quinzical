@@ -1,7 +1,6 @@
 package a3.quinzical.frontend.helper;
 
 // Java dependencies.
-import java.awt.color.ICC_ProfileGray;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -56,15 +55,12 @@ public class Speaker {
             _processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
             _process = _processBuilder.start();
         } catch (IOException error) {  };
-
-        System.out.println("Speaking " + _speechString);
     }
 
     /**
      * This method is used to stop the Speaker process from speaking.
      */
     public void kill() {
-        System.out.println("Killing...");
         try {
             Stream<ProcessHandle> descendents = _process.descendants();
             descendents.forEach(ProcessHandle::destroy);
