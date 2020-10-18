@@ -1,7 +1,6 @@
 package a3.quinzical.frontend.controllers;
-
-import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.backend.models.Clue;
+import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.backend.database.PracticeDatabase;
@@ -12,11 +11,13 @@ import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 /**
  * This class is the controller class for the Practice Question screen.
@@ -34,6 +35,7 @@ public class PracticeClueController implements Initializable {
     @FXML Button dontKnowButton;
     @FXML Label prefixPlaceholder;
     @FXML TextField answerTextField;
+    @FXML GridPane keyboardGridPane;
 
     private int _attemptsRemaining = 3;
     private final Speaker _speaker = Speaker.init();
@@ -119,6 +121,12 @@ public class PracticeClueController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleKeyboardButton(ActionEvent event) {
+        Button pressed = (Button) event.getSource();
+        answerTextField.setText(answerTextField.getText() + pressed.getText());
+    }
+
     /**
      * This is a private method used to tell the user that they were correct.
      */
@@ -162,6 +170,7 @@ public class PracticeClueController implements Initializable {
         answerTextField.setDisable(true);
         dontKnowButton.setVisible(false);
         hintPlaceholder.setVisible(false);
+        keyboardGridPane.setVisible(false);
     }
 
 }

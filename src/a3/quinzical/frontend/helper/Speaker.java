@@ -50,7 +50,6 @@ public class Speaker {
      */
     public void speak () {
         kill();
-        createSchematic();
 
         try {
             _processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
@@ -64,7 +63,7 @@ public class Speaker {
     public void kill() {
         try {
             Stream<ProcessHandle> descendents = _process.descendants();
-            descendents.filter(ProcessHandle::isAlive).forEach(ProcessHandle::destroy);
+            descendents.forEach(ProcessHandle::destroy);
         } catch (Exception error) {  };
     }
 
@@ -96,6 +95,7 @@ public class Speaker {
      */
     public void setSpeech(String string) {
         _speechString = string.replace("\"", "").replace("'", "");
+        createSchematic();
     }
 
     /**
