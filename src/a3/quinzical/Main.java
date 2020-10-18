@@ -12,14 +12,13 @@ import javafx.application.Application;
 // JavaFX dependencies.
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         // Checking if the configuration folder exists.
         IO.checkDirectory();
 
@@ -38,6 +37,7 @@ public class Main extends Application {
 
             Speaker.init().kill();
             Platform.exit();
+            System.exit(0);
         });
 
         ScreenSwitcher.initialize(stage);

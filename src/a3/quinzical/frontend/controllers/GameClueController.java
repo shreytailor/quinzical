@@ -9,16 +9,18 @@ import a3.quinzical.frontend.helper.ScreenSwitcher;
 // Java dependencies.
 import java.net.URL;
 import java.util.Timer;
-import java.util.ResourceBundle;
 import java.util.TimerTask;
+import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.TextField;
 
 /**
@@ -37,6 +39,7 @@ public class GameClueController implements Initializable {
     @FXML TextField inputField;
     @FXML Button respeakButton;
     @FXML Button dontKnowButton;
+    @FXML GridPane keyboardGridPane;
 
     private Timer _timer;
     private int TIME_LIMIT = 60;
@@ -118,6 +121,12 @@ public class GameClueController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleKeyboardButton(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        inputField.setText(inputField.getText() + button.getText());
+    }
+
     /**
      * This private method is used for doing certain things, after the user has finished answering.
      * @param isChecking if we are checking whether the answer is correct or not.
@@ -127,11 +136,12 @@ public class GameClueController implements Initializable {
         _timer.purge();
         inputField.setDisable(true);
         backButton.setVisible(true);
+        timerLabel.setVisible(false);
         messageLabel.setVisible(true);
         submitButton.setVisible(false);
-        dontKnowButton.setVisible(false);
         respeakButton.setVisible(false);
-        timerLabel.setVisible(false);
+        dontKnowButton.setVisible(false);
+        keyboardGridPane.setVisible(false);
 
         // Process of checking the answer to check if it was correct.
         boolean isCorrect = false;

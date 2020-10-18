@@ -157,7 +157,7 @@
                         </VBox>
                      </bottom>
                      <center>
-                        <VBox alignment="CENTER">
+                        <VBox alignment="CENTER" maxWidth="-Infinity">
                            <children>
                               <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
                                  <VBox.margin>
