@@ -37,7 +37,6 @@ public class Main extends Application {
 
             Speaker.init().kill();
             Platform.exit();
-            System.exit(0);
         });
 
         ScreenSwitcher.initialize(stage);
