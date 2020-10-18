@@ -158,6 +158,9 @@ public class GameClueController implements Initializable {
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
         }
 
+        _timer.purge();
+        _timer.cancel();
+
         _speaker.setSpeech(message);
         messageLabel.setText(message);
         _speaker.speak();
