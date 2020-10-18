@@ -22,7 +22,7 @@ sudo apt-get install festlex-oald
 chmod +x run_game.sh
 ```
 
-5. Run the game using this command.
+5. Run the game using this command. Please do note that this script is tailored for the second version of the SE206 image, given that you have installed the voices provided by Catherine.
 
 ```
 ./run_game.sh
