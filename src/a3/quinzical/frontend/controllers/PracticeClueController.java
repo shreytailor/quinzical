@@ -11,12 +11,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 // JavaFX dependencies.
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * This class is the controller class for the Practice Question screen.
@@ -117,6 +119,12 @@ public class PracticeClueController implements Initializable {
                 submitButton.fire();
                 break;
         }
+    }
+
+    @FXML
+    private void handleKeyboardButton(ActionEvent event) {
+        Button pressed = (Button) event.getSource();
+        answerTextField.setText(answerTextField.getText() + pressed.getText());
     }
 
     /**

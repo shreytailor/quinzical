@@ -124,7 +124,6 @@ public class GameClueController implements Initializable {
      */
     private void isAnswered(Boolean isChecking) {
         // Setting certain elements to hidden to clear the screen.
-        _speaker.kill();
         _timer.purge();
         inputField.setDisable(true);
         backButton.setVisible(true);
