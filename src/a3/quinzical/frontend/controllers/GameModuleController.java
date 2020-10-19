@@ -1,9 +1,8 @@
 package a3.quinzical.frontend.controllers;
-
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.models.Category;
-import a3.quinzical.frontend.helper.AlertHelper;
 import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.frontend.helper.AlertHelper;
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
@@ -39,18 +38,12 @@ public class GameModuleController implements Initializable {
         setupScreen();
     }
 
-    /**
-     * This is the handler class for when the "Back" button is pressed.
-     */
     @FXML
     private void handleBackButton () {
         _switcher.switchTo(ScreenType.MAIN_MENU);
         _switcher.setTitle("Main Menu");
     }
 
-    /**
-     * This is the handler class for when the user intends to "Reset" the game.
-     */
     @FXML
     private void handleResetButton() {
         String message = "Are you sure you want to reset the game?";

@@ -1,5 +1,4 @@
 package a3.quinzical.frontend.controllers;
-
 import a3.quinzical.frontend.helper.Speaker;
 
 // Java dependencies.

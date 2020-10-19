@@ -16,8 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.TextField;
 
 /**
  * This class is the controller class for the Practice Question screen.
@@ -57,18 +57,12 @@ public class PracticeClueController implements Initializable {
         _speaker.speak();
     };
 
-    /**
-     * This method is the listener for when the user presses "Don't Know" button.
-     */
     @FXML
     private void handleDontKnowButton() {
         stopInput();
         incorrectAnswer();
     }
 
-    /**
-     * This is the listener for when the user presses the "Submit" button.
-     */
     @FXML
     private void handleSubmitButton() {
         boolean isCorrect = _clue.checkAnswer(answerTextField.getText());
@@ -89,29 +83,18 @@ public class PracticeClueController implements Initializable {
         }
     }
 
-    /**
-     * This is the listener for when the user presses the "Back To Categories" button.
-     */
     @FXML
     private void handleBackButton () {
         _speaker.kill();
         _switcher.switchTo(ScreenType.PRACTICE_MODULE);
     }
 
-    /**
-     * This is the listener for when the user presses the "Respeak Clue" button.
-     */
     @FXML
     private void handleRespeakButton() {
         _speaker.setSpeech(_clue.getQuestion());
         _speaker.speak();
     }
 
-
-    /**
-     * This is the handler for when the "Enter" button is clicked on text box.
-     * @param event the key press event.
-     */
     @FXML
     private void submitOnEnter(KeyEvent event) {
         switch (event.getCode()) {
@@ -128,7 +111,8 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method used to tell the user that they were correct.
+     * This is a private method used to tell the user that they were correct. It performs things
+     * such as speaks the "Congratulations" message and shows the hidden elements on screen.
      */
     private void correctAnswer() {
         String string = "Ka pai, you got it correct!";
@@ -138,7 +122,8 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method used to display the correct answer to the user.
+     * This is a private method used to display the correct answer to the user. It performs things
+     * such as telling the user that they were wrong, speaks the correct answer.
      */
     private void incorrectAnswer() {
         String string = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
@@ -161,7 +146,7 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method to stop inputs from the user, and clearing the screen.
+     * This is a private method to stop inputs from the user, and performing the basic clean-up.
      */
     private void stopInput() {
         _speaker.kill();

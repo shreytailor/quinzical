@@ -1,5 +1,4 @@
 package a3.quinzical.frontend.controllers;
-
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.frontend.helper.ScreenType;
@@ -66,33 +65,21 @@ public class GameClueController implements Initializable {
         messageLabel.setVisible(false);
     }
 
-    /**
-     * This is the handler for when the "Don't Know" button is pressed.
-     */
     @FXML
     private void handleDontKnowButton() {
         isAnswered(false);
     }
 
-    /**
-     * This is the handler for when the "Submit" button is pressed.
-     */
     @FXML
     private void handleSubmitButton() {
         isAnswered(true);
     }
 
-    /**
-     * This is the handler for when the "Respeak" button is pressed.
-     */
     @FXML
     private void handleRespeakButton() {
         _speaker.speak();
     }
 
-    /**
-     * This is the handler for when the "Back" button is pressed.
-     */
     @FXML
     private void handleBackButton() {
         // Stop the speaking process.
@@ -108,10 +95,6 @@ public class GameClueController implements Initializable {
         }
     }
 
-    /**
-     * This is the handler for when the "Enter" button is clicked on text box.
-     * @param event the key press event.
-     */
     @FXML
     private void submitOnEnter(KeyEvent event) {
         switch (event.getCode()) {
@@ -132,16 +115,7 @@ public class GameClueController implements Initializable {
      * @param isChecking if we are checking whether the answer is correct or not.
      */
     private void isAnswered(Boolean isChecking) {
-        // Setting certain elements to hidden to clear the screen.
-        _timer.purge();
-        inputField.setDisable(true);
-        backButton.setVisible(true);
-        timerLabel.setVisible(false);
-        messageLabel.setVisible(true);
-        submitButton.setVisible(false);
-        respeakButton.setVisible(false);
-        dontKnowButton.setVisible(false);
-        keyboardGridPane.setVisible(false);
+        cleanupScreen();
 
         // Process of checking the answer to check if it was correct.
         boolean isCorrect = false;
@@ -158,12 +132,29 @@ public class GameClueController implements Initializable {
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
         }
 
-        _timer.purge();
-        _timer.cancel();
-
         _speaker.setSpeech(message);
         messageLabel.setText(message);
         _speaker.speak();
+    }
+
+    /**
+     * This method is used to perform the clean-up on the current screen after we stop accepting user
+     * input. This is done by hiding some of the elements such as the extra buttons on the screen.
+     */
+    private void cleanupScreen() {
+        // Setting certain elements to hidden to clear the screen.
+        inputField.setDisable(true);
+        backButton.setVisible(true);
+        timerLabel.setVisible(false);
+        messageLabel.setVisible(true);
+        submitButton.setVisible(false);
+        respeakButton.setVisible(false);
+        dontKnowButton.setVisible(false);
+        keyboardGridPane.setVisible(false);
+
+        // Cancelling the timer when the question is answered.
+        _timer.purge();
+        _timer.cancel();
     }
 
     /**

@@ -1,5 +1,4 @@
 package a3.quinzical.frontend.controllers;
-
 import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.backend.database.GameDatabase;
@@ -32,9 +31,6 @@ public class MainMenuController {
 
     private final Speaker _speaker = Speaker.init();
 
-    /**
-     * This is the handler for clicking on the "Practice" button.
-     */
     @FXML
     private void handlePracticeModuleButton() {
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
@@ -42,9 +38,6 @@ public class MainMenuController {
         switcher.setTitle("Practice Module");
     }
 
-    /**
-     * This is the handler for clicking on the "Game" button.
-     */
     @FXML
     private void handleGameModuleButton() {
         /*
@@ -65,19 +58,11 @@ public class MainMenuController {
         switcher.setTitle("Game Module");
     }
 
-
-    /**
-     * This is the handler for when the "Exit" button is clicked.
-     */
     @FXML
     private void handleExitButton() {
         ScreenSwitcher.getInstance().exit();
     }
 
-
-    /**
-     * This is the handler for when the "Settings" button is clicked. We show a new window.
-     */
     @FXML
     private void handleSettingsButton() {
         int WIDTH = 450;
@@ -103,6 +88,7 @@ public class MainMenuController {
         settingsStage.initModality(Modality.APPLICATION_MODAL);
         settingsStage.initOwner(ScreenSwitcher.getInstance().getStage().getScene().getWindow());
 
+        // If the screen was closed before the voice stops speaking, then we are stopping synthesis.
         settingsStage.setOnCloseRequest(event -> {
             _speaker.kill();
         });

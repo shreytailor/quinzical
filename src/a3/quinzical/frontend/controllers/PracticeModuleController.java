@@ -1,5 +1,4 @@
 package a3.quinzical.frontend.controllers;
-
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.ScreenType;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
@@ -34,6 +33,12 @@ public class PracticeModuleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupGrid();
+    }
+
+    @FXML
+    private void handleBackButton() {
+        _switcher.switchTo(ScreenType.MAIN_MENU);
+        _switcher.setTitle("Main Menu");
     }
 
     /**
@@ -81,15 +86,6 @@ public class PracticeModuleController implements Initializable {
         // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
         scrollPane.setContent(_gridPane);
         _gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(_gridPane.widthProperty()).divide(2));
-    }
-
-    /**
-     * This handler is for the "Back to Menu" button.
-     */
-    @FXML
-    private void handleBackButton() {
-        _switcher.switchTo(ScreenType.MAIN_MENU);
-        _switcher.setTitle("Main Menu");
     }
 
     /**

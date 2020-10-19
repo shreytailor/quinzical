@@ -29,27 +29,24 @@ public class GameFinishedController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Telling the user the amount that they accumulated.
         winningsPlaceholder.setText("You have won a total of $" + _db.getWinning() + ".");
     }
 
-    /**
-     * This is the handler used when the "Back" button is pressed.
-     */
     @FXML
     public void handleBackButton() {
+        // Go back to the main menu.
         _switcher.switchTo(ScreenType.MAIN_MENU);
         _switcher.setTitle("Main Menu");
     }
 
-    /**
-     * This is the handler used when the "Reset" button is pressed.
-     */
     @FXML
     public void handleResetButton() {
         String message = "Are you sure you want to reset the game?";
         AlertHelper _helper = AlertHelper.getInstance();
         _helper.showAlert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
 
+        // If the user confirmed that they want to reset, then we are recreating the database.
         if (_helper.getResult() == ButtonType.YES) {
             GameDatabase.kill();
             _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);

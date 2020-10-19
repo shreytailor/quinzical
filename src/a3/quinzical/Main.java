@@ -36,6 +36,7 @@ public class Main extends Application {
             }
 
             Speaker.init().kill();
+            System.exit(0);
             Platform.exit();
         });
 
