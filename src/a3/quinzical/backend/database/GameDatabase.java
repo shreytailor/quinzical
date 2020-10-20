@@ -2,6 +2,7 @@ package a3.quinzical.backend.database;
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.models.Category;
+import a3.quinzical.backend.models.InternationalCategory;
 import a3.quinzical.backend.tasks.Formatting;
 
 // Java API dependencies.
@@ -32,6 +33,7 @@ public class GameDatabase {
 	
 	// Fields belonging to the non-static context.
     private List<Category> _categories = new ArrayList<Category>();
+    private InternationalCategory _intCate = new InternationalCategory();
 	private int _winning = 0;
 	private Clue _currentClue = null;
 	private final static int _cateNum = 5;
@@ -134,6 +136,11 @@ public class GameDatabase {
 				newCate.addClue(newClue);
 			}
 		}
+		
+		if(_categories.get(getCateSize()-1).getName().equals("International")) {
+			_intCate = new InternationalCategory(_categories.get(getCateSize()-1));
+			_categories.remove(getCateSize()-1);
+		}
     }
     
     /**
@@ -142,6 +149,7 @@ public class GameDatabase {
      * questions from PracticeDatabase and create a file to store the player's record.
      */
     private void generateGameData(List<Category> categoryList) {
+    	categoryList.add(PracticeDatabase.getInstance().getInternationalCategory());
     	Random rand = new Random();
 		Category newCate;
 		Clue newClue, selectedClue;
@@ -164,7 +172,12 @@ public class GameDatabase {
 				// Set the prize of the question.
 				price += _priceIncrement;
 			}
-			_categories.add(newCate);
+			
+			if(selectedCate.getName() == "International") {
+				_intCate = new InternationalCategory(newCate);
+			}else {
+				_categories.add(newCate);
+			}			
 		}
 
 		// Reload the PracticeDatabase after creating the Game Database.
@@ -196,6 +209,14 @@ public class GameDatabase {
      */
     public Category getCategory(int position) throws IndexOutOfBoundsException {
         return _categories.get(position);
+    }
+    
+    /**
+     * THis method is used to get the international category of the database
+     * @return InternationalCategory the international category of the database
+     */
+    public InternationalCategory getInternationalCategory() {
+    	return _intCate;
     }
     
     /**

@@ -1,7 +1,9 @@
 package a3.quinzical.backend;
 import a3.quinzical.backend.models.Clue;
+import javafx.stage.Stage;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.backend.database.PracticeDatabase;
 
 //Java API dependencies.
 import java.io.File;
@@ -60,8 +62,12 @@ public class IO {
 		File gameFile = game.getFile();
 		BufferedWriter bw = new BufferedWriter(new FileWriter(gameFile));
 		bw.write(game.getWinning() + "\n\n");
-		for(int i = 0; i < game.getCateSize(); i++) {
-			writeCate = game.getCategory(i);
+		for(int i = 0; i < game.getCateSize() + 1; i++) {
+			if(i == game.getCateSize()) {
+				writeCate = game.getInternationalCategory();
+			}else {
+				writeCate = game.getCategory(i);
+			}			
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);

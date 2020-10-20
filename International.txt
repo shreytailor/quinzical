@@ -1,0 +1,8 @@
+
+International Q1|What is|Endeavour
+International Q2|What is|Christchurch
+International Q3|What is|1893
+International Q4|What is|1840
+International Q5|Who is|Kupe
+International Q6|What is|Rangitoto
+International Q7|What is|Tasman

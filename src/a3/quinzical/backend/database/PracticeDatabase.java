@@ -2,6 +2,7 @@ package a3.quinzical.backend.database;
 
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Clue;
+import a3.quinzical.backend.models.InternationalCategory;
 import a3.quinzical.backend.tasks.Formatting;
 import a3.quinzical.backend.models.Category;
 
@@ -28,11 +29,13 @@ public class PracticeDatabase {
     // Fields belonging to the static context.
     private static PracticeDatabase _practiceDatabase;
     private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
+    private final static File _intFile = new File(System.getProperty("user.dir")+"/International.txt");
 
     // Fields belonging to the non-static context.
     private Clue _selected;
     private int _numberOfCategories;
     private List<Category> _categories = new ArrayList<Category>();
+    private InternationalCategory _intCate = new InternationalCategory();
 
     /**
      * The only constructor for PracticeDatabase object which is private, because it can only be
@@ -64,6 +67,14 @@ public class PracticeDatabase {
     public Category getCategory(int position) throws IndexOutOfBoundsException {
         return _categories.get(position);
     }
+    
+    /**
+     * THis method is used to get the international category of the database
+     * @return InternationalCategory the international category of the database
+     */
+    public InternationalCategory getInternationalCategory() {
+    	return _intCate;
+    }
 
     /**
      * This method is used to initialize the instance of PracticeDatabase object.
@@ -82,6 +93,14 @@ public class PracticeDatabase {
 				newClue = Formatting.formatClue(line, newCate);
 				newCate.addClue(newClue);
 			}
+    	}
+    	
+    	List<String> internationalContent = IO.readFile(_intFile);
+    	for (String line : internationalContent) {
+    		if(!line.isBlank()) {
+	    		newClue = Formatting.formatClue(line, newCate);
+	    		_intCate.addClue(newClue);
+    		}
     	}
     }
 
