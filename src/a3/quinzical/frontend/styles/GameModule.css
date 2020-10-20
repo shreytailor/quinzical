@@ -1,12 +1,20 @@
 @font-face {
+    src: url('fonts/Poppins-Bold.ttf');
+}
+
+@font-face {
     src: url('fonts/Poppins-Medium.ttf');
+}
+
+.information-bar {
+    -fx-background-color: rgba(0, 0, 0, 0.6);
 }
 
 .category {
     -fx-font-size: 25;
     -fx-wrap-text: true;
-    -fx-text-fill: black;
-    -fx-font-family: "Poppins Medium";
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins Bold";
     -fx-text-alignment: center;
 }
 
