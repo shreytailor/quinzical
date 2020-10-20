@@ -241,7 +241,6 @@
                                           <String fx:value="keyboard-button" />
                                        </styleClass>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -259,7 +258,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -277,7 +275,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -295,7 +292,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -313,7 +309,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -331,7 +326,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -349,7 +343,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -367,7 +360,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -385,7 +377,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>
@@ -403,7 +394,6 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                        <stylesheets>
-                                          <URL value="@../styles/KeyboardButton.css" />
                                           <URL value="@../styles/Fonts.css" />
                                           <URL value="@../styles/Buttons.css" />
                                        </stylesheets>

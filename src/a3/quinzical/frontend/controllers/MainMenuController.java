@@ -65,8 +65,8 @@ public class MainMenuController {
 
     @FXML
     private void handleSettingsButton() {
-        int WIDTH = 450;
-        int HEIGHT = 250;
+        int WIDTH = 600;
+        int HEIGHT = 350;
 
         // Creating and configuring the new stage.
         Stage settingsStage = new Stage();

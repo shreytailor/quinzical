@@ -158,15 +158,11 @@
                         <String fx:value="keyboard-button" />
                      </styleClass>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="ē" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -176,15 +172,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="ī" GridPane.columnIndex="2">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -194,15 +186,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="ō" GridPane.columnIndex="3">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -212,15 +200,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="ū" GridPane.columnIndex="4">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -230,15 +214,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="Ā" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -248,15 +228,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="Ē" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -266,15 +242,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="Ī" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -284,15 +256,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="Ō" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -302,15 +270,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </Button>
                   <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleKeyboardButton" text="Ū" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
                      <styleClass>
                         <String fx:value="medium" />
                         <String fx:value="medium-font" />
@@ -320,7 +284,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                      <stylesheets>
-                        <URL value="@../styles/KeyboardButton.css" />
                         <URL value="@../styles/Fonts.css" />
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
