@@ -46,7 +46,7 @@ Under [Freepik Licence](https://www.freepikcompany.com/legal#nav-freepik-license
 <img width="20px" src="./src/a3/quinzical/frontend/resources/icons/speaker.png">\
 Icon of the "Speaker" provided by Pixel Perfect.\
 Under Free Licence (With Attribution).\
-[It can be found here.](https://www.flaticon.com/free-icon/volume_727269?term=speaker&page=1&position=1)
+[It can be found here.](https://www.flaticon.com/free-icon/speaking_151840?term=speak&page=1&position=14)
 
 <img width="20px" src="./src/a3/quinzical/frontend/resources/icons/back.png">\
 Icon of the "Back Arrow" provided by Google.\
