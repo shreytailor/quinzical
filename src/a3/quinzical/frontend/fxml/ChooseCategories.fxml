@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.ChooseCategoriesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.ChooseCategoriesController">
    <top>
-      <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Select Five Categories" BorderPane.alignment="CENTER">
+      <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Select Five Categories" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>

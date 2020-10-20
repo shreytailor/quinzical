@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeModuleController">
    <center>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" styleClass="scrollPane" stylesheets="@../styles/PracticeModule.css" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" styleClass="scrollPane" stylesheets="@../styles/Global.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </BorderPane.margin>
@@ -46,7 +46,7 @@
       </Button>
    </bottom>
    <top>
-      <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Choose a category to practice" textFill="#2e2e2e" BorderPane.alignment="CENTER">
+      <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Choose a category to practice" textFill="WHITE" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>
@@ -55,4 +55,8 @@
          </font>
       </Label>
    </top>
+   <styleClass>
+      <String fx:value="white" />
+      <String fx:value="background" />
+   </styleClass>
 </BorderPane>

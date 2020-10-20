@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="white" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeClueController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.PracticeClueController">
    <center>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -34,17 +34,27 @@
                <children>
                   <BorderPane>
                      <center>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: &quot;6a994e&quot;; -fx-background-radius: 15px;">
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: &quot;288F5A&quot;; -fx-background-radius: 15px;">
                            <center>
                               <Label fx:id="clueLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="Placeholder Clue" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
                                  <BorderPane.margin>
-                                    <Insets left="30.0" right="30.0" />
+                                    <Insets left="30.0" right="30.0" top="15.0" />
                                  </BorderPane.margin>
                               </Label>
                            </center>
+                           <bottom>
+                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Hint Placeholder" textFill="WHITE" wrapText="true" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <BorderPane.margin>
+                                    <Insets bottom="15.0" />
+                                 </BorderPane.margin>
+                              </Label>
+                           </bottom>
                         </BorderPane>
                      </center>
                      <bottom>
@@ -109,7 +119,7 @@
                      <top>
                         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                            <children>
-                              <Label stylesheets="@../styles/Fonts.css" text="Category: ">
+                              <Label contentDisplay="CENTER" maxHeight="1.7976931348623157E308" stylesheets="@../styles/Fonts.css" text="Category: " textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -117,7 +127,7 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="categoryLabel" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder">
+                              <Label fx:id="categoryLabel" maxHeight="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Placeholder" textFill="WHITE">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -134,17 +144,9 @@
                      <bottom>
                         <VBox>
                            <children>
-                              <Label fx:id="hintPlaceholder" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Hint Placeholder" textFill="#a02c2c" wrapText="true">
+                              <Label fx:id="attemptsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="You have X attempts remaining." textFill="WHITE">
                                  <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label fx:id="attemptsLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="medium" stylesheets="@../styles/Fonts.css" text="You have X attempts remaining.">
-                                 <font>
-                                    <Font size="20.0" />
+                                    <Font size="22.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets />
@@ -159,7 +161,7 @@
                      <center>
                         <VBox alignment="CENTER" maxWidth="-Infinity">
                            <children>
-                              <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder">
+                              <Label fx:id="prefixPlaceholder" maxWidth="1.7976931348623157E308" styleClass="regular" stylesheets="@../styles/Fonts.css" text="Prefix Placeholder" textFill="WHITE" wrapText="true">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -420,4 +422,8 @@
          </children>
       </HBox>
    </center>
+   <styleClass>
+      <String fx:value="white" />
+      <String fx:value="background" />
+   </styleClass>
 </BorderPane>
