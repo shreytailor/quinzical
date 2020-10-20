@@ -10,10 +10,10 @@
     -fx-text-fill: white;
     -fx-background-radius: 10;
     -fx-text-alignment: center;
-    -fx-background-color: #51824A;
+    -fx-background-color: #288F5A;
     -fx-font-family: "Poppins Medium";
 }
 
 .categoryButton:hover {
-    -fx-background-color: #497543;
+    -fx-background-color: #247F50;
 }

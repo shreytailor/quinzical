@@ -21,11 +21,11 @@
 
 .secondary {
     -fx-text-fill: #333333;
-    -fx-background-color: #C2C2C2;
+    -fx-background-color: #EBEBEB;
 }
 
 .secondary:hover {
-    -fx-background-color: #B8B8B8;
+    -fx-background-color: #D6D6D6;
 }
 
 .red {

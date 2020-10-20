@@ -331,7 +331,7 @@
       </VBox>
    </center>
    <top>
-      <VBox alignment="CENTER" style="-fx-background-radius: 15px; -fx-background-color: &quot;ffb703&quot;;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" style="-fx-background-radius: 15px; -fx-background-color: &quot;F5AF00&quot;;" BorderPane.alignment="CENTER">
          <children>
             <GridPane maxHeight="-Infinity" maxWidth="-Infinity">
               <columnConstraints>
