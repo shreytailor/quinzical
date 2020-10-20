@@ -11,7 +11,7 @@
 }
 
 .category {
-    -fx-font-size: 25;
+    -fx-font-size: 24;
     -fx-wrap-text: true;
     -fx-text-fill: white;
     -fx-font-family: "Poppins Bold";
@@ -20,9 +20,9 @@
 
 .clue {
     -fx-font-size: 28;
-    -fx-max-width: 180px;
+    -fx-max-height: 97px;
+    -fx-max-width: 160px;
     -fx-text-fill: #291D00;
-    -fx-max-height: 110px;
     -fx-background-color: #FFBF1F;
     -fx-font-family: "Poppins Medium";
 }

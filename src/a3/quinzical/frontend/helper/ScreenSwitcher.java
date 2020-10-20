@@ -34,7 +34,7 @@ public class ScreenSwitcher {
 
         try {
             Pane pane = FXMLLoader.load(mainMenu.getUrl());
-            _mainScene = new Scene(pane, 1350, 750);
+            _mainScene = new Scene(pane, 1200, 670);
             _mainStage.setScene(_mainScene);
             setTitle("Main Menu");
         } catch (IOException error) {  };

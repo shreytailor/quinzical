@@ -3,9 +3,9 @@
 }
 
 .categoryButton {
-    -fx-font-size: 22;
-    -fx-pref-width: 220;
-    -fx-pref-height: 95;
+    -fx-font-size: 21;
+    -fx-pref-width: 195;
+    -fx-pref-height: 84;
     -fx-wrap-text: true;
     -fx-text-fill: white;
     -fx-background-radius: 10;
