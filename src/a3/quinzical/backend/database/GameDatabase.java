@@ -253,11 +253,13 @@ public class GameDatabase {
 	 * @return number of questions left
 	 */
 	public int getRemainingClues() {
+		_categories.add(_intCate);
 		int count = 0;
 		for(int i = 0; i < _categories.size(); i++) {
 			Category category = _categories.get(i);
 			count += category.getClueSize();
 		}
+		_categories.remove(_intCate);
 		return count;
 	}
 }
