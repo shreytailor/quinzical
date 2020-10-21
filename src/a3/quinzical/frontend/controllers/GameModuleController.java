@@ -13,29 +13,35 @@ import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.control.ButtonType;
 
 /**
  * This is the controller class for the GameModule screen.
  */
 public class GameModuleController implements Initializable {
 
-    @FXML GridPane clueGrid;
-    @FXML Label winningsLabel;
-    @FXML Button resetButton;
+    @FXML TabPane tabPane;
     @FXML Button backButton;
+    @FXML Tab newZealandTab;
+    @FXML Button resetButton;
+    @FXML Label winningsLabel;
+    @FXML Tab internationalTab;
+    @FXML GridPane newZealandGrid;
+    @FXML GridPane internationalGrid;
+    @FXML ToggleButton newZealandButton;
+    @FXML ToggleButton internationalButton;
 
     private GameDatabase  _db = GameDatabase.getInstance();
     private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setupScreen();
+        setupNewZealandGrid();
+        setupInternationalGrid();
+        setupToggleButtons();
+        newZealandButton.setSelected(true);
     }
 
     @FXML
@@ -61,7 +67,7 @@ public class GameModuleController implements Initializable {
      * for the game. The process is such that we are iterating through each category, and then
      * through each question to display them properly so that it's readable.
      */
-    private void setupScreen() {
+    private void setupNewZealandGrid() {
         // Displaying the winnings.
         int winnings = GameDatabase.getInstance().getWinning();
         winningsLabel.setText("$" + winnings);
@@ -72,7 +78,7 @@ public class GameModuleController implements Initializable {
             Label title = new Label(categoryObject.getName());
             title.getStyleClass().add("category");
             title.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
-            clueGrid.add(title, category, 0);
+            newZealandGrid.add(title, category, 0);
 
             // Making sure that the first clue is always clickable, hence using this flag.
             boolean active = true;
@@ -81,9 +87,7 @@ public class GameModuleController implements Initializable {
             List<Clue> clues = categoryObject.remainingClue();
             for (int clue = 1; clue < clues.size() + 1; clue++) {
                 Clue clueObject = categoryObject.getClue(clue - 1);
-                Button clueButton = new Button("$" + clueObject.getPrize());
-                clueButton.getStyleClass().add("clue");
-                clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
+                Button clueButton = clueButtonGenerator(clueObject);
 
                 if (!active) {
                     clueButton.setDisable(true);
@@ -98,9 +102,54 @@ public class GameModuleController implements Initializable {
                 });
 
                 // Finally, we add the clue to the grid.
-                clueGrid.add(clueButton, category, clue);
+                newZealandGrid.add(clueButton, category, clue);
             }
         }
+    }
+
+    private void setupInternationalGrid() {
+        Category internationCategory = _db.getInternationalCategory();
+        List<Clue> internationalClues = internationCategory.remainingClue();
+
+        boolean active = true;
+        for (int clue = 1; clue < internationalClues.size() + 1; clue++) {
+            Clue clueObject = internationalClues.get(clue - 1);
+            Button clueButton = clueButtonGenerator(clueObject);
+
+            if (!active) {
+                clueButton.setDisable(true);
+            }
+            active = false;
+
+            internationalGrid.add(clueButton, 0, clue);
+        }
+    }
+
+    private void setupToggleButtons() {
+        newZealandButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                internationalButton.setSelected(false);
+                tabPane.getSelectionModel().select(newZealandTab);
+            } else {
+                internationalButton.setSelected(true);
+            }
+        });
+
+        internationalButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                newZealandButton.setSelected(false);
+                tabPane.getSelectionModel().select(internationalTab);
+            } else {
+                newZealandButton.setSelected(true);
+            }
+        });
+    }
+
+    private Button clueButtonGenerator(Clue clue) {
+        Button clueButton = new Button("$" + clue.getPrize());
+        clueButton.getStyleClass().add("clue");
+        clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
+        return clueButton;
     }
 
 }
