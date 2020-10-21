@@ -38,10 +38,7 @@ public class IO {
 				fileContent.add(line.trim());
 			}
 			br.close();
-		} catch (IOException e) {
-			System.out.println("Error reading file at: " + file.getPath());
-			e.printStackTrace();
-		}
+		} catch (IOException e) {	}
 		return fileContent;
 	}
 	
@@ -89,9 +86,6 @@ public class IO {
 		
 		try {
 			writeGameData(GameDatabase.getInstance());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (IOException e) {	}
 	}
 }
