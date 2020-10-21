@@ -3,7 +3,6 @@ import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.backend.database.PracticeDatabase;
 
 //Java API dependencies.
 import java.io.File;
@@ -74,6 +73,7 @@ public class IO {
 		bw.close();
 	}
 	
+	/*
 	public static void main(String[] args) {
 		PracticeDatabase.getInstance();
 		List<Category> clist = new ArrayList<Category>();
@@ -82,10 +82,22 @@ public class IO {
 		clist.add(PracticeDatabase.getInstance().getCategory(2));
 		clist.add(PracticeDatabase.getInstance().getCategory(3));
 		clist.add(PracticeDatabase.getInstance().getCategory(4));
-		GameDatabase.getInstance(clist);
 		
+		GameDatabase.getInstance(clist);
+		GameDatabase.getInstance().getCategory(0).removeClue(0);
+		GameDatabase.getInstance().getCategory(0).removeClue(0);
+		GameDatabase.getInstance().getCategory(0).removeClue(0);
+		GameDatabase.getInstance().getCategory(0).removeClue(0);
+		GameDatabase.getInstance().getCategory(0).removeClue(0);
+		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
 		try {
 			writeGameData(GameDatabase.getInstance());
 		} catch (IOException e) {	}
 	}
+	*/
 }

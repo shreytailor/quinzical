@@ -30,3 +30,20 @@
 .clue:hover {
     -fx-background-color: #F5AF00;
 }
+
+.toggle-button {
+    -fx-text-fill: #6E6D7A;
+    -fx-background-color: #E0DEE1;
+}
+
+.toggle-button:selected {
+    -fx-text-fill: white;
+    -fx-background-color: #197DB3;
+}
+
+.tab-pane {
+    -fx-tab-max-height: 0 ;
+}
+.tab-pane .tab-header-area {
+    visibility: hidden ;
+}
