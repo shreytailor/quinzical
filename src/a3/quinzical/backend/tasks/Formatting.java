@@ -49,7 +49,11 @@ public class Formatting {
 	 * @return a clue object that is sanitized
 	 */
 	public static Clue formatClue(String str, Category cate) {
-		Clue clue = new Clue(str.split("[|]")[0].trim(), str.split("[|]")[1].trim(), str.split("[|]")[2].trim(), cate);
+		String question, prefix, answer;
+		question = str.split("[|]")[0].trim();
+		prefix = str.split("[|]")[1].trim();
+		answer = str.split("[|]")[2].trim();
+		Clue clue = new Clue(question, prefix, answer, cate);
 		return clue;
 	}
 }

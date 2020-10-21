@@ -3,11 +3,11 @@ package a3.quinzical.backend.database;
 import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.models.InternationalCategory;
+import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.backend.tasks.Formatting;
 import a3.quinzical.backend.models.Category;
 
 //Java API dependencies.
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +28,6 @@ public class PracticeDatabase {
 
     // Fields belonging to the static context.
     private static PracticeDatabase _practiceDatabase;
-    private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
-    private final static File _intFile = new File(System.getProperty("user.dir")+"/International.txt");
 
     // Fields belonging to the non-static context.
     private Clue _selected;
@@ -82,7 +80,8 @@ public class PracticeDatabase {
      * and store them in their respective category objects and clue objects. 
      */
     private void initialize() {
-        List<String> quizContent = IO.readFile(_quizFile);
+    	//Load categories and clues from the New Zealand database
+        List<String> quizContent = IO.readFile(FileManager.getQuizFile());
         Category newCate = null;
     	Clue newClue;
     	for (String line : quizContent) {
@@ -94,8 +93,8 @@ public class PracticeDatabase {
 				newCate.addClue(newClue);
 			}
     	}
-    	
-    	List<String> internationalContent = IO.readFile(_intFile);
+    	//Load clues to International Category
+    	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
     	for (String line : internationalContent) {
     		if(!line.isBlank()) {
 	    		newClue = Formatting.formatClue(line, newCate);

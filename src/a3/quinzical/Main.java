@@ -2,6 +2,7 @@ package a3.quinzical;
 import a3.quinzical.backend.IO;
 import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
@@ -20,9 +21,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         // Checking if the configuration folder exists.
-        IO.checkDirectory();
+        FileManager.checkConfigDirectory();
 
-        if (GameDatabase.gameFileExist()) {
+        if (FileManager.gameFileExist()) {
             GameDatabase.getInstance();
         }
 
