@@ -1,6 +1,6 @@
 package a3.quinzical.backend;
 import a3.quinzical.backend.models.Clue;
-import javafx.stage.Stage;
+import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.database.GameDatabase;
 import a3.quinzical.backend.database.PracticeDatabase;
@@ -22,7 +22,6 @@ import java.io.BufferedReader;
  */
 public class IO {
 	// Fields belonging to the static context.
-	private final static File _configDirectory = new File(System.getProperty("user.dir")+"/.config/");
 		
 	/**
 	 * This method is used to read a given file into a list of Strings
@@ -56,10 +55,10 @@ public class IO {
 	 * the GameDatabase object into file.
 	 */
 	public static void writeGameData(GameDatabase game) throws IOException {
-		checkDirectory();
+		FileManager.checkConfigDirectory();
 		Category writeCate = null;
 		Clue writeClue = null;
-		File gameFile = game.getFile();
+		File gameFile = FileManager.getGameFile();
 		BufferedWriter bw = new BufferedWriter(new FileWriter(gameFile));
 		bw.write(game.getWinning() + "\n\n");
 		for(int i = 0; i < game.getCateSize() + 1; i++) {
@@ -78,13 +77,21 @@ public class IO {
 		bw.close();
 	}
 	
-	/**
-	 * This method will check if the configuration folder exists, if not then 
-	 * the folder will be created.
-	 */
-	public static void checkDirectory() {
-		if(!_configDirectory.exists()) {
-			_configDirectory.mkdir();
+	public static void main(String[] args) {
+		PracticeDatabase.getInstance();
+		List<Category> clist = new ArrayList<Category>();
+		clist.add(PracticeDatabase.getInstance().getCategory(0));
+		clist.add(PracticeDatabase.getInstance().getCategory(1));
+		clist.add(PracticeDatabase.getInstance().getCategory(2));
+		clist.add(PracticeDatabase.getInstance().getCategory(3));
+		clist.add(PracticeDatabase.getInstance().getCategory(4));
+		GameDatabase.getInstance(clist);
+		
+		try {
+			writeGameData(GameDatabase.getInstance());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	}	
+	}
 }

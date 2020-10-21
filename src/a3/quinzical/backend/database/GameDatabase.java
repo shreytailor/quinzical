@@ -3,10 +3,10 @@ import a3.quinzical.backend.IO;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.models.InternationalCategory;
+import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.backend.tasks.Formatting;
 
 // Java API dependencies.
-import java.io.File;
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
@@ -29,14 +29,12 @@ public class GameDatabase {
 	
 	// Fields belonging to the static context.
 	private static GameDatabase _gameDatabase;	
-	private final static File _gameFile = new File(System.getProperty("user.dir")+"/.config/GameData");
 	
 	// Fields belonging to the non-static context.
     private List<Category> _categories = new ArrayList<Category>();
     private InternationalCategory _intCate = new InternationalCategory();
 	private int _winning = 0;
 	private Clue _currentClue = null;
-	private final static int _cateNum = 5;
 	private final static int _clueNum = 5;
 	private final static int _startPrice = 100;
 	private final static int _priceIncrement = 100;
@@ -47,14 +45,6 @@ public class GameDatabase {
      */
     private GameDatabase(List<Category> categoryList) {
         initialize(categoryList);
-    }
-    
-    /**
-     * This method is used to check if the GameData file exist
-     * @return if the GameData file exist
-     */
-    public static boolean gameFileExist() {
-    	return (_gameFile.exists() && _gameFile.isFile());
     }
     
     /**
@@ -99,7 +89,7 @@ public class GameDatabase {
      */
     private void initialize(List<Category> categoryList) {
     	// If the game data file already exists
-    	if (gameFileExist()) {
+    	if (FileManager.gameFileExist()) {
     		readGameData();
     	} else {
 			// If the game data file does not exists
@@ -118,7 +108,7 @@ public class GameDatabase {
 		Category newCate = null;
 
     	// Read the current Game Database file using the IO method.
-		List<String> gameContent = IO.readFile(_gameFile);
+		List<String> gameContent = IO.readFile(FileManager.getGameFile());
 
 		// Go through each line of the returned list of all lines.
 		for(String line : gameContent) {
@@ -137,6 +127,7 @@ public class GameDatabase {
 			}
 		}
 		
+		// Separate International category from other categories
 		if(_categories.get(getCateSize()-1).getName().equals("International")) {
 			_intCate = new InternationalCategory(_categories.get(getCateSize()-1));
 			_categories.remove(getCateSize()-1);
@@ -173,6 +164,7 @@ public class GameDatabase {
 				price += _priceIncrement;
 			}
 			
+			// Separate International category from other categories
 			if(selectedCate.getName() == "International") {
 				_intCate = new InternationalCategory(newCate);
 			}else {
@@ -234,7 +226,7 @@ public class GameDatabase {
 	public static void kill() {
 		_gameDatabase = null;
 		try {
-			Files.deleteIfExists(_gameFile.toPath());
+			Files.deleteIfExists(FileManager.getGameFile().toPath());
 		} catch (IOException e) {
 		}
     }
@@ -267,13 +259,5 @@ public class GameDatabase {
 			count += category.getClueSize();
 		}
 		return count;
-	}
-	
-	/**
-	 * This is a method that will return where the GameData.txt is supposed to be saved.
-	 * @return the file of GameData
-	 */
-	public File getFile() {
-		return _gameFile;
 	}
 }
