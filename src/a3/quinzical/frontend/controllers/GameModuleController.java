@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -28,6 +29,7 @@ public class GameModuleController implements Initializable {
     @FXML Button resetButton;
     @FXML Label winningsLabel;
     @FXML Tab internationalTab;
+    @FXML ImageView lockSymbol;
     @FXML GridPane newZealandGrid;
     @FXML GridPane internationalGrid;
     @FXML ToggleButton newZealandButton;
@@ -42,6 +44,12 @@ public class GameModuleController implements Initializable {
         setupInternationalGrid();
         setupToggleButtons();
         newZealandButton.setSelected(true);
+
+        // Set the international section to locked, if it hasn't been unlocked for the user.
+        if (_db.getInternationalCategory().isLocked()) {
+            lockSymbol.setVisible(true);
+            internationalButton.setDisable(true);
+        }
     }
 
     @FXML
@@ -95,11 +103,7 @@ public class GameModuleController implements Initializable {
                 active = false;
 
                 // Setting the listener for the current button.
-                clueButton.setOnAction(event -> {
-                    _db.setCurrentClue(clueObject);
-                    categoryObject.nextQuestion();
-                    _switcher.switchTo(ScreenType.GAME_CLUE);
-                });
+                clueBinder(clueButton, clueObject, categoryObject);
 
                 // Finally, we add the clue to the grid.
                 newZealandGrid.add(clueButton, category, clue);
@@ -121,6 +125,9 @@ public class GameModuleController implements Initializable {
             }
             active = false;
 
+            // Setting the listener for the current button.
+            clueBinder(clueButton, clueObject, internationCategory);
+
             internationalGrid.add(clueButton, 0, clue);
         }
     }
@@ -131,7 +138,11 @@ public class GameModuleController implements Initializable {
                 internationalButton.setSelected(false);
                 tabPane.getSelectionModel().select(newZealandTab);
             } else {
-                internationalButton.setSelected(true);
+                if (internationalButton.isDisabled()) {
+                    newZealandButton.setSelected(true);
+                } else {
+                    internationalButton.setSelected(true);
+                }
             }
         });
 
@@ -150,6 +161,14 @@ public class GameModuleController implements Initializable {
         clueButton.getStyleClass().add("clue");
         clueButton.getStylesheets().add(getClass().getClassLoader().getResource("a3/quinzical/frontend/styles/GameModule.css").toExternalForm());
         return clueButton;
+    }
+
+    private void clueBinder(Button button, Clue clue, Category category) {
+        button.setOnAction(event -> {
+            _db.setCurrentClue(clue);
+            category.nextQuestion();
+            _switcher.switchTo(ScreenType.GAME_CLUE);
+        });
     }
 
 }
