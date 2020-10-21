@@ -170,7 +170,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                      <children>
-                        <ImageView fx:id="lockSymbol" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-15.0">
+                        <ImageView fx:id="lockSymbol" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-15.0" visible="false">
                            <image>
                               <Image url="@../resources/icons/lock.png" />
                            </image>

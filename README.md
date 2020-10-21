@@ -57,3 +57,8 @@ Under Free Licence (With Attribution).\
 Icon of the "Dice" provided by Good Ware.\
 Under Free Licence (With Attribution).\
 [It can be found here.](https://www.flaticon.com/free-icon/random_2619060?term=random&page=1&position=6)
+
+<img width="20px" src="./src/a3/quinzical/frontend/resources/icons/lock.png">\
+Icon of the "Lock" provided by Freepik.\
+Under Free Licence (With Attribution).\
+[It can be found here.](https://www.flaticon.com/free-icon/locked-padlock_61457?term=lock&page=1&position=20)

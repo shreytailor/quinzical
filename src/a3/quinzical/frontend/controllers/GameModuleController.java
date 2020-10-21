@@ -49,6 +49,8 @@ public class GameModuleController implements Initializable {
         if (_db.getInternationalCategory().isLocked()) {
             lockSymbol.setVisible(true);
             internationalButton.setDisable(true);
+        } else {
+            internationalButton.setDisable(false);
         }
     }
 
