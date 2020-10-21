@@ -13,6 +13,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -163,19 +165,35 @@
                         <URL value="@../styles/Buttons.css" />
                      </stylesheets>
                   </ToggleButton>
-                  <ToggleButton fx:id="internationalButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="International">
+                  <HBox alignment="CENTER">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                     <styleClass>
-                        <String fx:value="medium" />
-                        <String fx:value="small-font" />
-                     </styleClass>
-                     <stylesheets>
-                        <URL value="@../styles/Fonts.css" />
-                        <URL value="@../styles/Buttons.css" />
-                     </stylesheets>
-                  </ToggleButton>
+                     <children>
+                        <ImageView fx:id="lockSymbol" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-15.0" visible="false">
+                           <image>
+                              <Image url="@../resources/icons/lock.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ImageView>
+                        <ToggleButton fx:id="internationalButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="International" translateX="-15.0">
+                           <styleClass>
+                              <String fx:value="medium" />
+                              <String fx:value="small-font" />
+                           </styleClass>
+                           <stylesheets>
+                              <URL value="@../styles/Fonts.css" />
+                              <URL value="@../styles/Buttons.css" />
+                           </stylesheets>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </ToggleButton>
+                        <Region prefWidth="0.0" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
