@@ -34,7 +34,13 @@ public class InternationalCategory extends Category{
 	 * @return boolean if the InternationalCategory is locked 
 	 */
 	public boolean isLocked() {
-		if(GameDatabase.getInstance().getCateSize() <=3 ) {
+		int count = 0;
+		for (int i = 0; i < GameDatabase.getInstance().getCateSize(); i++) {
+			if (GameDatabase.getInstance().getCategory(i).getClueSize() == 0) {
+				count++;
+			}
+		}
+		if(count >= 2) {
 			return false;
 		}else {
 			return true;
