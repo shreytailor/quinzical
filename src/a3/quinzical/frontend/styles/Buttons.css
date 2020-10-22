@@ -16,6 +16,7 @@
 }
 
 .primary:hover {
+    -fx-underline: true;
     -fx-background-color: #1770A1;
 }
 
@@ -25,6 +26,7 @@
 }
 
 .secondary:hover {
+    -fx-underline: true;
     -fx-background-color: #CCCCCC;
 }
 
@@ -34,6 +36,7 @@
 }
 
 .red:hover {
+    -fx-underline: true;
     -fx-background-color: #902727;
 }
 
@@ -60,6 +63,7 @@
 }
 
 .keyboard-button:hover {
+    -fx-underline: true;
     -fx-background-color:
             linear-gradient(from 0% 93% to 0% 100%, #D6D6D6 0%, #B8B8B8 100%),
             #B8B8B8,

@@ -1,16 +1,12 @@
 package a3.quinzical.frontend.controllers;
-
-import a3.quinzical.backend.database.GameDatabase;
-import a3.quinzical.frontend.helper.AlertHelper;
-import a3.quinzical.frontend.helper.ScreenSwitcher;
 import a3.quinzical.frontend.helper.ScreenType;
+import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.frontend.helper.ScreenSwitcher;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.ButtonType;
 
 // Java dependencies.
 import java.net.URL;
@@ -21,7 +17,6 @@ import java.util.ResourceBundle;
  * @author Shrey Tailor, Jason Wang
  */
 public class GameFinishedController implements Initializable {
-
     @FXML Label winningsPlaceholder;
 
     private final GameDatabase _db = GameDatabase.getInstance();
@@ -42,15 +37,11 @@ public class GameFinishedController implements Initializable {
 
     @FXML
     public void handleResetButton() {
-        String message = "Are you sure you want to reset the game?";
-        AlertHelper _helper = AlertHelper.getInstance();
-        _helper.showAlert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
-
-        // If the user confirmed that they want to reset, then we are recreating the database.
-        if (_helper.getResult() == ButtonType.YES) {
-            GameDatabase.kill();
-            _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
-        }
+        /**
+         * Here, there is no need to confirm with the user whether they want to reset the game or
+         * not, because the game has been completed anyways.
+         */
+        GameDatabase.kill();
+        _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
     }
-
 }

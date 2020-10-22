@@ -95,6 +95,8 @@ public class GameModuleController implements Initializable {
 
             // Iterating through each remaining clues within the category.
             List<Clue> clues = categoryObject.remainingClue();
+            int startingRow = 6 - clues.size();
+
             for (int clue = 1; clue < clues.size() + 1; clue++) {
                 Clue clueObject = categoryObject.getClue(clue - 1);
                 Button clueButton = clueButtonGenerator(clueObject);
@@ -108,7 +110,8 @@ public class GameModuleController implements Initializable {
                 clueBinder(clueButton, clueObject, categoryObject);
 
                 // Finally, we add the clue to the grid.
-                newZealandGrid.add(clueButton, category, clue);
+                newZealandGrid.add(clueButton, category, startingRow);
+                startingRow++;
             }
         }
     }
@@ -118,6 +121,8 @@ public class GameModuleController implements Initializable {
         List<Clue> internationalClues = internationCategory.remainingClue();
 
         boolean active = true;
+        int startingRow = 6 - internationalClues.size();
+
         for (int clue = 1; clue < internationalClues.size() + 1; clue++) {
             Clue clueObject = internationalClues.get(clue - 1);
             Button clueButton = clueButtonGenerator(clueObject);
@@ -130,7 +135,8 @@ public class GameModuleController implements Initializable {
             // Setting the listener for the current button.
             clueBinder(clueButton, clueObject, internationCategory);
 
-            internationalGrid.add(clueButton, 0, clue);
+            internationalGrid.add(clueButton, 0, startingRow);
+            startingRow++;
         }
     }
 

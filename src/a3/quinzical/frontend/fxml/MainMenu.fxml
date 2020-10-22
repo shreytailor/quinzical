@@ -23,32 +23,7 @@
           <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="85.0" prefWidth="300.0" text="Practice">
-               <font>
-                  <Font name="Arimo" size="22.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <tooltip>
-                  <Tooltip anchorLocation="CONTENT_BOTTOM_LEFT" text="In this module, you will be given a random question of your chosen category. You have three attempts to get it right.">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Tooltip>
-               </tooltip>
-               <styleClass>
-                  <String fx:value="large-font" />
-                  <String fx:value="primary" />
-                  <String fx:value="bold" />
-                  <String fx:value="large-radius" />
-               </styleClass>
-               <stylesheets>
-                  <URL value="@../styles/Buttons.css" />
-                  <URL value="@../styles/Fonts.css" />
-               </stylesheets>
-            </Button>
-            <Button fx:id="gameModuleButton" mnemonicParsing="false" onAction="#handleGameModuleButton" prefHeight="85.0" prefWidth="300.0" text="Game" GridPane.columnIndex="1">
+            <Button fx:id="gameModuleButton" mnemonicParsing="false" onAction="#handleGameModuleButton" prefHeight="85.0" prefWidth="300.0" text="Game">
                <font>
                   <Font name="Arimo" size="22.0" />
                </font>
@@ -68,6 +43,31 @@
                   <String fx:value="primary" />
                   <String fx:value="large-radius" />
                   <String fx:value="bold" />
+               </styleClass>
+               <stylesheets>
+                  <URL value="@../styles/Buttons.css" />
+                  <URL value="@../styles/Fonts.css" />
+               </stylesheets>
+            </Button>
+            <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="85.0" prefWidth="300.0" text="Practice" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Arimo" size="22.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+               <tooltip>
+                  <Tooltip anchorLocation="CONTENT_BOTTOM_LEFT" text="In this module, you will be given a random question of your chosen category. You have three attempts to get it right.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+               <styleClass>
+                  <String fx:value="large-font" />
+                  <String fx:value="primary" />
+                  <String fx:value="bold" />
+                  <String fx:value="large-radius" />
                </styleClass>
                <stylesheets>
                   <URL value="@../styles/Buttons.css" />

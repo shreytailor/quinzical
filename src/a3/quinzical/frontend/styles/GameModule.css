@@ -36,6 +36,10 @@
     -fx-background-color: #E0DEE1;
 }
 
+.toggle-button:hover {
+    -fx-underline: true;
+}
+
 .toggle-button:selected {
     -fx-text-fill: white;
     -fx-background-color: #197DB3;
