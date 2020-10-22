@@ -56,4 +56,9 @@ public class Formatting {
 		Clue clue = new Clue(question, prefix, answer, cate);
 		return clue;
 	}
+	
+	public static int formatProgression(String str) {
+		str = str.replaceAll("[^0-9]", "");
+		return Integer.parseInt(str);
+	}
 }

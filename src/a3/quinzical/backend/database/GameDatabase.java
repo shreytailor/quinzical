@@ -49,7 +49,7 @@ public class GameDatabase {
     
     /**
      * This method is used to check if an instance of GameDatabase exist
-     * @return if the GameData file exist
+     * @return if the GameData singleton exist
      */
     public static boolean singletonExist() {
     	return (_gameDatabase != null);

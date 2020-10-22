@@ -3,6 +3,7 @@ import a3.quinzical.backend.models.Clue;
 import a3.quinzical.backend.tasks.FileManager;
 import a3.quinzical.backend.models.Category;
 import a3.quinzical.backend.database.GameDatabase;
+import a3.quinzical.backend.database.PracticeDatabase;
 
 //Java API dependencies.
 import java.io.File;
@@ -73,6 +74,26 @@ public class IO {
 		bw.close();
 	}
 	
+	/**
+	 * This method is used to write a given Progression into file to store the
+	 * record of progression, including several stats of the player throughout
+	 * game sessions
+	 * 
+	 * @throws IOException this exception is returned if the method failed to write
+	 * the Progression object into file.
+	 */
+	public static void writeProgressionData(Progression progression) throws IOException {
+		FileManager.checkConfigDirectory();
+		BufferedWriter bw = new BufferedWriter(new FileWriter(FileManager.getProgFile()));
+		List<Integer> statsList = progression.getStatsList();
+		List<String> fieldsList = progression.getFieldsList();
+		
+		for(int i = 0; i < statsList.size(); i++) {
+			bw.write(fieldsList.get(i) + statsList.get(i) + "\n");
+		}		
+		bw.close();
+	}
+	
 	/*
 	public static void main(String[] args) {
 		PracticeDatabase.getInstance();
@@ -95,9 +116,13 @@ public class IO {
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
+		
 		try {
-			writeGameData(GameDatabase.getInstance());
-		} catch (IOException e) {	}
+			writeProgressionData(Progression.getInstance());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	*/
 }

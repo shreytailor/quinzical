@@ -9,9 +9,10 @@ import java.io.File;
  */
 public class FileManager {
 	private final static File _gameFile = new File(System.getProperty("user.dir")+"/.config/GameData");
+	private final static File _progFile = new File(System.getProperty("user.dir")+"/.config/Progression");
 	private final static File _configDirectory = new File(System.getProperty("user.dir")+"/.config/");
 	private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
-    private final static File _intFile = new File(System.getProperty("user.dir")+"/International.txt");
+    private final static File _intFile = new File(System.getProperty("user.dir")+"/International.txt");   
     
     /**
      * This method is used to check if the GameData file exist
@@ -19,6 +20,14 @@ public class FileManager {
      */
     public static boolean gameFileExist() {
     	return (_gameFile.exists() && _gameFile.isFile());
+    }
+    
+    /**
+     * This method is used to check if the Progression file exist
+     * @return if the Progression file exist
+     */
+    public static boolean progFileExist() {
+    	return (_progFile.exists() && _progFile.isFile());
     }
     
 	/**
@@ -32,11 +41,19 @@ public class FileManager {
 	}
 	
 	/**
-	 * This is a method that will return where the GameData.txt is supposed to be saved.
+	 * This is a method that will return where the GameData is supposed to be saved.
 	 * @return the file of GameData
 	 */
 	public static File getGameFile() {
 		return _gameFile;
+	}
+	
+	/**
+	 * This is a method that will return where the Progression is supposed to be saved.
+	 * @return the file of Progression
+	 */
+	public static File getProgFile() {
+		return _progFile;
 	}
 	
 	/**
