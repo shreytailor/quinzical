@@ -30,7 +30,7 @@
             </Label>
             <VBox alignment="CENTER">
                <children>
-                  <Button onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" text="_Reset Game">
+                  <Button mnemonicParsing="false" onAction="#handleResetButton" prefHeight="60.0" prefWidth="280.0" text="Reset Game">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>

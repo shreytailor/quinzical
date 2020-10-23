@@ -179,7 +179,7 @@
                               </TextField>
                               <HBox>
                                  <children>
-                                    <Button fx:id="dontKnowButton" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" text="_Don't Know" textFill="WHITE">
+                                    <Button fx:id="dontKnowButton" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="534.0" text="Don't Know" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -196,7 +196,7 @@
                                           <String fx:value="small-font" />
                                        </styleClass>
                                     </Button>
-                                    <Button fx:id="submitButton" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" text="_Submit">
+                                    <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="534.0" text="Submit">
                                        <font>
                                           <Font size="14.0" />
                                        </font>

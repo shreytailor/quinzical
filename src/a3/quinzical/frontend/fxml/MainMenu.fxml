@@ -23,10 +23,7 @@
           <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="98.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="gameModuleButton" mnemonicParsing="false" onAction="#handleGameModuleButton" prefHeight="85.0" prefWidth="300.0" text="Game">
-               <font>
-                  <Font name="Arimo" size="22.0" />
-               </font>
+            <Button fx:id="gameModuleButton" mnemonicParsing="false" onAction="#handleGameModuleButton" prefHeight="85.0" prefWidth="300.0" text="Game" textFill="WHITE">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -49,10 +46,7 @@
                   <URL value="@../styles/Fonts.css" />
                </stylesheets>
             </Button>
-            <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="85.0" prefWidth="300.0" text="Practice" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Arimo" size="22.0" />
-               </font>
+            <Button fx:id="practiceModuleButton" mnemonicParsing="false" onAction="#handlePracticeModuleButton" prefHeight="85.0" prefWidth="300.0" text="Practice" textFill="WHITE" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -75,9 +69,6 @@
                </stylesheets>
             </Button>
             <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExitButton" prefHeight="85.0" prefWidth="300.0" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arimo" size="22.0" />
-               </font>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
