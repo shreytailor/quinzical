@@ -8,18 +8,18 @@ import java.io.File;
  * @author Shrey Tailor, Jason Wang
  */
 public class FileManager {
-	private final static File _gameFile = new File(System.getProperty("user.dir")+"/.config/GameData");
-	private final static File _progFile = new File(System.getProperty("user.dir")+"/.config/Progression");
-	private final static File _configDirectory = new File(System.getProperty("user.dir")+"/.config/");
-	private final static File _quizFile = new File(System.getProperty("user.dir")+"/Quinzical.txt");
-    private final static File _intFile = new File(System.getProperty("user.dir")+"/International.txt");   
+	private final static File GAME_FILE = new File(System.getProperty("user.dir")+"/.config/GameData");
+	private final static File PROG_FILE = new File(System.getProperty("user.dir")+"/.config/Progression");
+	private final static File CONFIG_DIRECTORY = new File(System.getProperty("user.dir")+"/.config/");
+	private final static File QUIZ_FILE = new File(System.getProperty("user.dir")+"/Quinzical.txt");
+    private final static File INT_FILE = new File(System.getProperty("user.dir")+"/International.txt");   
     
     /**
      * This method is used to check if the GameData file exist
      * @return if the GameData file exist
      */
     public static boolean gameFileExist() {
-    	return (_gameFile.exists() && _gameFile.isFile());
+    	return (GAME_FILE.exists() && GAME_FILE.isFile());
     }
     
     /**
@@ -27,7 +27,7 @@ public class FileManager {
      * @return if the Progression file exist
      */
     public static boolean progFileExist() {
-    	return (_progFile.exists() && _progFile.isFile());
+    	return (PROG_FILE.exists() && PROG_FILE.isFile());
     }
     
 	/**
@@ -35,8 +35,8 @@ public class FileManager {
 	 * the folder will be created.
 	 */
 	public static void checkConfigDirectory() {
-		if(!_configDirectory.exists()) {
-			_configDirectory.mkdir();
+		if(!CONFIG_DIRECTORY.exists()) {
+			CONFIG_DIRECTORY.mkdir();
 		}
 	}
 	
@@ -45,7 +45,7 @@ public class FileManager {
 	 * @return the file of GameData
 	 */
 	public static File getGameFile() {
-		return _gameFile;
+		return GAME_FILE;
 	}
 	
 	/**
@@ -53,7 +53,7 @@ public class FileManager {
 	 * @return the file of Progression
 	 */
 	public static File getProgFile() {
-		return _progFile;
+		return PROG_FILE;
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class FileManager {
 	 * @return the file of GameData
 	 */
 	public static File getQuizFile() {
-		return _quizFile;
+		return QUIZ_FILE;
 	}
 	
 	/**
@@ -69,6 +69,6 @@ public class FileManager {
 	 * @return the file of GameData
 	 */
 	public static File getInternationalFile() {
-		return _intFile;
+		return INT_FILE;
 	}
 }

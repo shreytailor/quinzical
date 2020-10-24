@@ -11,15 +11,15 @@ import a3.quinzical.backend.tasks.Formatting;
 public class Progression {
 	
 	// Fields belonging to the static context.
-	private static Progression _progression;
+	private static Progression progression;
 	
 	// Fields for calculation
-	private int _EXP;
-	private int _gamesCompleted;
-	private int _totalWinnings;
-	private int _answeredCorrect;
-	private int _answeredWrong;
-	private int _totalTime;
+	private int EXP;
+	private int gamesCompleted;
+	private int totalWinnings;
+	private int answeredCorrect;
+	private int answeredWrong;
+	private int totalTime;
 	
 	/**
 	 * The only constructor for Progression class, which is private, because it can only be
@@ -31,26 +31,26 @@ public class Progression {
 			List<String> progList = IO.readFile(FileManager.getProgFile());
 			for(String line : progList) {
 				if(line.startsWith("GC:")) {
-					_gamesCompleted = Formatting.formatProgression(line);
+					gamesCompleted = Formatting.formatProgression(line);
 				}else if(line.startsWith("TW:")){
-					_totalWinnings = Formatting.formatProgression(line);
+					totalWinnings = Formatting.formatProgression(line);
 				}else if(line.startsWith("AC:")){
-					_answeredCorrect = Formatting.formatProgression(line);
+					answeredCorrect = Formatting.formatProgression(line);
 				}else if(line.startsWith("AW:")){
-					_answeredWrong = Formatting.formatProgression(line);
+					answeredWrong = Formatting.formatProgression(line);
 				}else if(line.startsWith("TT:")){
-					_totalTime = Formatting.formatProgression(line);
+					totalTime = Formatting.formatProgression(line);
 				}else if(line.startsWith("EXP:")){
-					_EXP = Formatting.formatProgression(line);
+					EXP = Formatting.formatProgression(line);
 				}
 			}
 		}else {
 			// Starting values
-			_gamesCompleted = 0;
-			_totalWinnings = 0;
-			_answeredCorrect = 0;
-			_answeredWrong = 0;
-			_totalTime = 0;
+			gamesCompleted = 0;
+			totalWinnings = 0;
+			answeredCorrect = 0;
+			answeredWrong = 0;
+			totalTime = 0;
 		}
 	}
 	
@@ -62,9 +62,9 @@ public class Progression {
      */
     public static Progression getInstance() {
         if (!singletonExist()) {
-        	_progression = new Progression();
+        	progression = new Progression();
         }
-        return _progression;
+        return progression;
     }
 	
 	/**
@@ -72,36 +72,52 @@ public class Progression {
      * @return if the Progression singleton exist
      */
     public static boolean singletonExist() {
-    	return (_progression != null);
+    	return (progression != null);
     }
 	
     /**
      * This method is used to advance the number of Games completed.
      */
-	public void gamesCompletedPlus() {
-		_gamesCompleted++;
+	private void gamesCompletedPlus() {
+		gamesCompleted++;
+	}
+	
+	public int getGamesCompleted() {
+		return gamesCompleted;
 	}
 	
 	/**
-	 * This method is used to get the number of Games completed.
-	 * @return int the number of Games completed
+	 * This method is used when a game is finished, it increments the number of games finished and
+	 * the total winnings throughout games.
+	 * @param winning the winning of the game
 	 */
-	public int getGamesCompleted() {
-		return _gamesCompleted;
+	public void gameFinished(int winning) {
+		gamesCompletedPlus();
+		totalWinnings += winning;
+	}
+	
+	/**
+	 * This method is used when a question is answered correctly, it increments the number of questions
+	 * answered correctly and increases the time left when answering the question.
+	 * @param time time left when answering the question
+	 */
+	public void answeredCorrect(int time) {
+		answeredCorrectPlus();
+		totalTime += time;
 	}
 	
 	/**
 	 * This method is used to advance the number of correctly answered questions.
 	 */
-	public void answeredCorrectPlus() {
-		_answeredCorrect++;
+	private void answeredCorrectPlus() {
+		answeredCorrect++;
 	}
 	
 	/**
 	 * This method is used to advance the number of incorrectly answered questions.
 	 */
 	public void answeredWrongPlus() {
-		_answeredWrong++;
+		answeredWrong++;
 	}
 	
 	/**
@@ -109,15 +125,7 @@ public class Progression {
 	 * @return int percentage of questions that were answered correctly
 	 */
 	public int getPercentage() {
-		return _answeredCorrect * 100 / (_answeredCorrect+_answeredWrong);
-	}
-	
-	/**
-	 * This method is used to add the time taken to answer the questions
-	 * @param t amount of time to add
-	 */
-	public void addTime(int t) {
-		_totalTime += t;
+		return answeredCorrect * 100 / (answeredCorrect+answeredWrong);
 	}
 	
 	/**
@@ -125,15 +133,7 @@ public class Progression {
 	 * @return int average time taken
 	 */
 	public int getAverageTime() {
-		return _totalTime / _answeredCorrect;
-	}
-	
-	/**
-	 * This method is used to add the total winning throughout the game sessions
-	 * @param w winnings to add
-	 */
-	public void addWinning(int w) {
-		_totalWinnings += w;
+		return totalTime / answeredCorrect;
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class Progression {
 	 * @return int average winning
 	 */
 	public int getAverageWinning() {
-		return _totalWinnings / (_gamesCompleted);
+		return totalWinnings / (gamesCompleted);
 	}
 	
 	/**
@@ -149,15 +149,11 @@ public class Progression {
 	 * @param i EXP gained
 	 */
 	public void addEXP(int i) {
-		_EXP += i;
+		EXP += i;
 	}
-	
-	/**
-	 * This method is used to get the EXP the player has
-	 * @return int EXP
-	 */
+
 	public int getEXP() {
-		return _EXP;
+		return EXP;
 	}
 	
 	/**
@@ -166,12 +162,12 @@ public class Progression {
 	 */
 	public List<Integer> getStatsList(){
 		List<Integer> statsList = new ArrayList<Integer>();
-		statsList.add(_gamesCompleted);
-		statsList.add(_totalWinnings);
-		statsList.add(_answeredCorrect);
-		statsList.add(_answeredWrong);
-		statsList.add(_totalTime);
-		statsList.add(_EXP);
+		statsList.add(gamesCompleted);
+		statsList.add(totalWinnings);
+		statsList.add(answeredCorrect);
+		statsList.add(answeredWrong);
+		statsList.add(totalTime);
+		statsList.add(EXP);
 		return statsList;
 	}
 	
@@ -185,13 +181,15 @@ public class Progression {
 		filedsList.add("TW:");
 		filedsList.add("AC:");
 		filedsList.add("AW:");
-		filedsList.add("TT:");
 		filedsList.add("EXP:");
 		return filedsList;
 	}
 	
+	/**
+	 * This method is used to dereference the singleton object and romove the progression file.
+	 */
 	public static void kill() {
-		_progression = null;
+		progression = null;
 		try {
 			Files.deleteIfExists(FileManager.getProgFile().toPath());
 		} catch (IOException e) {

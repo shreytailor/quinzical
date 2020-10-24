@@ -28,16 +28,16 @@ import java.nio.file.Files;
 public class GameDatabase {
 	
 	// Fields belonging to the static context.
-	private static GameDatabase _gameDatabase;	
+	private static GameDatabase gameDatabase;	
 	
 	// Fields belonging to the non-static context.
-    private List<Category> _categories = new ArrayList<Category>();
-    private InternationalCategory _intCate = new InternationalCategory();
-	private int _winning = 0;
-	private Clue _currentClue = null;
-	private final static int _clueNum = 5;
-	private final static int _startPrice = 100;
-	private final static int _priceIncrement = 100;
+    private List<Category> categories = new ArrayList<Category>();
+    private InternationalCategory intCate = new InternationalCategory();
+	private int winning = 0;
+	private Clue currentClue = null;
+	private final static int CLUE_NUM = 5;
+	private final static int START_PRICE = 100;
+	private final static int PRICE_INCREMENT = 100;
 
     /**
      * The constructor for GameDatabase object which is private, because it can only be
@@ -52,7 +52,7 @@ public class GameDatabase {
      * @return if the GameData singleton exist
      */
     public static boolean singletonExist() {
-    	return (_gameDatabase != null);
+    	return (gameDatabase != null);
     }
     
     /**
@@ -64,10 +64,10 @@ public class GameDatabase {
     public static GameDatabase getInstance() {
         if (!singletonExist()) {
         	List<Category> categoryList = new ArrayList<Category>();
-        	_gameDatabase = new GameDatabase(categoryList);
+        	gameDatabase = new GameDatabase(categoryList);
         }
 
-        return _gameDatabase;
+        return gameDatabase;
     }
     
     /**
@@ -78,9 +78,9 @@ public class GameDatabase {
      */
     public static GameDatabase getInstance(List<Category> categoryList) {
     	kill();
-    	_gameDatabase = new GameDatabase(categoryList);
+    	gameDatabase = new GameDatabase(categoryList);
 
-        return _gameDatabase;
+        return gameDatabase;
     }
     
     /**
@@ -114,11 +114,11 @@ public class GameDatabase {
 		for(String line : gameContent) {
 			// If the line only contains number, which is the stored player prize.
 			if (line.matches("\\d+")) {
-				_winning = Integer.parseInt(line);
+				winning = Integer.parseInt(line);
 			} else if(!line.contains("|")&& !line.isBlank()) {
 				// If the line does not have a separator character | and isn't blank, then the line represents a category
 				newCate = new Category(line);
-				_categories.add(newCate);
+				categories.add(newCate);
 			} else if (!line.isBlank()) {
 				// Using a helper method in Formatting to construct a clue object
 				newClue = Formatting.formatClue(line, newCate);
@@ -128,9 +128,9 @@ public class GameDatabase {
 		}
 		
 		// Separate International category from other categories
-		if(_categories.get(getCateSize()-1).getName().equals("International")) {
-			_intCate = new InternationalCategory(_categories.get(getCateSize()-1));
-			_categories.remove(getCateSize()-1);
+		if(categories.get(getCateSize()-1).getName().equals("International")) {
+			intCate = new InternationalCategory(categories.get(getCateSize()-1));
+			categories.remove(getCateSize()-1);
 		}
     }
     
@@ -148,10 +148,10 @@ public class GameDatabase {
 		// Traverse through all the categories.
 		for (Category selectedCate: categoryList) {
 			newCate = new Category(selectedCate.getName());
-			int price = _startPrice;
+			int price = START_PRICE;
 
 			// Traverse through all the clues in that category.
-			for(int j = 0; j < _clueNum; j++) {
+			for(int j = 0; j < CLUE_NUM; j++) {
 				// Select random clue from the category.
 				int questIndex = rand.nextInt(selectedCate.getClueSize());
 				selectedClue = selectedCate.getClue(questIndex);
@@ -161,14 +161,14 @@ public class GameDatabase {
 				selectedCate.removeClue(questIndex);
 
 				// Set the prize of the question.
-				price += _priceIncrement;
+				price += PRICE_INCREMENT;
 			}
 			
 			// Separate International category from other categories
 			if(selectedCate.getName() == "International") {
-				_intCate = new InternationalCategory(newCate);
+				intCate = new InternationalCategory(newCate);
 			}else {
-				_categories.add(newCate);
+				categories.add(newCate);
 			}			
 		}
 
@@ -181,15 +181,11 @@ public class GameDatabase {
      * @param prize the winning to add onto the current winning.
      */
 	public void updateWinning(int prize) {
-		_winning = _winning + prize;
+		winning = winning + prize;
 	}
 	
-	/**
-	 * This method is used to get the current prize of the player.
-	 * @return _winning the current winning of the player.
-	 */
 	public int getWinning() {
-		return _winning;
+		return winning;
 	}
 	
 	/**
@@ -200,7 +196,7 @@ public class GameDatabase {
      * the user is out of the valid range of the list.
      */
     public Category getCategory(int position) throws IndexOutOfBoundsException {
-        return _categories.get(position);
+        return categories.get(position);
     }
     
     /**
@@ -208,7 +204,7 @@ public class GameDatabase {
      * @return InternationalCategory the international category of the database
      */
     public InternationalCategory getInternationalCategory() {
-    	return _intCate;
+    	return intCate;
     }
     
     /**
@@ -216,15 +212,15 @@ public class GameDatabase {
      * @return the number of categories.
      */
 	public int getCateSize() {
-		return _categories.size();
+		return categories.size();
 	}
 	
     /**
-     * This is a method that will dereference the _gameDatabase field, so that when the 
+     * This is a method that will dereference the gameDatabase field, so that when the 
      * getInstance is called next time the GameDatabase would be reloaded.
      */
 	public static void kill() {
-		_gameDatabase = null;
+		gameDatabase = null;
 		try {
 			Files.deleteIfExists(FileManager.getGameFile().toPath());
 		} catch (IOException e) {
@@ -236,7 +232,7 @@ public class GameDatabase {
      * @param clue the clue being answered.
      */
 	public void setCurrentClue(Clue clue) {
-		_currentClue = clue;
+		currentClue = clue;
 	}
 	
 	/**
@@ -244,7 +240,7 @@ public class GameDatabase {
 	 * @return the clue that is currently being answered.
 	 */
 	public Clue getCurrentClue() {
-		return _currentClue;
+		return currentClue;
 	}
 	
 	/**
@@ -253,13 +249,13 @@ public class GameDatabase {
 	 * @return number of questions left
 	 */
 	public int getRemainingClues() {
-		_categories.add(_intCate);
+		categories.add(intCate);
 		int count = 0;
-		for(int i = 0; i < _categories.size(); i++) {
-			Category category = _categories.get(i);
+		for(int i = 0; i < categories.size(); i++) {
+			Category category = categories.get(i);
 			count += category.getClueSize();
 		}
-		_categories.remove(_intCate);
+		categories.remove(intCate);
 		return count;
 	}
 }

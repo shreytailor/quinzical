@@ -16,24 +16,20 @@ import java.util.ArrayList;
 public class Category {
 
     // Fields required for the model of our Category.
-    private String _categoryName;
-    private List<Clue> _clues;
-    private int _numberOfClues;
+    private String categoryName;
+    private List<Clue> clues;
+    private int numberOfClues;
     /**
      * This is the only constructor for creating an object for Category.
      * @param name the name of the category which we are creating.
      */
     public Category(String name) {
-        _categoryName = name;
-        _clues = new ArrayList<Clue>();
+        categoryName = name;
+        clues = new ArrayList<Clue>();
     }
 
-    /**
-     * This method is used to get the name of the category.
-     * @return String the name of the category.
-     */
     public String getName() {
-        return _categoryName;
+        return categoryName;
     }
     
     /**
@@ -42,8 +38,8 @@ public class Category {
      */
     public Clue getRandom() {
         Random randomizer = new Random();
-        int random = randomizer.nextInt(_numberOfClues);
-        return _clues.get(random);
+        int random = randomizer.nextInt(numberOfClues);
+        return clues.get(random);
     }
 
     /**
@@ -51,7 +47,7 @@ public class Category {
      * @param clue the clue which we want to add to the category.
      */
     public void addClue(Clue clue) {
-        _clues.add(clue);
+        clues.add(clue);
         updateRemaining();
     }
 
@@ -63,7 +59,7 @@ public class Category {
      * out of valid range of the list.
      */
     public Clue getClue(int position) throws IndexOutOfBoundsException {
-        return _clues.get(position);
+        return clues.get(position);
     }
     
     /**
@@ -73,7 +69,7 @@ public class Category {
      * out of valid range of the list.
      */
     public void removeClue(int i) throws IndexOutOfBoundsException {
-		_clues.remove(i);
+		clues.remove(i);
 	}
 
     /**
@@ -81,7 +77,7 @@ public class Category {
      * the current category.
      */
     private void updateRemaining() {
-        _numberOfClues = _clues.size();
+        numberOfClues = clues.size();
     }
     
     /**
@@ -90,15 +86,15 @@ public class Category {
      */
     public int getClueSize() {
     	updateRemaining();
-    	return _numberOfClues;
+    	return numberOfClues;
     }
     
     /**
      * The method is used to remove the first clue(lowest priced clue) from the list of clues.
      */
     public void nextQuestion() {
-    	if(_clues.size() >= 1) {
-    		_clues.remove(0);
+    	if(clues.size() >= 1) {
+    		clues.remove(0);
     		updateRemaining();
     	}
     }
@@ -108,6 +104,6 @@ public class Category {
      * @return a list of Clues that has not been attempted.
      */
     public List<Clue> remainingClue() {
-    	return _clues;
+    	return clues;
     }
 }

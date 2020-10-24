@@ -15,11 +15,11 @@ import a3.quinzical.backend.tasks.Formatting;
 public class Clue {
 
     // Fields required for the model of our Clue.
-    private String _question;
-    private String _prefix;
-    private String _answer;
-    private int _prize;
-    private Category _category;
+    private String question;
+    private String prefix;
+    private String answer;
+    private int prize;
+    private Category category;
 
     /**
      * This is the only constructor for creating an object for Clue.
@@ -28,19 +28,15 @@ public class Clue {
      * @param category the category the clue belongs to.
      * part of the string as well, because there is a method to compare the answer.
      */
-    public Clue(String question, String prefix, String answer, Category category) {
-        _question = question;
-        _prefix = prefix;
-        _answer = answer;
-        _category = category;
+    public Clue(String Question, String Prefix, String Answer, Category Category) {
+        Question = question;
+        Prefix = prefix;
+        Answer = answer;
+        Category = category;
     }
 
-    /**
-     * This method is used to get the question corresponding the the current clue.
-     * @return String the question for this clue.
-     */
     public String getQuestion() {
-        return _question;
+        return question;
     }
 
     /**
@@ -48,7 +44,7 @@ public class Clue {
      * @return String the answer for the current clue.
      */
     public String getAnswer() {
-        return Formatting.removeTheA(_answer);
+        return Formatting.removeTheA(answer);
     }
     
     /**
@@ -56,7 +52,7 @@ public class Clue {
      * @return String the answer for the current clue.
      */
     public String getFullAnswer() {
-    	return _answer;
+    	return answer;
     }
     
     /**
@@ -65,7 +61,7 @@ public class Clue {
      */
     public List<String> getAnswersList() {
     	List<String> answerList = new ArrayList<String>();
-    	String[] answerArray = _answer.split("/");
+    	String[] answerArray = answer.split("/");
     	for(int i = 0; i < answerArray.length; i++) {
     		answerList.add(Formatting.removeTheA(answerArray[i]));
     	}
@@ -85,7 +81,7 @@ public class Clue {
         answer = Formatting.sanitize(answer);
     	
         // Loop through multiple answers if exist
-    	String[] answerList = _answer.split("/");
+    	String[] answerList = answer.split("/");
     	for(int i = 0; i < answerList.length; i++) {
     		answerList[i] = Formatting.sanitize(answerList[i]);
     		if (answer.equalsIgnoreCase(answerList[i])){
@@ -97,36 +93,19 @@ public class Clue {
         return false;
     }
 
-    /**
-     * This method will be used when putting a clue from the regular PracticeDatabase to the
-     * GameDatabase, because we would need to assign it a prize.
-     * @param prize the prize that we want to assign to the question.
-     */
-    public void setPrize(int prize) {
-        _prize = prize;
+    public void setPrize(int p) {
+        p = prize;
     }
 
-    /**
-     * This method is used to get the prize of the current question object.
-     * @return int for the prize of the current clue.
-     */
     public int getPrize() {
-        return _prize;
+        return prize;
     }
     
-    /**
-     * This method returns the category the clue belongs to.
-     * @return the category of this clue
-     */
     public Category getCategory() {
-    	return _category;
+    	return category;
     }
     
-    /**
-     * This method return the category the prefix(What is/what are) of the clue.
-     * @return the prefix of this clue
-     */
     public String getPrefix() {
-    	return _prefix;
+    	return prefix;
     }
 }
