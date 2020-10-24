@@ -29,10 +29,10 @@ public class Clue {
      * part of the string as well, because there is a method to compare the answer.
      */
     public Clue(String Question, String Prefix, String Answer, Category Category) {
-        Question = question;
-        Prefix = prefix;
-        Answer = answer;
-        Category = category;
+        question = Question;
+        prefix = Prefix;
+        answer = Answer;
+        category = Category;
     }
 
     public String getQuestion() {
@@ -94,7 +94,7 @@ public class Clue {
     }
 
     public void setPrize(int p) {
-        p = prize;
+        prize = p;
     }
 
     public int getPrize() {
