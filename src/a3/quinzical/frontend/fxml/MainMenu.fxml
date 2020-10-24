@@ -5,13 +5,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="670.0" prefWidth="1200.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.MainMenuController">
    <center>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" translateY="80.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -28,7 +30,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
                <tooltip>
-                  <Tooltip text="After practicing, choose this module to test your skills. You only get one attempt to get the correct answer.">
+                  <Tooltip text="After gaining confidence, choose this module to test your skills. You only get one attempt to get the correct answer.">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -51,7 +53,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
                <tooltip>
-                  <Tooltip anchorLocation="CONTENT_BOTTOM_LEFT" text="In this module, you will be given a random question of your chosen category. You have three attempts to get it right.">
+                  <Tooltip anchorLocation="CONTENT_BOTTOM_LEFT" text="In this module, you will be given a random question of your chosen category. You have three attempts to get it correct.">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -101,6 +103,16 @@
                   <URL value="@../styles/Fonts.css" />
                </stylesheets>
             </Button>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="130.0" translateY="-20.0">
+               <image>
+                  <Image url="@../resources/icons/question.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="130.0" translateY="-20.0" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../resources/icons/question.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </center>

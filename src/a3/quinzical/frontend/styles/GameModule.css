@@ -1,9 +1,9 @@
 @font-face {
-    src: url('fonts/Poppins-Bold.ttf');
+    src: url('../resources/fonts/Poppins-Bold.ttf');
 }
 
 @font-face {
-    src: url('fonts/Poppins-Medium.ttf');
+    src: url('../resources/fonts/Poppins-Medium.ttf');
 }
 
 .information-bar {

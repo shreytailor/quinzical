@@ -6,15 +6,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="1350.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.ChooseCategoriesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="670.0" prefWidth="1200.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.ChooseCategoriesController">
    <top>
       <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Select Five Categories" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
@@ -39,7 +41,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button graphicTextGap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0" text="Main Menu">
+            <Button graphicTextGap="15.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="50.0">
                <stylesheets>
                   <URL value="@../styles/Fonts.css" />
                   <URL value="@../styles/Buttons.css" />
@@ -74,12 +76,24 @@
                   <String fx:value="medium-font" />
                </styleClass>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/icons/random.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons/random.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="195.0" translateY="-8.0">
+                           <image>
+                              <Image url="@../resources/icons/question-on-dark.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Randomly select five categories." />
+               </tooltip>
             </Button>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="50.0" text="Start Game" GridPane.columnIndex="2">
                <GridPane.margin>
@@ -94,6 +108,16 @@
                   <String fx:value="medium-font" />
                   <String fx:value="primary" />
                </styleClass>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="228.0" translateY="-8.0">
+                     <image>
+                        <Image url="@../resources/icons/question.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Begin the game with the selected five categories." />
+               </tooltip>
             </Button>
          </children>
       </GridPane>

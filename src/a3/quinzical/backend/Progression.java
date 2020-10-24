@@ -28,8 +28,8 @@ public class Progression {
 	 */
 	private Progression() {
 		if(FileManager.progFileExist()) {
-			List<String> progList = IO.readFile(FileManager.getProgFile());
-			for(String line : progList) {
+			List<String> progressList = IO.readFile(FileManager.getProgFile());
+			for(String line : progressList) {
 				if(line.startsWith("GC:")) {
 					_gamesCompleted = Formatting.formatProgression(line);
 				}else if(line.startsWith("TW:")){
@@ -180,14 +180,14 @@ public class Progression {
 	 * @return list of the field names
 	 */
 	public List<String> getFieldsList(){
-		List<String> filedsList = new ArrayList<String>();
-		filedsList.add("GC:");
-		filedsList.add("TW:");
-		filedsList.add("AC:");
-		filedsList.add("AW:");
-		filedsList.add("TT:");
-		filedsList.add("EXP:");
-		return filedsList;
+		List<String> fieldsList = new ArrayList<String>();
+		fieldsList.add("GC:");
+		fieldsList.add("TW:");
+		fieldsList.add("AC:");
+		fieldsList.add("AW:");
+		fieldsList.add("TT:");
+		fieldsList.add("EXP:");
+		return fieldsList;
 	}
 	
 	public static void kill() {

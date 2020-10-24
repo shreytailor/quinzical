@@ -17,9 +17,9 @@ ScrollPane to white. Hence, note that is is set to transparent first, before set
 }
 
 .menu-background {
-    -fx-background-image: url("./../resources/menu-background.jpg");
+    -fx-background-image: url("../resources/images/menu-background.jpg");
 }
 
 .background {
-    -fx-background-image: url("./../resources/background.jpg");
+    -fx-background-image: url("../resources/images/background.jpg");
 }

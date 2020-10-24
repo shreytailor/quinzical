@@ -1,17 +1,17 @@
 @font-face {
-    src: url('fonts/Poppins-Bold.ttf');
+    src: url('../resources/fonts/Poppins-Bold.ttf');
 }
 
 @font-face {
-    src: url('fonts/Poppins-Medium.ttf');
+    src: url('../resources/fonts/Poppins-Medium.ttf');
 }
 
 @font-face {
-    src: url('fonts/Poppins-Regular.ttf');
+    src: url('../resources/fonts/Poppins-Regular.ttf');
 }
 
 @font-face {
-    src: url('fonts/Pacifico-Regular.ttf');
+    src: url('../resources/fonts/Pacifico-Regular.ttf');
 }
 
 .bold {

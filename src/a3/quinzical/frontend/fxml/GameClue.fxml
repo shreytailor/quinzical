@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="1350.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameClueController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="670.0" prefWidth="1200.0" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="a3.quinzical.frontend.controllers.GameClueController">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -34,18 +35,38 @@
                   <String fx:value="medium" />
                </styleClass>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/icons/back.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons/back.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </graphic>
             </Button>
-            <Label fx:id="timerLabel" alignment="CENTER" prefHeight="60.0" prefWidth="790.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="60s" textFill="WHITE">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="789.0">
+               <children>
+                  <Label fx:id="timerLabel" alignment="CENTER" styleClass="bold" stylesheets="@../styles/Fonts.css" text="60s" textFill="WHITE">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Hurrryy.. answer quickly before the timer runs out!" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Label>
+                  <ImageView fx:id="timerHelp" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" translateY="-15.0">
+                     <image>
+                        <Image url="@../resources/icons/question.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
             <Button fx:id="respeakButton" graphicTextGap="15.0" mnemonicParsing="false" onAction="#handleRespeakButton" prefHeight="60.0" prefWidth="260.0">
                <HBox.margin>
                   <Insets />
@@ -60,12 +81,24 @@
                   <String fx:value="medium" />
                </styleClass>
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/icons/speaker.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="15.0">
+                           <image>
+                              <Image url="@../resources/icons/speaker.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="65.0" translateY="-12.0">
+                           <image>
+                              <Image url="@../resources/icons/question-on-dark.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Press to respeak the current question." />
+               </tooltip>
             </Button>
          </children>
          <BorderPane.margin>
@@ -97,7 +130,7 @@
             </TextField>
             <HBox maxWidth="-Infinity" prefWidth="535.0">
                <children>
-                  <Button fx:id="dontKnowButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="535.0" text="Don't Know" textFill="WHITE">
+                  <Button fx:id="dontKnowButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleDontKnowButton" prefHeight="50.0" prefWidth="535.0" text="Don't Know    " textFill="WHITE">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -110,8 +143,18 @@
                         <URL value="@../styles/Buttons.css" />
                         <URL value="@../styles/Fonts.css" />
                      </stylesheets>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="175.0" translateY="-8.0">
+                           <image>
+                              <Image url="@../resources/icons/question.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Press if you don't know the answer." />
+                     </tooltip>
                   </Button>
-                  <Button fx:id="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="535.0" text="Submit">
+                  <Button fx:id="submitButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="50.0" prefWidth="535.0" text="Submit      ">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -124,6 +167,16 @@
                         <String fx:value="medium" />
                         <String fx:value="small-font" />
                      </styleClass>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="163.0" translateY="-8.0">
+                           <image>
+                              <Image url="@../resources/icons/question-on-dark.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Press after entering the answer above." />
+                     </tooltip>
                   </Button>
                </children>
             </HBox>

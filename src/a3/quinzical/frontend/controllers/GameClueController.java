@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.TextField;
@@ -33,6 +34,7 @@ public class GameClueController implements Initializable {
     @FXML Label prefixLabel;
     @FXML Button backButton;
     @FXML Label messageLabel;
+    @FXML ImageView timerHelp;
     @FXML Button submitButton;
     @FXML Label categoryLabel;
     @FXML TextField inputField;
@@ -41,7 +43,7 @@ public class GameClueController implements Initializable {
     @FXML GridPane keyboardGridPane;
 
     private Timer _timer;
-    private int TIME_LIMIT = 60;
+    private int TIME_LIMIT = 30;
     private final Speaker _speaker = Speaker.init();
     private final GameDatabase _db = GameDatabase.getInstance();
     private final Clue _clue = GameDatabase.getInstance().getCurrentClue();
@@ -151,6 +153,7 @@ public class GameClueController implements Initializable {
         respeakButton.setVisible(false);
         dontKnowButton.setVisible(false);
         keyboardGridPane.setVisible(false);
+        timerHelp.setVisible(false);
 
         // Cancelling the timer when the question is answered.
         _timer.purge();
