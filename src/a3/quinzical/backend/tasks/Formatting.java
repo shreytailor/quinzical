@@ -57,6 +57,11 @@ public class Formatting {
 		return clue;
 	}
 	
+	/**
+	 * This method is used to help read in the values from progression file by removing string parts
+	 * @param str string to be formatted
+	 * @return int the value in the string
+	 */
 	public static int formatProgression(String str) {
 		str = str.replaceAll("[^0-9]", "");
 		return Integer.parseInt(str);

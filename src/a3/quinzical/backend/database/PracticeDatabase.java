@@ -27,13 +27,13 @@ import java.util.List;
 public class PracticeDatabase {
 
     // Fields belonging to the static context.
-    private static PracticeDatabase _practiceDatabase;
+    private static PracticeDatabase practiceDatabase;
 
     // Fields belonging to the non-static context.
-    private Clue _selected;
-    private int _numberOfCategories;
-    private List<Category> _categories = new ArrayList<Category>();
-    private InternationalCategory _intCate = new InternationalCategory();
+    private Clue selected;
+    private int numberOfCategories;
+    private List<Category> categories = new ArrayList<Category>();
+    private InternationalCategory intCate = new InternationalCategory();
 
     /**
      * The only constructor for PracticeDatabase object which is private, because it can only be
@@ -48,11 +48,11 @@ public class PracticeDatabase {
      * @return PracticeDatabase the instance of our practice database.
      */
     public static PracticeDatabase getInstance() {
-        if (_practiceDatabase == null) {
-            _practiceDatabase = new PracticeDatabase();
+        if (practiceDatabase == null) {
+            practiceDatabase = new PracticeDatabase();
         }
 
-        return _practiceDatabase;
+        return practiceDatabase;
     }
 
     /**
@@ -63,7 +63,7 @@ public class PracticeDatabase {
      * the user is out of the valid range of the list.
      */
     public Category getCategory(int position) throws IndexOutOfBoundsException {
-        return _categories.get(position);
+        return categories.get(position);
     }
     
     /**
@@ -71,7 +71,7 @@ public class PracticeDatabase {
      * @return InternationalCategory the international category of the database
      */
     public InternationalCategory getInternationalCategory() {
-    	return _intCate;
+    	return intCate;
     }
 
     /**
@@ -87,7 +87,7 @@ public class PracticeDatabase {
     	for (String line : quizContent) {
     		if (!line.contains("|") && !line.isBlank()) {
 				newCate = new Category(line);
-				_categories.add(newCate);
+				categories.add(newCate);
 			} else if(!line.isBlank()) {
 				newClue = Formatting.formatClue(line, newCate);
 				newCate.addClue(newClue);
@@ -98,7 +98,7 @@ public class PracticeDatabase {
     	for (String line : internationalContent) {
     		if(!line.isBlank()) {
 	    		newClue = Formatting.formatClue(line, newCate);
-	    		_intCate.addClue(newClue);
+	    		intCate.addClue(newClue);
     		}
     	}
     }
@@ -108,7 +108,7 @@ public class PracticeDatabase {
      * database. Note that it is not accessible from outside this class.
      */
     private void updateRemaining() {
-        _numberOfCategories = _categories.size();
+        numberOfCategories = categories.size();
     }
     
     /**
@@ -118,7 +118,7 @@ public class PracticeDatabase {
      * the user is out of the valid range of the list.
      */
     public void removeCategory(int index) throws IndexOutOfBoundsException{
-		_categories.remove(index);
+		categories.remove(index);
 		updateRemaining();
 	}
     
@@ -128,14 +128,14 @@ public class PracticeDatabase {
      */
     public int getCateSize() {
     	updateRemaining();
-    	return _numberOfCategories;
+    	return numberOfCategories;
     }
 
     /** This is a method that is used to select a clue for easier access.
      * @param clue the clue to be selected
      */
     public void select(Clue clue) {
-        _selected = clue;
+        selected = clue;
     }
 
     /**
@@ -143,14 +143,14 @@ public class PracticeDatabase {
      * @return the selected clue
      */
     public Clue getSelected() {
-        return _selected;
+        return selected;
     }
 
     /**
-     * This is a method that will dereference the _practiceDatabase field, so that when the 
+     * This is a method that will dereference the practiceDatabase field, so that when the 
      * getInstance is called next time the PracticeDatabase would be reloaded.
      */
     public static void kill() {
-    	_practiceDatabase = null;
+    	practiceDatabase = null;
     }
 }
