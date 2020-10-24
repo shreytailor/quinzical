@@ -76,15 +76,15 @@ public class Clue {
      * @param answer the user's answer which will be checked against the correct answer.
      * @return boolean true if the answer was correct, otherwise false.
      */
-    public boolean checkAnswer(String answer) {
+    public boolean checkAnswer(String Answer) {
     	// Removing any repeated space characters from the user's input.
-        answer = Formatting.sanitize(answer);
+        Answer = Formatting.sanitize(Answer);
     	
         // Loop through multiple answers if exist
     	String[] answerList = answer.split("/");
     	for(int i = 0; i < answerList.length; i++) {
     		answerList[i] = Formatting.sanitize(answerList[i]);
-    		if (answer.equalsIgnoreCase(answerList[i])){
+    		if (Answer.equalsIgnoreCase(answerList[i])){
     			return true;
     		}
     	}

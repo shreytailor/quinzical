@@ -115,7 +115,7 @@ public class IO {
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		System.out.println(GameDatabase.getInstance().getCategory(2).getClue(0).getQuestion());
+		System.out.println(GameDatabase.getInstance().getCategory(2).getClue(0).checkAnswer("Rangitoto"));
 		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
 		
 		try {
