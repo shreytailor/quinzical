@@ -31,7 +31,7 @@ public class Category {
     public String getName() {
         return categoryName;
     }
-    
+
     /**
      * This method is used to get a random clue from the current category.
      * @return Clue the random clue that we wanted.
@@ -61,7 +61,7 @@ public class Category {
     public Clue getClue(int position) throws IndexOutOfBoundsException {
         return clues.get(position);
     }
-    
+
     /**
      * This method is used to remove a specific clue from the existing list of clues within the category.
      * @param i the position of the clue that we want to remove.
@@ -69,8 +69,8 @@ public class Category {
      * out of valid range of the list.
      */
     public void removeClue(int i) throws IndexOutOfBoundsException {
-		clues.remove(i);
-	}
+        clues.remove(i);
+    }
 
     /**
      * This private is used to just update the field regarding how many questions are remaining in
@@ -79,31 +79,31 @@ public class Category {
     private void updateRemaining() {
         numberOfClues = clues.size();
     }
-    
+
     /**
      * The method is used to get the number of clues in this category.
      * @return the number of clues in this category.
      */
     public int getClueSize() {
-    	updateRemaining();
-    	return numberOfClues;
+        updateRemaining();
+        return numberOfClues;
     }
-    
+
     /**
      * The method is used to remove the first clue(lowest priced clue) from the list of clues.
      */
     public void nextQuestion() {
-    	if(clues.size() >= 1) {
-    		clues.remove(0);
-    		updateRemaining();
-    	}
+        if(clues.size() >= 1) {
+            clues.remove(0);
+            updateRemaining();
+        }
     }
-    
+
     /**
      * The method is used to get the list of remaining attemptable Clues.
      * @return a list of Clues that has not been attempted.
      */
     public List<Clue> remainingClue() {
-    	return clues;
+        return clues;
     }
 }
