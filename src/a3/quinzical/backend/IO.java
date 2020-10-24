@@ -94,7 +94,7 @@ public class IO {
 		bw.close();
 	}
 	
-	/*
+	
 	public static void main(String[] args) {
 		PracticeDatabase.getInstance();
 		List<Category> clist = new ArrayList<Category>();
@@ -115,6 +115,7 @@ public class IO {
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
 		GameDatabase.getInstance().getCategory(1).removeClue(0);
+		System.out.println(GameDatabase.getInstance().getCategory(2).getClue(0).getQuestion());
 		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
 		
 		try {
@@ -124,5 +125,5 @@ public class IO {
 			e.printStackTrace();
 		}
 	}
-	*/
+	
 }

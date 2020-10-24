@@ -181,6 +181,7 @@ public class Progression {
 		filedsList.add("TW:");
 		filedsList.add("AC:");
 		filedsList.add("AW:");
+		filedsList.add("TT:");
 		filedsList.add("EXP:");
 		return filedsList;
 	}
