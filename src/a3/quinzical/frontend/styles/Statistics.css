@@ -1,0 +1,19 @@
+.radius {
+    -fx-background-radius: 25px
+}
+
+.top-left {
+    -fx-background-color: #badfdb;
+}
+
+.top-right {
+    -fx-background-color: #eac4d5;
+}
+
+.bottom-left {
+    -fx-background-color: #f0cf85;
+}
+
+.bottom-right {
+    -fx-background-color: #efee9d;
+}

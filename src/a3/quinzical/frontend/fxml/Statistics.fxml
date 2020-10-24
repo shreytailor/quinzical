@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1200.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Your Statistics" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="44.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane>
+               <right>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="370.0" stylesheets="@../styles/Statistics.css" BorderPane.alignment="CENTER">
+                     <styleClass>
+                        <String fx:value="top-left" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                     <BorderPane.margin>
+                        <Insets right="35.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <Label layoutX="111.0" layoutY="31.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="Success Rate" textFill="#2d625d">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="320.0" layoutY="162.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons/question-on-dark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Percentage of how many answers were guessed correctly.">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="55%" textAlignment="CENTER" textFill="#2d625d">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </right>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1">
+               <left>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="370.0" stylesheets="@../styles/Statistics.css" BorderPane.alignment="CENTER">
+                     <styleClass>
+                        <String fx:value="top-right" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                     <BorderPane.margin>
+                        <Insets left="35.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <Label layoutX="79.0" layoutY="31.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="Games Completed" textFill="#692644">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="319.0" layoutY="163.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons/question-on-dark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="The total number of games you have completed.">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="13" textAlignment="CENTER" textFill="#692644">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </left>
+            </BorderPane>
+            <BorderPane GridPane.rowIndex="1">
+               <right>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="370.0" stylesheets="@../styles/Statistics.css" BorderPane.alignment="CENTER">
+                     <styleClass>
+                        <String fx:value="bottom-left" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                     <BorderPane.margin>
+                        <Insets right="35.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <Label layoutX="81.0" layoutY="32.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="Average Winnings" textFill="#5b420b">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="318.0" layoutY="160.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons/question-on-dark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Your average winnings in each game.">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="\$10200" textAlignment="CENTER" textFill="#5b420b">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </right>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <left>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="370.0" stylesheets="@../styles/Statistics.css" BorderPane.alignment="CENTER">
+                     <styleClass>
+                        <String fx:value="bottom-right" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                     <BorderPane.margin>
+                        <Insets left="35.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <Label layoutX="70.0" layoutY="31.0" styleClass="bold" stylesheets="@../styles/Fonts.css" text="Average Time Taken" textFill="#58560e">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="316.0" layoutY="162.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons/question-on-dark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="The average time taken when the answer is guessed correctly in the games module." wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="12s" textAlignment="CENTER" textFill="#58560e">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </left>
+            </BorderPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="20.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <left>
+            <Button minHeight="60.0" mnemonicParsing="false" prefWidth="285.0" styleClass="secondary" stylesheets="@../styles/Buttons.css" BorderPane.alignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </left>
+         <right>
+            <Button minHeight="60.0" mnemonicParsing="false" prefWidth="285.0" text="Reset Statistics    " BorderPane.alignment="CENTER">
+               <stylesheets>
+                  <URL value="@../styles/Buttons.css" />
+                  <URL value="@../styles/Fonts.css" />
+               </stylesheets>
+               <styleClass>
+                  <String fx:value="secondary" />
+                  <String fx:value="small-font" />
+                  <String fx:value="medium" />
+               </styleClass>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="205.0" translateY="-10.0">
+                     <image>
+                        <Image url="@../resources/icons/question-on-dark.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Reset all your statistics back to zero." />
+               </tooltip>
+            </Button>
+         </right>
+      </BorderPane>
+   </bottom>
+   <padding>
+      <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+   </padding>
+</BorderPane>

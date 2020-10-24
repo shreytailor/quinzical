@@ -1,4 +1,5 @@
 package a3.quinzical.frontend.controllers;
+import a3.quinzical.backend.Progression;
 import a3.quinzical.backend.models.Clue;
 import a3.quinzical.frontend.helper.Speaker;
 import a3.quinzical.frontend.helper.ScreenType;
@@ -39,6 +40,7 @@ public class PracticeClueController implements Initializable {
 
     private int _attemptsRemaining = 3;
     private final Speaker _speaker = Speaker.init();
+    private final Progression progression = Progression.getInstance();
     private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
     private final Clue _clue = PracticeDatabase.getInstance().getSelected();
 
