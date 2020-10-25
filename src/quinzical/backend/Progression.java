@@ -125,6 +125,9 @@ public class Progression {
 	 * @return int percentage of questions that were answered correctly
 	 */
 	public int getPercentage() {
+		if (answeredCorrect+answeredWrong == 0) {
+			return 0;
+		}
 		return answeredCorrect * 100 / (answeredCorrect+answeredWrong);
 	}
 	
@@ -133,6 +136,9 @@ public class Progression {
 	 * @return int average time taken
 	 */
 	public int getAverageTime() {
+		if (answeredCorrect == 0) {
+			return 0;
+		}
 		return totalTime / answeredCorrect;
 	}
 	
@@ -141,6 +147,9 @@ public class Progression {
 	 * @return int average winning
 	 */
 	public int getAverageWinning() {
+		if (gamesCompleted == 0) {
+			return 0;
+		}
 		return totalWinnings / (gamesCompleted);
 	}
 	
