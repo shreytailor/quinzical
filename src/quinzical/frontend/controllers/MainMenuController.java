@@ -1,15 +1,17 @@
 package quinzical.frontend.controllers;
-import javafx.application.HostServices;
-import javafx.scene.web.WebView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import quinzical.backend.Progression;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.backend.database.GameDatabase;
 import quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
-import java.io.File;
 import java.net.URL;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
@@ -25,16 +27,31 @@ import javafx.scene.control.Button;
  * This class is the controller class for the MainMenu screen.
  * @author Shrey Tailor, Jason Wang
  */
-public class MainMenuController {
+public class MainMenuController implements Initializable {
 
-    @FXML Button practiceModuleButton;
-    @FXML Button gameModuleButton;
-    @FXML Button exitButton;
-    @FXML Button settingsButton;
-    @FXML Button statsButton;
     @FXML Button helpButton;
+    @FXML Button exitButton;
+    @FXML Button statsButton;
+    @FXML Label xpLevelLabel;
+    @FXML Button settingsButton;
+    @FXML Button gameModuleButton;
+    @FXML ProgressBar progressBar;
+    @FXML Button practiceModuleButton;
 
     private final Speaker _speaker = Speaker.init();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Getting the current XP points from the Progression singleton.
+        Progression progression = Progression.getInstance();
+        int totalPoints = progression.getEXP();
+        int quotient = (totalPoints / 1000) + 1;
+        int remainder = totalPoints % 1000;
+
+        // Setting the progress bar, such that it shows the current XP.
+        xpLevelLabel.setText(String.valueOf(quotient));
+        progressBar.setProgress((double) remainder/1000);
+    }
 
     @FXML
     private void handlePracticeModuleButton() {
@@ -109,5 +126,4 @@ public class MainMenuController {
     private void handleHelpButton() {
         ScreenSwitcher.getInstance().switchTo(ScreenType.HELP);
     }
-
 }

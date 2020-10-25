@@ -20,7 +20,7 @@ public class HelpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Retrieving the URL to the User Manual file.
-        File userManual = new File("UserManual.html").getAbsoluteFile();
+        File userManual = new File("UserManual/UserManual.html").getAbsoluteFile();
 
         // Setting up the WebView such that it displays the User Manual.
         WebEngine engine = webView.getEngine();

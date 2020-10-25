@@ -23,3 +23,11 @@ ScrollPane to white. Hence, note that is is set to transparent first, before set
 .background {
     -fx-background-image: url("../resources/images/background.jpg");
 }
+
+.progress-bar .bar {
+    -fx-background-color: yellow;
+}
+
+.progress-bar > .track {
+    -fx-background-color: transparent;
+}
