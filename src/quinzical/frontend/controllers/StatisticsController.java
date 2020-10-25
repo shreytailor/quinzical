@@ -1,10 +1,7 @@
 package quinzical.frontend.controllers;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import quinzical.backend.Progression;
-import quinzical.frontend.helper.AlertHelper;
 import quinzical.frontend.helper.ScreenType;
+import quinzical.frontend.helper.AlertHelper;
 import quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
@@ -13,7 +10,10 @@ import java.util.ResourceBundle;
 
 // JavaFX dependencies.
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ButtonType;
 
 public class StatisticsController implements Initializable {
 

@@ -55,8 +55,9 @@ public class Main extends Application {
         if (GameDatabase.singletonExist()) {
             try {
                 IO.writeGameData(GameDatabase.getInstance());
+                IO.writeProgressionData(Progression.getInstance());
             } catch (IOException error) {
-                // We can be assured that this will not be thrown due to implementation.
+                // We can be assured that this will not be thrown due to such implementation.
             };
         }
 
