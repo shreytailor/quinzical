@@ -34,6 +34,7 @@ public class PracticeDatabase {
     private int numberOfCategories;
     private List<Category> categories = new ArrayList<Category>();
     private InternationalCategory intCate = new InternationalCategory();
+    private Category badCate;
 
     /**
      * The only constructor for PracticeDatabase object which is private, because it can only be
@@ -152,5 +153,13 @@ public class PracticeDatabase {
      */
     public static void kill() {
     	practiceDatabase = null;
+    }
+    
+    public void setBadCate(Category cate) {
+    	badCate = cate;
+    }
+    
+    public Category getBadCate() {
+    	return badCate;
     }
 }
