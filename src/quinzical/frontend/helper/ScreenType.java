@@ -15,7 +15,9 @@ public enum ScreenType {
     CHOOSE_CATEGORIES("ChooseCategories.fxml"),
     GAME_MODULE("GameModule.fxml"),
     GAME_CLUE("GameClue.fxml"),
-    GAME_FINISHED("GameFinished.fxml");
+    GAME_FINISHED("GameFinished.fxml"),
+    STATS("Statistics.fxml"),
+    HELP("Help.fxml");
 
     private URL _url;
     private String _prefix = "quinzical/frontend/fxml/";

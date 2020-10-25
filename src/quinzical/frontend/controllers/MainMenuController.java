@@ -1,10 +1,13 @@
 package quinzical.frontend.controllers;
+import javafx.application.HostServices;
+import javafx.scene.web.WebView;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.backend.database.GameDatabase;
 import quinzical.frontend.helper.ScreenSwitcher;
 
 // Java dependencies.
+import java.io.File;
 import java.net.URL;
 import java.io.IOException;
 
@@ -28,6 +31,8 @@ public class MainMenuController {
     @FXML Button gameModuleButton;
     @FXML Button exitButton;
     @FXML Button settingsButton;
+    @FXML Button statsButton;
+    @FXML Button helpButton;
 
     private final Speaker _speaker = Speaker.init();
 
@@ -56,11 +61,6 @@ public class MainMenuController {
         }
 
         switcher.setTitle("Game Module");
-    }
-
-    @FXML
-    private void handleExitButton() {
-        ScreenSwitcher.getInstance().exit();
     }
 
     @FXML
@@ -93,6 +93,21 @@ public class MainMenuController {
             _speaker.kill();
         });
         settingsStage.show();
+    }
+
+    @FXML
+    private void handleExitButton() {
+        ScreenSwitcher.getInstance().exit();
+    }
+
+    @FXML
+    private void handleStatsButton() {
+        ScreenSwitcher.getInstance().switchTo(ScreenType.STATS);
+    }
+
+    @FXML
+    private void handleHelpButton() {
+        ScreenSwitcher.getInstance().switchTo(ScreenType.HELP);
     }
 
 }

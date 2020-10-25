@@ -1,5 +1,6 @@
 package quinzical;
 import quinzical.backend.IO;
+import quinzical.backend.Progression;
 import quinzical.frontend.helper.Speaker;
 import quinzical.backend.tasks.FileManager;
 import quinzical.backend.database.GameDatabase;
@@ -21,6 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         // Checking if the configuration folder exists.
+        Progression.getInstance();
         FileManager.checkConfigDirectory();
 
         /*
