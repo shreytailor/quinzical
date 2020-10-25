@@ -1,5 +1,6 @@
 package quinzical.frontend.controllers;
 import quinzical.backend.Progression;
+import quinzical.backend.database.PracticeDatabase;
 import quinzical.backend.models.Clue;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
@@ -144,6 +145,9 @@ public class GameClueController implements Initializable {
             // Adding to the count of total incorrect answers.
             progression.answeredWrongPlus();
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
+
+            // Set this question as "needs practice" on Practice Module.
+            PracticeDatabase.getInstance().setBadCate(_clue.getCategory());
 
             // Hiding the timer label, because its not needed anymore.
             timerLabel.setVisible(false);

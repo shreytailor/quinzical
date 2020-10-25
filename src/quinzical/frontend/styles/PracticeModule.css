@@ -3,12 +3,12 @@
 }
 
 .categoryButton {
-    -fx-font-size: 21;
+    -fx-font-size: 20;
     -fx-pref-width: 195;
     -fx-pref-height: 84;
     -fx-wrap-text: true;
     -fx-text-fill: white;
-    -fx-background-radius: 10;
+    -fx-background-radius: 10px;
     -fx-text-alignment: center;
     -fx-background-color: #288F5A;
     -fx-font-family: "Poppins Medium";
@@ -16,4 +16,10 @@
 
 .categoryButton:hover {
     -fx-background-color: #247F50;
+}
+
+.markedButton {
+    -fx-border-width: 6px;
+    -fx-border-color: pink;
+    -fx-border-radius: 10px;
 }

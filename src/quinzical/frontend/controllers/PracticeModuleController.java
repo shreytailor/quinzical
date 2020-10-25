@@ -1,5 +1,8 @@
 package quinzical.frontend.controllers;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import quinzical.backend.models.Clue;
+import quinzical.backend.models.Category;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.frontend.helper.ScreenSwitcher;
 import quinzical.backend.database.PracticeDatabase;
@@ -67,8 +70,15 @@ public class PracticeModuleController implements Initializable {
                 // Getting the information of the current category and creating its button.
                 String category = _db.getCategory(tracker).getName();
                 Button button = new Button(category);
+                button.setWrapText(true);
                 button.getStyleClass().add("categoryButton");
                 button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
+
+                // Applying different styles to mark the category that needs to be practised.
+                Category marked = _db.getBadCate();
+                if (marked != null && category.equals(marked.getName())) {
+                    button.getStyleClass().add("markedButton");
+                }
 
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
