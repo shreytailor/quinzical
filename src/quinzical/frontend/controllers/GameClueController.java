@@ -135,13 +135,18 @@ public class GameClueController implements Initializable {
             _db.updateWinning(_clue.getPrize());
             message = "Ka pai, your answer was correct!";
 
-            // Adding to the statistics of correct answer, and average time.
+            // Adding to the statistics of correct answer, and increasing XP.
+            int earnedXP = (_clue.getPrize() / 10) + TIME_LIMIT;
+            timerLabel.setText("+" + earnedXP + "XP");
             progression.answeredCorrect(30 - TIME_LIMIT);
+            progression.addEXP(earnedXP);
         } else {
             // Adding to the count of total incorrect answers.
             progression.answeredWrongPlus();
-
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
+
+            // Hiding the timer label, because its not needed anymore.
+            timerLabel.setVisible(false);
         }
 
         _speaker.setSpeech(message);
@@ -157,7 +162,6 @@ public class GameClueController implements Initializable {
         // Setting certain elements to hidden to clear the screen.
         inputField.setDisable(true);
         backButton.setVisible(true);
-        timerLabel.setVisible(false);
         messageLabel.setVisible(true);
         submitButton.setVisible(false);
         respeakButton.setVisible(false);
