@@ -43,22 +43,27 @@ Under [Open Font Licence](https://scripts.sil.org/cms/scripts/page.php?site_id=n
 Under [Freepik Licence](https://www.freepikcompany.com/legal#nav-freepik-license) - free for personal use and commercial purpose with attribution.
 [It can be found here.](https://www.freepik.com/free-vector/welcome-new-zealand-landing-page_6345340.htm#page=1&query=new%20zealand&position=4)
 
-<img width="20px" src="./src/a3/quinzical/frontend/resources/icons/speaker.png">\
+<img width="20px" src="./src/quinzical/frontend/resources/icons/speaker.png">\
 Icon of the "Speaker" provided by Pixel Perfect.\
 Under Free Licence (With Attribution).\
 [It can be found here.](https://www.flaticon.com/free-icon/speaking_151840?term=speak&page=1&position=14)
 
-<img width="20px" src="./src/a3/quinzical/frontend/resources/icons/back.png">\
+<img width="20px" src="./src/quinzical/frontend/resources/icons/back.png">\
 Icon of the "Back Arrow" provided by Google.\
 Under Free Licence (With Attribution).\
 [It can be found here.](https://www.flaticon.com/free-icon/back-arrow_566095?term=back%20arrow&page=1&position=36)
 
-<img width="20px" src="./src/a3/quinzical/frontend/resources/icons/random.png">\
+<img width="20px" src="./src/quinzical/frontend/resources/icons/random.png">\
 Icon of the "Dice" provided by Good Ware.\
 Under Free Licence (With Attribution).\
 [It can be found here.](https://www.flaticon.com/free-icon/random_2619060?term=random&page=1&position=6)
 
-<img width="20px" src="./src/a3/quinzical/frontend/resources/icons/lock.png">\
+<img width="20px" src="./src/quinzical/frontend/resources/icons/lock.png">\
+Icon of the "Lock" provided by Freepik.\
+Under Free Licence (With Attribution).\
+[It can be found here.](https://www.flaticon.com/free-icon/locked-padlock_61457?term=lock&page=1&position=20)
+
+<img width="20px" src="./src/quinzical/frontend/resources/icons/statistics.png">\
 Icon of the "Lock" provided by Freepik.\
 Under Free Licence (With Attribution).\
 [It can be found here.](https://www.flaticon.com/free-icon/locked-padlock_61457?term=lock&page=1&position=20)
