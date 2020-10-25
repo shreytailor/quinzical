@@ -1,4 +1,5 @@
 package quinzical.frontend.controllers;
+import quinzical.backend.Progression;
 import quinzical.backend.models.Clue;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
@@ -46,6 +47,7 @@ public class GameClueController implements Initializable {
     private int TIME_LIMIT = 30;
     private final Speaker _speaker = Speaker.init();
     private final GameDatabase _db = GameDatabase.getInstance();
+    private final Progression progression = Progression.getInstance();
     private final Clue _clue = GameDatabase.getInstance().getCurrentClue();
 
     @Override
@@ -93,6 +95,8 @@ public class GameClueController implements Initializable {
             _switcher.switchTo(ScreenType.GAME_MODULE);
             _switcher.setTitle("Game Module");
         } else {
+            // If all the questions are completed, we are increasing the statistics counter here.
+            progression.gameFinished(_db.getWinning());
             _switcher.switchTo(ScreenType.GAME_FINISHED);
         }
     }
@@ -130,7 +134,13 @@ public class GameClueController implements Initializable {
         if (isCorrect) {
             _db.updateWinning(_clue.getPrize());
             message = "Ka pai, your answer was correct!";
+
+            // Adding to the statistics of correct answer, and average time.
+            progression.answeredCorrect(30 - TIME_LIMIT);
         } else {
+            // Adding to the count of total incorrect answers.
+            progression.answeredWrongPlus();
+
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
         }
 

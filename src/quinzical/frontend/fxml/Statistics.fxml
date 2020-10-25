@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1200.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1200.0" styleClass="background" stylesheets="@../styles/Global.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.frontend.controllers.StatisticsController">
    <top>
       <Label styleClass="bold" stylesheets="@../styles/Fonts.css" text="Your Statistics" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
@@ -69,7 +69,7 @@
                               </Tooltip>
                            </tooltip>
                         </Button>
-                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="55%" textAlignment="CENTER" textFill="#2d625d">
+                        <Label fx:id="successLabel" alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="55%" textAlignment="CENTER" textFill="#2d625d">
                            <font>
                               <Font size="70.0" />
                            </font>
@@ -110,7 +110,7 @@
                               </Tooltip>
                            </tooltip>
                         </Button>
-                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="13" textAlignment="CENTER" textFill="#692644">
+                        <Label fx:id="gamesLabel" alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="13" textAlignment="CENTER" textFill="#692644">
                            <font>
                               <Font size="70.0" />
                            </font>
@@ -151,7 +151,7 @@
                               </Tooltip>
                            </tooltip>
                         </Button>
-                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="\$10200" textAlignment="CENTER" textFill="#5b420b">
+                        <Label fx:id="winningsLabel" alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="\$10200" textAlignment="CENTER" textFill="#5b420b">
                            <font>
                               <Font size="70.0" />
                            </font>
@@ -192,7 +192,7 @@
                               </Tooltip>
                            </tooltip>
                         </Button>
-                        <Label alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="12s" textAlignment="CENTER" textFill="#58560e">
+                        <Label fx:id="timeLabel" alignment="CENTER" layoutY="71.0" prefHeight="51.0" prefWidth="371.0" styleClass="medium" stylesheets="@../styles/Fonts.css" text="12s" textAlignment="CENTER" textFill="#58560e">
                            <font>
                               <Font size="70.0" />
                            </font>
@@ -210,7 +210,7 @@
    <bottom>
       <BorderPane BorderPane.alignment="CENTER">
          <left>
-            <Button minHeight="60.0" mnemonicParsing="false" prefWidth="285.0" styleClass="secondary" stylesheets="@../styles/Buttons.css" BorderPane.alignment="CENTER">
+            <Button minHeight="60.0" mnemonicParsing="false" onAction="#handleBackButton" prefWidth="285.0" styleClass="secondary" stylesheets="@../styles/Buttons.css" BorderPane.alignment="CENTER">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -221,7 +221,7 @@
             </Button>
          </left>
          <right>
-            <Button minHeight="60.0" mnemonicParsing="false" prefWidth="285.0" text="Reset Statistics    " BorderPane.alignment="CENTER">
+            <Button minHeight="60.0" mnemonicParsing="false" onAction="#handleResetButton" prefWidth="285.0" text="Reset Statistics    " BorderPane.alignment="CENTER">
                <stylesheets>
                   <URL value="@../styles/Buttons.css" />
                   <URL value="@../styles/Fonts.css" />

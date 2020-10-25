@@ -1,5 +1,6 @@
 package quinzical;
 import quinzical.backend.IO;
+import quinzical.backend.Progression;
 import quinzical.frontend.helper.Speaker;
 import quinzical.backend.tasks.FileManager;
 import quinzical.backend.database.GameDatabase;
@@ -21,6 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         // Checking if the configuration folder exists.
+        Progression.getInstance();
         FileManager.checkConfigDirectory();
 
         /*
@@ -53,8 +55,9 @@ public class Main extends Application {
         if (GameDatabase.singletonExist()) {
             try {
                 IO.writeGameData(GameDatabase.getInstance());
+                IO.writeProgressionData(Progression.getInstance());
             } catch (IOException error) {
-                // We can be assured that this will not be thrown due to implementation.
+                // We can be assured that this will not be thrown due to such implementation.
             };
         }
 
