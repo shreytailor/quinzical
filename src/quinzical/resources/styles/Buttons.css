@@ -11,6 +11,7 @@
 }
 
 .primary {
+    -fx-cursor: hand;
     -fx-text-fill: white;
     -fx-background-color: #197DB3;
 }
@@ -20,6 +21,7 @@
 }
 
 .secondary {
+    -fx-cursor: hand;
     -fx-text-fill: #333333;
     -fx-background-color: #EBEBEB;
 }
@@ -29,6 +31,7 @@
 }
 
 .red {
+    -fx-cursor: hand;
     -fx-text-fill: white;
     -fx-background-color: #A02C2C;
 }
@@ -38,6 +41,7 @@
 }
 
 .green {
+    -fx-cursor: hand;
     -fx-text-fill: white;
     -fx-background-color: #51824A;
 }
@@ -47,6 +51,7 @@
 }
 
 .keyboard-button {
+    -fx-cursor: hand;
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;

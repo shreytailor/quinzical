@@ -3,7 +3,7 @@
 }
 
 .slider {
-    /* default track color: */
+    -fx-cursor: hand;
     -slider-filled-track-color: #157145;
     -slider-track-color: #00C55E;
 }
