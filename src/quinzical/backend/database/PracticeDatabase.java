@@ -94,7 +94,7 @@ public class PracticeDatabase {
 				newCate.addClue(newClue);
 			}
     	}
-    	//Load clues to International Category 
+    	//Load clues to International Category
     	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
     	for (String line : internationalContent) {
     		if(!line.isBlank()) {
