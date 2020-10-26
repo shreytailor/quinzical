@@ -83,7 +83,7 @@ public class MainMenuController implements Initializable {
     @FXML
     private void handleSettingsButton() {
         int WIDTH = 600;
-        int HEIGHT = 350;
+        int HEIGHT = 400;
 
         // Creating and configuring the new stage.
         Stage settingsStage = new Stage();

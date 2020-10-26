@@ -1,3 +1,7 @@
+.background {
+    -fx-background-color: #282828;
+}
+
 .slider {
     /* default track color: */
     -slider-filled-track-color: #157145;
