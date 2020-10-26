@@ -97,6 +97,7 @@ public class IO {
 	
 	public static void main(String[] args) {
 		PracticeDatabase.getInstance();
+		System.out.println(PracticeDatabase.getInstance().getInternationalCategory().getName());
 		List<Category> clist = new ArrayList<Category>();
 		clist.add(PracticeDatabase.getInstance().getCategory(0));
 		clist.add(PracticeDatabase.getInstance().getCategory(1));
@@ -104,26 +105,16 @@ public class IO {
 		clist.add(PracticeDatabase.getInstance().getCategory(3));
 		clist.add(PracticeDatabase.getInstance().getCategory(4));
 		
-		GameDatabase.getInstance(clist);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		System.out.println(GameDatabase.getInstance().getCategory(2).getClue(0).checkAnswer("Rangitoto"));
-		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
+		GameDatabase.getInstance();
+		System.out.println(GameDatabase.getInstance().getInternationalCategory().getClue(0).getQuestion());
 		
 		try {
-			writeProgressionData(Progression.getInstance());
+			writeGameData(GameDatabase.getInstance());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 	
 }

@@ -98,7 +98,7 @@ public class PracticeDatabase {
     	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
     	for (String line : internationalContent) {
     		if(!line.isBlank()) {
-	    		newClue = Formatting.formatClue(line, newCate);
+	    		newClue = Formatting.formatClue(line, intCate);
 	    		intCate.addClue(newClue);
     		}
     	}
