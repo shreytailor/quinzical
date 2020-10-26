@@ -28,17 +28,17 @@ public class ChooseCategoriesController implements Initializable {
     @FXML
     ScrollPane scrollPane;
 
-    PracticeDatabase _database;
-    ObservableList<ToggleButton> _buttons;
-    ObservableList<Category> _selectedCategories;
-    ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    PracticeDatabase database;
+    ObservableList<ToggleButton> buttons;
+    ObservableList<Category> selectedCategories;
+    ScreenSwitcher switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initializing the list which contains the selected items.
-        _database = PracticeDatabase.getInstance();
-        _buttons = FXCollections.observableArrayList();
-        _selectedCategories = FXCollections.observableArrayList();
+        database = PracticeDatabase.getInstance();
+        buttons = FXCollections.observableArrayList();
+        selectedCategories = FXCollections.observableArrayList();
 
         // Getting the current categories, and creating the grid.
         createButtons();
@@ -47,8 +47,8 @@ public class ChooseCategoriesController implements Initializable {
 
     @FXML
     private void handleBackButton() {
-        _switcher.setTitle("Main Menu");
-        _switcher.switchTo(ScreenType.MAIN_MENU);
+        switcher.setTitle("Main Menu");
+        switcher.switchTo(ScreenType.MAIN_MENU);
     }
 
     @FXML
@@ -59,9 +59,9 @@ public class ChooseCategoriesController implements Initializable {
 
     @FXML
     private void handleStartButton() {
-        if (_selectedCategories.size() == 5) {
-            GameDatabase.getInstance(_selectedCategories);
-            _switcher.switchTo(ScreenType.GAME_MODULE);
+        if (selectedCategories.size() == 5) {
+            GameDatabase.getInstance(selectedCategories);
+            switcher.switchTo(ScreenType.GAME_MODULE);
         } else {
             AlertHelper.getInstance().showAlert(Alert.AlertType.ERROR, "Please select five questions to proceed.", ButtonType.OK);
         }
@@ -72,8 +72,8 @@ public class ChooseCategoriesController implements Initializable {
      * and after doing that, they are placed within an Observable List to be accessed later.
      */
     private void createButtons() {
-        for (int counter = 0; counter < _database.getCateSize(); counter++) {
-            Category category = _database.getCategory(counter);
+        for (int counter = 0; counter < database.getCateSize(); counter++) {
+            Category category = database.getCategory(counter);
 
             // Creating the toggle button, and styling it as per needed.
             ToggleButton button = new ToggleButton(category.getName());
@@ -91,7 +91,7 @@ public class ChooseCategoriesController implements Initializable {
                 }
             });
 
-            _buttons.add(button);
+            buttons.add(button);
         }
     }
 
@@ -104,17 +104,17 @@ public class ChooseCategoriesController implements Initializable {
 
         // Determining the size of the grid, to use in the for-loop.
         int ROWS = 5;
-        int COLS = (_buttons.size() / ROWS) + 1;
+        int COLS = (buttons.size() / ROWS) + 1;
 
         int counter = 0;
         for (int col = 0; col < COLS; col++) {
             for (int row = 0; row < ROWS; row++) {
-                if (counter >= _buttons.size()) {
+                if (counter >= buttons.size()) {
                     break;
                 }
 
                 // Get the corresponding button, and add it.
-                ToggleButton button = _buttons.get(counter);
+                ToggleButton button = buttons.get(counter);
                 GridPane.setMargin(button, new Insets(12));
                 gridPane.add(button, row, col);
                 counter++;
@@ -129,8 +129,8 @@ public class ChooseCategoriesController implements Initializable {
      * triggered when one of the buttons are selected.
      */
     private void addItem(Category category, ToggleButton button) {
-        if (_selectedCategories.size() < 5) {
-            _selectedCategories.add(category);
+        if (selectedCategories.size() < 5) {
+            selectedCategories.add(category);
         } else {
             button.setSelected(false);
         }
@@ -141,15 +141,15 @@ public class ChooseCategoriesController implements Initializable {
      * is triggered when one of the buttons are deselected.
      */
     private void removeItem(Category category) {
-        _selectedCategories.remove(category);
+        selectedCategories.remove(category);
     }
 
     /**
      * This method is used to deselect all the category buttons.
      */
     private void deselectAll() {
-        for (int counter = 0; counter < _buttons.size(); counter++) {
-            _buttons.get(counter).setSelected(false);
+        for (int counter = 0; counter < buttons.size(); counter++) {
+            buttons.get(counter).setSelected(false);
         }
     }
 
@@ -157,7 +157,7 @@ public class ChooseCategoriesController implements Initializable {
      * This method is used to select a random set of five categories from the list given.
      */
     private void randomize() {
-        ObservableList<ToggleButton> buttonCopy = FXCollections.observableArrayList(_buttons);
+        ObservableList<ToggleButton> buttonCopy = FXCollections.observableArrayList(buttons);
         Collections.shuffle(buttonCopy);
 
         for (int counter = 0; counter < 5; counter++) {

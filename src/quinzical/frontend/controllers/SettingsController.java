@@ -23,7 +23,7 @@ public class SettingsController implements Initializable {
     @FXML Button synthesisPreviewButton;
     @FXML Button synthesisResetButton;
 
-    private final Speaker _speaker = Speaker.init();
+    private final Speaker speaker = Speaker.init();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,7 +35,7 @@ public class SettingsController implements Initializable {
      */
     public void handleSpeedChanged() {
         Double newSpeed = synthesisSpeedSlider.getValue();
-        _speaker.setSpeed(newSpeed);
+        speaker.setSpeed(newSpeed);
 
         // Show the new update on the label after being changed..
         updateSpeedLabel();
@@ -46,15 +46,15 @@ public class SettingsController implements Initializable {
      */
     public void handlePreviewButton() {
         String test = "Hey there, how are you doing today? This is just a test";
-        _speaker.setSpeech(test);
-        _speaker.speak();
+        speaker.setSpeech(test);
+        speaker.speak();
     }
 
     /**
      * This is the handler for when speed is reset to the original.
      */
     public void handleResetButton() {
-        _speaker.resetSpeed();
+        speaker.resetSpeed();
         updateSpeedLabel();
     }
 
@@ -62,11 +62,11 @@ public class SettingsController implements Initializable {
      * This private method is used to just update the label reflecting the current speed.
      */
     private void updateSpeedLabel() {
-        synthesisSpeedSlider.setValue(_speaker.getSpeed());
-        double speed = _speaker.getSpeed();
+        synthesisSpeedSlider.setValue(speaker.getSpeed());
+        double speed = speaker.getSpeed();
 
         // Dynamic label content depending on whether the speed is default or custom.
-        if (_speaker.isChanged()) {
+        if (speaker.isChanged()) {
             synthesisSpeedLabel.setText("The speed has been changed to " + speed + ".");
         } else {
             synthesisSpeedLabel.setText("The speed is set to default, which is " + speed + ".");

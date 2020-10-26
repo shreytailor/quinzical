@@ -19,20 +19,20 @@ import java.util.ResourceBundle;
 public class GameFinishedController implements Initializable {
     @FXML Label winningsPlaceholder;
 
-    private final GameDatabase _db = GameDatabase.getInstance();
-    private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private final GameDatabase database = GameDatabase.getInstance();
+    private final ScreenSwitcher switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Telling the user the amount that they accumulated.
-        winningsPlaceholder.setText("You have won a total of $" + _db.getWinning() + ".");
+        winningsPlaceholder.setText("You have won a total of $" + database.getWinning() + ".");
     }
 
     @FXML
     public void handleBackButton() {
         // Go back to the main menu.
-        _switcher.switchTo(ScreenType.MAIN_MENU);
-        _switcher.setTitle("Main Menu");
+        switcher.switchTo(ScreenType.MAIN_MENU);
+        switcher.setTitle("Main Menu");
     }
 
     @FXML
@@ -42,6 +42,6 @@ public class GameFinishedController implements Initializable {
          * not, because the game has been completed anyways.
          */
         GameDatabase.kill();
-        _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
+        switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
     }
 }
