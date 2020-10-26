@@ -58,16 +58,18 @@ public class PracticeModuleController implements Initializable {
 
         // Loop through the columns and rows of the GridPane and add the buttons.
         int tracker = 0;
-        for (int col = 0; col < COLS; col++) {
-            for (int row = 0; row < ROWS; row++) {
+        int col;
+        int row = 0;
+        for (col = 0; col < COLS; col++) {
+            for (row = 0; row < ROWS; row++) {
                 // If we finish all the categories, then finish both the loops.
                 if (tracker >= categories) {
                     break;
                 }
 
                 // Getting the information of the current category and creating its button.
-                String category = database.getCategory(tracker).getName();
-                Button button = buttonGenerator(category);
+                Category category = database.getCategory(tracker);
+                Button button = buttonGenerator(category.getName());
 
                 // Applying different styles to mark the category that needs to be practised.
                 Category marked = database.getMarkedCategory();
@@ -78,16 +80,16 @@ public class PracticeModuleController implements Initializable {
                 // Configuring the button such that if pressed, it would open practice module for it.
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
-                    handleCategoryButton(finalTracker);
+                    handleCategoryButton(category);
                 });
-
-                GridPane.setMargin(button, new Insets(12));
 
                 // Adding the button to the grid.
                 gridPane.add(button, row, col);
                 tracker++;
             }
         }
+
+        addInternationalCategory(row, col - 1);
 
         // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
         scrollPane.setContent(gridPane);
@@ -96,11 +98,14 @@ public class PracticeModuleController implements Initializable {
 
     /**
      * This is a private method, and a handler for when the one of the categories is selected.
-     * @param categoryNumber the category number which is selected by the user.
+     * @param category the category that the user has selected to practice.
      */
-    private void handleCategoryButton(int categoryNumber) {
-        Clue random = database.getCategory(categoryNumber).getRandom();
+    private void handleCategoryButton(Category category) {
+        Clue random = category.getRandom();
         database.select(random);
+
+        System.out.println(random.getCategory().getName());
+
         switcher.switchTo(ScreenType.PRACTICE_CLUE);
     }
 
@@ -108,8 +113,20 @@ public class PracticeModuleController implements Initializable {
         Button button = new Button(categoryName);
         button.setWrapText(true);
         button.getStyleClass().add("categoryButton");
-        button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
+        button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/PracticeModule.css").toExternalForm());
+        GridPane.setMargin(button, new Insets(12));
         return button;
+    }
+
+    private void addInternationalCategory(int row, int col) {
+        Category category = database.getInternationalCategory();
+        Button button = buttonGenerator(category.getName());
+
+        button.setOnAction(action -> {
+            handleCategoryButton(category);
+        });
+
+        gridPane.add(button, row, col);
     }
 
 }

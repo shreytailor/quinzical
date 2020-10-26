@@ -20,7 +20,7 @@ public enum ScreenType {
     HELP("Help.fxml");
 
     private URL _url;
-    private String _prefix = "quinzical/frontend/fxml/";
+    private String _prefix = "quinzical/resources/fxml/";
 
     /**
      * This method is returning the path from the root of the project, which leads to the FXML file.

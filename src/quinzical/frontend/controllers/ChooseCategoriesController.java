@@ -79,7 +79,7 @@ public class ChooseCategoriesController implements Initializable {
             ToggleButton button = new ToggleButton(category.getName());
             button.getStyleClass().add("toggleButton");
             button.getStylesheets().add(getClass().getClassLoader().getResource(
-                    "quinzical/frontend/styles/ToggleButtons.css").toExternalForm()
+                    "quinzical/resources/styles/ToggleButtons.css").toExternalForm()
             );
 
             // Adding listeners to each button, which are triggered when checked/unchecked.

@@ -87,7 +87,7 @@ public class GameModuleController implements Initializable {
             Category categoryObject = database.getCategory(category);
             Label title = new Label(categoryObject.getName());
             title.getStyleClass().add("category");
-            title.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/GameModule.css").toExternalForm());
+            title.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/GameModule.css").toExternalForm());
             newZealandGrid.add(title, category, 0);
 
             // Making sure that the first clue is always clickable, hence using this flag.
@@ -167,7 +167,7 @@ public class GameModuleController implements Initializable {
     private Button clueButtonGenerator(Clue clue) {
         Button clueButton = new Button("$" + clue.getPrize());
         clueButton.getStyleClass().add("clue");
-        clueButton.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/GameModule.css").toExternalForm());
+        clueButton.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/GameModule.css").toExternalForm());
         return clueButton;
     }
 

@@ -1,4 +1,9 @@
 package quinzical.frontend.controllers;
+import javafx.scene.control.*;
+import quinzical.backend.Progression;
+import quinzical.frontend.helper.AlertHelper;
+import quinzical.frontend.helper.ScreenSwitcher;
+import quinzical.frontend.helper.ScreenType;
 import quinzical.frontend.helper.Speaker;
 
 // Java dependencies.
@@ -8,9 +13,6 @@ import java.util.ResourceBundle;
 // JavaFX dependencies.
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
 
 /**
  * This class is the controller class for the Settings screen.
@@ -56,6 +58,17 @@ public class SettingsController implements Initializable {
     public void handleResetButton() {
         speaker.resetSpeed();
         updateSpeedLabel();
+    }
+
+    @FXML
+    private void handleResetXPButton() {
+        AlertHelper helper = AlertHelper.getInstance();
+        helper.showAlert(Alert.AlertType.CONFIRMATION, "Are you sure you want to reset your XP?", ButtonType.YES, ButtonType.NO);
+
+        if (helper.getResult() == ButtonType.YES) {
+            Progression.kill();
+            ScreenSwitcher.getInstance().switchTo(ScreenType.MAIN_MENU);
+        }
     }
 
     /**
