@@ -40,7 +40,6 @@ public class PracticeClueController implements Initializable {
 
     private int attemptsRemaining = 3;
     private final Speaker speaker = Speaker.init();
-    private final Progression progression = Progression.getInstance();
     private final ScreenSwitcher switcher = ScreenSwitcher.getInstance();
     private final Clue clue = PracticeDatabase.getInstance().getSelected();
 
@@ -48,6 +47,8 @@ public class PracticeClueController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Displaying the information about the current question.
         clueLabel.setText(clue.getQuestion());
+
+        System.out.println(clue.getCategory().getName());
         categoryLabel.setText(clue.getCategory().getName());
         prefixPlaceholder.setText(clue.getPrefix() + "...");
         hintPlaceholder.setText("Hint: the first character of the answer is '" + clue.getAnswersList().get(0).charAt(0) + "'.");

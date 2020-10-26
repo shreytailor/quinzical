@@ -1,0 +1,23 @@
+.myDialog{
+    -fx-background-color:  #282828;
+}
+.myDialog > *.button-bar > *.container{
+    -fx-background-color: #282828;
+}
+
+.dialog-pane .button{
+    -fx-text-fill: white;
+    -fx-background-color: #3C3C3C;
+    -fx-effect: dropshadow( three-pass-box, black, 10.0, 0.0, 0.0, 0.0)
+}
+
+.dialog-pane .button:hover{
+    -fx-background-color: #AFD3E3;
+    -fx-text-fill:black;
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+.myDialog > *.label.content {
+    -fx-text-fill:white;
+}

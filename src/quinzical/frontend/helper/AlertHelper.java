@@ -3,6 +3,7 @@ package quinzical.frontend.helper;
 // JavaFX dependencies.
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 
 /**
  * A singleton class to avoid code duplication when displaying an alert to the user.
@@ -10,23 +11,18 @@ import javafx.scene.control.ButtonType;
  */
 public class AlertHelper {
 
-    private ButtonType _result;
-    private static AlertHelper _alertHelper;
-
-    /**
-     * An empty (default) constructor.
-     */
-    public AlertHelper() {  };
+    private ButtonType result;
+    private static AlertHelper alertHelper;
 
     /**
      * Enforcing the principles of the single pattern.
      * @return
      */
     public static AlertHelper getInstance() {
-        if (_alertHelper == null) {
-            _alertHelper = new AlertHelper();
+        if (alertHelper == null) {
+            alertHelper = new AlertHelper();
         }
-        return _alertHelper;
+        return alertHelper;
     }
 
     /**
@@ -39,8 +35,12 @@ public class AlertHelper {
     public void showAlert(Alert.AlertType alertType, String message, ButtonType... buttons) {
         Alert alert = new Alert(alertType, message, buttons);
         alert.setHeaderText(null);
+
+        // Adding the custom styling to the alert window.
+        addStyling(alert);
+
         alert.showAndWait();
-        _result = alert.getResult();
+        result = alert.getResult();
     }
 
     /**
@@ -48,7 +48,13 @@ public class AlertHelper {
      * @return
      */
     public ButtonType getResult() {
-        return _result;
+        return result;
+    }
+
+    private void addStyling(Alert alert) {
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/Dialog.css").toExternalForm());
+        dialogPane.getStyleClass().add("myDialog");
     }
 
 }
