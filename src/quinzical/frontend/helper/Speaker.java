@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
@@ -14,24 +16,23 @@ import java.util.stream.Stream;
  * @author Shrey Tailor, Jason Wang
  */
 public class Speaker {
-    private static Speaker _speaker;
+    private static Speaker speaker;
 
     private double SPEED;
+    private Process process;
     private double DEFAULT = 1;
-    private boolean _isChanged = false;
-
-    private Process _process;
-    private String _speechString;
-    private ProcessBuilder _processBuilder;
+    private String speechString;
+    private boolean isChanged = false;
+    private ProcessBuilder processBuilder;
 
     /**
      * Getting the Speaker instance, by using Singleton pattern.
      */
     public static Speaker init() {
-        if (_speaker == null) {
-            _speaker = new Speaker();
+        if (speaker == null) {
+            speaker = new Speaker();
         }
-        return _speaker;
+        return speaker;
     }
 
     /**
@@ -40,7 +41,7 @@ public class Speaker {
      */
     public void setSpeed(double speed) {
         SPEED = speed;
-        _isChanged = true;
+        isChanged = true;
     }
 
     /**
@@ -52,8 +53,8 @@ public class Speaker {
         kill();
 
         try {
-            _processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
-            _process = _processBuilder.start();
+            processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
+            process = processBuilder.start();
         } catch (IOException error) {  };
     }
 
@@ -62,8 +63,14 @@ public class Speaker {
      */
     public void kill() {
         try {
-            Stream<ProcessHandle> descendents = _process.descendants();
-            descendents.forEach(ProcessHandle::destroy);
+            // Finding about all the descendents, and deleting them all.
+            Stream<ProcessHandle> descendents = process.descendants();
+            descendents.filter(ProcessHandle::isAlive).forEach(processHandle -> {
+                processHandle.destroy();
+            });
+
+            // Destroying the whole process after destroying the descendents.
+            process.destroy();
         } catch (Exception error) {  };
     }
 
@@ -71,7 +78,7 @@ public class Speaker {
      * This method is used to reset the speed of the Speaker.
      */
     public void resetSpeed() {
-        _isChanged = false;
+        isChanged = false;
     }
 
 
@@ -80,7 +87,7 @@ public class Speaker {
      * @return double the current speed.
      */
     public double getSpeed() {
-        if (_isChanged) {
+        if (isChanged) {
             DecimalFormat df = new DecimalFormat("#.00");
             return Double.parseDouble(df.format(SPEED));
         }
@@ -94,7 +101,7 @@ public class Speaker {
      * @param string the speech to speak.
      */
     public void setSpeech(String string) {
-        _speechString = string.replace("\"", "").replace("'", "");
+        speechString = string.replace("\"", "").replace("'", "");
         createSchematic();
     }
 
@@ -103,7 +110,7 @@ public class Speaker {
      * @return boolean to check whether the speed has been changed previously.
      */
     public boolean isChanged() {
-        return _isChanged;
+        return isChanged;
     }
 
     /**
@@ -113,6 +120,8 @@ public class Speaker {
      */
     private void createSchematic() {
         try {
+            Files.deleteIfExists(Paths.get("./.config/festival.scm"));
+
             // Create the file (and override if already exists).
             File schematicFile = new File("./.config/festival.scm");
             FileWriter fw = new FileWriter(schematicFile.getAbsoluteFile());
@@ -120,14 +129,14 @@ public class Speaker {
             bw.write("(voice_akl_nz_jdt_diphone)\n");
 
             // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
-            if (_isChanged) {
+            if (isChanged) {
                 bw.write("(Parameter.set 'Duration_Stretch " + 1/SPEED + ")\n");
             } else {
                 bw.write("(Parameter.set 'Duration_Stretch " + 1/DEFAULT + ")\n");
             }
 
             // Creating the command to say the text.
-            bw.write("(SayText " + "\"" + _speechString + "\"" + ")");
+            bw.write("(SayText " + "\"" + speechString + "\"" + ")");
             bw.close();
         } catch (IOException error) {  };
     }

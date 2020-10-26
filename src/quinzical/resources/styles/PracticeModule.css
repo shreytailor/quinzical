@@ -3,6 +3,7 @@
 }
 
 .categoryButton {
+    -fx-cursor: hand;
     -fx-font-size: 20;
     -fx-pref-width: 195;
     -fx-pref-height: 84;
@@ -19,7 +20,8 @@
 }
 
 .markedButton {
+    -fx-cursor: hand;
     -fx-border-width: 6px;
-    -fx-border-color: #C08552;
     -fx-border-radius: 8px;
+    -fx-border-color: #C08552;
 }

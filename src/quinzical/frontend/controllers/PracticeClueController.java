@@ -47,8 +47,6 @@ public class PracticeClueController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Displaying the information about the current question.
         clueLabel.setText(clue.getQuestion());
-
-        System.out.println(clue.getCategory().getName());
         categoryLabel.setText(clue.getCategory().getName());
         prefixPlaceholder.setText(clue.getPrefix() + "...");
         hintPlaceholder.setText("Hint: the first character of the answer is '" + clue.getAnswersList().get(0).charAt(0) + "'.");

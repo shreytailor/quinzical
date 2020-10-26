@@ -3,6 +3,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import quinzical.backend.Progression;
 import javafx.scene.control.ProgressBar;
+import quinzical.backend.database.PracticeDatabase;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.backend.database.GameDatabase;
@@ -29,7 +30,6 @@ import javafx.scene.control.Button;
  */
 public class MainMenuController implements Initializable {
 
-    @FXML Button helpButton;
     @FXML Button exitButton;
     @FXML Button statsButton;
     @FXML Label xpLevelLabel;
