@@ -40,6 +40,7 @@ public class StatisticsController implements Initializable {
     @FXML
     private void handleBackButton() {
         switcher.switchTo(ScreenType.MAIN_MENU);
+        switcher.setTitle("Main Menu");
     }
 
 }

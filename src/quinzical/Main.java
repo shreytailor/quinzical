@@ -21,6 +21,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+        /*
+        ---------------------- NOTE TO MARKER ABOUT PACKAGE LEVEL DECISIONS ----------------------
+        It would have been much easier to place the "resources" on the same level as the "quinzical"
+        package, as this would give much shorter paths for the resources which are being used.
+
+        However in the announcements made by Nasser, it was mentioned that we should have a single
+        top-level package, and thus we had made a decision to place "resources" within "quinzical".
+         */
+
         // Checking if the configuration folder exists.
         Progression.getInstance();
         FileManager.checkConfigDirectory();

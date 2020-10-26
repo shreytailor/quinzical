@@ -109,12 +109,12 @@
             </Button>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="130.0" translateY="-20.0">
                <image>
-                  <Image url="@../resources/icons/question.png" />
+                  <Image url="@../icons/question.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="130.0" translateY="-20.0" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../resources/icons/question.png" />
+                  <Image url="@../icons/question.png" />
                </image>
             </ImageView>
          </children>
@@ -134,22 +134,10 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/icons/statistics.png" />
+                        <Image url="@../icons/statistics.png" />
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="50.0" prefWidth="60.0" styleClass="secondary" stylesheets="@../styles/Buttons.css">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/icons/question-on-dark.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
             </Button>
          </children>
       </HBox>

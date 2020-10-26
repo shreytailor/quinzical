@@ -90,7 +90,7 @@ public class MainMenuController implements Initializable {
         settingsStage.setResizable(false);
         settingsStage.setTitle("Settings");
         try {
-            URL url = getClass().getClassLoader().getResource("quinzical/frontend/fxml/Settings.fxml");
+            URL url = getClass().getClassLoader().getResource("quinzical/resources/fxml/Settings.fxml");
             settingsStage.setScene(new Scene(FXMLLoader.load(url), WIDTH, HEIGHT));
         } catch (IOException error) {
             System.out.println(error.getMessage());
@@ -119,7 +119,9 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void handleStatsButton() {
-        ScreenSwitcher.getInstance().switchTo(ScreenType.STATS);
+        ScreenSwitcher switcher = ScreenSwitcher.getInstance();
+        switcher.switchTo(ScreenType.STATS);
+        switcher.setTitle("Statistics");
     }
 
     @FXML

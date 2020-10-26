@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/icons/back.png" />
+                        <Image url="@../icons/back.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -80,12 +80,12 @@
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/icons/random.png" />
+                              <Image url="@../icons/random.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="195.0" translateY="-8.0">
                            <image>
-                              <Image url="@../resources/icons/question-on-dark.png" />
+                              <Image url="@../icons/question-on-dark.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -111,7 +111,7 @@
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="228.0" translateY="-8.0">
                      <image>
-                        <Image url="@../resources/icons/question.png" />
+                        <Image url="@../icons/question.png" />
                      </image>
                   </ImageView>
                </graphic>

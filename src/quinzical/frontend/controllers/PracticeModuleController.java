@@ -113,7 +113,7 @@ public class PracticeModuleController implements Initializable {
         Button button = new Button(categoryName);
         button.setWrapText(true);
         button.getStyleClass().add("categoryButton");
-        button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
+        button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/PracticeModule.css").toExternalForm());
         GridPane.setMargin(button, new Insets(12));
         return button;
     }

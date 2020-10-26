@@ -53,7 +53,7 @@ public class AlertHelper {
 
     private void addStyling(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/Dialog.css").toExternalForm());
+        dialogPane.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/Dialog.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
     }
 
