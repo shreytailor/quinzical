@@ -50,7 +50,7 @@ public class StatisticsController implements Initializable {
         AlertHelper alertHelper = AlertHelper.getInstance();
 
         // Show the alert to confirm with the user, whether they want to delete their statistics.
-        alertHelper.showAlert(Alert.AlertType.CONFIRMATION,"Are you sure you want to reset your statistics?", ButtonType.YES, ButtonType.CANCEL);
+        alertHelper.showAlert(Alert.AlertType.CONFIRMATION,"Are you sure you want to reset your statistics?", ButtonType.YES, ButtonType.NO);
 
         // If the answer was yes, then delete the singleton and recreate it.
         if (alertHelper.getResult() == ButtonType.YES) {
