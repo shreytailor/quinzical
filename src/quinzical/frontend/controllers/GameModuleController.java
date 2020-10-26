@@ -35,8 +35,8 @@ public class GameModuleController implements Initializable {
     @FXML ToggleButton newZealandButton;
     @FXML ToggleButton internationalButton;
 
-    private GameDatabase  _db = GameDatabase.getInstance();
-    private ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private final GameDatabase database = GameDatabase.getInstance();
+    private final ScreenSwitcher switcher = ScreenSwitcher.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,7 +46,7 @@ public class GameModuleController implements Initializable {
         newZealandButton.setSelected(true);
 
         // Set the international section to locked, if it hasn't been unlocked for the user.
-        if (_db.getInternationalCategory().isLocked()) {
+        if (database.getInternationalCategory().isLocked()) {
             lockSymbol.setVisible(true);
             internationalButton.setDisable(true);
         } else {
@@ -56,19 +56,19 @@ public class GameModuleController implements Initializable {
 
     @FXML
     private void handleBackButton () {
-        _switcher.switchTo(ScreenType.MAIN_MENU);
-        _switcher.setTitle("Main Menu");
+        switcher.switchTo(ScreenType.MAIN_MENU);
+        switcher.setTitle("Main Menu");
     }
 
     @FXML
     private void handleResetButton() {
         String message = "Are you sure you want to reset the game?";
-        AlertHelper _helper = AlertHelper.getInstance();
-        _helper.showAlert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
+        AlertHelper helper = AlertHelper.getInstance();
+        helper.showAlert(Alert.AlertType.CONFIRMATION, message, ButtonType.YES, ButtonType.NO);
 
-        if (_helper.getResult() == ButtonType.YES) {
+        if (helper.getResult() == ButtonType.YES) {
             GameDatabase.kill();
-            _switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
+            switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);
         }
     }
 
@@ -84,7 +84,7 @@ public class GameModuleController implements Initializable {
 
         // Iterating through each category from the Database.
         for (int category = 0; category < 5; category++) {
-            Category categoryObject = _db.getCategory(category);
+            Category categoryObject = database.getCategory(category);
             Label title = new Label(categoryObject.getName());
             title.getStyleClass().add("category");
             title.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/GameModule.css").toExternalForm());
@@ -117,7 +117,7 @@ public class GameModuleController implements Initializable {
     }
 
     private void setupInternationalGrid() {
-        Category internationCategory = _db.getInternationalCategory();
+        Category internationCategory = database.getInternationalCategory();
         List<Clue> internationalClues = internationCategory.remainingClue();
 
         boolean active = true;
@@ -173,9 +173,9 @@ public class GameModuleController implements Initializable {
 
     private void clueBinder(Button button, Clue clue, Category category) {
         button.setOnAction(event -> {
-            _db.setCurrentClue(clue);
+            database.setCurrentClue(clue);
             category.nextQuestion();
-            _switcher.switchTo(ScreenType.GAME_CLUE);
+            switcher.switchTo(ScreenType.GAME_CLUE);
         });
     }
 

@@ -1,8 +1,8 @@
 package quinzical.frontend.controllers;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import quinzical.backend.Progression;
+import javafx.scene.control.ProgressBar;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.backend.database.GameDatabase;
@@ -38,7 +38,7 @@ public class MainMenuController implements Initializable {
     @FXML ProgressBar progressBar;
     @FXML Button practiceModuleButton;
 
-    private final Speaker _speaker = Speaker.init();
+    private final Speaker speaker = Speaker.init();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -107,7 +107,7 @@ public class MainMenuController implements Initializable {
 
         // If the screen was closed before the voice stops speaking, then we are stopping synthesis.
         settingsStage.setOnCloseRequest(event -> {
-            _speaker.kill();
+            speaker.kill();
         });
         settingsStage.show();
     }

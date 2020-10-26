@@ -1,6 +1,4 @@
 package quinzical.frontend.controllers;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import quinzical.backend.models.Clue;
 import quinzical.backend.models.Category;
 import quinzical.frontend.helper.ScreenType;
@@ -30,8 +28,9 @@ public class PracticeModuleController implements Initializable {
     @FXML Button backButton;
     @FXML ScrollPane scrollPane;
 
-    private final PracticeDatabase _db = PracticeDatabase.getInstance();
-    private final ScreenSwitcher _switcher = ScreenSwitcher.getInstance();
+    private GridPane gridPane;
+    private final ScreenSwitcher switcher = ScreenSwitcher.getInstance();
+    private final PracticeDatabase database = PracticeDatabase.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,8 +39,8 @@ public class PracticeModuleController implements Initializable {
 
     @FXML
     private void handleBackButton() {
-        _switcher.switchTo(ScreenType.MAIN_MENU);
-        _switcher.setTitle("Main Menu");
+        switcher.switchTo(ScreenType.MAIN_MENU);
+        switcher.setTitle("Main Menu");
     }
 
     /**
@@ -50,16 +49,15 @@ public class PracticeModuleController implements Initializable {
      * backend, and trying to populate the GUI with their respective buttons.
      */
     private void setupGrid() {
-        GridPane _gridPane = new GridPane();
-        int categories = _db.getCateSize();
+        gridPane = new GridPane();
+        int categories = database.getCateSize();
 
         // Determine the rows and columns of the GridPane.
         int ROWS = 5;
         int COLS = (categories / ROWS) + 1;
 
-        int tracker = 0;
-
         // Loop through the columns and rows of the GridPane and add the buttons.
+        int tracker = 0;
         for (int col = 0; col < COLS; col++) {
             for (int row = 0; row < ROWS; row++) {
                 // If we finish all the categories, then finish both the loops.
@@ -68,18 +66,16 @@ public class PracticeModuleController implements Initializable {
                 }
 
                 // Getting the information of the current category and creating its button.
-                String category = _db.getCategory(tracker).getName();
-                Button button = new Button(category);
-                button.setWrapText(true);
-                button.getStyleClass().add("categoryButton");
-                button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
+                String category = database.getCategory(tracker).getName();
+                Button button = buttonGenerator(category);
 
                 // Applying different styles to mark the category that needs to be practised.
-                Category marked = _db.getMarkedCategory();
+                Category marked = database.getMarkedCategory();
                 if (marked != null && category.equals(marked.getName())) {
                     button.getStyleClass().add("markedButton");
                 }
 
+                // Configuring the button such that if pressed, it would open practice module for it.
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
                     handleCategoryButton(finalTracker);
@@ -88,14 +84,14 @@ public class PracticeModuleController implements Initializable {
                 GridPane.setMargin(button, new Insets(12));
 
                 // Adding the button to the grid.
-                _gridPane.add(button, row, col);
+                gridPane.add(button, row, col);
                 tracker++;
             }
         }
 
         // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
-        scrollPane.setContent(_gridPane);
-        _gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(_gridPane.widthProperty()).divide(2));
+        scrollPane.setContent(gridPane);
+        gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(gridPane.widthProperty()).divide(2));
     }
 
     /**
@@ -103,10 +99,17 @@ public class PracticeModuleController implements Initializable {
      * @param categoryNumber the category number which is selected by the user.
      */
     private void handleCategoryButton(int categoryNumber) {
-        PracticeDatabase db = PracticeDatabase.getInstance();
-        Clue random = db.getCategory(categoryNumber).getRandom();
-        PracticeDatabase.getInstance().select(random);
-        _switcher.switchTo(ScreenType.PRACTICE_CLUE);
+        Clue random = database.getCategory(categoryNumber).getRandom();
+        database.select(random);
+        switcher.switchTo(ScreenType.PRACTICE_CLUE);
+    }
+
+    private Button buttonGenerator(String categoryName) {
+        Button button = new Button(categoryName);
+        button.setWrapText(true);
+        button.getStyleClass().add("categoryButton");
+        button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
+        return button;
     }
 
 }
