@@ -32,9 +32,9 @@ public class PracticeDatabase {
     // Fields belonging to the non-static context.
     private Clue selected;
     private int numberOfCategories;
+    private Category markedCategory;
     private List<Category> categories = new ArrayList<Category>();
     private InternationalCategory intCate = new InternationalCategory();
-    private Category badCate;
 
     /**
      * The only constructor for PracticeDatabase object which is private, because it can only be
@@ -155,11 +155,11 @@ public class PracticeDatabase {
     	practiceDatabase = null;
     }
     
-    public void setBadCate(Category cate) {
-    	badCate = cate;
+    public void setMarkedCategory(Category cate) {
+    	markedCategory = cate;
     }
     
-    public Category getBadCate() {
-    	return badCate;
+    public Category getMarkedCategory() {
+    	return markedCategory;
     }
 }

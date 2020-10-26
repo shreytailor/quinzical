@@ -147,7 +147,7 @@ public class GameClueController implements Initializable {
             message = "Oh no! The correct answer was " + _clue.getAnswersList().get(0);
 
             // Set this question as "needs practice" on Practice Module.
-            PracticeDatabase.getInstance().setBadCate(_clue.getCategory());
+            PracticeDatabase.getInstance().setMarkedCategory(_clue.getCategory());
 
             // Hiding the timer label, because its not needed anymore.
             timerLabel.setVisible(false);

@@ -75,7 +75,7 @@ public class PracticeModuleController implements Initializable {
                 button.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/frontend/styles/PracticeModule.css").toExternalForm());
 
                 // Applying different styles to mark the category that needs to be practised.
-                Category marked = _db.getBadCate();
+                Category marked = _db.getMarkedCategory();
                 if (marked != null && category.equals(marked.getName())) {
                     button.getStyleClass().add("markedButton");
                 }
