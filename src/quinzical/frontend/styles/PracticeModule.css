@@ -20,6 +20,6 @@
 
 .markedButton {
     -fx-border-width: 6px;
-    -fx-border-color: pink;
-    -fx-border-radius: 10px;
+    -fx-border-color: #C08552;
+    -fx-border-radius: 8px;
 }
