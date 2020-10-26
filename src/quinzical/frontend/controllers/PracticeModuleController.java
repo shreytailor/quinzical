@@ -69,11 +69,12 @@ public class PracticeModuleController implements Initializable {
 
                 // Getting the information of the current category and creating its button.
                 Category category = database.getCategory(tracker);
-                Button button = buttonGenerator(category.getName());
+                String categoryName = category.getName();
+                Button button = buttonGenerator(categoryName);
 
                 // Applying different styles to mark the category that needs to be practised.
                 Category marked = database.getMarkedCategory();
-                if (marked != null && category.equals(marked.getName())) {
+                if (marked != null && categoryName.equals(marked.getName())) {
                     button.getStyleClass().add("markedButton");
                 }
 
