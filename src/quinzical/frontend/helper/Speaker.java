@@ -63,8 +63,14 @@ public class Speaker {
      */
     public void kill() {
         try {
+            // Finding about all the descendents, and deleting them all.
             Stream<ProcessHandle> descendents = process.descendants();
-            descendents.forEach(ProcessHandle::destroy);
+            descendents.filter(ProcessHandle::isAlive).forEach(processHandle -> {
+                processHandle.destroy();
+            });
+
+            // Destroying the whole process after destroying the descendents.
+            process.destroy();
         } catch (Exception error) {  };
     }
 
