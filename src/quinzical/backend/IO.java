@@ -30,6 +30,7 @@ public class IO {
 	public static List<String> readFile(File file) throws IOException{
 		List<String> fileContent = new ArrayList<String>();
 		String line;
+		
 		// reading lines into a list of Strings
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		while(( line = br.readLine()) != null) {
@@ -56,6 +57,7 @@ public class IO {
 		File gameFile = FileManager.getGameFile();
 		BufferedWriter bw = new BufferedWriter(new FileWriter(gameFile));
 		String question, prefix, answer, prize;
+		
 		// Write winning
 		bw.write(game.getWinning() + "\n\n");
 		for(int i = 0; i < game.getCateSize() + 1; i++) {
@@ -69,11 +71,13 @@ public class IO {
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);
+				
 				// Extract data from the clue
 				question = writeClue.getQuestion();
 				prefix = writeClue.getPrefix();
 				answer = writeClue.getFullAnswer();
 				prize = Integer.toString(writeClue.getPrize());
+				
 				// write the data from the clue
 				bw.write(question + "|" + prefix + "|" + answer + "|" + prize +"\n");
 			}
