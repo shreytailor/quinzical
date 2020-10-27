@@ -108,7 +108,7 @@ public class IO {
 	 * @param list the list of String to be written
 	 * @param fileLocation the destined location for the file
 	 * @throws IOExceptionthis exception is returned if the method failed to write
-	 * the Progression object into file.
+	 * the Progression object into file. 
 	 */
 	public static void writeToFile(List<String> list, File fileLocation) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation));
