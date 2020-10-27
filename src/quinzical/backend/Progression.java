@@ -28,21 +28,27 @@ public class Progression {
 	 */
 	private Progression() {
 		if(FileManager.progFileExist()) {
-			List<String> progressList = IO.readFile(FileManager.getProgFile());
-			for(String line : progressList) {
-				if(line.startsWith("GC:")) {
-					gamesCompleted = Formatting.formatProgression(line);
-				}else if(line.startsWith("TW:")){
-					totalWinnings = Formatting.formatProgression(line);
-				}else if(line.startsWith("AC:")){
-					answeredCorrect = Formatting.formatProgression(line);
-				}else if(line.startsWith("AW:")){
-					answeredWrong = Formatting.formatProgression(line);
-				}else if(line.startsWith("TT:")){
-					totalTime = Formatting.formatProgression(line);
-				}else if(line.startsWith("EXP:")){
-					EXP = Formatting.formatProgression(line);
+			List<String> progressList;
+			try {
+				progressList = IO.readFile(FileManager.getProgFile());
+				for(String line : progressList) {
+					if(line.startsWith("GC:")) {
+						gamesCompleted = Formatting.formatProgression(line);
+					}else if(line.startsWith("TW:")){
+						totalWinnings = Formatting.formatProgression(line);
+					}else if(line.startsWith("AC:")){
+						answeredCorrect = Formatting.formatProgression(line);
+					}else if(line.startsWith("AW:")){
+						answeredWrong = Formatting.formatProgression(line);
+					}else if(line.startsWith("TT:")){
+						totalTime = Formatting.formatProgression(line);
+					}else if(line.startsWith("EXP:")){
+						EXP = Formatting.formatProgression(line);
+					}
 				}
+			} catch (IOException e) {
+				System.out.println("Failed to initialize Progression");
+				e.printStackTrace();
 			}
 		}else {
 			// Starting values

@@ -25,17 +25,18 @@ public class IO {
 	 * the list of strings can then be processed to different databases.
 	 * @param file the file to be read
 	 * @return a list of strings that contains the data of the file
+	 * @throws IOException 
 	 */
-	public static List<String> readFile(File file){
+	public static List<String> readFile(File file) throws IOException{
 		List<String> fileContent = new ArrayList<String>();
 		String line;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			while(( line = br.readLine()) != null) {
-				fileContent.add(line.trim());
-			}
-			br.close();
-		} catch (IOException e) {	}
+		// reading lines into a list of Strings
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		while(( line = br.readLine()) != null) {
+			fileContent.add(line.trim());
+		}
+		br.close();
+
 		return fileContent;
 	}
 	
@@ -54,17 +55,27 @@ public class IO {
 		Clue writeClue = null;
 		File gameFile = FileManager.getGameFile();
 		BufferedWriter bw = new BufferedWriter(new FileWriter(gameFile));
+		String question, prefix, answer, prize;
+		// Write winning
 		bw.write(game.getWinning() + "\n\n");
 		for(int i = 0; i < game.getCateSize() + 1; i++) {
 			if(i == game.getCateSize()) {
+				// write the International category last
 				writeCate = game.getInternationalCategory();
 			}else {
+				// write the non-International category first
 				writeCate = game.getCategory(i);
 			}			
 			bw.write(writeCate.getName() + "\n");
 			for(int j = 0; j < writeCate.getClueSize(); j++) {
 				writeClue = writeCate.getClue(j);
-				bw.write(writeClue.getQuestion() + "|" + writeClue.getPrefix() + "|" + writeClue.getFullAnswer() + "|" + writeClue.getPrize() +"\n");
+				// Extract data from the clue
+				question = writeClue.getQuestion();
+				prefix = writeClue.getPrefix();
+				answer = writeClue.getFullAnswer();
+				prize = Integer.toString(writeClue.getPrize());
+				// write the data from the clue
+				bw.write(question + "|" + prefix + "|" + answer + "|" + prize +"\n");
 			}
 			bw.write("\n");
 		}
@@ -86,8 +97,25 @@ public class IO {
 		List<String> fieldsList = progression.getFieldsList();
 		
 		for(int i = 0; i < statsList.size(); i++) {
+			//writing each statistic into their own lines
 			bw.write(fieldsList.get(i) + statsList.get(i) + "\n");
 		}		
 		bw.close();
 	}
+	
+	/**
+	 * This method is used to write a list of Strings to a given file
+	 * @param list the list of String to be written
+	 * @param fileLocation the destined location for the file
+	 * @throws IOExceptionthis exception is returned if the method failed to write
+	 * the Progression object into file. 
+	 */
+	public static void writeToFile(List<String> list, File fileLocation) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new FileWriter(fileLocation));
+		for(String line : list) {
+			// writing each string into individual lines
+			bw.write(line);
+		}
+		bw.close();
+	}	
 }

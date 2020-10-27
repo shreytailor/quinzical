@@ -7,6 +7,7 @@ import quinzical.backend.tasks.FileManager;
 import quinzical.backend.tasks.Formatting;
 import quinzical.backend.models.Category;
 
+import java.io.IOException;
 //Java API dependencies.
 import java.util.ArrayList;
 import java.util.List;
@@ -82,26 +83,32 @@ public class PracticeDatabase {
      */
     private void initialize() {
     	//Load categories and clues from the New Zealand database
-        List<String> quizContent = IO.readFile(FileManager.getQuizFile());
-        Category newCate = null;
-    	Clue newClue;
-    	for (String line : quizContent) {
-    		if (!line.contains("|") && !line.isBlank()) {
-				newCate = new Category(line);
-				categories.add(newCate);
-			} else if(!line.isBlank()) {
-				newClue = Formatting.formatClue(line, newCate);
-				newCate.addClue(newClue);
-			}
-    	}
-    	//Load clues to International Category
-    	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
-    	for (String line : internationalContent) {
-    		if(!line.isBlank()) {
-	    		newClue = Formatting.formatClue(line, intCate);
-	    		intCate.addClue(newClue);
-    		}
-    	}
+        List<String> quizContent;
+		try {
+			quizContent = IO.readFile(FileManager.getQuizFile());
+	        Category newCate = null;
+	    	Clue newClue;
+	    	for (String line : quizContent) {
+	    		if (!line.contains("|") && !line.isBlank()) {
+					newCate = new Category(line);
+					categories.add(newCate);
+				} else if(!line.isBlank()) {
+					newClue = Formatting.formatClue(line, newCate);
+					newCate.addClue(newClue);
+				}
+	    	}
+	    	//Load clues to International Category
+	    	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
+	    	for (String line : internationalContent) {
+	    		if(!line.isBlank()) {
+		    		newClue = Formatting.formatClue(line, intCate);
+		    		intCate.addClue(newClue);
+	    		}
+	    	}
+		} catch (IOException e) {
+			System.out.println("Failed to initialize PracticeDatabase");
+			e.printStackTrace();
+		}
     }
 
     /**
