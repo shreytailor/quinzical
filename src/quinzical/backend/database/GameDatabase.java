@@ -108,29 +108,35 @@ public class GameDatabase {
 		Category newCate = null;
 
     	// Read the current Game Database file using the IO method.
-		List<String> gameContent = IO.readFile(FileManager.getGameFile());
-
-		// Go through each line of the returned list of all lines.
-		for(String line : gameContent) {
-			// If the line only contains number, which is the stored player prize.
-			if (line.matches("\\d+")) {
-				winning = Integer.parseInt(line);
-			} else if(!line.contains("|")&& !line.isBlank()) {
-				// If the line does not have a separator character | and isn't blank, then the line represents a category
-				newCate = new Category(line);
-				categories.add(newCate);
-			} else if (!line.isBlank()) {
-				// Using a helper method in Formatting to construct a clue object
-				newClue = Formatting.formatClue(line, newCate);
-				newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
-				newCate.addClue(newClue);
+		List<String> gameContent;
+		try {
+			gameContent = IO.readFile(FileManager.getGameFile());
+	
+			// Go through each line of the returned list of all lines.
+			for(String line : gameContent) {
+				// If the line only contains number, which is the stored player prize.
+				if (line.matches("\\d+")) {
+					winning = Integer.parseInt(line);
+				} else if(!line.contains("|")&& !line.isBlank()) {
+					// If the line does not have a separator character | and isn't blank, then the line represents a category
+					newCate = new Category(line);
+					categories.add(newCate);
+				} else if (!line.isBlank()) {
+					// Using a helper method in Formatting to construct a clue object
+					newClue = Formatting.formatClue(line, newCate);
+					newClue.setPrize(Integer.parseInt(line.split("[|]")[3].trim()));
+					newCate.addClue(newClue);
+				}
 			}
-		}
-		
-		// Separate International category from other categories
-		if(categories.get(getCateSize()-1).getName().equals("International")) {
-			intCate = new InternationalCategory(categories.get(getCateSize()-1));
-			categories.remove(getCateSize()-1);
+			
+			// Separate International category from other categories
+			if(categories.get(getCateSize()-1).getName().equals("International")) {
+				intCate = new InternationalCategory(categories.get(getCateSize()-1));
+				categories.remove(getCateSize()-1);
+			}
+		} catch (IOException e) {
+			System.out.println("Failed to initialize GameDatabase");
+			e.printStackTrace();
 		}
     }
     

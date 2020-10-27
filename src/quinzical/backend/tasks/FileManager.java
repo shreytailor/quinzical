@@ -11,8 +11,8 @@ public class FileManager {
 	private final static File GAME_FILE = new File(System.getProperty("user.dir")+"/.config/GameData");
 	private final static File PROG_FILE = new File(System.getProperty("user.dir")+"/.config/Progression");
 	private final static File CONFIG_DIRECTORY = new File(System.getProperty("user.dir")+"/.config/");
-	private final static File QUIZ_FILE = new File(System.getProperty("user.dir")+"/Quinzical.txt");
-    private final static File INT_FILE = new File(System.getProperty("user.dir")+"/International.txt");   
+	private final static File QUIZ_FILE = new File(System.getProperty("user.dir")+"/quizBank/Quinzical.txt");
+    private final static File INT_FILE = new File(System.getProperty("user.dir")+"/quizBank/International.txt");
     
     /**
      * This method is used to check if the GameData file exist
