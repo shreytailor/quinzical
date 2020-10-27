@@ -2,9 +2,9 @@ package quinzical.backend.database;
 import quinzical.backend.IO;
 import quinzical.backend.models.Clue;
 import quinzical.backend.models.Category;
-import quinzical.backend.models.InternationalCategory;
-import quinzical.backend.tasks.FileManager;
 import quinzical.backend.tasks.Formatting;
+import quinzical.backend.tasks.FileManager;
+import quinzical.backend.models.InternationalCategory;
 
 // Java API dependencies.
 import java.util.List;

@@ -107,7 +107,7 @@ public class IO {
 	 * This method is used to write a list of Strings to a given file
 	 * @param list the list of String to be written
 	 * @param fileLocation the destined location for the file
-	 * @throws IOExceptionthis exception is returned if the method failed to write
+	 * @throws IOException this exception is returned if the method failed to write
 	 * the Progression object into file. 
 	 */
 	public static void writeToFile(List<String> list, File fileLocation) throws IOException {
