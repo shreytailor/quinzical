@@ -1,9 +1,8 @@
 package quinzical.backend;
 import quinzical.backend.models.Clue;
-import quinzical.backend.tasks.FileManager;
 import quinzical.backend.models.Category;
+import quinzical.backend.tasks.FileManager;
 import quinzical.backend.database.GameDatabase;
-import quinzical.backend.database.PracticeDatabase;
 
 //Java API dependencies.
 import java.io.File;
@@ -21,8 +20,6 @@ import java.io.BufferedReader;
  * @author Shrey Tailor, Jason Wang
  */
 public class IO {
-	// Fields belonging to the static context.
-		
 	/**
 	 * This method is used to read a given file into a list of Strings
 	 * the list of strings can then be processed to different databases.
@@ -93,37 +90,4 @@ public class IO {
 		}		
 		bw.close();
 	}
-	
-	
-	public static void main(String[] args) {
-		PracticeDatabase.getInstance();
-		List<Category> clist = new ArrayList<Category>();
-		clist.add(PracticeDatabase.getInstance().getCategory(0));
-		clist.add(PracticeDatabase.getInstance().getCategory(1));
-		clist.add(PracticeDatabase.getInstance().getCategory(2));
-		clist.add(PracticeDatabase.getInstance().getCategory(3));
-		clist.add(PracticeDatabase.getInstance().getCategory(4));
-		
-		GameDatabase.getInstance(clist);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(0).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		GameDatabase.getInstance().getCategory(1).removeClue(0);
-		System.out.println(GameDatabase.getInstance().getCategory(2).getClue(0).checkAnswer("Rangitoto"));
-		System.out.println(GameDatabase.getInstance().getInternationalCategory().isLocked());
-		
-		try {
-			writeProgressionData(Progression.getInstance());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 }

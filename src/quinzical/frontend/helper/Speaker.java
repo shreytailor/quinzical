@@ -4,9 +4,9 @@ package quinzical.frontend.helper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.BufferedWriter;
 import java.text.DecimalFormat;
 import java.util.stream.Stream;
 
@@ -24,6 +24,18 @@ public class Speaker {
     private String speechString;
     private boolean isChanged = false;
     private ProcessBuilder processBuilder;
+    private boolean nzVoicesInstalled = false;
+
+    /**
+     * This is the only constructor of the Speaker class. When the game is initially started,
+     * there is a small check done for whether the New Zealand voices are installed. If so, then
+     * we use those special voices, otherwise the default voice is used instead.
+     */
+    public Speaker() {
+        if (Files.isDirectory(Paths.get("/usr/share/festival/voices/english/akl_nz_jdt_diphone"))) {
+            nzVoicesInstalled = true;
+        }
+    }
 
     /**
      * Getting the Speaker instance, by using Singleton pattern.
@@ -126,7 +138,11 @@ public class Speaker {
             File schematicFile = new File("./.config/festival.scm");
             FileWriter fw = new FileWriter(schematicFile.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write("(voice_akl_nz_jdt_diphone)\n");
+
+            // We are only using the New Zealand voice, if the user has it installed.
+            if (nzVoicesInstalled) {
+                bw.write("(voice_akl_nz_jdt_diphone)\n");
+            }
 
             // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
             if (isChanged) {
