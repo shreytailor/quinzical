@@ -1,7 +1,8 @@
-International Q1|What is|Endeavour
-International Q2|What is|Christchurch
-International Q3|What is|1893
-International Q4|What is|1840
-International Q5|Who is|Kupe
-International Q6|What is|Rangitoto
-International Q7|What is|Tasman
+The nation has the lowest population density in the world?|Where is|Mongolia
+The first European to sail into New York Harbor|Who is|Henry Hudson
+Another name for Rapa Nui|Where is|Easter Island
+The country that burns the most coal each year?|Where is|China
+This country has the longest coastline in the world|Where is|Canada
+The Great Barrier Reef is off the coast of this country|Where is|Australia
+The country has the world's highest waterfall|Where is|Venezuela
+This country has the greatest number of active volcanoes|Where is|Indonesia
