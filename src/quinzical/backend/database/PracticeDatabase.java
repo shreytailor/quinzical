@@ -106,6 +106,7 @@ public class PracticeDatabase {
 	    		}
 	    	}
 		} catch (IOException e) {
+			// Display error message if the Quinzical.txt or International.txt cannot be read
 			System.out.println("Failed to initialize PracticeDatabase");
 			e.printStackTrace();
 		}

@@ -135,6 +135,7 @@ public class GameDatabase {
 				categories.remove(getCateSize()-1);
 			}
 		} catch (IOException e) {
+			// This error message is not expected to be shown as if the file does not exist a file for GameData should be generated instead
 			System.out.println("Failed to initialize GameDatabase");
 			e.printStackTrace();
 		}
