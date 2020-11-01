@@ -30,7 +30,6 @@ import javafx.scene.control.TextField;
  * @author Shrey Tailor, Jason Wang
  */
 public class GameClueController implements Initializable {
-
     @FXML Label prizeLabel;
     @FXML Label timerLabel;
     @FXML Label prefixLabel;
@@ -53,10 +52,10 @@ public class GameClueController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Create the timer.
+        // Create and start the timer.
         createTimer();
 
-        // Showing information about the question.
+        // Display the information about the question.
         categoryLabel.setText(clue.getCategory().getName());
         prizeLabel.setText("$" + clue.getPrize());
         prefixLabel.setText(clue.getPrefix() + "...");
@@ -65,7 +64,7 @@ public class GameClueController implements Initializable {
         speaker.setSpeech(clue.getQuestion());
         speaker.speak();
 
-        // Hiding certain elements of the screen on Initialization.
+        // Hide certain elements of the screen at the beginning.
         backButton.setVisible(false);
         messageLabel.setVisible(false);
     }
@@ -87,7 +86,7 @@ public class GameClueController implements Initializable {
 
     @FXML
     private void handleBackButton() {
-        // Stop the speaking process.
+        // Kill the speaking process.
         speaker.kill();
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
 
@@ -96,7 +95,7 @@ public class GameClueController implements Initializable {
             switcher.switchTo(ScreenType.GAME_MODULE);
             switcher.setTitle("Game Module");
         } else {
-            // If all the questions are completed, we are increasing the statistics counter here.
+            // If all the questions are attempted, we update the game statistics.
             progression.gameFinished(database.getWinning());
             switcher.switchTo(ScreenType.GAME_FINISHED);
         }
@@ -104,6 +103,7 @@ public class GameClueController implements Initializable {
 
     @FXML
     private void submitOnEnter(KeyEvent event) {
+        // Feature which enables users to press <ENTER> to submit answer.
         switch (event.getCode()) {
             case ENTER:
                 submitButton.fire();
@@ -113,40 +113,39 @@ public class GameClueController implements Initializable {
 
     @FXML
     private void handleKeyboardButton(ActionEvent event) {
+        // When a button is pressed on the embedded keyboard, insert that character to the answer.
         Button button = (Button) event.getSource();
         inputField.setText(inputField.getText() + button.getText());
     }
 
     /**
-     * This private method is used for doing certain things, after the user has finished answering.
+     * This private method is used for doing specific tasks after the user has finished answering.
      * @param isChecking if we are checking whether the answer is correct or not.
      */
     private void isAnswered(Boolean isChecking) {
         cleanupScreen();
 
-        // Process of checking the answer to check if it was correct.
         boolean isCorrect = false;
         if (isChecking) {
             isCorrect = clue.checkAnswer(inputField.getText());
         }
 
-        // Speaking and displaying the message to the user.
         String message;
         if (isCorrect) {
+            // If correct, update their total winnings, and give a nice message.
             database.updateWinning(clue.getPrize());
             message = "Ka pai, your answer was correct!";
 
-            // Adding to the statistics of correct answer, and increasing XP.
+            // Adding to the statistics of correct answer, and increasing total XP.
             int earnedXP = (clue.getPrize() / 10) + TIME_LIMIT;
             timerLabel.setText("+" + earnedXP + "XP");
             progression.answeredCorrect(30 - TIME_LIMIT);
             progression.addEXP(earnedXP);
         } else {
-            // Adding to the count of total incorrect answers.
             progression.answeredWrongPlus();
             message = "Oh no! The correct answer was " + clue.getAnswersList().get(0);
 
-            // Set this question as "needs practice" on Practice Module.
+            // Set this question as "needs practice" on the practice module.
             PracticeDatabase.getInstance().setMarkedCategory(clue.getCategory());
 
             // Hiding the timer label, because its not needed anymore.
@@ -159,8 +158,7 @@ public class GameClueController implements Initializable {
     }
 
     /**
-     * This method is used to perform the clean-up on the current screen after we stop accepting user
-     * input. This is done by hiding some of the elements such as the extra buttons on the screen.
+     * This method is used to do some clean-up on the screen after we stop accepting user input.
      */
     private void cleanupScreen() {
         // Setting certain elements to hidden to clear the screen.
@@ -173,7 +171,7 @@ public class GameClueController implements Initializable {
         keyboardGridPane.setVisible(false);
         timerHelp.setVisible(false);
 
-        // Cancelling the timer when the question is answered.
+        // Stopping the timer when the question is answered.
         timer.purge();
         timer.cancel();
     }
@@ -184,16 +182,19 @@ public class GameClueController implements Initializable {
     private void createTimer() {
         timer = new Timer();
 
-        // Doing something after a given period.
+        // After each second...
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+
                 if (TIME_LIMIT <= 0) {
+                    // If no time remaining, then submit by default.
                     timer.cancel();
                     Platform.runLater(() -> {
                         submitButton.fire();
                     });
                 } else {
+                    // If time remaining, then update the timer label.
                     Platform.runLater(() -> {
                         timerLabel.setText(TIME_LIMIT + "s");
                     });
@@ -201,8 +202,8 @@ public class GameClueController implements Initializable {
                     // Decreasing the time remaining.
                     TIME_LIMIT--;
                 }
+
             }
         }, 0,1000);
     }
-
 }

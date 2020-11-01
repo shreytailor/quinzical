@@ -12,12 +12,14 @@ import java.util.stream.Stream;
 
 /**
  * This class is used to speak the text with Festival TTS. It also stores some of the configuration
- * such as speed of speaking etc.
+ * such as speed of speaking which is volatile.
  * @author Shrey Tailor, Jason Wang
  */
 public class Speaker {
+    // Static field(s).
     private static Speaker speaker;
 
+    // Non-static field(s).
     private double SPEED;
     private Process process;
     private double DEFAULT = 1;
@@ -27,18 +29,17 @@ public class Speaker {
     private boolean nzVoicesInstalled = false;
 
     /**
-     * This is the only constructor of the Speaker class. When the game is initially started,
-     * there is a small check done for whether the New Zealand voices are installed. If so, then
-     * we use those special voices, otherwise the default voice is used instead.
+     * This is the only constructor of the Speaker class.
      */
     public Speaker() {
         if (Files.isDirectory(Paths.get("/usr/share/festival/voices/english/akl_nz_jdt_diphone"))) {
+            // Checking whether the NZ voices are installed.
             nzVoicesInstalled = true;
         }
     }
 
     /**
-     * Getting the Speaker instance, by using Singleton pattern.
+     * This method uses the singleton pattern to initialize the Speaker object.
      */
     public static Speaker init() {
         if (speaker == null) {
@@ -48,8 +49,8 @@ public class Speaker {
     }
 
     /**
-     * This method is used to set the speed of the speaker from the "Settings" screen of the game.
-     * @param speed the new desired speed.
+     * This method is used to set the speed of the speaker.
+     * @param speed the desired speed of the user.
      */
     public void setSpeed(double speed) {
         SPEED = speed;
@@ -57,25 +58,26 @@ public class Speaker {
     }
 
     /**
-     * This method is used to speak the sentence which is currently in the configuration. It can be
-     * set by using the {@link #setSpeech(String)} method. However, note that it stops the current
-     * process before start to speak the new line.
+     * This method is used to speak the defined sentence. It can be set by using the
+     * {@link #setSpeech(String)} method.
      */
     public void speak () {
+        // Stopping the current process, before speaking again.
         kill();
-
         try {
             processBuilder = new ProcessBuilder("festival", "-b", "./.config/festival.scm");
             process = processBuilder.start();
-        } catch (IOException error) {  };
+        } catch (IOException error) {
+            // This can be ignored because the process will always be found.
+        };
     }
 
     /**
-     * This method is used to stop the Speaker process from speaking.
+     * This method is used to terminate the current process which is running.
      */
     public void kill() {
         try {
-            // Finding about all the descendents, and deleting them all.
+            // Terminating all descending processes.
             Stream<ProcessHandle> descendents = process.descendants();
             descendents.filter(ProcessHandle::isAlive).forEach(processHandle -> {
                 processHandle.destroy();
@@ -95,7 +97,7 @@ public class Speaker {
 
 
     /**
-     * This method is used to get the speed of the Speaker.
+     * This method is used to get the current speed of the Speaker.
      * @return double the current speed.
      */
     public double getSpeed() {
@@ -108,27 +110,19 @@ public class Speaker {
     }
 
     /**
-     * This method is used to set the speech of the Speaker. We are doing some extra processing to
-     * remove the quotation marks in the string, which could potentially cause some issues later.
+     * This method is used to set the speech of the Speaker.
      * @param string the speech to speak.
      */
     public void setSpeech(String string) {
+        // Removing the extra quotation marks from the given string.
         speechString = string.replace("\"", "").replace("'", "");
         createSchematic();
     }
 
     /**
-     * This method is a getter to check whether the speed has been changed.
-     * @return boolean to check whether the speed has been changed previously.
-     */
-    public boolean isChanged() {
-        return isChanged;
-    }
-
-    /**
      * This method is used to produce a schematic file (.scm) for the phrase which is going to be
-     * spoken by the Festival TTS system. Within the contents of the file, we include some essential
-     * parameters such as the speed selected by the user.
+     * spoken by the TTS system. Within the contents of the file, we include some essential parameters
+     * such as the speed selected by the user.
      */
     private void createSchematic() {
         try {
@@ -144,16 +138,24 @@ public class Speaker {
                 bw.write("(voice_akl_nz_jdt_diphone)\n");
             }
 
-            // Dynamically setting the speaker speed, by checking whether there is a custom speed set.
+            // Dynamically setting the speaker speed, by checking whether there is a custom speed.
             if (isChanged) {
                 bw.write("(Parameter.set 'Duration_Stretch " + 1/SPEED + ")\n");
             } else {
                 bw.write("(Parameter.set 'Duration_Stretch " + 1/DEFAULT + ")\n");
             }
 
-            // Creating the command to say the text.
             bw.write("(SayText " + "\"" + speechString + "\"" + ")");
             bw.close();
-        } catch (IOException error) {  };
+        } catch (IOException error) {
+            /*
+            This can be ignored, because if the schematic file doesn't exist, then the file will not
+            be deleted anyways so it's safe.
+             */
+        };
+    }
+
+    public boolean isChanged() {
+        return isChanged;
     }
 }

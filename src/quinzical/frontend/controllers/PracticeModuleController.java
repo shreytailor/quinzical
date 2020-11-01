@@ -23,7 +23,6 @@ import javafx.scene.control.ScrollPane;
  * @author Shrey Tailor, Jason Wang
  */
 public class PracticeModuleController implements Initializable {
-
     @FXML BorderPane root;
     @FXML Button backButton;
     @FXML ScrollPane scrollPane;
@@ -44,25 +43,24 @@ public class PracticeModuleController implements Initializable {
     }
 
     /**
-     * This is a private method which is used by the initialize() method in this class, in order to
-     * setup the GridPane programmatically. Here, we are reading the categories from the Databases
-     * backend, and trying to populate the GUI with their respective buttons.
+     * This is a private method used to create the grid that shows all the category buttons.
      */
     private void setupGrid() {
         gridPane = new GridPane();
         int categories = database.getCateSize();
 
-        // Determine the rows and columns of the GridPane.
+        // Define the rows and columns of the GridPane.
         int ROWS = 5;
         int COLS = (categories / ROWS) + 1;
 
-        // Loop through the columns and rows of the GridPane and add the buttons.
-        int tracker = 0;
         int col;
         int row = 0;
+        int tracker = 0;
+
+        // Loop through the columns and rows of the GridPane and add the buttons.
         for (col = 0; col < COLS; col++) {
             for (row = 0; row < ROWS; row++) {
-                // If we finish all the categories, then finish both the loops.
+                // If we finish all the categories, then terminate the loops.
                 if (tracker >= categories) {
                     break;
                 }
@@ -78,7 +76,7 @@ public class PracticeModuleController implements Initializable {
                     button.getStyleClass().add("markedButton");
                 }
 
-                // Configuring the button such that if pressed, it would open practice module for it.
+                // Adding the listener to open the clue screen, if pressed.
                 int finalTracker = tracker;
                 button.setOnAction(action -> {
                     handleCategoryButton(category);
@@ -92,24 +90,27 @@ public class PracticeModuleController implements Initializable {
 
         addInternationalCategory(row, col - 1);
 
-        // After GridPane is built, we're adding it to the parent ScrollPane, and then centering.
+        // After the grid is built, we finally add it to the screen.
         scrollPane.setContent(gridPane);
         gridPane.translateXProperty().bind(scrollPane.widthProperty().subtract(gridPane.widthProperty()).divide(2));
     }
 
     /**
-     * This is a private method, and a handler for when the one of the categories is selected.
-     * @param category the category that the user has selected to practice.
+     * This is a private method (handler) for when the a category is selected.
+     * @param category the category that the user wants to practice.
      */
     private void handleCategoryButton(Category category) {
+        // Generate a random clue from the category, and show it to the user.
         Clue random = category.getRandom();
         database.select(random);
-
-        System.out.println(random.getCategory().getName());
-
         switcher.switchTo(ScreenType.PRACTICE_CLUE);
     }
 
+    /**
+     * This private method is used to generate buttons to reduce the code-duplication.
+     * @param categoryName the category which was selected.
+     * @return Button a button for the selected category.
+     */
     private Button buttonGenerator(String categoryName) {
         Button button = new Button(categoryName);
         button.setWrapText(true);
@@ -119,15 +120,18 @@ public class PracticeModuleController implements Initializable {
         return button;
     }
 
+    /**
+     * This method is used to append an international category to the overall categories.
+     * @param row the row placement in the grid.
+     * @param col te column placement in the grid.
+     */
     private void addInternationalCategory(int row, int col) {
         Category category = database.getInternationalCategory();
         Button button = buttonGenerator(category.getName());
-
         button.setOnAction(action -> {
             handleCategoryButton(category);
         });
 
         gridPane.add(button, row, col);
     }
-
 }

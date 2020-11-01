@@ -1,5 +1,6 @@
 package quinzical.frontend.helper;
 
+// Java dependencies.
 import java.net.URL;
 
 /**
@@ -19,15 +20,15 @@ public enum ScreenType {
     STATS("Statistics.fxml"),
     HELP("Help.fxml");
 
-    private URL _url;
-    private String _prefix = "quinzical/resources/fxml/";
+    private URL url;
+    private String prefix = "quinzical/resources/fxml/";
 
     /**
      * This method is returning the path from the root of the project, which leads to the FXML file.
      * @param sceneName the name of the FXML file.
      */
     ScreenType(String sceneName) {
-        _url = getClass().getClassLoader().getResource(_prefix + sceneName);
+        url = getClass().getClassLoader().getResource(prefix + sceneName);
     }
 
     /**
@@ -35,7 +36,6 @@ public enum ScreenType {
      * @return URL the URL to the FXML file.
      */
     public URL getUrl() {
-        return _url;
+        return url;
     }
-
 }

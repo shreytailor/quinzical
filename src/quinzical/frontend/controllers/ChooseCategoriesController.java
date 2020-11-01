@@ -63,7 +63,7 @@ public class ChooseCategoriesController implements Initializable {
             GameDatabase.getInstance(selectedCategories);
             switcher.switchTo(ScreenType.GAME_MODULE);
         } else {
-            AlertHelper.getInstance().showAlert(Alert.AlertType.ERROR, "Please select five questions to proceed.", ButtonType.OK);
+            AlertHelper.getInstance().showAlert(Alert.AlertType.ERROR, "Please select five categories to proceed.", ButtonType.OK);
         }
     }
 

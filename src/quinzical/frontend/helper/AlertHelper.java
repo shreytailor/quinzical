@@ -6,17 +6,16 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 
 /**
- * A singleton class to avoid code duplication when displaying an alert to the user.
+ * A class which makes use of the singleton pattern to display an alert to the user.
  * @author Shrey Tailor, Jason Wang
  */
 public class AlertHelper {
-
     private ButtonType result;
     private static AlertHelper alertHelper;
 
     /**
-     * Enforcing the principles of the single pattern.
-     * @return
+     * Enforcing the principles of the singleton pattern.
+     * @return AlertHelper the singleton object being used in the game.
      */
     public static AlertHelper getInstance() {
         if (alertHelper == null) {
@@ -44,17 +43,16 @@ public class AlertHelper {
     }
 
     /**
-     * This method is used to return the button that the user pressed in the last alert.
-     * @return
+     * This private method is used to just apply styling to the alert created.
+     * @param alert
      */
-    public ButtonType getResult() {
-        return result;
-    }
-
     private void addStyling(Alert alert) {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getClassLoader().getResource("quinzical/resources/styles/Dialog.css").toExternalForm());
         dialogPane.getStyleClass().add("myDialog");
     }
 
+    public ButtonType getResult() {
+        return result;
+    }
 }

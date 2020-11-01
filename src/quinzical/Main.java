@@ -21,22 +21,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        /*
-        ---------------------- NOTE TO MARKER ABOUT PACKAGE LEVEL DECISIONS ----------------------
-        It would have been much easier to place the "resources" on the same level as the "quinzical"
-        package, as this would give much shorter paths for the resources which are being used.
-
-        However in the announcements made by Nasser, it was mentioned that we should have a single
-        top-level package, and thus we had made a decision to place "resources" within "quinzical".
-         */
-
         // Checking if the configuration folder exists.
         Progression.getInstance();
         FileManager.checkConfigDirectory();
 
         /*
-        If the game file exists (i.e. the user has started a game), then populate the database from
-        that file which exists.
+        If the game file exists (i.e. the user has a game saved), then import that file to continue
+        from where they had left off.
          */
         if (FileManager.gameFileExist()) {
             GameDatabase.getInstance();
@@ -47,26 +38,26 @@ public class Main extends Application {
             cleanupOnClose();
         });
 
-        // Initialize the singleton switcher with the current stage so that it manages it.
+        // Initialize the singleton screen switcher on the stage to manage the delegation.
         ScreenSwitcher.initialize(stage);
         stage.show();
     }
 
     /**
      * This method is used to clean-up the current session of the game by doing things such as
-     * stopping the speaker instance, saving the current user progress and other things.
+     * stopping the speaker instance, saving the current user progress etc.
      */
     private static void cleanupOnClose() {
         /*
-            If there is user progress within the current session of the game, then offload it into
-            the .config directory, so it can be loaded back next time.
-             */
+        If there is user progress within the current session of the game, then save it into the
+        .config directory, so it can be loaded back next time when the user plays.
+        */
         if (GameDatabase.singletonExist()) {
             try {
                 IO.writeGameData(GameDatabase.getInstance());
                 IO.writeProgressionData(Progression.getInstance());
             } catch (IOException error) {
-                // We can be assured that this will not be thrown due to such implementation.
+                // We can be assured that this will not be thrown due to type of implementation.
             };
         }
 

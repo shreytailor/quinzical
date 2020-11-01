@@ -3,7 +3,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import quinzical.backend.Progression;
 import javafx.scene.control.ProgressBar;
-import quinzical.backend.database.PracticeDatabase;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
 import quinzical.backend.database.GameDatabase;
@@ -42,13 +41,13 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Getting the current XP points from the Progression singleton.
+        // Getting the current XP from the Progression class.
         Progression progression = Progression.getInstance();
         int totalPoints = progression.getEXP();
         int quotient = (totalPoints / 1000) + 1;
         int remainder = totalPoints % 1000;
 
-        // Setting the progress bar, such that it shows the current XP.
+        // Setting the XP bar, such that it shows the current accumulated XP.
         xpLevelLabel.setText(String.valueOf(quotient));
         progressBar.setProgress((double) remainder/1000);
     }
@@ -63,11 +62,14 @@ public class MainMenuController implements Initializable {
     @FXML
     private void handleGameModuleButton() {
         /*
-         * Dynamic routing of the button depending on the state of the game. It depends on whether
-         * the game already exists, and other factors.
+         * Routing performed dynamically depending on whether there already exists progress in the
+         * current game or not, and other factors.
          */
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
+
+        // If there exists progress of the user...
         if (GameDatabase.singletonExist()) {
+            // If there are questions remaining in the progress...
             if (GameDatabase.getInstance().getRemainingClues() > 0) {
                 switcher.switchTo(ScreenType.GAME_MODULE);
             } else {
@@ -85,23 +87,25 @@ public class MainMenuController implements Initializable {
         int WIDTH = 600;
         int HEIGHT = 400;
 
-        // Creating and configuring the new stage.
+        // Creating and configuring the new stage for Settings.
         Stage settingsStage = new Stage();
         settingsStage.setResizable(false);
         settingsStage.setTitle("Settings");
+
         try {
             URL url = getClass().getClassLoader().getResource("quinzical/resources/fxml/Settings.fxml");
             settingsStage.setScene(new Scene(FXMLLoader.load(url), WIDTH, HEIGHT));
         } catch (IOException error) {
-            System.out.println(error.getMessage());
+            System.out.println("There has been a problem with the Settings screen. Please contact the developer!");
+            error.printStackTrace();
         }
 
-        // Trying to center the settings pane on the screen, when opened.
+        // Centering the Settings on screen, when opened.
         Rectangle2D screen = Screen.getPrimary().getVisualBounds();
         settingsStage.setX((screen.getWidth() - WIDTH) / 2);
         settingsStage.setY((screen.getHeight() - HEIGHT) / 2);
 
-        // These extra settings are necessary to block the main stage when this settings is opened.
+        // These extra settings are necessary to block interactions on the main stage.
         settingsStage.initModality(Modality.APPLICATION_MODAL);
         settingsStage.initOwner(ScreenSwitcher.getInstance().getStage().getScene().getWindow());
 
@@ -122,10 +126,5 @@ public class MainMenuController implements Initializable {
         ScreenSwitcher switcher = ScreenSwitcher.getInstance();
         switcher.switchTo(ScreenType.STATS);
         switcher.setTitle("Statistics");
-    }
-
-    @FXML
-    private void handleHelpButton() {
-        ScreenSwitcher.getInstance().switchTo(ScreenType.HELP);
     }
 }

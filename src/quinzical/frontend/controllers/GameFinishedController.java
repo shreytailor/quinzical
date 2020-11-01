@@ -24,13 +24,12 @@ public class GameFinishedController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Telling the user the amount that they accumulated.
+        // Inform user about their overall winnings.
         winningsPlaceholder.setText("You have won a total of $" + database.getWinning() + ".");
     }
 
     @FXML
     public void handleBackButton() {
-        // Go back to the main menu.
         switcher.switchTo(ScreenType.MAIN_MENU);
         switcher.setTitle("Main Menu");
     }
@@ -39,7 +38,7 @@ public class GameFinishedController implements Initializable {
     public void handleResetButton() {
         /**
          * Here, there is no need to confirm with the user whether they want to reset the game or
-         * not, because the game has been completed anyways.
+         * not, because the game has been completed anyways so we directly perform reset.
          */
         GameDatabase.kill();
         switcher.switchTo(ScreenType.CHOOSE_CATEGORIES);

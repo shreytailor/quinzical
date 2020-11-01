@@ -1,10 +1,10 @@
 package quinzical.frontend.controllers;
 import javafx.scene.control.*;
 import quinzical.backend.Progression;
+import quinzical.frontend.helper.Speaker;
+import quinzical.frontend.helper.ScreenType;
 import quinzical.frontend.helper.AlertHelper;
 import quinzical.frontend.helper.ScreenSwitcher;
-import quinzical.frontend.helper.ScreenType;
-import quinzical.frontend.helper.Speaker;
 
 // Java dependencies.
 import java.net.URL;
@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
  * @author Shrey Tailor, Jason Wang
  */
 public class SettingsController implements Initializable {
-
     @FXML Slider synthesisSpeedSlider;
     @FXML Label synthesisSpeedLabel;
     @FXML Button synthesisPreviewButton;
@@ -32,39 +31,37 @@ public class SettingsController implements Initializable {
         updateSpeedLabel();
     }
 
-    /**
-     * This is the handler for when the speed is changed using the slider..
-     */
+    @FXML
     public void handleSpeedChanged() {
         Double newSpeed = synthesisSpeedSlider.getValue();
         speaker.setSpeed(newSpeed);
 
-        // Show the new update on the label after being changed..
+        // Reflect the new speed on the label.
         updateSpeedLabel();
     }
 
-    /**
-     * This is the handler for when the user wants to preview the voice.
-     */
+    @FXML
     public void handlePreviewButton() {
+        // Speak the text to the user, so they can test out their new speed.
         String test = "Hey there, how are you doing today? This is just a test";
         speaker.setSpeech(test);
         speaker.speak();
     }
 
-    /**
-     * This is the handler for when speed is reset to the original.
-     */
+    @FXML
     public void handleResetButton() {
+        // Reset the speed back to the original speed (1.0)
         speaker.resetSpeed();
         updateSpeedLabel();
     }
 
     @FXML
     private void handleResetXPButton() {
+        // Spawning an alert to ask the user for confirmation to reset their statistics.
         AlertHelper helper = AlertHelper.getInstance();
         helper.showAlert(Alert.AlertType.CONFIRMATION, "Are you sure you want to reset your XP?", ButtonType.YES, ButtonType.NO);
 
+        // If confirmed, then perform the reset.
         if (helper.getResult() == ButtonType.YES) {
             Progression.kill();
             ScreenSwitcher.getInstance().switchTo(ScreenType.MAIN_MENU);
@@ -72,18 +69,17 @@ public class SettingsController implements Initializable {
     }
 
     /**
-     * This private method is used to just update the label reflecting the current speed.
+     * This private method is used to just update the label reflecting their new synthesis speed.
      */
     private void updateSpeedLabel() {
         synthesisSpeedSlider.setValue(speaker.getSpeed());
         double speed = speaker.getSpeed();
 
-        // Dynamic label content depending on whether the speed is default or custom.
+        // Dynamic label content depending on whether the speed is default or set to custom.
         if (speaker.isChanged()) {
             synthesisSpeedLabel.setText("The speed has been changed to " + speed + ".");
         } else {
             synthesisSpeedLabel.setText("The speed is set to default, which is " + speed + ".");
         }
     }
-
 }

@@ -1,5 +1,4 @@
 package quinzical.frontend.controllers;
-import quinzical.backend.Progression;
 import quinzical.backend.models.Clue;
 import quinzical.frontend.helper.Speaker;
 import quinzical.frontend.helper.ScreenType;
@@ -25,7 +24,6 @@ import javafx.scene.control.TextField;
  * @author Shrey Tailor, Jason Wang
  */
 public class PracticeClueController implements Initializable {
-
     @FXML Label clueLabel;
     @FXML Button backButton;
     @FXML Button submitButton;
@@ -45,7 +43,7 @@ public class PracticeClueController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Displaying the information about the current question.
+        // Showing all the information about the current question.
         clueLabel.setText(clue.getQuestion());
         categoryLabel.setText(clue.getCategory().getName());
         prefixPlaceholder.setText(clue.getPrefix() + "...");
@@ -66,14 +64,17 @@ public class PracticeClueController implements Initializable {
 
     @FXML
     private void handleSubmitButton() {
+        // Use the backend to confirm whether the answer is correct.
         boolean isCorrect = clue.checkAnswer(answerTextField.getText());
+
+        // If cororect, then stop the input from the user.
         if (isCorrect) {
             stopInput();
             correctAnswer();
             return;
         }
 
-        // If incorrect, then reduce remaining attempts.
+        // If incorrect, then reduce the number of attempts remaining..
         attemptsRemaining--;
         if (attemptsRemaining < 1) {
             stopInput();
@@ -92,12 +93,14 @@ public class PracticeClueController implements Initializable {
 
     @FXML
     private void handleRespeakButton() {
+        // Speak the clue again for the user.
         speaker.setSpeech(clue.getQuestion());
         speaker.speak();
     }
 
     @FXML
     private void submitOnEnter(KeyEvent event) {
+        // Feature to use <ENTER> in order to submit your answer.
         switch (event.getCode()) {
             case ENTER:
                 submitButton.fire();
@@ -107,13 +110,14 @@ public class PracticeClueController implements Initializable {
 
     @FXML
     private void handleKeyboardButton(ActionEvent event) {
+        // This method is used to add the text from the macron keyboard into the answer box.
         Button pressed = (Button) event.getSource();
         answerTextField.setText(answerTextField.getText() + pressed.getText());
     }
 
     /**
-     * This is a private method used to tell the user that they were correct. It performs things
-     * such as speaks the "Congratulations" message and shows the hidden elements on screen.
+     * This private method is used to tell the user that they were correct. It performs things
+     * such as speaks the congratulatory message, and shows the hidden elements on screen.
      */
     private void correctAnswer() {
         String string = "Ka pai, you got it correct!";
@@ -123,8 +127,8 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method used to display the correct answer to the user. It performs things
-     * such as telling the user that they were wrong, speaks the correct answer.
+     * This private is method used to display the correct answer to the user. It performs things
+     * such as telling the user that they were wrong, and speaks the correct answer.
      */
     private void incorrectAnswer() {
         String string = "Oh no! The correct answer was " + clue.getAnswersList().get(0);
@@ -134,7 +138,7 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method used to update the number of attempts remaining on incorrect attempt.
+     * This private method is used to update the attempts remaining on an incorrect attempt.
      */
     private void updateAttempts() {
         // If there is one remaining attempt, then display the hint.
@@ -147,7 +151,7 @@ public class PracticeClueController implements Initializable {
     }
 
     /**
-     * This is a private method to stop inputs from the user, and performing the basic clean-up.
+     * This private method is to stop inputs from the user, and perform the basic screen clean-up.
      */
     private void stopInput() {
         speaker.kill();
@@ -158,5 +162,4 @@ public class PracticeClueController implements Initializable {
         hintPlaceholder.setVisible(false);
         keyboardGridPane.setVisible(false);
     }
-
 }
