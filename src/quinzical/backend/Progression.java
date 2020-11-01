@@ -1,36 +1,36 @@
 package quinzical.backend;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-
 import quinzical.backend.tasks.FileManager;
 import quinzical.backend.tasks.Formatting;
 
+// Java dependencies.
+import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+
 public class Progression {
-	
-	// Fields belonging to the static context.
+	// Static field(s).
 	private static Progression progression;
 	
-	// Fields for calculation
+	// Non-static field(s).
 	private int EXP;
-	private int gamesCompleted;
-	private int totalWinnings;
-	private int answeredCorrect;
-	private int answeredWrong;
 	private int totalTime;
-	
+	private int totalWinnings;
+	private int answeredWrong;
+	private int gamesCompleted;
+	private int answeredCorrect;
+
 	/**
-	 * The only constructor for Progression class, which is private, because it can only be
-     * accessed by the getInstance method (according to the principles of Singleton pattern).
-     * It will check if the Progression file exist and read from it, if not then start a new one.
+	 * This private constructor is used to setup the singleton object for this class.
 	 */
 	private Progression() {
-		if(FileManager.progFileExist()) {
+		// Initially, we are checking if the Statistics file does exist for the user.
+		if (FileManager.progFileExist()) {
 			List<String> progressList;
 			try {
 				progressList = IO.readFile(FileManager.getProgFile());
+
+				// Depending on the line, populate the parameters for the different statistics.
 				for(String line : progressList) {
 					if(line.startsWith("GC:")) {
 						gamesCompleted = Formatting.formatProgression(line);
@@ -47,11 +47,10 @@ public class Progression {
 					}
 				}
 			} catch (IOException e) {
-				System.out.println("Failed to initialize Progression");
-				e.printStackTrace();
+				System.out.println("Failed to load the file for Statistics because of some problem. Please contact the developer.");
 			}
-		}else {
-			// Starting values
+		} else {
+			// If the statistics file didn't exist, then we are starting from fresh.
 			gamesCompleted = 0;
 			totalWinnings = 0;
 			answeredCorrect = 0;
@@ -62,23 +61,13 @@ public class Progression {
 	
 	/**
      * This method is used to return the singleton object of the Progression object.
-     * If the Progression is not initialized this method will create a Progression 
-     * object.
-     * @return Progression the instance of class Progression.
+     * @return Progression the singleton object for this class.
      */
     public static Progression getInstance() {
-        if (!singletonExist()) {
+        if (progression == null) {
         	progression = new Progression();
         }
         return progression;
-    }
-	
-	/**
-     * This method is used to check if an instance of Progression exist
-     * @return if the Progression singleton exist
-     */
-    public static boolean singletonExist() {
-    	return (progression != null);
     }
 	
     /**
@@ -127,8 +116,8 @@ public class Progression {
 	}
 	
 	/**
-	 * This method is used to find the percentage of questions that were answered correctly
-	 * @return int percentage of questions that were answered correctly
+	 * This method is used to find the percentage of questions that were answered correctly.
+	 * @return int percentage of questions that were answered correctly.
 	 */
 	public int getPercentage() {
 		if (answeredCorrect+answeredWrong == 0) {
@@ -138,8 +127,8 @@ public class Progression {
 	}
 	
 	/**
-	 * This method is used to calculate the average time taken to answer a question correctly
-	 * @return int average time taken
+	 * This method is used to calculate the average time taken to answer a question correctly.
+	 * @return int average time taken to answer a question correctly.
 	 */
 	public int getAverageTime() {
 		if (answeredCorrect == 0) {
@@ -150,7 +139,7 @@ public class Progression {
 	
 	/**
 	 * This method is used to calculate the average winning the player get each game
-	 * @return int average winning
+	 * @return int average winning of the player.
 	 */
 	public int getAverageWinning() {
 		if (gamesCompleted == 0) {
@@ -161,10 +150,10 @@ public class Progression {
 	
 	/**
 	 * This method is used to add the EXP gained by the player
-	 * @param i EXP gained
+	 * @param xp EXP gained
 	 */
-	public void addEXP(int i) {
-		EXP += i;
+	public void addEXP(int xp) {
+		EXP += xp;
 	}
 
 	public int getEXP() {
@@ -172,8 +161,8 @@ public class Progression {
 	}
 	
 	/**
-	 * This method is used to get a list of the field values in Progression object
-	 * @return list of the field values
+	 * This method is used to get a list of the statistics to write to the local machine.
+	 * @return List<Integer> list of the statistics.
 	 */
 	public List<Integer> getStatsList(){
 		List<Integer> statsList = new ArrayList<Integer>();
@@ -187,22 +176,22 @@ public class Progression {
 	}
 	
 	/**
-	 * This method is used to get a list of the field names for writing Progression file
-	 * @return list of the field names
+	 * This method is used to get a list of the field names for writing to the local machine.
+	 * @return List<String> list of the field names
 	 */
 	public List<String> getFieldsList(){
-		List<String> filedsList = new ArrayList<String>();
-		filedsList.add("GC:");
-		filedsList.add("TW:");
-		filedsList.add("AC:");
-		filedsList.add("AW:");
-		filedsList.add("TT:");
-		filedsList.add("EXP:");
-		return filedsList;
+		List<String> fieldsList = new ArrayList<String>();
+		fieldsList.add("GC:");
+		fieldsList.add("TW:");
+		fieldsList.add("AC:");
+		fieldsList.add("AW:");
+		fieldsList.add("TT:");
+		fieldsList.add("EXP:");
+		return fieldsList;
 	}
 	
 	/**
-	 * This method is used to dereference the singleton object and romove the progression file.
+	 * This method is used to dereference the singleton object, and remove the progression file.
 	 */
 	public static void kill() {
 		progression = null;

@@ -1,37 +1,37 @@
 package quinzical.backend.models;
-
 import quinzical.backend.database.GameDatabase;
 
 /**
- * This class is a special version of the Class Category, and is only used for containing 
- * international questions
+ * This class is extends the regular Category, and is only used for storing the International clues.
  *
  * @author Shrey Tailor, Jason Wang
  */
 public class InternationalCategory extends Category{
 	
 	/**
-	 * This is a constructor that will create an empty InternationalCategory object using the 
-	 * constructor of Category, with fixed name "International"
+	 * This constructor will create an empty InternationalCategory object by using the constructor
+	 * of the superclass to have a default name of "International".
 	 */
 	public InternationalCategory(){
 		super("International");
 	}
 	
 	/**
-	 * This is a constructor that will create an InternationalCategory object, converted from 
-	 * the Category object passed in to the constructor.
+	 * This constructor will create an InternationalCategory object from the Category object passed
+	 * into it..
 	 */
 	public InternationalCategory(Category cate) {
 		super("International");
+
+		// Setup all the questions individually.
 		for(int i = 0; i < cate.getClueSize(); i++) {
 			this.addClue(cate.getClue(i));
 		}
 	}
 	
 	/**
-	 * This method is used to check if the InternationalCategory is locked from the user
-	 * @return boolean if the InternationalCategory is locked 
+	 * This method is used to check if the InternationalCategory is currently locked.
+	 * @return boolean true if the International category is current locked, else false.
 	 */
 	public boolean isLocked() {
 		int count = 0;
@@ -40,9 +40,12 @@ public class InternationalCategory extends Category{
 				count++;
 			}
 		}
+
 		if(count >= 2) {
+			// If the number of categories completed are more than two, then unlocked.
 			return false;
 		}else {
+			// Otherwise it would still be locked for the user.
 			return true;
 		}		
 	}

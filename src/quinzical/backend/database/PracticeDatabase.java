@@ -1,36 +1,29 @@
 package quinzical.backend.database;
-
 import quinzical.backend.IO;
 import quinzical.backend.models.Clue;
-import quinzical.backend.models.InternationalCategory;
-import quinzical.backend.tasks.FileManager;
-import quinzical.backend.tasks.Formatting;
 import quinzical.backend.models.Category;
+import quinzical.backend.tasks.Formatting;
+import quinzical.backend.tasks.FileManager;
+import quinzical.backend.models.InternationalCategory;
 
-import java.io.IOException;
-//Java API dependencies.
-import java.util.ArrayList;
+//Java dependencies.
 import java.util.List;
+import java.util.ArrayList;
+import java.io.IOException;
 
 /**
- * This class is used to import all the categories and their corresponding clues from the file
- * provided to us by the client. Therefore, it would contain all the questions which are part of
- * the Quinzical game.
- *
- * Later, this class would be used develop the GameDatabase, if there doesn't exist one on the
- * player's computer.
- *
- * Note that it is using the Singleton pattern because in a single instance of a game, we would
- * only want to instantiate a single object for PracticeDatabase.
+ * This class is used to create a practice database for the user by importing all the categories
+ * and their corresponding clues from the file. This is also helpful while creating a game
+ * database for the user.
  *
  * @author Shrey Tailor, Jason Wang
  */
 public class PracticeDatabase {
 
-    // Fields belonging to the static context.
+    // Static field(s).
     private static PracticeDatabase practiceDatabase;
 
-    // Fields belonging to the non-static context.
+    // Non-static field(s).
     private Clue selected;
     private int numberOfCategories;
     private Category markedCategory;
@@ -38,8 +31,7 @@ public class PracticeDatabase {
     private InternationalCategory intCate = new InternationalCategory();
 
     /**
-     * The only constructor for PracticeDatabase object which is private, because it can only be
-     * accessed by the getInstance method (according to the principles of Singleton pattern).
+     * A private constructor for creating a PracticeDatabase object.
      */
     private PracticeDatabase() {
         initialize();
@@ -58,46 +50,34 @@ public class PracticeDatabase {
     }
 
     /**
-     * This method is used to get a particular category from the list of categories in our database.
-     * @param position the position of category which we are trying to extract from our list.
-     * @return Category the category that is returned from the particular position.
-     * @throws IndexOutOfBoundsException this exception is returned if the position requested by
-     * the user is out of the valid range of the list.
-     */
-    public Category getCategory(int position) throws IndexOutOfBoundsException {
-        return categories.get(position);
-    }
-    
-    /**
-     * THis method is used to get the international category of the database
-     * @return InternationalCategory the international category of the database
-     */
-    public InternationalCategory getInternationalCategory() {
-    	return intCate;
-    }
-
-    /**
-     * This method is used to initialize the instance of PracticeDatabase object.
-     * The method reads in all lines of categories and clues from a readFile in IO class
-     * and store them in their respective category objects and clue objects. 
+     * This method is used to initialize the practice database in the game. It reads in all lines
+     * of categories and clues using the IO class, stores them here.
      */
     private void initialize() {
-    	//Load categories and clues from the New Zealand database
+
+        // Load categories and clues from the New Zealand context.
         List<String> quizContent;
 		try {
+		    // Firstly read in all the lines from the NZ file.
 			quizContent = IO.readFile(FileManager.getQuizFile());
-	        Category newCate = null;
-	    	Clue newClue;
-	    	for (String line : quizContent) {
+
+            Clue newClue;
+            Category newCate = null;
+            for (String line : quizContent) {
+
 	    		if (!line.contains("|") && !line.isBlank()) {
+	    		    // If the line is a category, then create a new category.
 					newCate = new Category(line);
 					categories.add(newCate);
 				} else if(!line.isBlank()) {
+	    		    // If the line is a clue, then create new clue within category.
 					newClue = Formatting.formatClue(line, newCate);
 					newCate.addClue(newClue);
 				}
+
 	    	}
-	    	//Load clues to International Category
+
+	    	// Secondly read all clues from the International file.
 	    	List<String> internationalContent = IO.readFile(FileManager.getInternationalFile());
 	    	for (String line : internationalContent) {
 	    		if(!line.isBlank()) {
@@ -106,33 +86,28 @@ public class PracticeDatabase {
 	    		}
 	    	}
 		} catch (IOException e) {
-			// Display error message if the Quinzical.txt or International.txt cannot be read
-			System.out.println("Failed to initialize PracticeDatabase");
-			e.printStackTrace();
+			System.out.println("Please make sure to have the Quinzical.txt and International.txt file in their correct location");
 		}
     }
 
     /**
-     * This is a private method which basically updates the number of categories there are in our
-     * database. Note that it is not accessible from outside this class.
+     * This method is used to get a particular category from the overall list.
+     * @param position the position of category that we are trying to access.
+     * @throws IndexOutOfBoundsException if the position requested is out of the valid range.
+     */
+    public Category getCategory(int position) throws IndexOutOfBoundsException {
+        return categories.get(position);
+    }
+
+    /**
+     * This private method updates the number of categories remaining in our database.
      */
     private void updateRemaining() {
         numberOfCategories = categories.size();
     }
     
     /**
-     * This is a method that can remove a category from the list.
-     * @param index of the category to be removed.
-     * @throws IndexOutOfBoundsException this exception is returned if the position requested by
-     * the user is out of the valid range of the list.
-     */
-    public void removeCategory(int index) throws IndexOutOfBoundsException{
-		categories.remove(index);
-		updateRemaining();
-	}
-    
-    /**
-     * This is a method that will return the number of categories in PracticeDatabase.
+     * This method will return the number of categories in PracticeDatabase.
      * @return the number of categories.
      */
     public int getCateSize() {
@@ -140,7 +115,7 @@ public class PracticeDatabase {
     	return numberOfCategories;
     }
 
-    /** This is a method that is used to select a clue for easier access.
+    /** This method is used to select a clue for easier access in the game.
      * @param clue the clue to be selected
      */
     public void select(Clue clue) {
@@ -148,26 +123,31 @@ public class PracticeDatabase {
     }
 
     /**
-     * This is a method for getting the selected clue
-     * @return the selected clue
+     * This method is used to mark a category as needs practice so that we can show it easily in the
+     * Practice Module of Quinzical.
+     * @param cate the category that we want to mark.
      */
-    public Clue getSelected() {
-        return selected;
+    public void setMarkedCategory(Category cate) {
+        markedCategory = cate;
     }
 
     /**
-     * This is a method that will dereference the practiceDatabase field, so that when the 
+     * This is a method that will dereference the practiceDatabase field, so that when the
      * getInstance is called next time the PracticeDatabase would be reloaded.
      */
     public static void kill() {
-    	practiceDatabase = null;
+        practiceDatabase = null;
     }
-    
-    public void setMarkedCategory(Category cate) {
-    	markedCategory = cate;
+
+    public Clue getSelected() {
+        return selected;
     }
     
     public Category getMarkedCategory() {
     	return markedCategory;
+    }
+
+    public InternationalCategory getInternationalCategory() {
+        return intCate;
     }
 }

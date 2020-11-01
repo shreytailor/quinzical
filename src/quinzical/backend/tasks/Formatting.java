@@ -1,14 +1,12 @@
 package quinzical.backend.tasks;
-
-import quinzical.backend.models.Category;
 import quinzical.backend.models.Clue;
+import quinzical.backend.models.Category;
 
 public class Formatting {
-	
     /**
-     * This method is used to make the string lower case and no white spaces
-     * @param answer the string to be formatted
-     * @return the formatted string
+     * This method is used to make the string lower case and remove white spaces.
+     * @param answer the string to be formatted.
+     * @return String the formatted string.
      */
 	public static String trimAndLower(String answer) {
 		answer = answer.toLowerCase();
@@ -17,24 +15,28 @@ public class Formatting {
 	}
 	
 	/**
-     * This method is used to remove some redundant part of the string like "the" and "a"
-     * @param answer the string to be formatted
-     * @return the formatted string
+     * This method is used to remove some redundant prefix of the answer like "the" and "a".
+     * @param answer the string to be formatted.
+     * @return String the formatted string.
      */
 	public static String removeTheA(String answer) {
+		// Removing "THE".
 		if(answer.toUpperCase().startsWith("THE ")) {
 			answer = answer.substring(4);
 		}
+
+		// Removing "A".
 		if(answer.toUpperCase().startsWith("A ")) {
 			answer = answer.substring(2);
 		}
+
 		return answer;
 	}
 	
 	/**
-     * This method combines trimAndLower and removeTheA to sanitize the string for answer comparison
-     * @param answer the string to be formatted
-     * @return the formatted string
+     * This method uses trimAndLower() and removeTheA() to sanitize the answer for comparison.
+     * @param answer the string to be formatted.
+     * @return String the formatted string.
      */
 	public static String sanitize(String answer) {
 		answer = trimAndLower(answer);
@@ -43,27 +45,29 @@ public class Formatting {
 	}
 	
 	/**
-	 * This method is used to construct a Clue object while formatting the input strings of the Clue
-	 * @param str the line read from a file
-	 * @param cate the category the Clue belongs to
+	 * This method is used to construct a Clue object, after formatting the strings for Clue.
+	 * @param string the line read from a file
+	 * @param category the category the Clue belongs to
 	 * @return a clue object that is sanitized
 	 */
-	public static Clue formatClue(String str, Category cate) {
+	public static Clue formatClue(String string, Category category) {
 		String question, prefix, answer;
-		question = str.split("[|]")[0].trim();
-		prefix = str.split("[|]")[1].trim();
-		answer = str.split("[|]")[2].trim();
-		Clue clue = new Clue(question, prefix, answer, cate);
+
+		question = string.split("[|]")[0].trim();
+		prefix = string.split("[|]")[1].trim();
+		answer = string.split("[|]")[2].trim();
+
+		Clue clue = new Clue(question, prefix, answer, category);
 		return clue;
 	}
 	
 	/**
-	 * This method is used to help read in the values from progression file by removing string parts
-	 * @param str string to be formatted
-	 * @return int the value in the string
+	 * This method is used to help read in the values from progression file by the prefixes.
+	 * @param string string to be formatted.
+	 * @return int the part after the prefix in the string.
 	 */
-	public static int formatProgression(String str) {
-		str = str.replaceAll("[^0-9]", "");
-		return Integer.parseInt(str);
+	public static int formatProgression(String string) {
+		string = string.replaceAll("[^0-9]", "");
+		return Integer.parseInt(string);
 	}
 }

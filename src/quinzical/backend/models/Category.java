@@ -7,18 +7,15 @@ import java.util.ArrayList;
 
 
 /**
- * This class is used as a model for all the categories of our Quinzical game. It contains various
- * fields and methods which would make it easier for the developers to interact with these
- * entities.
+ * This class is used as a model that can represent all Categories of clues.
  *
  * @author Shrey Tailor, Jason Wang
  */
 public class Category {
-
-    // Fields required for the model of our Category.
-    private String categoryName;
     private List<Clue> clues;
     private int numberOfClues;
+    private String categoryName;
+
     /**
      * This is the only constructor for creating an object for Category.
      * @param name the name of the category which we are creating.
@@ -43,7 +40,7 @@ public class Category {
     }
 
     /**
-     * This method is used to add a clue to the existing list of clues within the category.
+     * This method is used to add a clue to the list of clues of this category.
      * @param clue the clue which we want to add to the category.
      */
     public void addClue(Clue clue) {
@@ -52,45 +49,38 @@ public class Category {
     }
 
     /**
-     * This method is used to get a clue from the existing list of clues within the category.
+     * This method is used to get a clue from this category.
      * @param position the position of the clue that we want to get.
      * @return Clue the clue at our desired position.
-     * @throws IndexOutOfBoundsException this exception is returned if the position specified is
-     * out of valid range of the list.
+     * @throws IndexOutOfBoundsException if the position specified is out of the valid range.
      */
     public Clue getClue(int position) throws IndexOutOfBoundsException {
         return clues.get(position);
     }
 
     /**
-     * This method is used to remove a specific clue from the existing list of clues within the category.
-     * @param i the position of the clue that we want to remove.
-     * @throws IndexOutOfBoundsException this exception is returned if the position specified is
-     * out of valid range of the list.
+     * This method is used to remove a specific clue from the existing list of clues.
+     * @param index the position of the clue that we want to remove.
+     * @throws IndexOutOfBoundsException if the position specified is out of valid range.
      */
-    public void removeClue(int i) throws IndexOutOfBoundsException {
-        clues.remove(i);
+    public void removeClue(int index) throws IndexOutOfBoundsException {
+        clues.remove(index);
     }
 
     /**
-     * This private is used to just update the field regarding how many questions are remaining in
-     * the current category.
+     * This private method is used to update how many questions are remaining in a category.
      */
     private void updateRemaining() {
         numberOfClues = clues.size();
     }
 
-    /**
-     * The method is used to get the number of clues in this category.
-     * @return the number of clues in this category.
-     */
     public int getClueSize() {
         updateRemaining();
         return numberOfClues;
     }
 
     /**
-     * The method is used to remove the first clue(lowest priced clue) from the list of clues.
+     * The method is used to remove the first clue (lowest priced clue) from the list of clues.
      */
     public void nextQuestion() {
         if(clues.size() >= 1) {
