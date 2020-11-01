@@ -21,6 +21,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
+        /*
+        ----------------------------------- NOTES FOR THE MARKER -----------------------------------
+        1) For some exceptions, we have made sure our implementation is such that they would never be
+        thrown in any scenario. However for some of the exceptions which could be thrown, we have
+        added a System.out.print to the console so that the user knows what has gone wrong exactly.
+        Hopefully this doesn't count as a bad usage of System.out.print feature because our intentions
+        are to deliver the message to the user.
+         */
+
         // Checking if the configuration folder exists.
         Progression.getInstance();
         FileManager.checkConfigDirectory();

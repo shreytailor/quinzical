@@ -13,7 +13,7 @@
 sudo apt-get install festival
 sudo apt-get install festlex-oald
 ```
-3. Place the `.jar` file, `run_game.sh` script, and `Quinzical` file which contains the questions, into a new directory of your choice.
+3. Place the `.jar` file, `run_game.sh` script, and `QuizBank` folder which contains the two files for the New Zealand and International questions respectively, into a new directory of your choice.
 
 4. Open the terminal and change the current working directory to the directory created above.
 

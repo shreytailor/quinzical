@@ -17,7 +17,7 @@ import java.nio.file.Files;
  * This class is used to create database for the GameModule which would consists of categories, and
  * its questions. It uses PracticeDatabase to construct itself if current progress for the user does
  * not exist.
- * 
+ *
  * @author Shrey Tailor, Jason Wang
  */
 public class GameDatabase {
@@ -120,9 +120,7 @@ public class GameDatabase {
 				categories.remove(getCateSize()-1);
 			}
 		} catch (IOException e) {
-			// This error message is not likely to be thrown due to the implementation details.
 			System.out.println("Failed to initialize the database. Please contact the developer.");
-			e.printStackTrace();
 		}
     }
     

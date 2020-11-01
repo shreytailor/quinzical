@@ -101,3 +101,35 @@
 - This meeting was just to solve that issue, and talk about some future decisions.
 
 *(3 days to go)*
+
+<hr>
+
+<h3 align="center">Iteration Three (19th October to 1st November)</h3>
+
+**Wednesday, 21th September**
+- One of the key features of Quinzical which are still remaining is the International section.
+- We decided that in the next few days, we will draft up the internal design of how we want our application to function and then as always Jason can do the back-end and Shrey can do the front-end.
+- The meeting was more about the design decisions and how we could give the children the easiest way of knowing that such a feature does exist.
+- The plan until next meeting was to get a MVP that supports this feature.
+
+*(11 days to go)*
+
+**Saturday, 24th September**
+- This was a very long meeting which lasted about 1 hour.
+- It was mainly focused on the feedback which we received from our peers, and how we could prioritize some of the problems that were found and then define some ways to solve these problems.
+- A detailed list was created that highlighted these problems.
+- The plan until next meeting was to fix most of these problems, and it served as a reminder to also work on the International section of the game.
+
+*(8 days to go)*
+
+**Monday, 26th September**
+- In this meeting, we had created a shared document on Google Documents for how we could implement the whole statistics system in our game so that users can compare against their friends if they want.
+- Also a lot of focus was now starting to fall towards creating the User Manual as its an important piece of document for the users while they use the application.
+- By now, most of the implementation was mostly bug-free and the application was starting to take shape.
+
+*(5 days to go)*
+
+**Sunday, 31st September**
+- This was the final meeting that lasted pretty long because we had performed some combined tested on the final product to make sure everything was working as intended.
+
+*(Done)*
