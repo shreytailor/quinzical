@@ -5,27 +5,26 @@
 <hr>
 
 ## Usage Instructions
-1. Make sure to firstly test this on the latest SE206 VirtualBox Image to have the required dependencies, and also install the voices provided by Catherine to use the New Zealand accent.
+1. Download the JavaFX SDK Version 17.0.1
 
-2. To get started, first install **festival** and **festlex-oald** text-to-speech dependencies using the commands below.
+2. Open the `run_game.sh` file and change the path so that it points to the JavaFX SDK directory - the `lib` folder to be precise.
+
+3. Install **festival** and **festlex-oald** text-to-speech dependencies using the commands below.
 
 ```
 sudo apt-get install festival
 sudo apt-get install festlex-oald
 ```
-3. Place the `.jar` file, `run_game.sh` script, and `QuizBank` folder which contains the two files for the New Zealand and International questions respectively, into a new directory of your choice.
+
+3. Place the `.jar` file, `run_game.sh` script, and `QuizBank` folder, which contains the two files for the New Zealand and International questions respectively, into a new directory of your choice.
 
 4. Open the terminal and change the current working directory to the directory created above.
 
-5.  To run the game, give executable permissions to the script file.
+5.  To run the game, give executable permissions to the script file and run it.
 
 ```
 chmod +x run_game.sh
-```
 
-6. Run the game using this command. Please do note that this script is tailored for the second version of the SE206 image, given that you have installed the voices provided by Catherine.
-
-```
 ./run_game.sh
 ```
 
