@@ -4,26 +4,16 @@ These images of the wireframes are from the initial meetings that we had. The in
 
 ## Main Menu
 
-<p align="center">
-<img width="800px" src="https://github.com/SOFTENG206-2020/assignment-3-and-project-team-46/blob/master/wiki/MainMenu.jpeg?raw=true"></img>
-</p>
+![](./MainMenu.jpeg)
 
 ## Games Module
 
-<p align="center">
-<img width="800px" src="https://github.com/SOFTENG206-2020/assignment-3-and-project-team-46/blob/master/wiki/GamesModule.jpeg?raw=true"></img>
-</p>
+![](./GamesModule.jpeg)
 
-<p align="center">
-<img width="800px" src="https://github.com/SOFTENG206-2020/assignment-3-and-project-team-46/blob/master/wiki/GamesClue.jpeg?raw=true"></img>
-</p>
+![](./GamesClue.jpeg)
 
 ## Practice Module
 
-<p align="center">
-<img width="800px" src="https://github.com/SOFTENG206-2020/assignment-3-and-project-team-46/blob/master/wiki/PracticeModule.jpeg?raw=true"></img>
-</p>
+![](./PracticeModule.jpeg)
 
-<p align="center">
-<img width="800px" src="https://github.com/SOFTENG206-2020/assignment-3-and-project-team-46/blob/master/wiki/PracticeClue.jpeg?raw=true"></img>
-</p>
+![](./PracticeClue.jpeg)
